@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "name": "pecuaria-lucrativa-dashboard",
+  "rewrites": [
+    { "source": "/", "destination": "/pecuaria_dashboard_agro.html" },
+    { "source": "/plano", "destination": "/pecuaria_plano_v3.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pecuária Lucrativa — Plano Estratégico v3</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KICA8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjE2IiBmaWxsPSIjMGQxYTBlIi8+CiAgPCEtLSBBIGxlZnQgbGVnIChmb3Jlc3QgZ3JlZW4pIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iNiw4OCAzMCwxMCA0MCwxMCAyMiw4OCIgZmlsbD0iIzJkNWEzNSIvPgogIDwhLS0gQSByaWdodCBsZWcgLyBYIGxlZnQgYmFyIG1lcmdlIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iMjIsODggNDAsMTAgNTAsMTAgMzQsODgiIGZpbGw9IiMyNTUwMzAiLz4KICA8IS0tIFggYmFyOiB0b3AtbGVmdCB0byBib3R0b20tcmlnaHQgKGdvbGQpIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iNDIsMTAgNTYsMTAgNzYsODggNjIsODgiIGZpbGw9IiNjOTkyMmEiLz4KICA8IS0tIFggYmFyOiB0b3AtcmlnaHQgdG8gYm90dG9tLWxlZnQgKGdvbGQsIG92ZXJsYXBzKSAtLT4KICA8cG9seWdvbiBwb2ludHM9IjU2LDEwIDcwLDEwIDUwLDg4IDM2LDg4IiBmaWxsPSIjYjA3ODIwIi8+CiAgPCEtLSBGaWVsZCBsaW5lcyBpbnNpZGUgQSBib3R0b20gLS0+CiAgPHBhdGggZD0iTTksNzUgUTIwLDcxIDMxLDc1IiBzdHJva2U9IiM0YTlhNWEiIHN0cm9rZS13aWR0aD0iMi41IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8cGF0aCBkPSJNNyw4MyBRMjAsNzkgMzMsODMiIHN0cm9rZT0iIzRhOWE1YSIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNjUiLz4KPC9zdmc+">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+/* ===== THEME TOKENS ===== */
+:root {
+  --nav-h:64px;--r:14px;--r-sm:8px;
+}
+/* DARK MODE (default) */
+:root, [data-theme="dark"] {
+  --bg:#060d08;--bg2:#091309;--bg3:#0e1a0f;
+  --card:rgba(45,90,53,0.1);--card-border:rgba(201,146,42,0.18);
+  --card-hover:rgba(45,90,53,0.18);
+  --violet:#c9922a;--violet-light:#d4a434;--violet-dim:rgba(201,146,42,0.12);
+  --cyan:#5a9e68;--cyan-dim:rgba(90,158,104,0.15);
+  --rose:#d95f35;--rose-dim:rgba(217,95,53,0.15);
+  --amber:#c9922a;--amber-dim:rgba(201,146,42,0.15);
+  --green:#4a9a5a;--green-dim:rgba(74,154,90,0.15);
+  --text:#f0ebe0;--text-muted:#7a9470;--text-dim:#b2c49e;
+  --border:rgba(201,146,42,0.12);
+  --shadow:0 4px 24px rgba(0,0,0,0.4);
+  --grid-line:rgba(201,146,42,0.04);
+  --chart-grid:rgba(255,255,255,0.05);--chart-tick:#7a9470;
+  --nav-bg:rgba(6,13,8,0.88);
+  --input-bg:rgba(45,90,53,0.15);
+}
+/* LIGHT MODE */
+[data-theme="light"] {
+  --bg:#f8f5ee;--bg2:#ffffff;--bg3:#f0ebe0;
+  --card:rgba(255,255,255,0.9);--card-border:rgba(201,146,42,0.25);
+  --card-hover:rgba(255,255,255,1);
+  --violet:#a06818;--violet-light:#c9922a;--violet-dim:rgba(201,146,42,0.1);
+  --cyan:#2d5a35;--cyan-dim:rgba(45,90,53,0.12);
+  --rose:#c04020;--rose-dim:rgba(192,64,32,0.1);
+  --amber:#a06818;--amber-dim:rgba(160,104,24,0.1);
+  --green:#2d6a38;--green-dim:rgba(45,106,56,0.1);
+  --text:#1a2a1a;--text-muted:#5a6e52;--text-dim:#7a8a72;
+  --border:rgba(45,90,53,0.15);
+  --shadow:0 2px 16px rgba(45,90,53,0.1);
+  --grid-line:rgba(45,90,53,0.05);
+  --chart-grid:rgba(45,90,53,0.08);--chart-tick:#5a6e52;
+  --nav-bg:rgba(248,245,238,0.92);
+  --input-bg:rgba(45,90,53,0.06);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,sans-serif;min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0;}
+nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:100;background:var(--nav-bg);backdrop-filter:blur(20px) saturate(1.5);border-bottom:1px solid var(--card-border);display:flex;align-items:center;gap:0;padding:0 24px;}
+.nav-brand{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.05em;color:var(--violet);white-space:nowrap;padding-right:24px;border-right:1px solid var(--border);margin-right:16px;}
+.nav-brand span{color:var(--text-muted);font-weight:400;}
+.nav-links{display:flex;gap:2px;flex:1;overflow-x:auto;scrollbar-width:none;}
+.nav-links::-webkit-scrollbar{display:none;}
+.nav-btn{padding:6px 14px;border-radius:8px;border:none;background:transparent;color:var(--text-muted);font-size:12px;font-weight:500;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.nav-btn:hover{background:var(--card);color:var(--text);}
+.nav-btn.active{background:rgba(245,158,11,0.15);color:var(--amber);}
+.nav-right{display:flex;align-items:center;gap:10px;padding-left:16px;border-left:1px solid var(--border);}
+.dash-link{display:flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;border:1px solid rgba(99,102,241,0.3);background:var(--violet-dim);color:var(--violet-light);font-size:12px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;}
+.dash-link:hover{border-color:var(--violet);background:rgba(99,102,241,0.25);}
+
+main{padding-top:var(--nav-h);position:relative;z-index:1;}
+.section{display:none;min-height:calc(100vh - var(--nav-h));}
+.section.visible{display:block;}
+.container{max-width:1360px;margin:0 auto;padding:32px 24px;}
+
+.sec-hdr{margin-bottom:28px;}
+.sec-tag{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:8px;}
+.sec-title{font-size:26px;font-weight:800;color:var(--text);line-height:1.2;}
+.sec-sub{font-size:14px;color:var(--text-muted);margin-top:6px;}
+
+.card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--r);padding:20px;transition:border-color .2s;}
+.card:hover{border-color:rgba(255,255,255,0.12);}
+.card-title{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.gap-top{margin-top:16px;}
+
+/* TESE CARD */
+.tese-card{
+  border-radius:var(--r);overflow:hidden;
+  border:1px solid var(--card-border);
+  margin-bottom:16px;
+}
+.tese-header{
+  display:flex;align-items:center;gap:16px;
+  padding:18px 20px;cursor:pointer;
+  background:var(--card);transition:background .2s;
+}
+.tese-header:hover{background:var(--card-hover);}
+.tese-num{
+  width:36px;height:36px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:800;flex-shrink:0;
+}
+.tese-main{flex:1;}
+.tese-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:3px;}
+.tese-sub{font-size:12px;color:var(--text-muted);}
+.verdict{
+  padding:4px 12px;border-radius:99px;font-size:10px;font-weight:800;
+  letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;
+}
+.v-confirmada{background:var(--green-dim);color:var(--green);}
+.v-parcial{background:var(--amber-dim);color:var(--amber);}
+.v-contradita{background:var(--rose-dim);color:var(--rose);}
+.v-agravada{background:rgba(168,85,247,0.2);color:#c084fc;}
+.tese-body{
+  padding:0 20px;max-height:0;overflow:hidden;
+  transition:max-height .4s ease,padding .4s;
+  background:var(--bg2);border-top:1px solid var(--border);
+}
+.tese-body.open{max-height:600px;padding:20px;}
+
+/* HYPOTHESIS GRID */
+.hyp-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:16px;}
+.hyp-card{
+  padding:14px;border-radius:var(--r-sm);
+  border:1px solid var(--border);
+  background:rgba(255,255,255,0.02);
+}
+.hyp-tag{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px;}
+.hyp-text{font-size:12px;color:var(--text-dim);line-height:1.55;}
+
+/* LEVER */
+.lever{
+  padding:20px;border-radius:var(--r);
+  border:1px solid var(--card-border);
+  background:var(--card);margin-bottom:12px;
+}
+.lever-hdr{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.lever-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.lever-title{font-size:15px;font-weight:700;color:var(--text);}
+.lever-sub{font-size:12px;color:var(--text-muted);}
+.lever-body{font-size:13px;color:var(--text-dim);line-height:1.6;margin-bottom:12px;}
+.timeline{display:flex;gap:8px;flex-wrap:wrap;}
+.tl-item{
+  padding:5px 12px;border-radius:99px;font-size:11px;font-weight:600;
+  background:var(--bg3);border:1px solid var(--border);color:var(--text-dim);
+}
+.tl-item.now{border-color:var(--amber);color:var(--amber);background:var(--amber-dim);}
+.tl-item.soon{border-color:var(--cyan);color:var(--cyan);background:var(--cyan-dim);}
+
+/* INSIGHTS */
+.insight{border-radius:var(--r-sm);padding:14px 16px;border-left:3px solid;font-size:13px;line-height:1.6;margin-bottom:10px;}
+.insight.red{border-color:var(--rose);background:var(--rose-dim);color:#fda4af;}
+.insight.amber{border-color:var(--amber);background:var(--amber-dim);color:#fcd34d;}
+.insight.green{border-color:var(--green);background:var(--green-dim);color:#6ee7b7;}
+.insight.violet{border-color:var(--violet);background:var(--violet-dim);color:var(--violet-light);}
+.insight strong{font-weight:700;}
+
+/* METRIC */
+.metric-item{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-radius:var(--r-sm);background:rgba(255,255,255,0.02);border:1px solid var(--border);margin-bottom:8px;}
+.metric-name{font-size:12px;color:var(--text-muted);}
+.metric-val{font-size:13px;font-weight:700;color:var(--text);}
+.metric-delta{font-size:11px;font-weight:600;}
+.metric-delta.red{color:var(--rose);}
+.metric-delta.green{color:var(--green);}
+.metric-delta.amber{color:var(--amber);}
+
+/* V4 */
+.v4-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.v4-card{
+  padding:20px;border-radius:var(--r);
+  border:1px solid var(--card-border);background:var(--card);
+  text-align:center;
+}
+.v4-icon{font-size:28px;margin-bottom:10px;}
+.v4-title{font-size:13px;font-weight:800;color:var(--text);margin-bottom:6px;}
+.v4-sub{font-size:11px;color:var(--text-muted);line-height:1.5;margin-bottom:10px;}
+.v4-status{
+  font-size:10px;font-weight:700;padding:3px 10px;border-radius:99px;
+  letter-spacing:.05em;text-transform:uppercase;
+}
+.status-gap{background:var(--rose-dim);color:var(--rose);}
+.status-ok{background:var(--green-dim);color:var(--green);}
+.status-partial{background:var(--amber-dim);color:var(--amber);}
+
+/* SYNTHESIS TABLE */
+.synth-row{display:flex;align-items:flex-start;gap:16px;padding:14px;border-radius:var(--r-sm);background:rgba(255,255,255,0.02);border:1px solid var(--border);margin-bottom:8px;}
+.synth-step{width:28px;height:28px;border-radius:8px;background:var(--violet-dim);border:1px solid rgba(99,102,241,0.3);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:var(--violet-light);flex-shrink:0;}
+.synth-content{flex:1;}
+.synth-label{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin-bottom:3px;}
+.synth-text{font-size:13px;color:var(--text-dim);line-height:1.5;}
+
+.chart-wrap canvas{max-height:260px;}
+.tab-bar{display:flex;gap:4px;padding:4px;background:var(--bg3);border-radius:10px;margin-bottom:20px;}
+.tab{flex:1;padding:8px 12px;border:none;border-radius:7px;background:transparent;color:var(--text-muted);font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;text-align:center;}
+.tab.active{background:var(--card);color:var(--text);}
+.tab-panel{display:none;}
+.tab-panel.visible{display:block;}
+
+::-webkit-scrollbar{width:4px;height:4px;}
+::-webkit-scrollbar-thumb{background:rgba(245,158,11,0.3);border-radius:2px;}
+
+/* ===== SMOOTH THEME TRANSITIONS ===== */
+*, *::before, *::after {
+  transition: background-color 0.25s ease, color 0.2s ease,
+              border-color 0.25s ease, box-shadow 0.25s ease;
+}
+canvas, svg { transition: none !important; }
+
+/* Light mode overrides */
+[data-theme="light"] .card { box-shadow: var(--shadow); }
+[data-theme="light"] .tese-card { box-shadow: var(--shadow); }
+[data-theme="light"] .lever { box-shadow: var(--shadow); }
+[data-theme="light"] .tese-header { background:rgba(255,255,255,0.85); }
+[data-theme="light"] .tese-body { background:rgba(248,245,238,0.95); }
+[data-theme="light"] .nav-btn { color:var(--text-muted); }
+[data-theme="light"] .nav-btn.active { background:rgba(201,146,42,0.12);color:var(--violet); }
+[data-theme="light"] .dash-link { border-color:rgba(201,146,42,0.4);background:rgba(201,146,42,0.08);color:var(--violet); }
+[data-theme="light"] .tab-bar { background:rgba(45,90,53,0.08); }
+[data-theme="light"] .tab.active { background:rgba(255,255,255,0.9);color:var(--text);box-shadow:0 1px 4px rgba(45,90,53,0.1); }
+[data-theme="light"] .insight.red { background:rgba(192,64,32,0.07);color:#8a2000; border-color:#c04020; }
+[data-theme="light"] .insight.amber { background:rgba(160,104,24,0.07);color:#5a3a00; border-color:#a06818; }
+[data-theme="light"] .insight.green { background:rgba(45,106,56,0.07);color:#1a4020; border-color:#2d6a38; }
+[data-theme="light"] .insight.violet { background:rgba(201,146,42,0.07);color:#5a3a00; border-color:#a06818; }
+[data-theme="light"] .verdict.v-confirmada { background:rgba(45,106,56,0.1);color:#1a5020; }
+[data-theme="light"] .verdict.v-parcial { background:rgba(160,104,24,0.1);color:#5a3a00; }
+[data-theme="light"] .verdict.v-contradita { background:rgba(192,64,32,0.1);color:#8a2000; }
+[data-theme="light"] .verdict.v-agravada { background:rgba(90,30,130,0.08);color:#5a1a8a; }
+[data-theme="light"] .hyp-card { background:rgba(255,255,255,0.7);border-color:rgba(45,90,53,0.15); }
+[data-theme="light"] .metric-item { background:rgba(45,90,53,0.04);border-color:rgba(45,90,53,0.12); }
+[data-theme="light"] .synth-row { background:rgba(255,255,255,0.7);border-color:rgba(45,90,53,0.15); }
+[data-theme="light"] .synth-step { background:rgba(201,146,42,0.1);border-color:rgba(201,146,42,0.3);color:#a06818; }
+[data-theme="light"] .v4-card { background:rgba(255,255,255,0.85);box-shadow:var(--shadow); }
+[data-theme="light"] .tl-item { background:rgba(45,90,53,0.06);border-color:rgba(45,90,53,0.2);color:var(--text-muted); }
+[data-theme="light"] .tl-item.now { border-color:#a06818;color:#6a4000;background:rgba(160,104,24,0.08); }
+[data-theme="light"] .tl-item.soon { border-color:#2d5a35;color:#1a3a20;background:rgba(45,90,53,0.08); }
+
+/* ===== THEME TOGGLE BUTTON ===== */
+.theme-toggle {
+  width:36px;height:36px;border-radius:10px;
+  border:1px solid var(--border);background:var(--input-bg);
+  cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;
+  transition:background 0.2s,border-color 0.2s,transform 0.15s;flex-shrink:0;
+}
+.theme-toggle:hover { border-color:var(--violet);transform:scale(1.08); }
+.theme-toggle:active { transform:scale(0.95); }
+button:focus-visible { outline:2px solid var(--violet);outline-offset:2px; }
+
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width:1024px) {
+  .g4  { grid-template-columns:1fr 1fr; }
+  .g3  { grid-template-columns:1fr 1fr; }
+  .v4-grid { grid-template-columns:1fr 1fr; }
+  .hyp-grid { grid-template-columns:1fr; }
+}
+@media (max-width:768px) {
+  :root { --nav-h:56px; }
+  .container { padding:20px 14px; }
+  .nav-brand { font-size:12px; padding-right:14px; margin-right:10px; }
+  .nav-brand span { display:none; }
+  .nav-btn { padding:5px 10px; font-size:11px; }
+  .dash-link { padding:5px 10px; font-size:11px; }
+  .theme-toggle { width:30px; height:30px; font-size:14px; }
+
+  .g2, .g3, .g4, .g5, .v4-grid { grid-template-columns:1fr !important; }
+
+  .sec-title { font-size:20px; }
+  .sec-sub   { font-size:13px; }
+
+  /* Tese cards */
+  .tese-header { flex-wrap:wrap; gap:10px; padding:14px; }
+  .tese-title  { font-size:14px; }
+  .verdict     { font-size:9px; padding:3px 8px; }
+  .tese-body   { padding:14px; }
+  .hyp-grid    { grid-template-columns:1fr; gap:10px; }
+
+  /* Lever */
+  .lever { padding:16px; }
+  .lever-hdr { flex-wrap:wrap; gap:8px; }
+  .lever-title { font-size:14px; }
+  .timeline { gap:5px; }
+  .tl-item { font-size:10px; padding:4px 8px; }
+
+  /* Synth rows */
+  .synth-row { flex-direction:row; gap:10px; }
+
+  /* Charts */
+  .chart-wrap canvas { max-height:200px !important; }
+
+  /* Tab bar */
+  .tab-bar { gap:2px; }
+  .tab { font-size:11px; padding:7px 8px; }
+
+  /* V4 grid */
+  .v4-grid { grid-template-columns:1fr 1fr !important; }
+  .v4-card { padding:14px; }
+  .v4-icon { font-size:22px; }
+
+  /* Metric items */
+  .metric-item { flex-direction:column; align-items:flex-start; gap:4px; }
+}
+@media (max-width:480px) {
+  .container { padding:14px 10px; }
+  .nav-btn { padding:5px 8px; font-size:10px; }
+  .sec-title { font-size:18px; }
+  .v4-grid { grid-template-columns:1fr !important; }
+  .tese-header { padding:12px; }
+  .lever { padding:14px; }
+}
+
+
+/* ===== VERSION PANEL ===== */
+.ver-badge {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  z-index: 9000;
+  display: flex; align-items: center; gap: 0;
+  filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3));
+}
+.ver-dot {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--violet-dim);
+  border: 1.5px solid var(--violet-light);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 11px; font-weight: 800;
+  color: var(--violet-light); transition: all .2s;
+  position: relative;
+}
+.ver-dot:hover { transform: scale(1.12); background: var(--violet-dim); border-color: var(--violet-light); }
+.ver-dot::before {
+  content: ''; position: absolute; top: -2px; right: -2px;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--green); border: 2px solid var(--bg);
+}
+[data-theme="light"] .ver-dot::before { border-color: var(--bg); }
+
+/* CHANGELOG DRAWER */
+.ver-drawer {
+  position: fixed; bottom: 72px; right: 24px;
+  width: 340px; max-height: 70vh;
+  background: var(--bg2); border: 1px solid var(--card-border);
+  border-radius: 16px; z-index: 9001;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+  overflow: hidden; display: none;
+  flex-direction: column;
+  transform: translateY(12px); opacity: 0;
+  transition: transform .25s cubic-bezier(.34,1.56,.64,1), opacity .2s;
+}
+.ver-drawer.open {
+  display: flex; transform: translateY(0); opacity: 1;
+}
+.ver-drawer-hdr {
+  padding: 16px 18px 12px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-shrink: 0;
+}
+.ver-drawer-title {
+  font-size: 13px; font-weight: 800; color: var(--text);
+  display: flex; align-items: center; gap: 8px;
+}
+.ver-drawer-title span {
+  font-size: 10px; padding: 2px 8px; border-radius: 99px;
+  background: var(--green-dim); color: var(--green); font-weight: 700;
+}
+.ver-close {
+  width: 26px; height: 26px; border-radius: 8px; border: none;
+  background: var(--input-bg); color: var(--text-muted);
+  font-size: 14px; cursor: pointer; display: flex;
+  align-items: center; justify-content: center;
+  transition: background .15s;
+}
+.ver-close:hover { background: var(--rose-dim); color: var(--rose); }
+.ver-drawer-body {
+  overflow-y: auto; padding: 12px 18px 18px; flex: 1;
+  scrollbar-width: thin;
+}
+.ver-entry { margin-bottom: 16px; }
+.ver-entry-hdr {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
+}
+.ver-tag {
+  font-size: 11px; font-weight: 800; padding: 2px 8px;
+  border-radius: 99px; border: 1px solid var(--violet-light);
+  color: var(--violet-light); background: var(--violet-dim);
+}
+.ver-tag.old {
+  border-color: var(--border); color: var(--text-muted);
+  background: transparent;
+}
+.ver-date { font-size: 11px; color: var(--text-muted); }
+.ver-item {
+  display: flex; align-items: flex-start; gap: 7px;
+  font-size: 12px; color: var(--text-dim); line-height: 1.5;
+  padding: 3px 0;
+}
+.ver-item::before {
+  content: '→'; color: var(--violet); font-size: 10px;
+  margin-top: 2px; flex-shrink: 0; font-weight: 700;
+}
+.ver-sep { height: 1px; background: var(--border); margin: 12px 0; }
+
+@media (max-width: 768px) {
+  .ver-badge { bottom: 16px; right: 16px; }
+  .ver-drawer { width: calc(100vw - 32px); right: 16px; bottom: 64px; }
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">📋 <span>Pecuária Lucrativa</span> &nbsp;Plano de Ação</div>
+  <div class="nav-links">
+    <button class="nav-btn active" onclick="showSection('teses',this)">🔬 5 Teses TOC</button>
+    <button class="nav-btn" onclick="showSection('gargalos',this)">⛓️ Gargalos do Ecossistema</button>
+    <button class="nav-btn" onclick="showSection('acoes',this)">🚀 Plano de Ação</button>
+    <button class="nav-btn" onclick="showSection('sintese',this)">🧭 Síntese Estratégica</button>
+  </div>
+  <div class="nav-right">
+    <a href="pecuaria_dashboard_agro.html" class="dash-link">📊 Dashboard de Análise →</a>
+    <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" title="Alternar tema (T)" aria-label="Alternar tema">🌙</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ===================== TESES TOC ===================== -->
+<section id="section-teses" class="section visible">
+<div class="container">
+  <div class="sec-hdr">
+    <div class="sec-tag">Teoria das Restrições · 5 Teses · Modelo Dialético</div>
+    <div class="sec-title">Diagnóstico TOC — Tese / Antítese / Síntese</div>
+    <div class="sec-sub">Análise das hipóteses estratégicas baseadas em dados históricos de 15 lançamentos</div>
+  </div>
+
+  <!-- TESE 1 -->
+  <div class="tese-card">
+    <div class="tese-header" onclick="toggleTese(this)">
+      <div class="tese-num" style="background:var(--amber-dim);color:var(--amber);">1</div>
+      <div class="tese-main">
+        <div class="tese-title">Mais tráfego pago = mais resultado</div>
+        <div class="tese-sub">Hipótese de escalabilidade linear via mídia paga</div>
+      </div>
+      <span class="verdict v-parcial">⚡ Parcial — Lei dos Rendimentos Decrescentes</span>
+      <span style="color:var(--text-muted);margin-left:12px;font-size:16px;">›</span>
+    </div>
+    <div class="tese-body">
+      <div class="g3">
+        <div class="hyp-card">
+          <div class="hyp-tag" style="color:var(--violet-light);">🎓 Tese</div>
+          <div class="hyp-text">Aumentar o investimento em tráfego pago de forma proporcional à escala dos lançamentos levaria a crescimento proporcional de leads, alunos e faturamento.</div>
+        </div>
+        <div class="hyp-card">
+          <div class="hyp-tag" style="color:var(--rose);">⚔️ Antítese</div>
+          <div class="hyp-text">Os dados mostram que de Ago/23 a Abr/26, o tráfego cresceu 6.172% (R$5k → R$339k) enquanto o ROAS caiu 78% (9.23x → 2.04x) e o CAC subiu 11.4x. Retornos claramente decrescentes.</div>
+        </div>
+        <div class="hyp-card" style="border-color:rgba(245,158,11,0.2);">
+          <div class="hyp-tag" style="color:var(--amber);">🔄 Síntese</div>
+          <div class="hyp-text">Há um limiar de eficiência — até ~R$130k/lanç. (Fase 2 média), o tráfego é produtivo. Acima disso, a marginal de cada real investido cai por saturação de audiência qualificada no nicho.</div>
+        </div>
+      </div>
+      <div class="gap-top">
+        <div class="metric-item"><span class="metric-name">Tráfego Ago/23 → Abr/26</span><span class="metric-val">R$5k → R$339k</span><span class="metric-delta red">+6.172%</span></div>
+        <div class="metric-item"><span class="metric-name">ROAS no mesmo período</span><span class="metric-val">9.23x → 2.04x</span><span class="metric-delta red">−78%</span></div>
+        <div class="metric-item"><span class="metric-name">CAC no mesmo período</span><span class="metric-val">R$108 → R$1.234</span><span class="metric-delta red">+11.4x</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESE 2 -->
+  <div class="tese-card">
+    <div class="tese-header" onclick="toggleTese(this)">
+      <div class="tese-num" style="background:var(--rose-dim);color:var(--rose);">2</div>
+      <div class="tese-main">
+        <div class="tese-title">O gargalo está na captação de leads</div>
+        <div class="tese-sub">Hipótese de que CPL alto é a restrição principal do sistema</div>
+      </div>
+      <span class="verdict v-contradita">✗ Contradita — Restrição está no Pitch D1</span>
+      <span style="color:var(--text-muted);margin-left:12px;font-size:16px;">›</span>
+    </div>
+    <div class="tese-body">
+      <div class="g3">
+        <div class="hyp-card">
+          <div class="hyp-tag" style="color:var(--violet-light);">🎓 Tese</div>
+          <div class="hyp-text">O CPL crescendo de R$4.41 para R$13.56 seria o principal inibidor de crescimento, e resolvê-lo via diversificação de canais ou otimização de criativos seria suficiente para retomar resultados.</div>
+        </div>
+        <div class="hyp-card">
+          <div class="hyp-tag" style="color:var(--rose);">⚔️ Antítese</div>
+          <div class="hyp-text">Out/25 teve CPL de R$12.59 (alto), porém Pitch D1 de 10.53% — o MAIOR da série histórica, ROAS de 3.57x. CPL alto não impediu resultado. Isso indica que a conversão no pitch é mais restritiva que o custo de captação.</div>
+        </div>
+        <div class="hyp-card" style="border-color:rgba(244,63,94,0.2);">
+          <div class="hyp-tag" style="color:var(--rose);">🔄 Síntese</div>
+          <div class="hyp-text">CPL é um custo importante, mas a restrição sistêmica primária é a qualidade da conversão no pitch (CPL3→Venda D1). Sistemas que convertem bem suportam CAC alto.</div>
+        </div>
+      </div>
+      <div class="gap-top">
+        <div class="metric-item"><span class="metric-name">Out/25 — CPL</span><span class="metric-val">R$ 12.59</span><span class="metric-delta amber">alto</span></div>
+        <div class="metric-item"><span class="metric-name">Out/25 — Pitch D1</span><span class="metric-val">10.53%</span><span class="metric-delta green">pico histórico</span></div>
+        <div class="metric-item"><span class="metric-name">Out/25 — ROAS</span><span class="metric-val">3.57x</span><span class="metric-delta green">acima da média</span></div>
+        <div class="metric-item"><span class="metric-name">Abr/26 — CPL similar (R$13.56) mas Pitch D1 5.16%</span><span class="metric-val">ROAS: 2.04x</span><span class="metric-delta red">abaixo</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESE 3 -->
+  <div class="tese-card">
+    <div class="tese-header" onclick="toggleTese(this)">
+      <div class="tese-num" style="background:var(--green-dim);color:var(--green);">3</div>
+      <div class="tese-main">
+        <div class="tese-title">O pitch de vendas é o gargalo primário</div>
+        <div class="tese-sub">Hipótese de que a conversão no D1 é a restrição central do funil</div>
+      </div>
+      <span class="verdict v-confirmada">✓ Confirmada — Dados validam</span>
+      <span style="color:var(--text-muted);margin-left:12px;font-size:16px;">›</span>
+    </div>
+    <div class="tese-body">
+      <div class="g3">
+        <div class="hyp-card">
+          <div class="hyp-tag" style="color:var(--violet-light);">🎓 Tese</div>
+          <div class="hyp-text">A taxa de conversão Pitch D1 (v1/CPL3) é a métrica mais crítica do funil. Melhorar 1pp nessa taxa equivale a dezenas de vendas e impacto direto no ROAS sem aumentar gasto com tráfego.</div>
+        </div>
+        <div class="hyp-card">
+          <div class="hyp-tag" style="color:var(--green);">✓ Evidência</div>
+          <div class="hyp-text">Diferença entre Out/25 (10.53%) e Abr/26 (5.16%) = mesmo ecossistema, mesma escala, ROAS de 3.57x vs 2.04x. Variação de 2× no Pitch D1 explica 75% da diferença de ROAS entre os dois lançamentos.</div>
+        </div>
+        <div class="hyp-card" style="border-color:rgba(16,185,129,0.2);">
+          <div class="hyp-tag" style="color:var(--green);">🔄 Síntese</div>
+          <div class="hyp-text">O sistema CONSEGUE converter a 10%+. A restrição é executável, não estrutural. Prioridade: entender o que diferenciou Out/25 dos demais lançamentos da Fase 3.</div>
+        </div>
+      </div>
+      <div class="gap-top">
+        <div class="card-title" style="margin-bottom:8px;">Correlação Pitch D1 × ROAS — Fase 3 (2025-26)</div>
+        <div class="chart-wrap"><canvas id="ch-tese3" style="max-height:200px;"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESE 4 -->
+  <div class="tese-card">
+    <div class="tese-header" onclick="toggleTese(this)">
+      <div class="tese-num" style="background:rgba(168,85,247,0.2);color:#c084fc;">4</div>
+      <div class="tese-main">
+        <div class="tese-title">A base de leads está esgotada / saturada</div>
+        <div class="tese-sub">Hipótese de saturação de audiência no mercado de agropecuária digital</div>
+      </div>
+      <span class="verdict v-agravada">⚠ Agravada — Piora acelerada</span>
+      <span style="color:var(--text-muted);margin-left:12px;font-size:16px;">›</span>
+    </div>
+    <div class="tese-body">
+      <div class="g3">
+        <div class="hyp-card">
+          <div class="hyp-tag" style="color:var(--violet-light);">🎓 Tese</div>
+          <div class="hyp-text">A audiência qualificada de pecuaristas/produtores rurais digitalmente ativos é finita. Os 15 lançamentos exauriram progressivamente a camada "warm" de potenciais compradores, elevando o CPL e reduzindo a conversão.</div>
+        </div>
+        <div class="hyp-card">
+          <div class="hyp-tag" style="color:var(--rose);">⚔️ Agravamento</div>
+          <div class="hyp-text">Abr/26: 22.270 leads ao CPL de R$13.56 com ROAS de apenas 2.04x. Volume alto, retorno baixo. CPL cresce mesmo com mais gasto, indicando que os leads disponíveis são cada vez menos qualificados (fundo de funil saturado).</div>
+        </div>
+        <div class="hyp-card" style="border-color:rgba(168,85,247,0.2);">
+          <div class="hyp-tag" style="color:#c084fc;">🔄 Síntese</div>
+          <div class="hyp-text">Sem expansão para cold audience (orgânico, influência, b2b/agronegócio) o sistema continuará operando em audiência decrescente. Cada lançamento queima parte da audiência reciclável.</div>
+        </div>
+      </div>
+      <div class="gap-top">
+        <div class="metric-item"><span class="metric-name">CPL Ago/23</span><span class="metric-val">R$ 4.41</span><span class="metric-delta green">—</span></div>
+        <div class="metric-item"><span class="metric-name">CPL Abr/26</span><span class="metric-val">R$ 13.56</span><span class="metric-delta red">+207%</span></div>
+        <div class="metric-item"><span class="metric-name">Leads Ago/23</span><span class="metric-val">875</span><span class="metric-delta green">CPL3: 190</span></div>
+        <div class="metric-item"><span class="metric-name">Leads Abr/26</span><span class="metric-val">22.270</span><span class="metric-delta red">CPL3: 2.655 — menor proporção</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESE 5 -->
+  <div class="tese-card">
+    <div class="tese-header" onclick="toggleTese(this)">
+      <div class="tese-num" style="background:var(--cyan-dim);color:var(--cyan);">5</div>
+      <div class="tese-main">
+        <div class="tese-title">LTV e retenção são suficientes para sustentar CAC crescente</div>
+        <div class="tese-sub">Hipótese de que o modelo de negócio suporta a estrutura de custo atual</div>
+      </div>
+      <span class="verdict v-contradita">✗ Contradita — LTV insuficiente</span>
+      <span style="color:var(--text-muted);margin-left:12px;font-size:16px;">›</span>
+    </div>
+    <div class="tese-body">
+      <div class="g3">
+        <div class="hyp-card">
+          <div class="hyp-tag" style="color:var(--violet-light);">🎓 Tese</div>
+          <div class="hyp-text">Com renovações e ascensão de produto, o LTV seria suficiente para suportar um CAC crescente e manter a operação rentável mesmo com ROAS em queda.</div>
+        </div>
+        <div class="hyp-card">
+          <div class="hyp-tag" style="color:var(--rose);">⚔️ Antítese</div>
+          <div class="hyp-text">LTV atual: R$2.122 (ticket × 1.059 de renovação). Taxa de renovação: 5.9%. Total de 182 renovações em 3.072 alunos. CAC Abr/26: R$1.234. Margem entre LTV e CAC está comprimindo de forma acelerada.</div>
+        </div>
+        <div class="hyp-card" style="border-color:rgba(244,63,94,0.2);">
+          <div class="hyp-tag" style="color:var(--rose);">🔄 Síntese</div>
+          <div class="hyp-text">Se CAC chegar a R$1.500–2.000 (tendência atual), o LTV de R$2.122 não cobre nem o custo de aquisição + operação. O modelo precisa de produto de ascensão ou aumento da taxa de renovação para 15%+.</div>
+        </div>
+      </div>
+      <div class="gap-top">
+        <div class="metric-item"><span class="metric-name">Ticket médio</span><span class="metric-val">~R$ 2.000</span><span class="metric-delta amber">base LTV</span></div>
+        <div class="metric-item"><span class="metric-name">Taxa de renovação</span><span class="metric-val">5.9%</span><span class="metric-delta red">baixa — meta ≥ 15%</span></div>
+        <div class="metric-item"><span class="metric-name">LTV atual</span><span class="metric-val">R$ 2.122</span><span class="metric-delta red">vs CAC R$1.234</span></div>
+        <div class="metric-item"><span class="metric-name">Margem LTV−CAC Abr/26</span><span class="metric-val">R$ 888</span><span class="metric-delta red">comprimida −73% vs Ago/23</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== GARGALOS ===================== -->
+<section id="section-gargalos" class="section">
+<div class="container">
+  <div class="sec-hdr">
+    <div class="sec-tag">Análise de Restrições · Teoria das Restrições (TOC)</div>
+    <div class="sec-title">Identificação de Gargalos do Ecossistema</div>
+    <div class="sec-sub">Aplicação do modelo Goldratt ao funil de lançamento — onde está a restrição que limita o sistema?</div>
+  </div>
+
+  <div class="insight violet" style="margin-bottom:20px;">
+    <strong>Princípio TOC:</strong> Todo sistema tem exactamente uma restrição que determina o throughput (resultado) do todo. Identificar e elevar essa restrição é a intervenção mais alavancada possível.
+  </div>
+
+  <!-- FUNIL DE RESTRIÇÕES -->
+  <div class="card" style="margin-bottom:16px;">
+    <div class="card-title">Funil de Restrições — Por onde o sistema "vaza"?</div>
+    <div id="garg-funil"></div>
+  </div>
+
+  <div class="g2" style="margin-bottom:16px;">
+    <div class="card">
+      <div class="card-title">🥇 Restrição Primária — Pitch D1</div>
+      <div class="insight red" style="margin-bottom:12px;">
+        <strong>CPL3 → Venda D1: 5.16% (Abr/26)</strong><br>
+        Histórico mostra que o sistema PODE chegar a 10.53% (Out/25). A variação de 2× na mesma etapa indica que a restrição é executável — não é um teto estrutural do mercado.
+      </div>
+      <div class="metric-item"><span class="metric-name">Se Pitch D1 fosse 8% em Abr/26</span><span class="metric-val">+122 vendas D1</span></div>
+      <div class="metric-item"><span class="metric-name">Impacto estimado em faturamento</span><span class="metric-val">+R$ 244k</span></div>
+      <div class="metric-item"><span class="metric-name">ROAS resultante estimado</span><span class="metric-val">~2.76x</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">🥈 Restrição Secundária — Saturação de Audiência</div>
+      <div class="insight amber" style="margin-bottom:12px;">
+        <strong>CPL 4.41 → 13.56 (+207% em 33 meses)</strong><br>
+        Saturação progressiva da audiência qualificada disponível no canal paid social. Sem expansão para cold audience (orgânico, parcerias, influência), o CPL tende a continuar subindo.
+      </div>
+      <div class="metric-item"><span class="metric-name">CPL Fase 1 (média)</span><span class="metric-val">R$ 5.35</span></div>
+      <div class="metric-item"><span class="metric-name">CPL Fase 2 (média)</span><span class="metric-val">R$ 7.63</span><span class="metric-delta red">+43%</span></div>
+      <div class="metric-item"><span class="metric-name">CPL Fase 3 (média)</span><span class="metric-val">R$ 12.44</span><span class="metric-delta red">+63%</span></div>
+    </div>
+  </div>
+
+  <div class="g2" style="margin-bottom:16px;">
+    <div class="card">
+      <div class="card-title">🥉 Restrição Terciária — LTV Baixo</div>
+      <div class="insight amber" style="margin-bottom:12px;">
+        <strong>LTV de R$2.122 vs CAC crescente</strong><br>
+        A margem LTV−CAC está comprimindo. Com CAC em R$1.234 (Abr/26), a operação tem margem de R$888 antes dos custos de produção. Tendência de colisão entre CAC e LTV em 3–6 lançamentos se não houver intervenção.
+      </div>
+      <div class="chart-wrap"><canvas id="ch-ltv-cac"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">📊 Throughput por Etapa do Funil</div>
+      <div class="insight green" style="margin-bottom:12px;">
+        <strong>Etapas CPL1→CPL3 são saudáveis (~78-87% de conversão)</strong><br>
+        O problema não está no engajamento de quem entra no funil, mas em (1) qualidade de quem entra (leads) e (2) conversão no pitch final.
+      </div>
+      <div class="chart-wrap"><canvas id="ch-throughput"></canvas></div>
+    </div>
+  </div>
+
+  <!-- V4 FRAMEWORK -->
+  <div class="card" style="margin-bottom:0;">
+    <div class="card-title">Framework V4 — 4 Frentes de Atuação</div>
+    <div class="v4-grid gap-top">
+      <div class="v4-card" style="border-color:rgba(244,63,94,0.2);">
+        <div class="v4-icon">📡</div>
+        <div class="v4-title">Aquisição</div>
+        <div class="v4-sub">Paid outbound — Meta, Google, TikTok. Principal motor atual. Saturando progressivamente.</div>
+        <span class="v4-status status-gap">⚠ Saturando</span>
+      </div>
+      <div class="v4-card" style="border-color:rgba(245,158,11,0.2);">
+        <div class="v4-icon">🌱</div>
+        <div class="v4-title">Engajamento</div>
+        <div class="v4-sub">Orgânico, conteúdo, comunidade, YouTube. Praticamente ausente — sem pré-aquecimento de audiência.</div>
+        <span class="v4-status status-gap">✗ Ausente</span>
+      </div>
+      <div class="v4-card" style="border-color:rgba(245,158,11,0.2);">
+        <div class="v4-icon">💰</div>
+        <div class="v4-title">Monetização</div>
+        <div class="v4-sub">Order bump, downsell, upsell. Presente mas inconsistente — downsell de 154un em Abr/26 foi anomalia, não estratégia.</div>
+        <span class="v4-status status-partial">⚡ Parcial</span>
+      </div>
+      <div class="v4-card" style="border-color:rgba(16,185,129,0.2);">
+        <div class="v4-icon">🔄</div>
+        <div class="v4-title">Retenção</div>
+        <div class="v4-sub">Onboarding, renovação, comunidade alumni. Taxa de renovação 5.9% — muito abaixo do potencial mínimo de 15%.</div>
+        <span class="v4-status status-gap">⚠ Subdesenvolvida</span>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== AÇÕES ===================== -->
+<section id="section-acoes" class="section">
+<div class="container">
+  <div class="sec-hdr">
+    <div class="sec-tag">Plano de Ação · 90 dias · 4 Alavancas</div>
+    <div class="sec-title">De Diagnóstico a Intervenção</div>
+    <div class="sec-sub">Priorizado pela Teoria das Restrições — eleve a restrição antes de otimizar o resto</div>
+  </div>
+
+  <div class="insight violet" style="margin-bottom:24px;">
+    <strong>Sequência TOC:</strong> (1) Identificar a restrição → (2) Explorar ao máximo a restrição → (3) Subordinar todo o sistema à restrição → (4) Elevar a restrição → (5) Voltar ao passo 1 com nova restrição.
+  </div>
+
+  <div class="lever" style="border-color:rgba(244,63,94,0.3);">
+    <div class="lever-hdr">
+      <div class="lever-icon" style="background:var(--rose-dim);border:1px solid rgba(244,63,94,0.3);">🎯</div>
+      <div>
+        <div class="lever-title">Alavanca 1 — Elevar a conversão no Pitch D1 (Restrição Primária)</div>
+        <div class="lever-sub">Meta: subir Pitch D1 de 5.16% → 8%+ no próximo lançamento</div>
+      </div>
+      <span class="verdict v-confirmada" style="margin-left:auto;">PRIORIDADE 1</span>
+    </div>
+    <div class="lever-body">
+      <strong>Contexto:</strong> Out/25 provou que 10.53% é possível no mesmo ecossistema. A diferença entre 5% e 10% em CPL3=2.655 é 133 vendas adicionais no D1 = ~R$266k a mais de faturamento sem aumentar 1 real de tráfego.<br><br>
+      <strong>Ações concretas:</strong> (1) Auditar o que diferenciou o CPL3 de Out/25 — script, conteúdo, energia do João, contexto de mercado; (2) Implementar pré-qualificação mais rígida antes do CPL3 para garantir que quem chega está "aquecido"; (3) Testar abertura de carrinho no D0 (noite anterior) para leads mais engajados; (4) Criar sequência de ativação de 48h pré-pitch com social proof.
+    </div>
+    <div class="timeline">
+      <span class="tl-item now">Semanas 1-2: Auditoria Out/25</span>
+      <span class="tl-item now">Semanas 3-4: Redesenho do CPL3</span>
+      <span class="tl-item soon">Semanas 5-8: Implementar e testar pré-pitch</span>
+      <span class="tl-item">Semanas 9-12: Mensurar no próximo lançamento</span>
+    </div>
+  </div>
+
+  <div class="lever" style="border-color:rgba(245,158,11,0.3);">
+    <div class="lever-hdr">
+      <div class="lever-icon" style="background:var(--amber-dim);border:1px solid rgba(245,158,11,0.3);">🌱</div>
+      <div>
+        <div class="lever-title">Alavanca 2 — Ativar Canal Orgânico (Restrição Secundária)</div>
+        <div class="lever-sub">Meta: reduzir dependência de paid social e aquecer audiência orgânica</div>
+      </div>
+      <span class="verdict v-parcial" style="margin-left:auto;">PRIORIDADE 2</span>
+    </div>
+    <div class="lever-body">
+      <strong>Contexto:</strong> O CPL cresceu 207% em 33 meses porque o sistema opera 100% em paid. Sem orgânico, cada novo lead precisa ser comprado na concorrência com outros anunciantes do nicho. Um canal orgânico ativo (YouTube, Instagram, podcasts agro) cria uma camada de "warm audience" que chega ao funil com CPL efetivo próximo a zero.<br><br>
+      <strong>Ações concretas:</strong> (1) Lançar série de conteúdo educativo semanal no YouTube (formato long-form, 15-20min) com João como autoridade; (2) Criar newsletter mensal para base de alunos e leads captados; (3) Estabelecer presença em podcasts/eventos do agronegócio para awareness de cold audience.
+    </div>
+    <div class="timeline">
+      <span class="tl-item now">Semanas 1-4: Definir linha editorial</span>
+      <span class="tl-item soon">Semanas 5-8: Primeiros conteúdos publicados</span>
+      <span class="tl-item">Semanas 9-12: Medir impacto em CPL efetivo</span>
+    </div>
+  </div>
+
+  <div class="lever" style="border-color:rgba(16,185,129,0.3);">
+    <div class="lever-hdr">
+      <div class="lever-icon" style="background:var(--green-dim);border:1px solid rgba(16,185,129,0.3);">🔄</div>
+      <div>
+        <div class="lever-title">Alavanca 3 — Estruturar Retenção e Aumentar LTV</div>
+        <div class="lever-sub">Meta: taxa de renovação de 5.9% → 15%+ em 3 ciclos</div>
+      </div>
+      <span class="verdict v-parcial" style="margin-left:auto;">PRIORIDADE 3</span>
+    </div>
+    <div class="lever-body">
+      <strong>Contexto:</strong> Com 3.072 alunos captados e apenas 182 renovações (5.9%), há 2.890 alunos que compraram uma vez e não voltaram. Cada renovação adicional tem CAC zero — é throughput puro. Subir de 5.9% para 15% adicionaria ~278 renovações/ciclo ≈ R$556k de receita de baixo custo.<br><br>
+      <strong>Ações concretas:</strong> (1) Implementar onboarding de 30 dias com checkpoints de sucesso; (2) Criar programa de alumni com acesso a conteúdo exclusivo para renovação; (3) Campanha de reengajamento da base de alunos que não renovaram nos últimos 3 lançamentos; (4) Considerar modelo de assinatura anual com desconto.
+    </div>
+    <div class="timeline">
+      <span class="tl-item now">Semanas 1-4: Mapear jornada pós-compra</span>
+      <span class="tl-item soon">Semanas 5-8: Implementar onboarding</span>
+      <span class="tl-item">Semanas 9-12: Campanha reengajamento</span>
+    </div>
+  </div>
+
+  <div class="lever" style="border-color:rgba(99,102,241,0.3);">
+    <div class="lever-hdr">
+      <div class="lever-icon" style="background:var(--violet-dim);border:1px solid rgba(99,102,241,0.3);">💰</div>
+      <div>
+        <div class="lever-title">Alavanca 4 — Estruturar Monetização Sistêmica (Add-ons)</div>
+        <div class="lever-sub">Meta: add-ons consistentes em R$20k–40k/lançamento com estratégia clara</div>
+      </div>
+      <span class="verdict v-parcial" style="margin-left:auto;">PRIORIDADE 4</span>
+    </div>
+    <div class="lever-body">
+      <strong>Contexto:</strong> Alguns lançamentos (Mar/25: R$34k em add-ons, Ago/24: R$22k) mostraram que a monetização adicional pode ser relevante. Porém é inconsistente — Abr/26 teve R$31k em downsell (154 unidades!) de forma aparentemente reativa, não estratégica. Downsell alto pode indicar que o produto principal não está convertendo para parte da audiência que tem intenção de compra mas resistência ao ticket.<br><br>
+      <strong>Ações concretas:</strong> (1) Definir estratégia de add-ons para cada lançamento a priori (não reativa); (2) Criar produto de entrada (downsell de R$197 com acesso a módulo específico) para capturar leads qualificados que não compram o programa completo; (3) Estruturar upsell de mentoria/consultoria para alunos avançados.
+    </div>
+    <div class="timeline">
+      <span class="tl-item now">Semanas 1-4: Definir arquitetura de produtos</span>
+      <span class="tl-item soon">Semanas 5-8: Criar produto de entrada</span>
+      <span class="tl-item">Semanas 9-12: Testar em próximo lançamento</span>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ===================== SÍNTESE ===================== -->
+<section id="section-sintese" class="section">
+<div class="container">
+  <div class="sec-hdr">
+    <div class="sec-tag">Síntese Estratégica · Diagnóstico Completo</div>
+    <div class="sec-title">O Que os Dados Dizem — Sem Ambiguidade</div>
+    <div class="sec-sub">Conclusões baseadas em evidência de 15 lançamentos e 33 meses de operação</div>
+  </div>
+
+  <div class="insight red glow-red" style="margin-bottom:20px;">
+    <strong>⚠ Situação atual (Abr/26):</strong> ROAS em mínima histórica (2.04x). CAC em máxima histórica (R$1.234). Todos os KPIs pioraram vs lançamento anterior. Sem intervenção sistêmica, a tendência aponta para inviabilidade operacional em 3–5 lançamentos se CAC continuar subindo ao ritmo atual (+28%/lanç.).
+  </div>
+
+  <div style="margin-bottom:24px;">
+    <div class="synth-row">
+      <div class="synth-step">1</div>
+      <div class="synth-content">
+        <div class="synth-label">O Problema</div>
+        <div class="synth-text">O sistema de lançamento está operando acima do limiar de eficiência de audiência. Cada real adicional de tráfego traz retorno marginal decrescente porque a audiência qualificada disponível está progressivamente exaurida em paid social.</div>
+      </div>
+    </div>
+    <div class="synth-row">
+      <div class="synth-step">2</div>
+      <div class="synth-content">
+        <div class="synth-label">A Restrição Primária</div>
+        <div class="synth-text">A conversão no Pitch D1 (CPL3→Venda) é o gargalo central. Out/25 prova que o sistema consegue converter a 10.53%. Abr/26 converteu a 5.16% com escala similar. A diferença de 2× nessa taxa explica a maior parte da diferença de resultado entre os lançamentos.</div>
+      </div>
+    </div>
+    <div class="synth-row">
+      <div class="synth-step">3</div>
+      <div class="synth-content">
+        <div class="synth-label">A Tensão Estrutural</div>
+        <div class="synth-text">LTV (R$2.122) e CAC (R$1.234) estão convergindo. O modelo de negócio precisa de uma das três respostas: (a) reduzir CAC via orgânico, (b) aumentar LTV via retenção/ascensão, ou (c) melhorar conversão no pitch para suportar CAC mais alto com volume maior de alunos por lançamento.</div>
+      </div>
+    </div>
+    <div class="synth-row">
+      <div class="synth-step">4</div>
+      <div class="synth-content">
+        <div class="synth-label">O Que Funcionou</div>
+        <div class="synth-text">Fase 2 (2024) mostrou a melhor combinação de escala e eficiência — principalmente Ago/24 (ROAS 3.89x, CAC R$579, 224 alunos) e Fev/24 (ROAS 6.58x). O sistema tem capacidade de operar a 3.5–4.5x de ROAS com a audiência correta e pitch bem executado.</div>
+      </div>
+    </div>
+    <div class="synth-row">
+      <div class="synth-step">5</div>
+      <div class="synth-content">
+        <div class="synth-label">O Próximo Passo Óbvio</div>
+        <div class="synth-text">Antes de aumentar orçamento de tráfego, entender e replicar o que fez Out/25 converter 10.53% no pitch. Isso é a intervenção de maior alavancagem disponível, tem custo próximo a zero, e o resultado pode ser mensurado no próximo lançamento.</div>
+      </div>
+    </div>
+    <div class="synth-row" style="border-color:rgba(99,102,241,0.3);">
+      <div class="synth-step" style="background:var(--violet-dim);color:var(--violet-light);">→</div>
+      <div class="synth-content">
+        <div class="synth-label" style="color:var(--violet-light);">Indicador de Sucesso</div>
+        <div class="synth-text">Pitch D1 ≥ 8% no próximo lançamento, com ROAS ≥ 3.0x e CAC ≤ R$900, mantendo investimento em tráfego estável. Isso indicaria que a restrição foi elevada sem necessidade de mais gasto.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">Cenário A — Status Quo (sem intervenção)</div>
+      <div class="insight red">
+        ROAS continua declinando ~0.3x/lançamento. CAC chega a R$1.500+ em 2 lançamentos. Margem LTV−CAC torna a operação questional em meados de 2026.
+      </div>
+      <div class="chart-wrap"><canvas id="ch-cenA"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Cenário B — Com Intervenção no Pitch D1</div>
+      <div class="insight green">
+        Pitch D1 sobe para 8%+. ROAS estabiliza em 2.8–3.2x. Volume de alunos por lançamento aumenta sem aumento proporcional de gasto com tráfego.
+      </div>
+      <div class="chart-wrap"><canvas id="ch-cenB"></canvas></div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+</main>
+
+<script>
+Chart.defaults.color='#7a9470';
+Chart.defaults.borderColor='rgba(255,255,255,0.05)';
+Chart.defaults.font={family:"'Inter',system-ui,sans-serif",size:11};
+const gc='rgba(255,255,255,0.05)';
+const tc='#7a9470';
+
+// Fase 3 data for correlations
+const ph3=[
+  {l:'Jan/25',roas:2.59,pitch:6.43,cac:946},
+  {l:'Mar/25',roas:3.03,pitch:5.49,cac:765},
+  {l:'Jun/25',roas:3.46,pitch:7.55,cac:689},
+  {l:'Ago/25',roas:2.84,pitch:7.36,cac:888},
+  {l:'Out/25',roas:3.57,pitch:10.53,cac:706},
+  {l:'Dez/25',roas:1.55,pitch:5.17,cac:1552},
+  {l:'Fev/26',roas:2.96,pitch:5.92,cac:964},
+  {l:'Abr/26',roas:2.04,pitch:5.16,cac:1234},
+];
+
+function mkChart(id,cfg){
+  const el=document.getElementById(id);if(!el)return;
+  const ex=Chart.getChart(el);if(ex)ex.destroy();
+  return new Chart(el,cfg);
+}
+
+function showSection(id,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('visible'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('section-'+id).classList.add('visible');
+  if(btn)btn.classList.add('active');
+  if(id==='gargalos'&&!window._gBuilt){buildGargalos();window._gBuilt=true;}
+  if(id==='sintese'&&!window._sBuilt){buildSintese();window._sBuilt=true;}
+  window.dispatchEvent(new Event('resize'));
+}
+
+function toggleTese(header){
+  const body=header.nextElementSibling;
+  body.classList.toggle('open');
+  if(body.classList.contains('open')){
+    window.dispatchEvent(new Event('resize'));
+    // Build chart if in tese3
+    if(!window._t3Built){
+      buildTese3Chart();
+      window._t3Built=true;
+    }
+  }
+}
+
+function buildTese3Chart(){
+  mkChart('ch-tese3',{type:'scatter',data:{datasets:[{
+    label:'Fase 3 (Pitch D1% vs ROAS)',
+    data:ph3.map(d=>({x:d.pitch,y:d.roas,label:d.l})),
+    backgroundColor:ph3.map(d=>d.l==='Out/25'?'#4a9a5a':'rgba(201,146,42,0.7)'),
+    pointRadius:ph3.map(d=>d.l==='Out/25'?10:6),
+  }]},options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>{const d=ph3[c.dataIndex];return d.l+' — Pitch D1: '+d.pitch.toFixed(1)+'% | ROAS: '+d.roas.toFixed(2)+'x';}}}},
+    scales:{x:{title:{display:true,text:'Pitch D1 (%)',color:tc},grid:{color:gc},ticks:{color:tc,callback:v=>v+'%'}},y:{title:{display:true,text:'ROAS',color:tc},grid:{color:gc},ticks:{color:tc,callback:v=>v.toFixed(1)+'x'}}}}});
+}
+
+function buildGargalos(){
+  // Funil restrições
+  const gfEl=document.getElementById('garg-funil');
+  const steps=[
+    {e:'E3 Leads',v:22270,pct:100,status:'ok',obs:'Volume alto mas qualidade caindo (CPL +207%)'},
+    {e:'E4 CPL1',v:3777,pct:16.9,status:'ok',obs:'~20% — estável historicamente'},
+    {e:'E5 CPL2',v:3048,pct:80.7,status:'ok',obs:'~81% — saudável'},
+    {e:'E6 CPL3',v:2655,pct:87.1,status:'ok',obs:'~87% — saudável'},
+    {e:'E7 Venda D1',v:137,pct:5.16,status:'restrict',obs:'⛓️ RESTRIÇÃO — 5.16% vs 10.53% possível'},
+    {e:'E8 Alunos',v:275,pct:200.7,status:'ok',obs:'Inclui vendas pós-D1'},
+  ];
+  gfEl.innerHTML=steps.map(s=>`
+    <div style="margin-bottom:8px;">
+      <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px;">
+        <span style="font-weight:600;color:${s.status==='restrict'?'#d95f35':'#e2e8f0'}">${s.e} — <strong>${typeof s.v==='number'?s.v.toLocaleString('pt-BR'):s.v}</strong></span>
+        <span style="color:${s.status==='restrict'?'#d95f35':'#94a3b8'}">${s.obs}</span>
+      </div>
+      <div style="height:10px;background:rgba(255,255,255,0.04);border-radius:99px;overflow:hidden;">
+        <div style="height:100%;width:${Math.min(100,s.e==='E3 Leads'?100:s.pct)}%;background:${s.status==='restrict'?'#d95f35':'#c9922a'};border-radius:99px;opacity:${s.status==='restrict'?1:0.7};"></div>
+      </div>
+    </div>`).join('');
+
+  // LTV vs CAC
+  const ltv=2122;
+  const cacs=[108,485,260,419,804,579,813,946,765,689,888,706,1552,964,1234];
+  const labels=['Ago/23','Dez/23','Fev/24','Abr/24','Jun/24','Ago/24','Out/24','Jan/25','Mar/25','Jun/25','Ago/25','Out/25','Dez/25','Fev/26','Abr/26'];
+  mkChart('ch-ltv-cac',{type:'line',data:{labels,datasets:[
+    {label:'LTV',data:labels.map(()=>ltv),borderColor:'#4a9a5a',borderDash:[4,4],borderWidth:1.5,pointRadius:0,fill:false},
+    {label:'CAC',data:cacs,borderColor:'#d95f35',backgroundColor:'rgba(217,95,53,0.06)',fill:true,tension:0.3,borderWidth:2,pointRadius:3,pointBackgroundColor:'#d95f35'},
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#94a3b8',boxWidth:10}}},scales:{x:{grid:{color:gc},ticks:{color:tc,maxRotation:45}},y:{grid:{color:gc},ticks:{color:tc,callback:v=>'R$'+v.toLocaleString('pt-BR')}}}}});
+
+  // Throughput funnel chart
+  mkChart('ch-throughput',{type:'bar',data:{
+    labels:['L→CPL1','CPL1→CPL2','CPL2→CPL3','CPL3→Novos'],
+    datasets:[
+      {label:'Média Histórica',data:[23,78,87,11.9],backgroundColor:'rgba(201,146,42,0.6)',borderRadius:4},
+      {label:'Abr/26',data:[19.6,80.7,87.1,10.4],backgroundColor:'rgba(217,95,53,0.6)',borderRadius:4},
+    ]
+  },options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{labels:{color:'#94a3b8',boxWidth:10}}},scales:{x:{grid:{color:gc},ticks:{color:tc,callback:v=>v+'%'}},y:{grid:{color:gc},ticks:{color:tc}}}}});
+}
+
+function buildSintese(){
+  // Cenário A — Status Quo
+  const futLancs=['Jun/26','Ago/26','Out/26','Dez/26'];
+  const cacTrend=[1234,1390,1560,1750];
+  const roasTrend=[2.04,1.78,1.52,1.30];
+  mkChart('ch-cenA',{type:'line',data:{labels:['Abr/26',...futLancs],datasets:[
+    {label:'CAC (R$)',data:[1234,...cacTrend],borderColor:'#d95f35',backgroundColor:'rgba(217,95,53,0.06)',fill:true,tension:0.3,borderWidth:2,yAxisID:'y1'},
+    {label:'ROAS',data:[2.04,...roasTrend],borderColor:'#f59e0b',borderDash:[4,4],borderWidth:1.5,tension:0.3,yAxisID:'y2'},
+    {label:'LTV (fixo)',data:[2122,2122,2122,2122,2122],borderColor:'rgba(74,154,90,0.4)',borderDash:[2,4],borderWidth:1.5,yAxisID:'y1'},
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#94a3b8',boxWidth:10}}},
+    scales:{y1:{type:'linear',position:'left',grid:{color:gc},ticks:{color:tc,callback:v=>'R$'+v}},y2:{type:'linear',position:'right',grid:{display:false},ticks:{color:tc,callback:v=>v.toFixed(1)+'x'}}}}});
+
+  // Cenário B — com intervenção
+  const cacB=[1234,1050,980,920];
+  const roasB=[2.04,2.80,3.10,3.30];
+  mkChart('ch-cenB',{type:'line',data:{labels:['Abr/26',...futLancs],datasets:[
+    {label:'CAC (R$)',data:[1234,...cacB],borderColor:'#4a9a5a',backgroundColor:'rgba(16,185,129,0.06)',fill:true,tension:0.3,borderWidth:2,yAxisID:'y1'},
+    {label:'ROAS',data:[2.04,...roasB],borderColor:'#5a9e68',borderDash:[4,4],borderWidth:1.5,tension:0.3,yAxisID:'y2'},
+    {label:'LTV (fixo)',data:[2122,2122,2122,2122,2122],borderColor:'rgba(74,154,90,0.4)',borderDash:[2,4],borderWidth:1.5,yAxisID:'y1'},
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#94a3b8',boxWidth:10}}},
+    scales:{y1:{type:'linear',position:'left',grid:{color:gc},ticks:{color:tc,callback:v=>'R$'+v}},y2:{type:'linear',position:'right',grid:{display:false},ticks:{color:tc,callback:v=>v.toFixed(1)+'x'}}}}});
+}
+
+
+// ============================================================
+// THEME TOGGLE
+// ============================================================
+function getPreferredTheme(){
+  const saved=localStorage.getItem('pl-theme');
+  if(saved)return saved;
+  return window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
+}
+function applyTheme(theme){
+  document.documentElement.setAttribute('data-theme',theme);
+  const btn=document.getElementById('theme-btn');
+  if(btn)btn.textContent=theme==='dark'?'🌙':'☀️';
+  const isDark=theme==='dark';
+  Chart.defaults.color=isDark?'#7a9470':'#5a6e52';
+  Chart.defaults.borderColor=isDark?'rgba(255,255,255,0.05)':'rgba(45,90,53,0.08)';
+  try{Object.values(Chart.instances).forEach(c=>{
+    try{c.options.scales&&Object.values(c.options.scales).forEach(s=>{
+      if(s.grid)s.grid.color=isDark?'rgba(255,255,255,0.05)':'rgba(45,90,53,0.08)';
+      if(s.ticks)s.ticks.color=isDark?'#7a9470':'#5a6e52';
+    });c.update('none');}catch(e){}
+  });}catch(e){}
+}
+function toggleTheme(){
+  const cur=document.documentElement.getAttribute('data-theme')||'dark';
+  const next=cur==='dark'?'light':'dark';
+  localStorage.setItem('pl-theme',next);
+  applyTheme(next);
+}
+document.addEventListener('keydown',e=>{if(e.key==='t'&&!e.ctrlKey&&!e.metaKey&&e.target.tagName!=='INPUT')toggleTheme();});
+(function(){applyTheme(getPreferredTheme());})();
+
+window.addEventListener('DOMContentLoaded',()=>{});
+
+// ===== VERSION PANEL =====
+function toggleVerDrawer(){
+  const d=document.getElementById('ver-drawer');
+  if(!d)return;
+  const isOpen=d.classList.contains('open');
+  d.style.display='flex';
+  requestAnimationFrame(()=>d.classList.toggle('open',!isOpen));
+  if(!isOpen) d.querySelector('.ver-close').focus();
+}
+// Close on outside click
+document.addEventListener('click',e=>{
+  const drawer=document.getElementById('ver-drawer');
+  const badge=document.querySelector('.ver-dot');
+  if(drawer&&drawer.classList.contains('open')&&!drawer.contains(e.target)&&!badge.contains(e.target))
+    drawer.classList.remove('open');
+});
+// Keyboard: Escape to close
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){const d=document.getElementById('ver-drawer');if(d)d.classList.remove('open');}
+});
+
+</script>
+
+<!-- VERSION BADGE -->
+<div class="ver-badge">
+  <div class="ver-dot" onclick="toggleVerDrawer()" title="Changelog · v3.1" role="button" tabindex="0" aria-label="Ver changelog v3.1">v3.1</div>
+</div>
+<div class="ver-drawer" id="ver-drawer" role="dialog" aria-label="Changelog">
+  <div class="ver-drawer-hdr">
+    <div class="ver-drawer-title">Changelog <span>v3.1 · atual</span></div>
+    <button class="ver-close" onclick="toggleVerDrawer()" aria-label="Fechar">✕</button>
+  </div>
+  <div class="ver-drawer-body">
+    <div class="ver-entry">
+  <div class="ver-entry-hdr">
+    <span class="ver-tag">v3.1 · atual</span>
+    <span class="ver-date">Mai/26</span>
+  </div>
+  <div class="ver-item">Responsivo mobile (768px / 480px / 1024px)</div><div class="ver-item">Seletor de período nos KPIs: vs Anterior, Trimestre, Semestre, Ano, Média</div><div class="ver-item">Padrão uniforme: Ref: X | Média: Y / ▼ delta%</div><div class="ver-item">Ticket médio R$3.297 + Rev/Aluno no Overview</div><div class="ver-item">Futuros corrigido: PSL, boleto e Eduzz (não só boleto)</div><div class="ver-item">Gráfico ROAS renomeado: 'Histórico'</div>
+</div><div class="ver-sep"></div><div class="ver-entry">
+  <div class="ver-entry-hdr">
+    <span class="ver-tag old">v3.0</span>
+    <span class="ver-date">Mai/26</span>
+  </div>
+  <div class="ver-item">Split em 2 sites: Dashboard (análise) + Plano (TOC)</div><div class="ver-item">Identidade visual Agro Ibex: verde floresta + dourado</div><div class="ver-item">Light / Dark mode com preferência salva</div><div class="ver-item">Dados atualizados da planilha v2 (Abr/26 revisado)</div><div class="ver-item">Seção Debriefing dedicada ao último lançamento</div><div class="ver-item">Jornada do Cliente E1-E8 + Diagrama de Ishikawa</div><div class="ver-item">Por Lançamento: individual e comparação</div>
+</div><div class="ver-sep"></div><div class="ver-entry">
+  <div class="ver-entry-hdr">
+    <span class="ver-tag old">v2.0</span>
+    <span class="ver-date">Abr/26</span>
+  </div>
+  <div class="ver-item">Reescrita completa com 20 alterações</div><div class="ver-item">KPI deltas Abr/26 vs Fev/26 (todos os 7 KPIs)</div><div class="ver-item">Pitch D1 = v1dia/CPL3 (métrica correta)</div><div class="ver-item">9 gráficos em 3 grupos: receita, funil, 4 frentes</div><div class="ver-item">5 teses TOC com veredictos</div><div class="ver-item">3 visões do funil: jornada, heatmap, restrição</div><div class="ver-item">V4: Aquisição, Engajamento, Monetização, Retenção</div>
+</div><div class="ver-sep"></div><div class="ver-entry">
+  <div class="ver-entry-hdr">
+    <span class="ver-tag old">v1.0</span>
+    <span class="ver-date">Abr/26</span>
+  </div>
+  <div class="ver-item">Dashboard único com TOC + todos os gráficos</div><div class="ver-item">15 lançamentos Ago/23 → Abr/26</div><div class="ver-item">Análise ROAS, CAC, CPL, funil completo</div>
+</div>
+  </div>
+</div>
+
+</body>
+</html>

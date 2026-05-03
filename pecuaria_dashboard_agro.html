@@ -1,0 +1,1980 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pecuária Lucrativa — Dashboard Estratégico v3 [Agro]</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KICA8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjE2IiBmaWxsPSIjMGQxYTBlIi8+CiAgPCEtLSBBIGxlZnQgbGVnIChmb3Jlc3QgZ3JlZW4pIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iNiw4OCAzMCwxMCA0MCwxMCAyMiw4OCIgZmlsbD0iIzJkNWEzNSIvPgogIDwhLS0gQSByaWdodCBsZWcgLyBYIGxlZnQgYmFyIG1lcmdlIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iMjIsODggNDAsMTAgNTAsMTAgMzQsODgiIGZpbGw9IiMyNTUwMzAiLz4KICA8IS0tIFggYmFyOiB0b3AtbGVmdCB0byBib3R0b20tcmlnaHQgKGdvbGQpIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iNDIsMTAgNTYsMTAgNzYsODggNjIsODgiIGZpbGw9IiNjOTkyMmEiLz4KICA8IS0tIFggYmFyOiB0b3AtcmlnaHQgdG8gYm90dG9tLWxlZnQgKGdvbGQsIG92ZXJsYXBzKSAtLT4KICA8cG9seWdvbiBwb2ludHM9IjU2LDEwIDcwLDEwIDUwLDg4IDM2LDg4IiBmaWxsPSIjYjA3ODIwIi8+CiAgPCEtLSBGaWVsZCBsaW5lcyBpbnNpZGUgQSBib3R0b20gLS0+CiAgPHBhdGggZD0iTTksNzUgUTIwLDcxIDMxLDc1IiBzdHJva2U9IiM0YTlhNWEiIHN0cm9rZS13aWR0aD0iMi41IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8cGF0aCBkPSJNNyw4MyBRMjAsNzkgMzMsODMiIHN0cm9rZT0iIzRhOWE1YSIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNjUiLz4KPC9zdmc+">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+/* ===== THEME TOKENS ===== */
+:root {
+  --gold:#c9922a;--gold-light:#d4a434;--gold-dim:rgba(201,146,42,0.12);
+  --forest:#2d5a35;--forest-light:#4a9a5a;--forest-dim:rgba(45,90,53,0.15);
+  --rose:#d95f35;--rose-dim:rgba(217,95,53,0.15);
+  --green:#4a9a5a;--green-dim:rgba(74,154,90,0.15);
+  --nav-h:64px;--r:14px;--r-sm:8px;
+}
+/* DARK MODE (default) */
+:root, [data-theme="dark"] {
+  --bg:#060d08;--bg2:#091309;--bg3:#0e1a0f;
+  --card:rgba(45,90,53,0.1);--card-border:rgba(201,146,42,0.18);
+  --card-hover:rgba(45,90,53,0.18);
+  --violet:#c9922a;--violet-light:#d4a434;--violet-dim:rgba(201,146,42,0.12);
+  --cyan:#5a9e68;--cyan-dim:rgba(90,158,104,0.15);
+  --amber:#c9922a;--amber-dim:rgba(201,146,42,0.15);
+  --text:#f0ebe0;--text-muted:#7a9470;--text-dim:#b2c49e;
+  --border:rgba(201,146,42,0.12);
+  --shadow:0 4px 24px rgba(0,0,0,0.4);
+  --grid-line:rgba(201,146,42,0.04);
+  --chart-grid:rgba(255,255,255,0.05);--chart-tick:#7a9470;
+  --nav-bg:rgba(6,13,8,0.88);
+  --input-bg:rgba(45,90,53,0.15);
+}
+/* LIGHT MODE */
+[data-theme="light"] {
+  --bg:#f8f5ee;--bg2:#ffffff;--bg3:#f0ebe0;
+  --card:rgba(255,255,255,0.9);--card-border:rgba(201,146,42,0.25);
+  --card-hover:rgba(255,255,255,1);
+  --violet:#a06818;--violet-light:#c9922a;--violet-dim:rgba(201,146,42,0.1);
+  --cyan:#2d5a35;--cyan-dim:rgba(45,90,53,0.12);
+  --amber:#a06818;--amber-dim:rgba(160,104,24,0.1);
+  --text:#1a2a1a;--text-muted:#5a6e52;--text-dim:#7a8a72;
+  --border:rgba(45,90,53,0.15);
+  --shadow:0 2px 16px rgba(45,90,53,0.1);
+  --grid-line:rgba(45,90,53,0.05);
+  --chart-grid:rgba(45,90,53,0.08);--chart-tick:#5a6e52;
+  --nav-bg:rgba(248,245,238,0.92);
+  --input-bg:rgba(45,90,53,0.06);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,sans-serif;min-height:100vh;overflow-x:hidden;}
+
+/* BG Grid */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);
+  background-size:48px 48px;pointer-events:none;z-index:0;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:100;
+  background:var(--nav-bg);backdrop-filter:blur(20px) saturate(1.5);
+  border-bottom:1px solid var(--card-border);
+  display:flex;align-items:center;gap:0;padding:0 24px;
+}
+.nav-brand{
+  display:flex;align-items:center;gap:10px;
+  font-size:13px;font-weight:700;letter-spacing:0.05em;color:var(--violet-light);
+  white-space:nowrap;padding-right:24px;border-right:1px solid var(--border);margin-right:16px;
+}
+.nav-brand span{color:var(--text-muted);font-weight:400;}
+.nav-links{display:flex;gap:2px;flex:1;overflow-x:auto;scrollbar-width:none;}
+.nav-links::-webkit-scrollbar{display:none;}
+.nav-btn{
+  padding:6px 14px;border-radius:8px;border:none;background:transparent;
+  color:var(--text-muted);font-size:12px;font-weight:500;cursor:pointer;
+  transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:6px;
+}
+.nav-btn:hover{background:var(--card);color:var(--text);}
+.nav-btn.active{background:var(--violet-dim);color:var(--violet-light);}
+.nav-badge{
+  font-size:10px;padding:1px 6px;border-radius:99px;
+  background:var(--rose-dim);color:var(--rose);font-weight:600;
+}
+.nav-right{display:flex;align-items:center;gap:10px;padding-left:16px;border-left:1px solid var(--border);}
+.plano-link{
+  display:flex;align-items:center;gap:6px;padding:7px 14px;
+  border-radius:8px;border:1px solid rgba(201,146,42,0.4);
+  border:1px solid rgba(201,146,42,0.3);
+  background:rgba(201,146,42,0.12);color:#d4a434;
+  font-size:12px;font-weight:600;cursor:pointer;text-decoration:none;
+  transition:all .2s;
+}
+.plano-link:hover{border-color:#c9922a;background:rgba(201,146,42,0.25);}
+
+/* SECTIONS */
+main{padding-top:var(--nav-h);position:relative;z-index:1;}
+.section{display:none;min-height:calc(100vh - var(--nav-h));}
+.section.visible{display:block;}
+
+/* CONTAINER */
+.container{max-width:1360px;margin:0 auto;padding:32px 24px;}
+
+/* SECTION HEADER */
+.sec-hdr{margin-bottom:28px;}
+.sec-tag{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--violet);margin-bottom:8px;}
+.sec-title{font-size:26px;font-weight:800;color:var(--text);line-height:1.2;}
+.sec-sub{font-size:14px;color:var(--text-muted);margin-top:6px;}
+
+/* CARDS */
+.card{
+  background:var(--card);border:1px solid var(--card-border);
+  border-radius:var(--r);padding:20px;
+  transition:border-color .2s,background .2s;
+}
+.card:hover{border-color:rgba(255,255,255,0.12);background:var(--card-hover);}
+.card-title{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;}
+
+/* GRID */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;}
+.gcol-3-1{display:grid;grid-template-columns:3fr 1fr;gap:16px;}
+.gcol-2-1{display:grid;grid-template-columns:2fr 1fr;gap:16px;}
+.gap-top{margin-top:16px;}
+
+/* KPI HERO CARDS */
+.kpi-hero{
+  position:relative;overflow:hidden;
+  background:var(--card);border:1px solid var(--card-border);
+  border-radius:var(--r);padding:20px;
+}
+.kpi-hero::before{
+  content:'';position:absolute;top:-60px;right:-40px;
+  width:140px;height:140px;border-radius:50%;
+  background:var(--accent-glow,var(--violet-dim));
+  filter:blur(30px);pointer-events:none;
+}
+.kpi-label{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;}
+.kpi-value{font-size:28px;font-weight:800;color:var(--text);line-height:1;}
+.kpi-sub{font-size:12px;color:var(--text-muted);margin-top:6px;}
+.kpi-delta{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px;margin-top:8px;
+}
+.kpi-delta.red{background:var(--rose-dim);color:var(--rose);}
+.kpi-delta.green{background:var(--green-dim);color:var(--green);}
+.kpi-delta.amber{background:var(--amber-dim);color:var(--amber);}
+
+/* METRIC ROW */
+.metric-row{display:flex;flex-direction:column;gap:10px;}
+.metric-item{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 14px;border-radius:var(--r-sm);
+  background:rgba(255,255,255,0.02);border:1px solid var(--border);
+}
+.metric-name{font-size:12px;color:var(--text-muted);}
+.metric-val{font-size:13px;font-weight:700;color:var(--text);}
+.metric-delta{font-size:11px;font-weight:600;}
+.metric-delta.red{color:var(--rose);}
+.metric-delta.green{color:var(--green);}
+
+/* CHART CONTAINERS */
+.chart-wrap{position:relative;}
+.chart-wrap canvas{max-height:260px;}
+.chart-wrap.tall canvas{max-height:320px;}
+.chart-wrap.xl canvas{max-height:400px;}
+
+/* PHASE BADGE */
+.phase-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;
+}
+.ph1{background:rgba(59,130,246,0.15);color:#60a5fa;}
+.ph2{background:rgba(245,158,11,0.15);color:#fbbf24;}
+.ph3{background:rgba(244,63,94,0.15);color:#fb7185;}
+
+/* DIVIDER */
+.divider{height:1px;background:var(--border);margin:24px 0;}
+
+/* TABS */
+.tab-bar{display:flex;gap:4px;padding:4px;background:var(--bg3);border-radius:10px;margin-bottom:20px;}
+.tab{
+  flex:1;padding:8px 12px;border:none;border-radius:7px;
+  background:transparent;color:var(--text-muted);font-size:12px;font-weight:600;
+  cursor:pointer;transition:all .2s;text-align:center;
+}
+.tab.active{background:var(--card);color:var(--text);}
+.tab-panel{display:none;}
+.tab-panel.visible{display:block;}
+
+/* LAUNCH PILLS */
+.pill-wrap{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;}
+.l-pill{
+  padding:5px 12px;border-radius:99px;border:1px solid transparent;
+  font-size:11px;font-weight:700;cursor:pointer;transition:all .15s;
+}
+.l-pill.ph1{border-color:rgba(96,165,250,0.3);color:#60a5fa;background:rgba(59,130,246,0.08);}
+.l-pill.ph1:hover,.l-pill.ph1.sel{border-color:#60a5fa;background:rgba(59,130,246,0.2);}
+.l-pill.ph2{border-color:rgba(251,191,36,0.3);color:#fbbf24;background:rgba(245,158,11,0.08);}
+.l-pill.ph2:hover,.l-pill.ph2.sel{border-color:#fbbf24;background:rgba(245,158,11,0.2);}
+.l-pill.ph3{border-color:rgba(251,113,133,0.3);color:#fb7185;background:rgba(244,63,94,0.08);}
+.l-pill.ph3:hover,.l-pill.ph3.sel{border-color:#fb7185;background:rgba(244,63,94,0.2);}
+
+/* MODE BAR */
+.mode-bar{display:flex;gap:6px;margin-bottom:20px;}
+.mode-btn{
+  padding:7px 16px;border-radius:8px;border:1px solid var(--border);
+  background:transparent;color:var(--text-muted);font-size:12px;font-weight:600;
+  cursor:pointer;transition:all .2s;
+}
+.mode-btn.active{border-color:var(--violet);background:var(--violet-dim);color:var(--violet-light);}
+
+/* FUNNEL BAR */
+.funnel-stage{margin-bottom:6px;}
+.funnel-label{display:flex;justify-content:space-between;font-size:11px;color:var(--text-dim);margin-bottom:3px;}
+.funnel-track{height:10px;background:rgba(255,255,255,0.05);border-radius:99px;overflow:hidden;}
+.funnel-fill{height:100%;border-radius:99px;transition:width .6s ease;}
+
+/* JORNADA */
+.journey-stage{
+  display:flex;align-items:flex-start;gap:16px;
+  padding:16px;border-radius:var(--r);
+  background:var(--card);border:1px solid var(--card-border);
+  transition:all .2s;
+}
+.journey-stage:hover{border-color:rgba(255,255,255,0.14);background:var(--card-hover);}
+.stage-icon{
+  width:44px;height:44px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;flex-shrink:0;
+}
+.stage-info{flex:1;}
+.stage-code{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px;}
+.stage-name{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.stage-desc{font-size:12px;color:var(--text-muted);line-height:1.5;}
+.stage-metrics{display:flex;gap:12px;margin-top:8px;}
+.stage-metric{font-size:11px;padding:2px 8px;border-radius:99px;font-weight:600;}
+
+/* ISHIKAWA */
+.ishi-wrap{padding:16px;}
+.ishi-spine{
+  width:100%;height:4px;background:linear-gradient(90deg,var(--bg3),var(--rose),var(--rose));
+  border-radius:2px;position:relative;margin:80px 0;
+}
+.ishi-head{
+  position:absolute;right:-24px;top:50%;transform:translateY(-50%);
+  background:var(--rose);color:#fff;font-size:11px;font-weight:800;
+  padding:6px 14px;border-radius:8px;white-space:nowrap;
+}
+.ishi-bone-top,.ishi-bone-bot{
+  position:absolute;display:flex;flex-direction:column;
+  font-size:11px;color:var(--text-muted);
+}
+.ishi-bone-top{bottom:20px;border-bottom:2px solid var(--rose-dim);}
+.ishi-bone-bot{top:20px;border-top:2px solid var(--rose-dim);}
+
+/* COMPARISON GRID */
+.cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.cmp-side{background:var(--card);border:1px solid var(--card-border);border-radius:var(--r);padding:16px;}
+.cmp-label{text-align:center;font-size:13px;font-weight:800;margin-bottom:16px;padding:6px;border-radius:8px;}
+.cmp-a .cmp-label{background:rgba(99,102,241,0.15);color:var(--violet-light);}
+.cmp-b .cmp-label{background:rgba(90,158,104,0.15);color:#5aba6a;}
+
+/* MINI KPI */
+.mkpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;}
+.mkpi{padding:10px;border-radius:8px;background:rgba(255,255,255,0.03);border:1px solid var(--border);}
+.mkpi-l{font-size:10px;color:var(--text-muted);margin-bottom:3px;}
+.mkpi-v{font-size:16px;font-weight:800;color:var(--text);}
+.mkpi-d{font-size:10px;font-weight:600;}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px;height:4px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:rgba(201,146,42,0.4);border-radius:2px;}
+
+/* TOOLTIP */
+.tooltip-card{
+  position:fixed;background:var(--bg3);border:1px solid var(--card-border);
+  border-radius:10px;padding:12px 16px;font-size:12px;color:var(--text);
+  pointer-events:none;z-index:999;display:none;max-width:240px;
+  box-shadow:0 8px 32px rgba(0,0,0,0.5);
+}
+
+/* INSIGHT BOX */
+.insight{
+  border-radius:var(--r-sm);padding:14px 16px;
+  border-left:3px solid;font-size:13px;line-height:1.6;
+  margin-bottom:10px;
+}
+.insight.red{border-color:var(--rose);background:var(--rose-dim);color:#fda4af;}
+.insight.amber{border-color:var(--amber);background:var(--amber-dim);color:#fcd34d;}
+.insight.green{border-color:var(--green);background:var(--green-dim);color:#6ee7b7;}
+.insight.violet{border-color:var(--violet);background:var(--violet-dim);color:var(--violet-light);}
+.insight strong{font-weight:700;}
+
+/* STAT LINE */
+.stat-line{display:flex;flex-wrap:wrap;gap:20px;padding:16px;background:var(--card);border:1px solid var(--card-border);border-radius:var(--r-sm);}
+.stat-item{display:flex;flex-direction:column;gap:2px;}
+.stat-l{font-size:10px;color:var(--text-muted);font-weight:600;letter-spacing:.05em;text-transform:uppercase;}
+.stat-v{font-size:18px;font-weight:800;color:var(--text);}
+.stat-s{font-size:11px;color:var(--text-muted);}
+
+/* TOTAL BAR */
+.total-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;border-radius:var(--r-sm);
+  background:linear-gradient(135deg,rgba(99,102,241,0.1),rgba(34,211,238,0.06));
+  border:1px solid rgba(99,102,241,0.2);margin-bottom:10px;
+}
+.total-label{font-size:13px;font-weight:600;color:var(--text-muted);}
+.total-val{font-size:20px;font-weight:900;color:var(--text);}
+
+/* GLOW ANIMATION */
+@keyframes pulse-red{0%,100%{box-shadow:0 0 0 0 rgba(244,63,94,0);} 50%{box-shadow:0 0 16px 4px rgba(244,63,94,.25);}}
+.glow-red{animation:pulse-red 3s ease-in-out infinite;}
+@keyframes pulse-v{0%,100%{box-shadow:0 0 0 0 rgba(201,146,42,0);} 50%{box-shadow:0 0 12px 3px rgba(201,146,42,.25);}}
+.glow-v{animation:pulse-v 3s ease-in-out infinite;}
+
+/* ===== SMOOTH THEME TRANSITION (NNG: visibility of state) ===== */
+*, *::before, *::after {
+  transition: background-color 0.25s ease, color 0.2s ease,
+              border-color 0.25s ease, box-shadow 0.25s ease;
+}
+/* Exceptions: animations & chart canvas should not transition */
+canvas, svg, .funnel-fill { transition: none !important; }
+
+/* Light mode card shadow (NNG: depth cues differ per theme) */
+[data-theme="light"] .card {
+  box-shadow: var(--shadow);
+}
+[data-theme="light"] .kpi-hero {
+  box-shadow: var(--shadow);
+}
+
+/* ===== THEME TOGGLE BUTTON (NNG: user control, consistent placement) ===== */
+.theme-toggle {
+  width: 36px; height: 36px; border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--input-bg);
+  cursor: pointer; font-size: 16px;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  flex-shrink: 0;
+}
+.theme-toggle:hover { border-color: var(--violet); transform: scale(1.08); }
+.theme-toggle:active { transform: scale(0.95); }
+
+/* ===== LIGHT MODE OVERRIDES ===== */
+[data-theme="light"] .phase-badge.ph1 { background:rgba(59,130,246,0.12);color:#1e6abf; }
+[data-theme="light"] .phase-badge.ph2 { background:rgba(160,104,24,0.12);color:#855510; }
+[data-theme="light"] .phase-badge.ph3 { background:rgba(217,95,53,0.12);color:#b03820; }
+[data-theme="light"] .l-pill.ph1 { border-color:rgba(30,106,191,0.4);color:#1e6abf;background:rgba(59,130,246,0.08); }
+[data-theme="light"] .l-pill.ph1.sel, [data-theme="light"] .l-pill.ph1:hover { border-color:#1e6abf;background:rgba(30,106,191,0.15); }
+[data-theme="light"] .nav-btn { color:var(--text-muted); }
+[data-theme="light"] .nav-btn.active { background:rgba(201,146,42,0.12);color:var(--violet); }
+[data-theme="light"] .plano-link { border-color:rgba(201,146,42,0.4);background:rgba(201,146,42,0.08);color:var(--violet); }
+[data-theme="light"] .tab { color:var(--text-muted); }
+[data-theme="light"] .tab.active { background:rgba(255,255,255,0.8);color:var(--text);box-shadow:0 1px 4px rgba(45,90,53,0.1); }
+[data-theme="light"] .tab-bar { background:rgba(45,90,53,0.08); }
+[data-theme="light"] .mode-btn { border-color:rgba(45,90,53,0.2);color:var(--text-muted); }
+[data-theme="light"] .mode-btn.active { border-color:var(--violet);background:rgba(201,146,42,0.1);color:var(--violet); }
+[data-theme="light"] .insight.red { background:rgba(217,95,53,0.08);color:#8a2a0a; }
+[data-theme="light"] .insight.amber { background:rgba(201,146,42,0.08);color:#6a4000; }
+[data-theme="light"] .insight.green { background:rgba(74,154,90,0.08);color:#1a4a22; }
+[data-theme="light"] .insight.violet { background:rgba(201,146,42,0.08);color:#6a4000; }
+[data-theme="light"] .kpi-delta.red { background:rgba(217,95,53,0.12);color:#b03820; }
+[data-theme="light"] .kpi-delta.green { background:rgba(74,154,90,0.12);color:#1a5a22; }
+[data-theme="light"] .kpi-delta.amber { background:rgba(201,146,42,0.12);color:#7a4a00; }
+[data-theme="light"] .stat-line { background:rgba(255,255,255,0.8);border-color:rgba(45,90,53,0.15);box-shadow:var(--shadow); }
+[data-theme="light"] .total-bar { background:linear-gradient(135deg,rgba(201,146,42,0.08),rgba(45,90,53,0.06));border-color:rgba(201,146,42,0.3); }
+[data-theme="light"] .metric-item { background:rgba(45,90,53,0.04);border-color:rgba(45,90,53,0.12); }
+[data-theme="light"] .funnel-track { background:rgba(45,90,53,0.08); }
+[data-theme="light"] .journey-stage { background:rgba(255,255,255,0.85);border-color:rgba(45,90,53,0.15);box-shadow:var(--shadow); }
+[data-theme="light"] .mkpi { background:rgba(45,90,53,0.05);border-color:rgba(45,90,53,0.12); }
+[data-theme="light"] .cmp-side { background:rgba(255,255,255,0.85);border-color:rgba(45,90,53,0.15); }
+[data-theme="light"] .cmp-a .cmp-label { background:rgba(201,146,42,0.1);color:var(--violet); }
+[data-theme="light"] .cmp-b .cmp-label { background:rgba(45,90,53,0.1);color:#2d5a35; }
+[data-theme="light"] table td { color:var(--text); }
+
+/* ===== SCROLLBAR (theme aware) ===== */
+[data-theme="light"] ::-webkit-scrollbar-thumb { background:rgba(201,146,42,0.3); }
+[data-theme="light"] ::-webkit-scrollbar-track { background:rgba(45,90,53,0.05); }
+
+/* ===== ACCESSIBILITY: Focus rings ===== */
+button:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
+
+
+/* ===== PERIOD SELECTOR (NNG: user control & flexibility) ===== */
+.period-bar {
+  display:flex; align-items:center; gap:6px; flex-wrap:wrap;
+  margin-bottom:20px; padding:10px 14px;
+  background:var(--input-bg); border:1px solid var(--border);
+  border-radius:var(--r-sm);
+}
+.period-bar-label { font-size:11px; font-weight:600; color:var(--text-muted);
+  letter-spacing:.05em; text-transform:uppercase; margin-right:4px; white-space:nowrap; }
+.period-btn {
+  padding:5px 12px; border-radius:99px; border:1px solid var(--border);
+  background:transparent; color:var(--text-muted); font-size:11px; font-weight:600;
+  cursor:pointer; transition:all .15s; white-space:nowrap;
+}
+.period-btn:hover { border-color:var(--violet); color:var(--text); }
+.period-btn.active { border-color:var(--violet); background:var(--violet-dim); color:var(--violet-light); }
+
+/* ===== TICKET MEDIO BADGE ===== */
+.ticket-badge {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:4px 10px; border-radius:99px;
+  background:var(--violet-dim); border:1px solid var(--card-border);
+  font-size:11px; font-weight:700; color:var(--violet-light);
+}
+.rev-aluno-gap { font-size:11px; color:var(--rose); font-weight:600; }
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width:1024px) {
+  .g4  { grid-template-columns:1fr 1fr; }
+  .g5  { grid-template-columns:1fr 1fr; }
+  .gcol-3-1 { grid-template-columns:1fr; }
+  .gcol-2-1 { grid-template-columns:1fr; }
+  .hyp-grid { grid-template-columns:1fr; }
+  .v4-grid  { grid-template-columns:1fr 1fr; }
+}
+
+@media (max-width:768px) {
+  :root { --nav-h:56px; }
+  .container { padding:20px 14px; }
+  
+  /* Nav: brand compacto, links scroll horizontal */
+  .nav-brand { font-size:12px; padding-right:14px; margin-right:10px; }
+  .nav-brand span { display:none; }
+  .nav-btn { padding:5px 10px; font-size:11px; }
+  .plano-link { padding:5px 10px; font-size:11px; }
+  .plano-link span.link-label { display:none; }
+  .theme-toggle { width:30px; height:30px; font-size:14px; }
+  
+  /* Grids: tudo 1 coluna */
+  .g2, .g3, .g4, .g5,
+  .gcol-3-1, .gcol-2-1,
+  .cmp-grid { grid-template-columns:1fr !important; }
+  
+  /* 2 colunas para KPI cards menores */
+  #section-overview .g4,
+  #section-debriefing .g4 { grid-template-columns:1fr 1fr; }
+  #section-debriefing .g3 { grid-template-columns:1fr 1fr; }
+  
+  /* Stat line: grid 2 colunas */
+  .stat-line { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .stat-v { font-size:16px; }
+  
+  /* KPI cards */
+  .kpi-value { font-size:22px; }
+  .kpi-hero { padding:14px; }
+  
+  /* Section headers */
+  .sec-title { font-size:20px; }
+  .sec-sub   { font-size:13px; }
+  
+  /* Charts: altura reduzida */
+  .chart-wrap canvas       { max-height:200px !important; }
+  .chart-wrap.tall canvas  { max-height:220px !important; }
+  .chart-wrap.xl canvas    { max-height:260px !important; }
+  
+  /* Pills */
+  .pill-wrap { gap:4px; }
+  .l-pill { font-size:10px; padding:4px 9px; }
+  
+  /* Journey stages: coluna no mobile */
+  .journey-stage { flex-direction:column; }
+  .stage-icon { width:36px; height:36px; font-size:18px; }
+  .stage-metrics { flex-wrap:wrap; gap:6px; }
+  
+  /* Mode bar */
+  .mode-bar { flex-wrap:wrap; }
+  
+  /* Tab bar */
+  .tab { font-size:11px; padding:7px 8px; }
+  
+  /* Period bar */
+  .period-bar { gap:4px; }
+  .period-btn { padding:4px 10px; font-size:10px; }
+  
+  /* Heatmap: scroll hint */
+  #h-heatmap, #jorn-heatmap-table { -webkit-overflow-scrolling:touch; }
+  
+  /* Donut: smaller */
+  #db-donut, #ls-donut { max-height:160px !important; max-width:160px !important; }
+  
+  /* Comparison grid */
+  .mkpi-grid { grid-template-columns:1fr 1fr; }
+}
+
+@media (max-width:480px) {
+  .container { padding:14px 10px; }
+  #section-overview .g4,
+  #section-debriefing .g4 { grid-template-columns:1fr 1fr; }
+  .nav-btn { padding:5px 8px; font-size:10px; }
+  .sec-title { font-size:18px; }
+  .kpi-value { font-size:20px; }
+  .tab-bar { gap:2px; }
+  .tab { padding:6px 6px; font-size:10px; }
+  .stat-line { grid-template-columns:1fr 1fr; }
+}
+
+
+/* ===== VERSION PANEL ===== */
+.ver-badge {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  z-index: 9000;
+  display: flex; align-items: center; gap: 0;
+  filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3));
+}
+.ver-dot {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--violet-dim);
+  border: 1.5px solid var(--violet-light);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 11px; font-weight: 800;
+  color: var(--violet-light); transition: all .2s;
+  position: relative;
+}
+.ver-dot:hover { transform: scale(1.12); background: var(--violet-dim); border-color: var(--violet-light); }
+.ver-dot::before {
+  content: ''; position: absolute; top: -2px; right: -2px;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--green); border: 2px solid var(--bg);
+}
+[data-theme="light"] .ver-dot::before { border-color: var(--bg); }
+
+/* CHANGELOG DRAWER */
+.ver-drawer {
+  position: fixed; bottom: 72px; right: 24px;
+  width: 340px; max-height: 70vh;
+  background: var(--bg2); border: 1px solid var(--card-border);
+  border-radius: 16px; z-index: 9001;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+  overflow: hidden; display: none;
+  flex-direction: column;
+  transform: translateY(12px); opacity: 0;
+  transition: transform .25s cubic-bezier(.34,1.56,.64,1), opacity .2s;
+}
+.ver-drawer.open {
+  display: flex; transform: translateY(0); opacity: 1;
+}
+.ver-drawer-hdr {
+  padding: 16px 18px 12px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-shrink: 0;
+}
+.ver-drawer-title {
+  font-size: 13px; font-weight: 800; color: var(--text);
+  display: flex; align-items: center; gap: 8px;
+}
+.ver-drawer-title span {
+  font-size: 10px; padding: 2px 8px; border-radius: 99px;
+  background: var(--green-dim); color: var(--green); font-weight: 700;
+}
+.ver-close {
+  width: 26px; height: 26px; border-radius: 8px; border: none;
+  background: var(--input-bg); color: var(--text-muted);
+  font-size: 14px; cursor: pointer; display: flex;
+  align-items: center; justify-content: center;
+  transition: background .15s;
+}
+.ver-close:hover { background: var(--rose-dim); color: var(--rose); }
+.ver-drawer-body {
+  overflow-y: auto; padding: 12px 18px 18px; flex: 1;
+  scrollbar-width: thin;
+}
+.ver-entry { margin-bottom: 16px; }
+.ver-entry-hdr {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
+}
+.ver-tag {
+  font-size: 11px; font-weight: 800; padding: 2px 8px;
+  border-radius: 99px; border: 1px solid var(--violet-light);
+  color: var(--violet-light); background: var(--violet-dim);
+}
+.ver-tag.old {
+  border-color: var(--border); color: var(--text-muted);
+  background: transparent;
+}
+.ver-date { font-size: 11px; color: var(--text-muted); }
+.ver-item {
+  display: flex; align-items: flex-start; gap: 7px;
+  font-size: 12px; color: var(--text-dim); line-height: 1.5;
+  padding: 3px 0;
+}
+.ver-item::before {
+  content: '→'; color: var(--violet); font-size: 10px;
+  margin-top: 2px; flex-shrink: 0; font-weight: 700;
+}
+.ver-sep { height: 1px; background: var(--border); margin: 12px 0; }
+
+@media (max-width: 768px) {
+  .ver-badge { bottom: 16px; right: 16px; }
+  .ver-drawer { width: calc(100vw - 32px); right: 16px; bottom: 64px; }
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">🌿 <span>Pecuária Lucrativa</span> &nbsp;Dashboard</div>
+  <div class="nav-links">
+    <button class="nav-btn active" onclick="showSection('overview',this)">🏠 Overview</button>
+    <button class="nav-btn" onclick="showSection('debriefing',this)">🎯 Debriefing <span class="nav-badge">Abr/26</span></button>
+    <button class="nav-btn" onclick="showSection('historico',this)">📈 Histórico</button>
+    <button class="nav-btn" onclick="showSection('jornada',this)">🗺️ Jornada do Cliente</button>
+    <button class="nav-btn" onclick="showSection('lancamentos',this)">🔬 Por Lançamento</button>
+  </div>
+  <div class="nav-right">
+    <a href="pecuaria_plano_v3.html" class="plano-link">📋 Plano de Ação →</a>
+    <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" title="Alternar tema claro/escuro (T)" aria-label="Alternar tema">🌙</button>
+  </div>
+</nav>
+
+<main>
+<!-- ===================== OVERVIEW ===================== -->
+<section id="section-overview" class="section visible">
+<div class="container">
+  <div class="sec-hdr">
+    <div class="sec-tag">Visão Geral · 15 Lançamentos · Ago/23 → Abr/26</div>
+    <div class="sec-title">Dashboard de Performance Estratégica</div>
+    <div class="sec-sub">Parceria Mazix × João — Análise histórica completa de resultados</div>
+  </div>
+
+  <!-- MACRO STATS -->
+  <div class="stat-line gap-top" style="margin-bottom:24px;">
+    <div class="stat-item"><div class="stat-l">Período</div><div class="stat-v">33 meses</div><div class="stat-s">Ago/23 → Abr/26</div></div>
+    <div class="stat-item"><div class="stat-l">Lançamentos</div><div class="stat-v">15</div><div class="stat-s">3 fases</div></div>
+    <div class="stat-item"><div class="stat-l">Faturamento Total</div><div class="stat-v" id="ov-fat-total">—</div><div class="stat-s">imediato + futuros</div></div>
+    <div class="stat-item"><div class="stat-l">Alunos Captados</div><div class="stat-v" id="ov-alunos">3.072</div><div class="stat-s">alunos líquidos</div></div>
+    <div class="stat-item"><div class="stat-l">Investimento Tráfego</div><div class="stat-v" id="ov-traf-total">—</div><div class="stat-s">total period.</div></div>
+    <div class="stat-item"><div class="stat-l">ROAS Médio</div><div class="stat-v" id="ov-roas-avg">—</div><div class="stat-s">geral histórico</div></div>
+    <div class="stat-item"><div class="stat-l">ROAS Abr/26</div><div class="stat-v glow-red" style="color:var(--rose)" id="ov-roas-last">—</div><div class="stat-s">vs 9.23x inicial</div></div>
+    <div class="stat-item"><div class="stat-l">CAC Abr/26</div><div class="stat-v glow-red" style="color:var(--rose)" id="ov-cac-last">—</div><div class="stat-s">vs R$108 inicial</div></div>
+    <div class="stat-item"><div class="stat-l">Ticket Médio</div><div class="stat-v" style="color:var(--violet-light)">R$ 3.297</div><div class="stat-s">produto principal</div></div>
+    <div class="stat-item"><div class="stat-l">Rev/Aluno Abr/26</div><div class="stat-v" id="ov-rev-aluno">—</div><div class="stat-s" id="ov-rev-gap">vs ticket</div></div>
+  </div>
+
+  <!-- PERIOD SELECTOR -->
+  <div class="period-bar">
+    <span class="period-bar-label">Comparar vs:</span>
+    <button class="period-btn active" onclick="setPeriod('anterior',this)" data-section="ov">vs Anterior</button>
+    <button class="period-btn" onclick="setPeriod('trimestre',this)" data-section="ov">Trimestre</button>
+    <button class="period-btn" onclick="setPeriod('semestre',this)" data-section="ov">Semestre</button>
+    <button class="period-btn" onclick="setPeriod('ano',this)" data-section="ov">Ano Anterior</button>
+    <button class="period-btn" onclick="setPeriod('media',this)" data-section="ov">Média Histórica</button>
+  </div>
+
+  <!-- KPI HERO ROW (dynamic) -->
+  <div class="g4" style="margin-bottom:16px;">
+    <div class="kpi-hero" style="--accent-glow:var(--violet-dim);">
+      <div class="kpi-label">Faturamento Abr/26</div>
+      <div class="kpi-value">R$ 692k</div>
+      <div class="kpi-sub" id="kh-fat-sub">—</div>
+      <div class="kpi-delta" id="kh-fat-delta">—</div>
+    </div>
+    <div class="kpi-hero" style="--accent-glow:var(--rose-dim);">
+      <div class="kpi-label">ROAS Abr/26</div>
+      <div class="kpi-value" style="color:var(--rose)">2.04x</div>
+      <div class="kpi-sub" id="kh-roas-sub">—</div>
+      <div class="kpi-delta" id="kh-roas-delta">—</div>
+    </div>
+    <div class="kpi-hero" style="--accent-glow:var(--amber-dim);">
+      <div class="kpi-label">CAC Abr/26</div>
+      <div class="kpi-value" style="color:var(--amber)">R$ 1.234</div>
+      <div class="kpi-sub" id="kh-cac-sub">—</div>
+      <div class="kpi-delta" id="kh-cac-delta">—</div>
+    </div>
+    <div class="kpi-hero" style="--accent-glow:var(--cyan-dim);">
+      <div class="kpi-label">Rev/Aluno Abr/26</div>
+      <div class="kpi-value" id="kh-rev-aluno">R$ 2.515</div>
+      <div class="kpi-sub">Ticket: R$3.297 <span class="rev-aluno-gap">▼ -23,7%</span></div>
+      <div class="kpi-delta" id="kh-pitch-delta">—</div>
+    </div>
+  </div>
+
+  <!-- CHARTS ROW 1 -->
+  <div class="g2" style="margin-bottom:16px;">
+    <div class="card">
+      <div class="card-title">ROAS por Lançamento — Histórico</div>
+      <div class="chart-wrap"><canvas id="ch-roas-hist"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">CAC por Lançamento — Escalada de custo</div>
+      <div class="chart-wrap"><canvas id="ch-cac-hist"></canvas></div>
+    </div>
+  </div>
+
+  <!-- CHARTS ROW 2 -->
+  <div class="gcol-3-1" style="margin-bottom:16px;">
+    <div class="card">
+      <div class="card-title">Faturamento por Lançamento (R$ mil)</div>
+      <div class="chart-wrap tall"><canvas id="ch-fat-hist"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Mix de Receita — Total Histórico</div>
+      <div class="chart-wrap tall" style="display:flex;align-items:center;justify-content:center;">
+        <canvas id="ch-mix-donut" style="max-height:260px;max-width:260px;"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE SUMMARY -->
+  <div class="g3">
+    <div class="card" style="border-color:rgba(96,165,250,0.2);">
+      <div class="card-title"><span class="phase-badge ph1">● Fase 1</span> &nbsp;2023 · 3 lançamentos</div>
+      <div class="metric-row">
+        <div class="metric-item"><span class="metric-name">ROAS médio</span><span class="metric-val" style="color:var(--green)">5.82x</span></div>
+        <div class="metric-item"><span class="metric-name">CAC médio</span><span class="metric-val">R$ 284</span></div>
+        <div class="metric-item"><span class="metric-name">CPL médio</span><span class="metric-val">R$ 5.35</span></div>
+        <div class="metric-item"><span class="metric-name">Alunos / lanç.</span><span class="metric-val">107</span></div>
+      </div>
+    </div>
+    <div class="card" style="border-color:rgba(251,191,36,0.2);">
+      <div class="card-title"><span class="phase-badge ph2">● Fase 2</span> &nbsp;2024 · 5 lançamentos</div>
+      <div class="metric-row">
+        <div class="metric-item"><span class="metric-name">ROAS médio</span><span class="metric-val" style="color:var(--amber)">3.70x</span></div>
+        <div class="metric-item"><span class="metric-name">CAC médio</span><span class="metric-val">R$ 603</span></div>
+        <div class="metric-item"><span class="metric-name">CPL médio</span><span class="metric-val">R$ 7.63</span></div>
+        <div class="metric-item"><span class="metric-name">Alunos / lanç.</span><span class="metric-val">208</span></div>
+      </div>
+    </div>
+    <div class="card" style="border-color:rgba(251,113,133,0.2);">
+      <div class="card-title"><span class="phase-badge ph3">● Fase 3</span> &nbsp;2025–26 · 7 lançamentos</div>
+      <div class="metric-row">
+        <div class="metric-item"><span class="metric-name">ROAS médio</span><span class="metric-val" style="color:var(--rose)">2.59x</span></div>
+        <div class="metric-item"><span class="metric-name">CAC médio</span><span class="metric-val">R$ 935</span></div>
+        <div class="metric-item"><span class="metric-name">CPL médio</span><span class="metric-val">R$ 12.44</span></div>
+        <div class="metric-item"><span class="metric-name">Alunos / lanç.</span><span class="metric-val">245</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ===================== DEBRIEFING ===================== -->
+<section id="section-debriefing" class="section">
+<div class="container">
+  <div class="sec-hdr">
+    <div class="sec-tag">Debriefing · Último Lançamento</div>
+    <div class="sec-title">Abr/26 — Análise Detalhada</div>
+    <div class="sec-sub">Comparação vs Fev/26 (anterior) e vs Média Histórica dos 15 lançamentos</div>
+  </div>
+
+  <!-- ALL RED ALERT -->
+  <div class="insight red glow-red" style="margin-bottom:20px;">
+    <strong>⚠ Alerta: Todos os 7 KPIs pioraram em Abr/26 vs Fev/26.</strong> Maior tráfego pago (R$339k vs R$300k, +13,1%), menor retorno em todas as métricas — sinal claro de saturação de audiência.
+  </div>
+
+  <!-- PERIOD SELECTOR DEBRIEFING -->
+  <div class="period-bar">
+    <span class="period-bar-label">Comparar vs:</span>
+    <button class="period-btn active" onclick="setPeriod('anterior',this)" data-section="db">vs Anterior</button>
+    <button class="period-btn" onclick="setPeriod('trimestre',this)" data-section="db">Trimestre</button>
+    <button class="period-btn" onclick="setPeriod('semestre',this)" data-section="db">Semestre</button>
+    <button class="period-btn" onclick="setPeriod('ano',this)" data-section="db">Ano Anterior</button>
+    <button class="period-btn" onclick="setPeriod('media',this)" data-section="db">Média Histórica</button>
+  </div>
+
+  <!-- KPI COMPARISON — DYNAMIC -->
+  <div class="g4" style="margin-bottom:16px;">
+    <div class="kpi-hero glow-red" style="--accent-glow:var(--rose-dim);">
+      <div class="kpi-label">Faturamento</div>
+      <div class="kpi-value">R$ 692k</div>
+      <div class="kpi-sub" id="db-fat-sub">—</div>
+      <div class="kpi-delta" id="db-fat-delta">—</div>
+    </div>
+    <div class="kpi-hero glow-red" style="--accent-glow:var(--rose-dim);">
+      <div class="kpi-label">ROAS</div>
+      <div class="kpi-value" style="color:var(--rose)">2.04x</div>
+      <div class="kpi-sub" id="db-roas-sub">—</div>
+      <div class="kpi-delta" id="db-roas-delta">—</div>
+    </div>
+    <div class="kpi-hero glow-red" style="--accent-glow:var(--rose-dim);">
+      <div class="kpi-label">CAC</div>
+      <div class="kpi-value" style="color:var(--rose)">R$ 1.234</div>
+      <div class="kpi-sub" id="db-cac-sub">—</div>
+      <div class="kpi-delta" id="db-cac-delta">—</div>
+    </div>
+    <div class="kpi-hero glow-red" style="--accent-glow:var(--rose-dim);">
+      <div class="kpi-label">CPL</div>
+      <div class="kpi-value" style="color:var(--amber)">R$ 13,56</div>
+      <div class="kpi-sub" id="db-cpl-sub">—</div>
+      <div class="kpi-delta" id="db-cpl-delta">—</div>
+    </div>
+  </div>
+  <div class="g3" style="margin-bottom:24px;">
+    <div class="kpi-hero glow-red" style="--accent-glow:var(--rose-dim);">
+      <div class="kpi-label">Tráfego Investido</div>
+      <div class="kpi-value">R$ 339k</div>
+      <div class="kpi-sub" id="db-traf-sub">—</div>
+      <div class="kpi-delta" id="db-traf-delta">—</div>
+    </div>
+    <div class="kpi-hero glow-red" style="--accent-glow:var(--rose-dim);">
+      <div class="kpi-label">Novos Alunos</div>
+      <div class="kpi-value">275</div>
+      <div class="kpi-sub" id="db-novos-sub">—</div>
+      <div class="kpi-delta" id="db-novos-delta">—</div>
+    </div>
+    <div class="kpi-hero glow-red" style="--accent-glow:var(--rose-dim);">
+      <div class="kpi-label">Rev/Aluno vs Ticket</div>
+      <div class="kpi-value">R$ 2.515</div>
+      <div class="kpi-sub">Ticket cadastrado: R$ 3.297</div>
+      <div class="kpi-delta red">▼ eficiência de coleta: 76,3%</div>
+    </div>
+  </div>
+
+  <!-- CHARTS -->
+  <div class="g2" style="margin-bottom:16px;">
+    <div class="card">
+      <div class="card-title">Composição de Receita — Abr/26</div>
+      <div style="display:flex;align-items:center;gap:24px;">
+        <div class="chart-wrap" style="flex:0 0 180px;"><canvas id="db-donut" style="max-height:180px;max-width:180px;"></canvas></div>
+        <div style="flex:1;">
+          <div class="metric-row">
+            <div class="metric-item"><span class="metric-name">Programa (imediato)</span><span class="metric-val">R$ 588k</span></div>
+            <div class="metric-item"><span class="metric-name">Futuros (PSL, boleto, Eduzz)</span><span class="metric-val">R$ 103k</span></div>
+            <div class="metric-item"><span class="metric-name">Downsell</span><span class="metric-val">R$ 31k</span></div>
+            <div class="metric-item"><span class="metric-name">Order Bump</span><span class="metric-val">R$ 1,5k</span></div>
+            <div class="metric-item"><span class="metric-name">Devoluções</span><span class="metric-val" style="color:var(--rose)">5 pedidos</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Abr/26 vs Fev/26 vs Média — KPIs normalizados</div>
+      <div class="chart-wrap"><canvas id="db-radar"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:16px;">
+    <div class="card-title">Funil de Conversão — Abr/26 (valores absolutos)</div>
+    <div id="db-funnel"></div>
+  </div>
+
+  <div class="g2" style="margin-bottom:16px;">
+    <div class="card">
+      <div class="card-title">Evolução de ROAS — Abr/26 no contexto histórico</div>
+      <div class="chart-wrap"><canvas id="db-roas-ctx"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Anomalia Out/25 — Por que 10,53% de Pitch D1?</div>
+      <div class="insight violet" style="margin-bottom:10px;">
+        <strong>Out/25 — único lançamento na Fase 3 com Pitch D1 acima de 8%.</strong> CPL3=1.643 participantes, 173 vendas no D1. O sistema consegue converter 2× melhor. A restrição é executável, não estrutural.
+      </div>
+      <div class="chart-wrap"><canvas id="db-pitchd1"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ANOMALIA DOWNSELL ABR/26 -->
+  <div class="insight amber" style="margin-bottom:16px;">
+    <strong>📍 Ponto de atenção — Downsell de 154 unidades em Abr/26:</strong> Volume de downsell 10× acima da média (15/lanç.). Gerou R$31k em receita adicional, mas indica que o produto principal não converteu para parcela significativa da base que chegou ao funil final.
+  </div>
+
+</div>
+</section>
+
+<!-- ===================== HISTÓRICO ===================== -->
+<section id="section-historico" class="section">
+<div class="container">
+  <div class="sec-hdr">
+    <div class="sec-tag">Série Histórica · 15 Lançamentos</div>
+    <div class="sec-title">Evolução Completa de Performance</div>
+    <div class="sec-sub">Análise por fases: Fase 1 (2023) · Fase 2 (2024) · Fase 3 (2025–26)</div>
+  </div>
+
+  <div class="tab-bar" id="hist-tabs">
+    <button class="tab active" onclick="switchTab('hist','volume',this)">Faturamento & Volume</button>
+    <button class="tab" onclick="switchTab('hist','eficiencia',this)">Eficiência & Custo</button>
+    <button class="tab" onclick="switchTab('hist','funil',this)">Funil & Conversão</button>
+    <button class="tab" onclick="switchTab('hist','addons',this)">Add-ons & Mix</button>
+  </div>
+
+  <div id="hist-volume" class="tab-panel visible">
+    <div class="g2" style="margin-bottom:16px;">
+      <div class="card">
+        <div class="card-title">Faturamento por Lançamento (R$ mil) — por fase</div>
+        <div class="chart-wrap tall"><canvas id="h-fat"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Novos Alunos por Lançamento</div>
+        <div class="chart-wrap tall"><canvas id="h-novos"></canvas></div>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:16px;">
+      <div class="card-title">Investimento em Tráfego vs Faturamento (R$ mil)</div>
+      <div class="chart-wrap xl"><canvas id="h-traf-fat"></canvas></div>
+    </div>
+  </div>
+
+  <div id="hist-eficiencia" class="tab-panel">
+    <div class="g2" style="margin-bottom:16px;">
+      <div class="card">
+        <div class="card-title">ROAS por Lançamento — linha de tendência</div>
+        <div class="chart-wrap tall"><canvas id="h-roas"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">CAC por Lançamento (R$)</div>
+        <div class="chart-wrap tall"><canvas id="h-cac"></canvas></div>
+      </div>
+    </div>
+    <div class="g2" style="margin-bottom:16px;">
+      <div class="card">
+        <div class="card-title">CPL por Lançamento (R$)</div>
+        <div class="chart-wrap"><canvas id="h-cpl"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Leads Captados (WhatsApp) por Lançamento</div>
+        <div class="chart-wrap"><canvas id="h-leads"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="hist-funil" class="tab-panel">
+    <div class="card" style="margin-bottom:16px;">
+      <div class="card-title">Heatmap de Conversão por Lançamento — Funil E1→E8</div>
+      <div id="h-heatmap" style="overflow-x:auto;"></div>
+    </div>
+    <div class="g2" style="margin-bottom:16px;">
+      <div class="card">
+        <div class="card-title">Pitch D1 (v1/CPL3) por Lançamento</div>
+        <div class="chart-wrap"><canvas id="h-pitch"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">CPL3 → Novos Alunos (taxa de conversão)</div>
+        <div class="chart-wrap"><canvas id="h-conv"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="hist-addons" class="tab-panel">
+    <div class="g2" style="margin-bottom:16px;">
+      <div class="card">
+        <div class="card-title">Add-ons por Lançamento (R$) — Order Bump, Downsell, Upsell</div>
+        <div class="chart-wrap tall"><canvas id="h-addons"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Devoluções por Lançamento (unidades)</div>
+        <div class="chart-wrap tall"><canvas id="h-devol"></canvas></div>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:16px;">
+      <div class="card-title">LTV e Renovações</div>
+      <div class="g3">
+        <div style="padding:16px;background:var(--bg3);border-radius:var(--r-sm);">
+          <div class="stat-l">Total Alunos Brutos</div>
+          <div class="stat-v">3.072</div>
+        </div>
+        <div style="padding:16px;background:var(--bg3);border-radius:var(--r-sm);">
+          <div class="stat-l">Total Renovações</div>
+          <div class="stat-v">182</div>
+          <div class="stat-s">taxa: 5,9%</div>
+        </div>
+        <div style="padding:16px;background:var(--bg3);border-radius:var(--r-sm);">
+          <div class="stat-l">LTV Estimado</div>
+          <div class="stat-v">R$ 2.122</div>
+          <div class="stat-s">ticket × (1 + tx. renov.)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ===================== JORNADA ===================== -->
+<section id="section-jornada" class="section">
+<div class="container">
+  <div class="sec-hdr">
+    <div class="sec-tag">Jornada do Cliente · 8 Etapas</div>
+    <div class="sec-title">Do Desconhecimento à Retenção</div>
+    <div class="sec-sub">Mapeamento completo do funil com taxas de conversão históricas e pontos de ruptura</div>
+  </div>
+
+  <div class="tab-bar">
+    <button class="tab active" onclick="switchTab('jorn','mapa',this)">🗺️ Mapa da Jornada</button>
+    <button class="tab" onclick="switchTab('jorn','ishikawa',this)">🦴 Diagrama de Ishikawa</button>
+    <button class="tab" onclick="switchTab('jorn','heatmap',this)">🌡️ Heatmap por Lançamento</button>
+  </div>
+
+  <!-- MAPA DA JORNADA -->
+  <div id="jorn-mapa" class="tab-panel visible">
+    <div style="display:flex;flex-direction:column;gap:10px;" id="journey-stages"></div>
+  </div>
+
+  <!-- ISHIKAWA -->
+  <div id="jorn-ishikawa" class="tab-panel">
+    <div class="insight violet" style="margin-bottom:20px;">
+      <strong>Diagrama de Causa e Efeito (Ishikawa)</strong> — Análise das causas-raiz da degradação de ROAS: 9.23x (Ago/23) → 2.04x (Abr/26)
+    </div>
+    <div id="ishikawa-svg-wrap"></div>
+    <div class="g2 gap-top">
+      <div class="card">
+        <div class="card-title">🎯 Causas de 1ª ordem — Efeito direto no ROAS</div>
+        <div class="metric-row">
+          <div class="metric-item"><span class="metric-name">CPL 4.41 → 13.56 (+207%)</span><span class="metric-delta red">Custo de Captação</span></div>
+          <div class="metric-item"><span class="metric-name">Pitch D1: 3.68% → 5.16% (instável)</span><span class="metric-delta amber">Conversão no Pitch</span></div>
+          <div class="metric-item"><span class="metric-name">Tráfego: R$5k → R$339k (+6,172%)</span><span class="metric-delta red">Volume de Gasto</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">🔍 Causas de 2ª ordem — Raízes estruturais</div>
+        <div class="metric-row">
+          <div class="metric-item"><span class="metric-name">Esgotamento de audiência qualificada</span><span class="metric-delta red">Saturação de Mercado</span></div>
+          <div class="metric-item"><span class="metric-name">Sem mecanismo de cold audience</span><span class="metric-delta red">Aquisição</span></div>
+          <div class="metric-item"><span class="metric-name">LTV baixo = sem budget para CAC alto</span><span class="metric-delta amber">Monetização</span></div>
+          <div class="metric-item"><span class="metric-name">Funil dependente de CPLs sem engajamento pré</span><span class="metric-delta red">Engajamento</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEATMAP -->
+  <div id="jorn-heatmap" class="tab-panel">
+    <div id="jorn-heatmap-table" style="overflow-x:auto;"></div>
+  </div>
+
+</div>
+</section>
+
+<!-- ===================== POR LANÇAMENTO ===================== -->
+<section id="section-lancamentos" class="section">
+<div class="container">
+  <div class="sec-hdr">
+    <div class="sec-tag">Análise Individual · Por Lançamento</div>
+    <div class="sec-title">Performance Detalhada — Individual e Comparativa</div>
+    <div class="sec-sub">Selecione um lançamento para análise completa, ou compare dois lado a lado</div>
+  </div>
+
+  <div class="mode-bar">
+    <button class="mode-btn active" id="mb-single" onclick="setLMode('single')">👁 Individual</button>
+    <button class="mode-btn" id="mb-compare" onclick="setLMode('compare')">⚖️ Comparar</button>
+  </div>
+
+  <div class="pill-wrap" id="l-pills"></div>
+  <div id="l-hint" style="font-size:12px;color:var(--text-muted);margin-bottom:16px;display:none;"></div>
+
+  <div id="l-single" style="display:none;">
+    <div class="g4 gap-top" id="ls-kpis" style="margin-bottom:16px;"></div>
+    <div class="g2" style="margin-bottom:16px;">
+      <div class="card">
+        <div class="card-title" id="ls-funnel-title">Funil de Conversão</div>
+        <div id="ls-funnel"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Composição de Receita</div>
+        <div style="display:flex;align-items:center;justify-content:center;min-height:200px;">
+          <canvas id="ls-donut" style="max-height:200px;max-width:200px;"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="g2" style="margin-bottom:16px;">
+      <div class="card">
+        <div class="card-title">P&L do Lançamento</div>
+        <div id="ls-pl"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Radar vs Média Histórica</div>
+        <div class="chart-wrap"><canvas id="ls-radar"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="l-compare" style="display:none;">
+    <div class="cmp-grid" id="lc-grid">
+      <div class="cmp-side cmp-a">
+        <div class="cmp-label">Lançamento A</div>
+        <div id="lc-a-kpis" class="mkpi-grid"></div>
+        <div id="lc-a-funnel"></div>
+        <div style="display:flex;justify-content:center;margin-top:12px;">
+          <canvas id="lc-a-donut" style="max-height:160px;max-width:160px;"></canvas>
+        </div>
+      </div>
+      <div class="cmp-side cmp-b">
+        <div class="cmp-label">Lançamento B</div>
+        <div id="lc-b-kpis" class="mkpi-grid"></div>
+        <div id="lc-b-funnel"></div>
+        <div style="display:flex;justify-content:center;margin-top:12px;">
+          <canvas id="lc-b-donut" style="max-height:160px;max-width:160px;"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="card gap-top">
+      <div class="card-title">Comparação de KPIs — A vs B</div>
+      <div class="chart-wrap"><canvas id="lc-bar"></canvas></div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+</main>
+
+<div class="tooltip-card" id="tt"></div>
+
+<script>
+// ============================================================
+// DATA
+// ============================================================
+const L=[
+  {l:"Ago/23", traf:5407,   cap:3857,   fat:49896,  fatImm:49896,  fatFut:0,      addons:0,     ob:0,    ds:0,     up:0,   roas:9.23, cpl:4.41,  cac:108,  leads:875,   cpl1:250,  cpl2:220,  cpl3:190,  v1:7,   novos:50,  renov:0,  devol:0,  phase:1,
+    eff:{lc1:.286,c1c2:.880,c2c3:.864,c3n:.263,pitch:.037}},
+  {l:"Dez/23", traf:32466,  cap:21221,  fat:95822,  fatImm:86240,  fatFut:9582,   addons:4367,  ob:0,    ds:11000, up:0,   roas:2.95, cpl:6.30,  cac:485,  leads:3432,  cpl1:441,  cpl2:451,  cpl3:388,  v1:33,  novos:67,  renov:15, devol:4,  phase:1,
+    eff:{lc1:.131,c1c2:1.02,c2c3:.860,c3n:.173,pitch:.085}},
+  {l:"Fev/24", traf:52701,  cap:35522,  fat:346581, fatImm:312435, fatFut:34146,  addons:5955,  ob:0,    ds:15000, up:0,   roas:6.58, cpl:5.36,  cac:260,  leads:6633,  cpl1:2048, cpl2:1434, cpl3:1398, v1:117, novos:203, renov:0,  devol:6,  phase:1,
+    eff:{lc1:.309,c1c2:.700,c2c3:.975,c3n:.145,pitch:.084}},
+  {l:"Abr/24", traf:86220,  cap:63532,  fat:427019, fatImm:405939, fatFut:21080,  addons:794,   ob:7128, ds:794,   up:0,   roas:4.95, cpl:4.61,  cac:419,  leads:14999, cpl1:2983, cpl2:2149, cpl3:1793, v1:117, novos:206, renov:0,  devol:7,  phase:2,
+    eff:{lc1:.216,c1c2:.720,c2c3:.835,c3n:.115,pitch:.065}},
+  {l:"Jun/24", traf:136654, cap:90848,  fat:373133, fatImm:317798, fatFut:55335,  addons:17318, ob:5940, ds:9330,  up:7988,roas:2.73, cpl:9.02,  cac:804,  leads:13495, cpl1:1907, cpl2:1615, cpl3:1291, v1:92,  novos:170, renov:8,  devol:5,  phase:2,
+    eff:{lc1:.189,c1c2:.847,c2c3:.799,c3n:.132,pitch:.071}},
+  {l:"Ago/24", traf:129781, cap:87420,  fat:504500, fatImm:475736, fatFut:28764,  addons:22684, ob:7425, ds:8705,  up:13979,roas:3.89,cpl:7.89, cac:579,  leads:12656, cpl1:2699, cpl2:2086, cpl3:2026, v1:132, novos:224, renov:0,  devol:4,  phase:2,
+    eff:{lc1:.244,c1c2:.773,c2c3:.971,c3n:.111,pitch:.065}},
+  {l:"Out/24", traf:179620, cap:114514, fat:527622, fatImm:485173, fatFut:42449,  addons:2000,  ob:5468, ds:0,     up:2000,roas:2.94, cpl:7.76,  cac:813,  leads:13252, cpl1:3251, cpl2:2231, cpl3:2102, v1:116, novos:221, renov:4,  devol:11, phase:2,
+    eff:{lc1:.220,c1c2:.686,c2c3:.942,c3n:.105,pitch:.055}},
+  {l:"Jan/25", traf:206238, cap:149194, fat:534783, fatImm:491883, fatFut:42900,  addons:16905, ob:6635, ds:9758,  up:7147,roas:2.59, cpl:10.78, cac:946,  leads:15376, cpl1:3524, cpl2:2353, cpl3:2114, v1:136, novos:218, renov:2,  devol:0,  phase:3,
+    eff:{lc1:.255,c1c2:.668,c2c3:.898,c3n:.103,pitch:.064}},
+  {l:"Mar/25", traf:165164, cap:116500, fat:500983, fatImm:482804, fatFut:18179,  addons:34358, ob:8503, ds:20213, up:14145,roas:3.03,cpl:11.90, cac:765,  leads:12383, cpl1:2923, cpl2:2600, cpl3:2277, v1:125, novos:216, renov:25, devol:7,  phase:3,
+    eff:{lc1:.299,c1c2:.889,c2c3:.876,c3n:.095,pitch:.055}},
+  {l:"Jun/25", traf:199848, cap:134728, fat:690634, fatImm:652925, fatFut:37709,  addons:17425, ob:9801, ds:17425, up:0,   roas:3.46, cpl:10.67, cac:689,  leads:15636, cpl1:3116, cpl2:2554, cpl3:2105, v1:159, novos:290, renov:36, devol:7,  phase:3,
+    eff:{lc1:.247,c1c2:.820,c2c3:.824,c3n:.138,pitch:.076}},
+  {l:"Ago/25", traf:213160, cap:153803, fat:604917, fatImm:569975, fatFut:34942,  addons:9758,  ob:5346, ds:9758,  up:0,   roas:2.84, cpl:12.96, cac:888,  leads:12679, cpl1:2579, cpl2:2143, cpl3:1713, v1:126, novos:240, renov:49, devol:6,  phase:3,
+    eff:{lc1:.217,c1c2:.831,c2c3:.799,c3n:.140,pitch:.074}},
+  {l:"Out/25", traf:200422, cap:147749, fat:715333, fatImm:624908, fatFut:90425,  addons:6273,  ob:9207, ds:6273,  up:0,   roas:3.57, cpl:12.59, cac:706,  leads:12591, cpl1:2444, cpl2:1937, cpl3:1643, v1:173, novos:284, renov:9,  devol:18, phase:3,
+    eff:{lc1:.208,c1c2:.793,c2c3:.848,c3n:.173,pitch:.105}},
+  {l:"Dez/25", traf:150522, cap:112953, fat:233619, fatImm:198078, fatFut:35541,  addons:4880,  ob:2079, ds:4880,  up:0,   roas:1.55, cpl:14.31, cac:1552, leads:10291, cpl1:1693, cpl2:1176, cpl3:1026, v1:53,  novos:97,  renov:1,  devol:0,  phase:3,
+    eff:{lc1:.214,c1c2:.695,c2c3:.872,c3n:.095,pitch:.052}},
+  {l:"Fev/26", traf:299922, cap:233937, fat:888179, fatImm:834059, fatFut:54120,  addons:4182,  ob:4455, ds:6,     up:0,   roas:2.96, cpl:12.25, cac:964,  leads:22580, cpl1:4715, cpl2:3885, cpl3:3192, v1:189, novos:311, renov:17, devol:8,  phase:3,
+    eff:{lc1:.247,c1c2:.824,c2c3:.822,c3n:.097,pitch:.059}},
+  {l:"Abr/26", traf:339357, cap:261132, fat:691685, fatImm:588329, fatFut:103356, addons:31185, ob:1474, ds:31185, up:0,   roas:2.04, cpl:13.56, cac:1234, leads:22270, cpl1:3777, cpl2:3048, cpl3:2655, v1:137, novos:275, renov:16, devol:5,  phase:3,
+    eff:{lc1:.196,c1c2:.807,c2c3:.871,c3n:.104,pitch:.052}},
+];
+
+const LABELS = L.map(d=>d.l);
+const PHASES = L.map(d=>d.phase);
+const phColors = {1:'rgba(59,130,246,',2:'rgba(245,158,11,',3:'rgba(244,63,94,'};
+const phSolid  = {1:'#60a5fa',2:'#fbbf24',3:'#fb7185'};
+
+// Helpers
+const fmtK = v => v>=1000000?'R$'+(v/1000000).toFixed(1)+'M':v>=1000?'R$'+(v/1000).toFixed(0)+'k':'R$'+v.toFixed(0);
+const fmtR = v => 'R$ '+v.toLocaleString('pt-BR',{minimumFractionDigits:0,maximumFractionDigits:0});
+const pct  = v => (v*100).toFixed(1)+'%';
+
+// Chart defaults
+Chart.defaults.color='#64748b';
+Chart.defaults.borderColor='rgba(255,255,255,0.05)';
+Chart.defaults.font={family:"'Inter',system-ui,sans-serif",size:11};
+const gc='rgba(255,255,255,0.05)';
+const tc='#64748b';
+
+// ============================================================
+// COMPUTED GLOBALS
+// ============================================================
+const avgFat  = L.reduce((s,d)=>s+d.fat,0)/L.length;
+const avgROAS = L.reduce((s,d)=>s+d.roas,0)/L.length;
+const avgCAC  = L.reduce((s,d)=>s+d.cac,0)/L.length;
+const avgCPL  = L.reduce((s,d)=>s+d.cpl,0)/L.length;
+const avgNovos= L.reduce((s,d)=>s+d.novos,0)/L.length;
+const avgPitch= L.reduce((s,d)=>s+(d.v1/d.cpl3),0)/L.length;
+
+// Fill overview stats
+document.getElementById('ov-fat-total').textContent  = fmtK(L.reduce((s,d)=>s+d.fat,0));
+document.getElementById('ov-traf-total').textContent = fmtK(L.reduce((s,d)=>s+d.traf,0));
+document.getElementById('ov-roas-avg').textContent   = avgROAS.toFixed(2)+'x';
+document.getElementById('ov-roas-last').textContent  = L[14].roas.toFixed(2)+'x';
+document.getElementById('ov-cac-last').textContent   = 'R$'+L[14].cac.toLocaleString('pt-BR');
+
+// ============================================================
+// CHART FACTORY
+// ============================================================
+function barDataByPhase(data,alpha=0.8){
+  return data.map((v,i)=>phColors[PHASES[i]]+alpha+')');
+}
+
+function mkChart(id,cfg){
+  const el=document.getElementById(id);
+  if(!el)return null;
+  const existing=Chart.getChart(el);
+  if(existing)existing.destroy();
+  return new Chart(el,cfg);
+}
+
+// ============================================================
+// OVERVIEW CHARTS
+// ============================================================
+function buildOverviewCharts(){
+  // ROAS history
+  mkChart('ch-roas-hist',{type:'bar',data:{
+    labels:LABELS,
+    datasets:[{
+      label:'ROAS',
+      data:L.map(d=>d.roas),
+      backgroundColor:barDataByPhase(L,0.7),
+      borderRadius:4,
+    },{
+      type:'line',label:'Média',
+      data:L.map(()=>avgROAS),
+      borderColor:'rgba(99,102,241,0.5)',
+      borderDash:[4,4],borderWidth:1.5,
+      pointRadius:0,fill:false,tension:0
+    }]
+  },options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.parsed.y.toFixed(2)+'x'}}},
+    scales:{x:{grid:{color:gc},ticks:{color:tc,maxRotation:45}},y:{grid:{color:gc},ticks:{color:tc,callback:v=>v.toFixed(1)+'x'}}}}});
+
+  // CAC history
+  mkChart('ch-cac-hist',{type:'bar',data:{
+    labels:LABELS,
+    datasets:[{label:'CAC',data:L.map(d=>d.cac),backgroundColor:barDataByPhase(L,0.7),borderRadius:4}]
+  },options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'CAC: R$'+c.parsed.y.toLocaleString('pt-BR')}}},
+    scales:{x:{grid:{color:gc},ticks:{color:tc,maxRotation:45}},y:{grid:{color:gc},ticks:{color:tc,callback:v=>'R$'+v.toLocaleString('pt-BR')}}}}});
+
+  // Fat history
+  mkChart('ch-fat-hist',{type:'bar',data:{
+    labels:LABELS,
+    datasets:[{label:'Faturamento',data:L.map(d=>+(d.fat/1000).toFixed(0)),backgroundColor:barDataByPhase(L,0.7),borderRadius:4}]
+  },options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'R$'+c.parsed.y+'k'}}},
+    scales:{x:{grid:{color:gc},ticks:{color:tc,maxRotation:45}},y:{grid:{color:gc},ticks:{color:tc,callback:v=>'R$'+v+'k'}}}}});
+
+  // Mix donut (total)
+  const totFatImm=L.reduce((s,d)=>s+d.fatImm,0);
+  const totFatFut=L.reduce((s,d)=>s+d.fatFut,0);
+  const totOB=L.reduce((s,d)=>s+d.ob,0);
+  const totDS=L.reduce((s,d)=>s+d.ds,0);
+  const totUP=L.reduce((s,d)=>s+d.up,0);
+  mkChart('ch-mix-donut',{type:'doughnut',data:{
+    labels:['Programa Imediato','Futuros (PSL, boleto, Eduzz)','Order Bump','Downsell','Upsell'],
+    datasets:[{data:[totFatImm,totFatFut,totOB,totDS,totUP],
+      backgroundColor:['#c9922a','#5a9e68','#f59e0b','#f43f5e','#10b981'],
+      borderWidth:0,hoverOffset:8}]
+  },options:{responsive:true,maintainAspectRatio:false,cutout:'68%',
+    plugins:{legend:{position:'right',labels:{color:'#94a3b8',boxWidth:10,padding:8}},
+      tooltip:{callbacks:{label:c=>{const t=c.dataset.data.reduce((a,b)=>a+b);return c.label+': '+fmtK(c.raw)+' ('+((c.raw/t)*100).toFixed(1)+'%)';}}}}}});
+}
+
+// ============================================================
+// DEBRIEFING CHARTS
+// ============================================================
+function buildDebriefingCharts(){
+  const last=L[14]; // Abr/26
+  const prev=L[13]; // Fev/26
+
+  // Donut Abr/26
+  mkChart('db-donut',{type:'doughnut',data:{
+    labels:['Imediato','Futuros','Downsell','Order Bump'],
+    datasets:[{data:[last.fatImm,last.fatFut,last.ds,last.ob],
+      backgroundColor:['#c9922a','#5a9e68','#f43f5e','#f59e0b'],borderWidth:0,hoverOffset:6}]
+  },options:{responsive:true,maintainAspectRatio:false,cutout:'68%',
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.label+': '+fmtK(c.raw)}}}}});
+
+  // Radar (Abr/26 vs Fev/26 vs Média) — normalized 0-100
+  const metrics=['ROAS','Pitch D1','Novos Alunos','CPL (inv)','CAC (inv)','Faturamento'];
+  const maxROAS=Math.max(...L.map(d=>d.roas));
+  const maxPitch=Math.max(...L.map(d=>d.v1/d.cpl3));
+  const maxNovos=Math.max(...L.map(d=>d.novos));
+  const maxCPL=Math.max(...L.map(d=>d.cpl));
+  const maxCAC=Math.max(...L.map(d=>d.cac));
+  const maxFat=Math.max(...L.map(d=>d.fat));
+  function norm(d){return[
+    (d.roas/maxROAS)*100,
+    ((d.v1/d.cpl3)/maxPitch)*100,
+    (d.novos/maxNovos)*100,
+    ((1-d.cpl/maxCPL))*100,  // inverted
+    ((1-d.cac/maxCAC))*100,  // inverted
+    (d.fat/maxFat)*100
+  ];}
+  mkChart('db-radar',{type:'radar',data:{labels:metrics,datasets:[
+    {label:'Abr/26',data:norm(last),borderColor:'#f43f5e',backgroundColor:'rgba(244,63,94,0.1)',pointBackgroundColor:'#f43f5e',borderWidth:2},
+    {label:'Fev/26',data:norm(prev),borderColor:'#5a9e68',backgroundColor:'rgba(90,158,104,0.08)',pointBackgroundColor:'#5a9e68',borderWidth:2},
+    {label:'Média',data:norm({roas:avgROAS,v1:avgPitch*1,cpl3:1,novos:avgNovos,cpl:avgCPL,cac:avgCAC,fat:avgFat}),borderColor:'#c9922a',backgroundColor:'rgba(99,102,241,0.05)',pointBackgroundColor:'#c9922a',borderDash:[3,3],borderWidth:1.5},
+  ]},options:{responsive:true,maintainAspectRatio:false,
+    scales:{r:{grid:{color:'rgba(255,255,255,0.06)'},angleLines:{color:'rgba(255,255,255,0.06)'},ticks:{display:false},pointLabels:{color:'#94a3b8',font:{size:10}}}},
+    plugins:{legend:{labels:{color:'#94a3b8',boxWidth:10}}}}});
+
+  // Funnel Abr/26
+  buildFunnelEl('db-funnel',last,'#f43f5e');
+
+  // ROAS in context
+  mkChart('db-roas-ctx',{type:'line',data:{
+    labels:LABELS,
+    datasets:[{label:'ROAS',data:L.map(d=>d.roas),borderColor:'#c9922a',backgroundColor:'rgba(201,146,42,0.08)',fill:true,tension:0.3,pointBackgroundColor:L.map((_,i)=>i===14?'#f43f5e':i===13?'#5a9e68':'#c9922a'),pointRadius:L.map((_,i)=>i>=13?6:3),borderWidth:2}]
+  },options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'ROAS: '+c.parsed.y.toFixed(2)+'x'}}},
+    scales:{x:{grid:{color:gc},ticks:{color:tc,maxRotation:45}},y:{grid:{color:gc},ticks:{color:tc,callback:v=>v.toFixed(1)+'x'}}}}});
+
+  // Pitch D1
+  const pitchData=L.map(d=>+((d.v1/d.cpl3)*100).toFixed(2));
+  mkChart('db-pitchd1',{type:'bar',data:{
+    labels:LABELS,
+    datasets:[{label:'Pitch D1 %',data:pitchData,backgroundColor:pitchData.map((v,i)=>i===11?'rgba(16,185,129,0.8)':barDataByPhase(L,0.6)[i]),borderRadius:4}]
+  },options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'Pitch D1: '+c.parsed.y.toFixed(2)+'%'}}},
+    scales:{x:{grid:{color:gc},ticks:{color:tc,maxRotation:45}},y:{grid:{color:gc},ticks:{color:tc,callback:v=>v.toFixed(1)+'%'}}}}});
+}
+
+// ============================================================
+// HISTÓRICO CHARTS
+// ============================================================
+function buildHistoricoCharts(){
+  // Fat
+  mkChart('h-fat',{type:'bar',data:{labels:LABELS,datasets:[{label:'Faturamento',data:L.map(d=>+(d.fat/1000).toFixed(0)),backgroundColor:barDataByPhase(L,0.7),borderRadius:4}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:gc},ticks:{color:tc,maxRotation:45}},y:{grid:{color:gc},ticks:{color:tc,callback:v=>'R$'+v+'k'}}}}});
+
+  // Novos
+  mkChart('h-novos',{type:'bar',data:{labels:LABELS,datasets:[{label:'Novos Alunos',data:L.map(d=>d.novos),backgroundColor:barDataByPhase(L,0.7),borderRadius:4}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:gc},ticks:{color:tc,maxRotation:45}},y:{grid:{color:gc},ticks:{color:tc}}}}});
+
+  // Tráfego vs Fat
+  mkChart('h-traf-fat',{type:'bar',data:{labels:LABELS,datasets:[
+    {label:'Faturamento',data:L.map(d=>+(d.fat/1000).toFixed(0)),backgroundColor:'rgba(201,146,42,0.7)',borderRadius:4},
+    {label:'Tráfego',data:L.map(d=>+(d.traf/1000).toFixed(0)),backgroundColor:'rgba(244,63,94,0.5)',borderRadius:4},
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#94a3b8',boxWidth:10}}},scales:{x:{grid:{color:gc},ticks:{color:tc,maxRotation:45}},y:{grid:{color:gc},ticks:{color:tc,callback:v=>'R$'+v+'k'}}}}});
+
+  // ROAS
+  mkChart('h-roas',{type:'line',data:{labels:LABELS,datasets:[
+    {label:'ROAS',data:L.map(d=>d.roas),borderColor:'#c9922a',backgroundColor:'rgba(201,146,42,0.08)',fill:true,tension:0.3,pointBackgroundColor:L.map(d=>phSolid[d.phase]),borderWidth:2,pointRadius:4},
+    {label:'Média',data:L.map(()=>avgROAS),borderColor:'rgba(255,255,255,0.2)',borderDash:[4,4],borderWidth:1,pointRadius:0,fill:false},
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#94a3b8',boxWidth:10}}},scales:{x:{grid:{color:gc},ticks:{color:tc,maxRotation:45}},y:{grid:{color:gc},ticks:{color:tc,callback:v=>v.toFixed(1)+'x'}}}}});
+
+  // CAC
+  mkChart('h-cac',{type:'line',data:{labels:LABELS,datasets:[{label:'CAC',data:L.map(d=>d.cac),borderColor:'#f43f5e',backgroundColor:'rgba(244,63,94,0.08)',fill:true,tension:0.3,pointBackgroundColor:'#f43f5e',borderWidth:2,pointRadius:4}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:gc},ticks:{color:tc,maxRotation:45}},y:{grid:{color:gc},ticks:{color:tc,callback:v=>'R$'+v.toLocaleString('pt-BR')}}}}});
+
+  // CPL
+  mkChart('h-cpl',{type:'bar',data:{labels:LABELS,datasets:[{label:'CPL',data:L.map(d=>d.cpl),backgroundColor:barDataByPhase(L,0.7),borderRadius:4}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:gc},ticks:{color:tc,maxRotation:45}},y:{grid:{color:gc},ticks:{color:tc,callback:v=>'R$'+v.toFixed(2)}}}}});
+
+  // Leads
+  mkChart('h-leads',{type:'bar',data:{labels:LABELS,datasets:[{label:'Leads WhatsApp',data:L.map(d=>d.leads),backgroundColor:barDataByPhase(L,0.7),borderRadius:4}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:gc},ticks:{color:tc,maxRotation:45}},y:{grid:{color:gc},ticks:{color:tc}}}}});
+
+  // Pitch D1
+  mkChart('h-pitch',{type:'bar',data:{labels:LABELS,datasets:[{label:'Pitch D1%',data:L.map(d=>+((d.v1/d.cpl3)*100).toFixed(2)),backgroundColor:barDataByPhase(L,0.7),borderRadius:4}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:gc},ticks:{color:tc,maxRotation:45}},y:{grid:{color:gc},ticks:{color:tc,callback:v=>v.toFixed(1)+'%'}}}}});
+
+  // Conv CPL3→novos
+  mkChart('h-conv',{type:'bar',data:{labels:LABELS,datasets:[{label:'CPL3→Novos%',data:L.map(d=>+((d.novos/d.cpl3)*100).toFixed(1)),backgroundColor:barDataByPhase(L,0.7),borderRadius:4}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:gc},ticks:{color:tc,maxRotation:45}},y:{grid:{color:gc},ticks:{color:tc,callback:v=>v.toFixed(0)+'%'}}}}});
+
+  // Add-ons
+  mkChart('h-addons',{type:'bar',data:{labels:LABELS,datasets:[
+    {label:'Order Bump',data:L.map(d=>+(d.ob/1000).toFixed(1)),backgroundColor:'rgba(245,158,11,0.7)',borderRadius:4},
+    {label:'Downsell',data:L.map(d=>+(d.ds/1000).toFixed(1)),backgroundColor:'rgba(244,63,94,0.6)',borderRadius:4},
+    {label:'Upsell',data:L.map(d=>+(d.up/1000).toFixed(1)),backgroundColor:'rgba(16,185,129,0.6)',borderRadius:4},
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#94a3b8',boxWidth:10}}},
+    scales:{x:{stacked:true,grid:{color:gc},ticks:{color:tc,maxRotation:45}},y:{stacked:true,grid:{color:gc},ticks:{color:tc,callback:v=>'R$'+v+'k'}}}}});
+
+  // Devoluções
+  mkChart('h-devol',{type:'bar',data:{labels:LABELS,datasets:[{label:'Devoluções',data:L.map(d=>d.devol),backgroundColor:barDataByPhase(L,0.7),borderRadius:4}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:gc},ticks:{color:tc,maxRotation:45}},y:{grid:{color:gc},ticks:{color:tc}}}}});
+
+  buildHeatmap('h-heatmap');
+}
+
+// ============================================================
+// HEATMAP
+// ============================================================
+function cellColor(v,min,max,invert=false){
+  const n=(v-min)/(max-min||1);
+  const t=invert?1-n:n;
+  if(t>0.7) return 'rgba(16,185,129,0.25)';
+  if(t>0.4) return 'rgba(245,158,11,0.2)';
+  return 'rgba(244,63,94,0.2)';
+}
+
+function buildHeatmap(containerId){
+  const cols=[
+    {k:'leads',  label:'E3 Leads',   fmt:v=>v.toLocaleString('pt-BR')},
+    {k:'cpl1',   label:'E4 CPL1',    fmt:v=>v.toLocaleString('pt-BR')},
+    {k:'cpl2',   label:'E5 CPL2',    fmt:v=>v.toLocaleString('pt-BR')},
+    {k:'cpl3',   label:'E6 CPL3',    fmt:v=>v.toLocaleString('pt-BR')},
+    {k:'v1',     label:'E7 Venda D1',fmt:v=>v},
+    {k:'novos',  label:'E8 Alunos',  fmt:v=>v},
+    {k:'pitch',  label:'Pitch D1%',  fmt:v=>(v*100).toFixed(1)+'%',derived:d=>(d.v1/d.cpl3)},
+    {k:'roas',   label:'ROAS',       fmt:v=>v.toFixed(2)+'x'},
+    {k:'cpl',    label:'CPL R$',     fmt:v=>'R$'+v.toFixed(2),invert:true},
+    {k:'cac',    label:'CAC R$',     fmt:v=>'R$'+v.toLocaleString('pt-BR'),invert:true},
+  ];
+  const vals=cols.map(c=>L.map(d=>c.derived?c.derived(d):d[c.k]));
+  const mins=vals.map(v=>Math.min(...v));
+  const maxs=vals.map(v=>Math.max(...v));
+  let html='<table style="border-collapse:collapse;width:100%;font-size:11px;min-width:900px;">';
+  html+='<thead><tr><th style="padding:8px 10px;text-align:left;color:#64748b;font-weight:600;position:sticky;left:0;background:#0d1221;">Lançamento</th>';
+  cols.forEach(c=>{html+=`<th style="padding:8px 6px;text-align:center;color:#64748b;font-weight:600;white-space:nowrap;">${c.label}</th>`;});
+  html+='</tr></thead><tbody>';
+  L.forEach((d,i)=>{
+    const ph=d.phase;
+    const phC=ph===1?'rgba(59,130,246,0.15)':ph===2?'rgba(245,158,11,0.1)':'rgba(244,63,94,0.08)';
+    html+=`<tr style="border-top:1px solid rgba(255,255,255,0.04);">`;
+    html+=`<td style="padding:8px 10px;font-weight:700;color:${phSolid[ph]};white-space:nowrap;position:sticky;left:0;background:#0d1221;">${d.l}</td>`;
+    cols.forEach((c,j)=>{
+      const v=c.derived?c.derived(d):d[c.k];
+      const bg=cellColor(v,mins[j],maxs[j],c.invert||false);
+      html+=`<td style="padding:7px 6px;text-align:center;background:${bg};border-radius:4px;">${c.fmt(v)}</td>`;
+    });
+    html+='</tr>';
+  });
+  html+='</tbody></table>';
+  document.getElementById(containerId).innerHTML=html;
+}
+
+// ============================================================
+// FUNNEL BUILDER
+// ============================================================
+function buildFunnelEl(containerId,d,color){
+  const color2=color||'#c9922a';
+  const steps=[
+    {label:'E3 — Leads capturados',val:d.leads,fmt:v=>v.toLocaleString('pt-BR')},
+    {label:'E4 — CPL1 participantes',val:d.cpl1,fmt:v=>v.toLocaleString('pt-BR')},
+    {label:'E5 — CPL2 participantes',val:d.cpl2,fmt:v=>v.toLocaleString('pt-BR')},
+    {label:'E6 — CPL3 participantes',val:d.cpl3,fmt:v=>v.toLocaleString('pt-BR')},
+    {label:'E7 — Vendas Dia 1',      val:d.v1,  fmt:v=>v.toString()},
+    {label:'E8 — Novos Alunos',      val:d.novos,fmt:v=>v.toString()},
+  ];
+  const max=steps[0].val||1;
+  let html='';
+  steps.forEach((s,i)=>{
+    const w=Math.max(4,(s.val/max)*100);
+    const prev=i>0?steps[i-1].val:s.val;
+    const rate=prev>0?(s.val/prev*100).toFixed(1):'—';
+    html+=`<div class="funnel-stage">
+      <div class="funnel-label">
+        <span>${s.label} — <strong style="color:#e2e8f0">${s.fmt(s.val)}</strong></span>
+        <span style="color:#94a3b8">${i>0?rate+'% do anterior':''}</span>
+      </div>
+      <div class="funnel-track">
+        <div class="funnel-fill" style="width:${w}%;background:${color2};opacity:${0.4+i*0.1};"></div>
+      </div>
+    </div>`;
+  });
+  document.getElementById(containerId).innerHTML=html;
+}
+
+// ============================================================
+// JORNADA STAGES
+// ============================================================
+const stages=[
+  {code:'E1',name:'Impressão',icon:'👁️',color:'rgba(99,102,241,',desc:'O lead ainda não sabe que existe o produto. Ele é impactado por um anúncio pago (Meta/Google) ou post orgânico. Qualidade do criativo determina CTR e, portanto, o CPL.',
+   metrics:['Impressões totais: 136M históricas','CTR médio estimado: ~1,3%'],gap:'Dados de impressão incompletos nos primeiros lançamentos'},
+  {code:'E2',name:'Clique',icon:'🖱️',color:'rgba(99,102,241,',desc:'Lead clica no anúncio e chega à página de captura. Conversão de clique → lead é a métrica de qualidade do criativo e da landing page. CPL é determinado aqui.',
+   metrics:['Cliques totais: ~1,7M históricos','Page Views: ~548k registradas'],gap:'Perda média de ~60% entre cliques e page views — qualidade de tráfego'},
+  {code:'E3',name:'Lead Capturado',icon:'📋',color:'rgba(34,211,238,',desc:'Lead entra no WhatsApp ou formulário. Esta é a base de todo o funil. CPL mede o custo por lead — saltou de R$4,41 para R$13,56 em 33 meses.',
+   metrics:['Total histórico: 166.679 leads','CPL Abr/26: R$13,56 (+207% vs Ago/23)'],gap:'Saturação de audiência: mesmo gasto, menos leads qualificados'},
+  {code:'E4',name:'CPL1 — Primeiro Conteúdo',icon:'📺',color:'rgba(245,158,11,',desc:'Lead consome o primeiro CPL (Content Pre-Launch). Taxa média de conversão Lead→CPL1 é de ~23%. Queda indica problema de engajamento ou qualidade de lista.',
+   metrics:['Taxa média L→CPL1: 23%','Abr/26: 19,6% (abaixo da média)'],gap:'Engajamento de lista caindo — sem mecanismo de reaquecimento orgânico'},
+  {code:'E5',name:'CPL2 — Segundo Conteúdo',icon:'📺',color:'rgba(245,158,11,',desc:'Lead consome o segundo CPL. Taxa CPL1→CPL2 é historicamente estável (~78%). Este ponto é relativamente saudável no funil.',
+   metrics:['Taxa média CPL1→CPL2: ~78%','Abr/26: 80,7% (acima da média)'],gap:'Nenhum gargalo crítico identificado nesta etapa'},
+  {code:'E6',name:'CPL3 — Pré-Pitch',icon:'🎯',color:'rgba(245,158,11,',desc:'Lead chega ao CPL3, imediatamente antes do pitch de vendas. Taxa CPL2→CPL3 estável (~87%). Base do CPL3 determina o universo disponível para conversão no D1.',
+   metrics:['Taxa média CPL2→CPL3: ~87%','Abr/26: 2.655 participantes no CPL3'],gap:'Base saudável mas crescimento limitado pela qualidade dos leads iniciais'},
+  {code:'E7',name:'Venda Dia 1 (Pitch D1)',icon:'💳',color:'rgba(244,63,94,',desc:'Lead compra no primeiro dia de abertura do carrinho. Este é o principal gargalo identificado. Pitch D1 = v1/CPL3. Oscila entre 5,16% (Abr/26) e 10,53% (Out/25) — variação de 2× no mesmo sistema.',
+   metrics:['Pitch D1 Abr/26: 5,16%','Pico histórico: 10,53% em Out/25','Pitch D1 Fev/26: 5,92%'],gap:'RESTRIÇÃO PRIMÁRIA: Conversão no pitch instável. Causa: qualidade do CPL3 e oferta? '},
+  {code:'E8',name:'Aluno / Retenção',icon:'🎓',color:'rgba(16,185,129,',desc:'Lead se torna aluno e entra na jornada de retenção. LTV atual é R$2.122 (ticket × 1 + taxa de renovação 5,9%). Taxa de renovação baixa limita o LTV e o budget disponível para CAC alto.',
+   metrics:['Total alunos: 3.072 (líquidos)','Taxa de renovação: 5,9% (182 renovações)','LTV: R$2.122'],gap:'LTV próximo ao ticket inicial — sem mecanismo de ascensão de produto'},
+];
+
+function buildJourneyStages(){
+  const wrap=document.getElementById('journey-stages');
+  if(!wrap)return;
+  wrap.innerHTML=stages.map((s,i)=>`
+    <div class="journey-stage">
+      <div class="stage-icon" style="background:${s.color}0.12);border:1px solid ${s.color}0.3);">
+        <span style="font-size:22px;">${s.icon}</span>
+      </div>
+      <div class="stage-info">
+        <div class="stage-code" style="color:${s.color.replace('rgba(','').replace(',',')')};">${s.code} / Etapa ${i+1}</div>
+        <div class="stage-name">${s.name}</div>
+        <div class="stage-desc">${s.desc}</div>
+        <div class="stage-metrics">
+          ${s.metrics.map(m=>`<span class="stage-metric" style="background:rgba(255,255,255,0.05);color:#94a3b8;">${m}</span>`).join('')}
+        </div>
+        ${s.gap?`<div style="margin-top:8px;font-size:11px;padding:6px 10px;border-radius:6px;background:rgba(244,63,94,0.08);border-left:2px solid rgba(244,63,94,0.5);color:#fda4af;">⚠ ${s.gap}</div>`:''}
+      </div>
+    </div>
+  `).join('');
+}
+
+// ============================================================
+// ISHIKAWA SVG
+// ============================================================
+function buildIshikawa(){
+  const w=900,h=420,cx=w*0.82,cy=h/2;
+  const categories=[
+    {name:'Tráfego',angle:-40,causes:['CPL +207% em 33 meses','Saturação de audiência WA','CPC crescendo YoY']},
+    {name:'Conversão',angle:-15,causes:['Pitch D1 instável (5-10%','Script de oferta','Energia do lançamento']},
+    {name:'Produto',angle:40,causes:['LTV baixo (R$2.122)','Sem upsell estrutural','Taxa renov. 5,9%']},
+    {name:'Audiência',angle:15,causes:['Base cansada','Sem cold audience','Sem orgânico ativo']},
+    {name:'Operação',angle:-28,causes:['Dependência de 1 canal','Sem automação nurture','Funil manual']},
+    {name:'Mercado',angle:28,causes:['Concorrência crescendo','Custo mídia Brasil up','Sazonalidade']},
+  ];
+
+  let svg=`<svg viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:420px;font-family:Inter,sans-serif;">`;
+  svg+=`<rect width="${w}" height="${h}" fill="#0d1221" rx="12"/>`;
+  // spine
+  svg+=`<line x1="80" y1="${cy}" x2="${cx-40}" y2="${cy}" stroke="#f43f5e" stroke-width="3" opacity="0.7"/>`;
+  // head box
+  svg+=`<rect x="${cx-10}" y="${cy-28}" width="110" height="56" rx="8" fill="rgba(244,63,94,0.2)" stroke="#f43f5e" stroke-width="1.5"/>`;
+  svg+=`<text x="${cx+45}" y="${cy-6}" text-anchor="middle" fill="#fb7185" font-size="10" font-weight="700">ROAS</text>`;
+  svg+=`<text x="${cx+45}" y="${cy+8}" text-anchor="middle" fill="#fb7185" font-size="10" font-weight="700">DEGRADAÇÃO</text>`;
+  svg+=`<text x="${cx+45}" y="${cy+22}" text-anchor="middle" fill="#f43f5e" font-size="9">9.23x → 2.04x</text>`;
+
+  const topCats=categories.slice(0,3);
+  const botCats=categories.slice(3,6);
+  const xs=[200,420,620];
+
+  topCats.forEach((cat,i)=>{
+    const x=xs[i];
+    svg+=`<line x1="${x}" y1="${cy-100}" x2="${x}" y2="${cy}" stroke="rgba(244,63,94,0.3)" stroke-width="1.5"/>`;
+    svg+=`<text x="${x}" y="${cy-108}" text-anchor="middle" fill="#fda4af" font-size="11" font-weight="700">${cat.name}</text>`;
+    cat.causes.forEach((c,j)=>{
+      const ly=cy-70+j*22;
+      svg+=`<text x="${x}" y="${ly}" text-anchor="middle" fill="#94a3b8" font-size="9.5">${c}</text>`;
+    });
+  });
+  botCats.forEach((cat,i)=>{
+    const x=xs[i];
+    svg+=`<line x1="${x}" y1="${cy}" x2="${x}" y2="${cy+100}" stroke="rgba(244,63,94,0.3)" stroke-width="1.5"/>`;
+    svg+=`<text x="${x}" y="${cy+118}" text-anchor="middle" fill="#fda4af" font-size="11" font-weight="700">${cat.name}</text>`;
+    cat.causes.forEach((c,j)=>{
+      const ly=cy+24+j*22;
+      svg+=`<text x="${x}" y="${ly}" text-anchor="middle" fill="#94a3b8" font-size="9.5">${c}</text>`;
+    });
+  });
+  svg+='</svg>';
+  document.getElementById('ishikawa-svg-wrap').innerHTML=svg;
+}
+
+// ============================================================
+// POR LANÇAMENTO
+// ============================================================
+let lMode='single',selA=-1,selB=-1;
+let lsDonutChart=null,lsRadarChart=null,lcADonut=null,lcBDonut=null,lcBarChart=null;
+
+function buildPills(){
+  const wrap=document.getElementById('l-pills');
+  wrap.innerHTML=L.map((d,i)=>`<button class="l-pill ph${d.phase}" id="lp-${i}" onclick="handlePill(${i})">${d.l}</button>`).join('');
+}
+
+function handlePill(idx){
+  if(lMode==='single'){
+    document.querySelectorAll('.l-pill').forEach(p=>p.classList.remove('sel'));
+    document.getElementById('lp-'+idx).classList.add('sel');
+    renderSingle(idx);
+  } else {
+    if(selA===-1){
+      selA=idx;
+      document.getElementById('lp-'+idx).classList.add('sel');
+      document.getElementById('l-hint').style.display='block';
+      document.getElementById('l-hint').textContent='✓ Lançamento A selecionado: '+L[idx].l+' — agora escolha o Lançamento B';
+    } else if(selB===-1&&idx!==selA){
+      selB=idx;
+      document.getElementById('lp-'+idx).classList.add('sel');
+      document.getElementById('l-hint').style.display='none';
+      renderCompare(selA,selB);
+    } else {
+      selA=-1;selB=-1;
+      document.querySelectorAll('.l-pill').forEach(p=>p.classList.remove('sel'));
+      document.getElementById('l-hint').style.display='none';
+      document.getElementById('l-single').style.display='none';
+      document.getElementById('l-compare').style.display='none';
+    }
+  }
+}
+
+function setLMode(m){
+  lMode=m;selA=-1;selB=-1;
+  document.querySelectorAll('.l-pill').forEach(p=>p.classList.remove('sel'));
+  document.getElementById('mb-single').classList.toggle('active',m==='single');
+  document.getElementById('mb-compare').classList.toggle('active',m==='compare');
+  document.getElementById('l-single').style.display='none';
+  document.getElementById('l-compare').style.display='none';
+  document.getElementById('l-hint').style.display=m==='compare'?'block':'none';
+  document.getElementById('l-hint').textContent=m==='compare'?'Selecione o Lançamento A':'';
+}
+
+function mkpi(label,val,delta,dClass){
+  return `<div class="mkpi"><div class="mkpi-l">${label}</div><div class="mkpi-v">${val}</div>${delta?`<div class="mkpi-d ${dClass}">${delta}</div>`:''}</div>`;
+}
+
+function renderSingle(i){
+  const d=L[i];
+  const pitch=((d.v1/d.cpl3)*100).toFixed(2);
+  // KPIs
+  const delta=(f,avg,inv=false)=>{
+    const r=((f-avg)/avg*100);
+    const cls=(inv?(r<0):(r>0))?'green':'red';
+    return `<span class="mkpi-d ${cls}">${r>0?'▲':'▼'} ${Math.abs(r).toFixed(1)}% vs média</span>`;
+  };
+  document.getElementById('ls-kpis').innerHTML=`
+    ${mkpi('Faturamento',fmtK(d.fat),'','')}
+    ${mkpi('ROAS',d.roas.toFixed(2)+'x','',(d.roas>avgROAS?'green':'red'))}
+    ${mkpi('CAC','R$'+d.cac.toLocaleString('pt-BR'),'',(d.cac<avgCAC?'green':'red'))}
+    ${mkpi('CPL','R$'+d.cpl.toFixed(2),'',(d.cpl<avgCPL?'green':'red'))}
+    ${mkpi('Pitch D1',pitch+'%','',(+pitch>avgPitch*100?'green':'red'))}
+    ${mkpi('Novos Alunos',d.novos,'',(d.novos>avgNovos?'green':'red'))}
+    ${mkpi('Leads',d.leads.toLocaleString('pt-BR'),'','')}
+    ${mkpi('Fase','Fase '+d.phase,'','')}
+  `;
+  document.getElementById('ls-funnel-title').textContent='Funil — '+d.l;
+  buildFunnelEl('ls-funnel',d,phSolid[d.phase]);
+  // Donut
+  if(lsDonutChart){lsDonutChart.destroy();lsDonutChart=null;}
+  lsDonutChart=mkChart('ls-donut',{type:'doughnut',data:{
+    labels:['Imediato','Futuros (PSL/boleto/Eduzz)','Order Bump','Downsell','Upsell'],
+    datasets:[{data:[d.fatImm,d.fatFut,d.ob,d.ds,d.up],backgroundColor:['#c9922a','#5a9e68','#f59e0b','#f43f5e','#10b981'],borderWidth:0,hoverOffset:6}]
+  },options:{responsive:true,maintainAspectRatio:false,cutout:'65%',plugins:{legend:{position:'bottom',labels:{color:'#94a3b8',boxWidth:8,font:{size:9}}},tooltip:{callbacks:{label:c=>c.label+': '+fmtK(c.raw)}}}}});
+  // P&L
+  const lucro=d.fat-d.traf;
+  document.getElementById('ls-pl').innerHTML=`
+    <div class="total-bar"><span class="total-label">Faturamento Total</span><span class="total-val">${fmtK(d.fat)}</span></div>
+    <div class="metric-row">
+      <div class="metric-item"><span class="metric-name">(-) Tráfego</span><span class="metric-val" style="color:var(--rose)">−${fmtK(d.traf)}</span></div>
+      <div class="metric-item"><span class="metric-name">Lucro Bruto (fat−tráf)</span><span class="metric-val" style="color:${lucro>0?'var(--green)':'var(--rose)'}">${fmtK(lucro)}</span></div>
+      <div class="metric-item"><span class="metric-name">Captação de Leads</span><span class="metric-val">R$ ${d.cap.toLocaleString('pt-BR')}</span></div>
+      <div class="metric-item"><span class="metric-name">Add-ons totais</span><span class="metric-val" style="color:var(--cyan)">${fmtK(d.ob+d.ds+d.up)}</span></div>
+      <div class="metric-item"><span class="metric-name">Devoluções</span><span class="metric-val" style="color:var(--amber)">${d.devol} pedido${d.devol!==1?'s':''}</span></div>
+    </div>`;
+  // Radar
+  if(lsRadarChart){lsRadarChart.destroy();lsRadarChart=null;}
+  const maxROASr=Math.max(...L.map(d=>d.roas));
+  const maxPitchr=Math.max(...L.map(d=>d.v1/d.cpl3));
+  const maxNovosr=Math.max(...L.map(d=>d.novos));
+  const maxCPLr=Math.max(...L.map(d=>d.cpl));
+  const maxCACr=Math.max(...L.map(d=>d.cac));
+  const maxFatr=Math.max(...L.map(d=>d.fat));
+  const normD=x=>[
+    (x.roas/maxROASr)*100,
+    ((x.v1/x.cpl3)/maxPitchr)*100,
+    (x.novos/maxNovosr)*100,
+    ((1-x.cpl/maxCPLr))*100,
+    ((1-x.cac/maxCACr))*100,
+    (x.fat/maxFatr)*100
+  ];
+  const avgD={roas:avgROAS,v1:avgPitch,cpl3:1,novos:avgNovos,cpl:avgCPL,cac:avgCAC,fat:avgFat};
+  lsRadarChart=mkChart('ls-radar',{type:'radar',data:{
+    labels:['ROAS','Pitch D1','Alunos','CPL (inv)','CAC (inv)','Faturamento'],
+    datasets:[
+      {label:d.l,data:normD(d),borderColor:phSolid[d.phase],backgroundColor:phSolid[d.phase].replace('#','rgba(').replace('#','')+',0.1)',borderWidth:2,pointBackgroundColor:phSolid[d.phase]},
+      {label:'Média',data:normD({...avgD,cpl3:1}),borderColor:'rgba(99,102,241,0.6)',backgroundColor:'rgba(99,102,241,0.05)',borderDash:[3,3],borderWidth:1.5,pointBackgroundColor:'#c9922a'},
+    ]
+  },options:{responsive:true,maintainAspectRatio:false,
+    scales:{r:{grid:{color:'rgba(255,255,255,0.06)'},angleLines:{color:'rgba(255,255,255,0.06)'},ticks:{display:false},pointLabels:{color:'#94a3b8',font:{size:10}}}},
+    plugins:{legend:{labels:{color:'#94a3b8',boxWidth:8,font:{size:10}}}}}});
+  document.getElementById('l-single').style.display='block';
+  document.getElementById('l-compare').style.display='none';
+  window.dispatchEvent(new Event('resize'));
+}
+
+function renderCompare(iA,iB){
+  const dA=L[iA],dB=L[iB];
+  ['a','b'].forEach((s,idx)=>{
+    const d=idx===0?dA:dB;
+    document.getElementById('lc-'+s+'-kpis').innerHTML=`
+      ${mkpi('Faturamento',fmtK(d.fat),'','')}
+      ${mkpi('ROAS',d.roas.toFixed(2)+'x','','')}
+      ${mkpi('CAC','R$'+d.cac.toLocaleString('pt-BR'),'','')}
+      ${mkpi('CPL','R$'+d.cpl.toFixed(2),'','')}
+      ${mkpi('Pitch D1',((d.v1/d.cpl3)*100).toFixed(2)+'%','','')}
+      ${mkpi('Novos',d.novos,'','')}
+    `;
+    buildFunnelEl('lc-'+s+'-funnel',d,s==='a'?'#c9922a':'#5aba6a');
+  });
+  if(lcADonut){lcADonut.destroy();}
+  if(lcBDonut){lcBDonut.destroy();}
+  const donutCfg=(d)=>({type:'doughnut',data:{labels:['Imediato','Futuros (PSL/boleto/Eduzz)','Add-ons'],datasets:[{data:[d.fatImm,d.fatFut,d.ob+d.ds+d.up],backgroundColor:['#c9922a','#5a9e68','#f59e0b'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,cutout:'68%',plugins:{legend:{display:false}}}});
+  lcADonut=mkChart('lc-a-donut',donutCfg(dA));
+  lcBDonut=mkChart('lc-b-donut',donutCfg(dB));
+  // Bar comparison
+  if(lcBarChart){lcBarChart.destroy();}
+  const barLabels=['Fat (R$k)','ROAS','CAC (R$)','CPL (R$)','Pitch D1%','Novos'];
+  const pD1A=(dA.v1/dA.cpl3*100);const pD1B=(dB.v1/dB.cpl3*100);
+  lcBarChart=mkChart('lc-bar',{type:'bar',data:{labels:barLabels,datasets:[
+    {label:dA.l,data:[+(dA.fat/1000).toFixed(0),dA.roas,dA.cac,dA.cpl,+pD1A.toFixed(2),dA.novos],backgroundColor:'rgba(201,146,42,0.7)',borderRadius:4},
+    {label:dB.l,data:[+(dB.fat/1000).toFixed(0),dB.roas,dB.cac,dB.cpl,+pD1B.toFixed(2),dB.novos],backgroundColor:'rgba(192,132,252,0.7)',borderRadius:4},
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#94a3b8',boxWidth:10}}},scales:{x:{grid:{color:gc},ticks:{color:tc}},y:{grid:{color:gc},ticks:{color:tc}}}}});
+  document.getElementById('l-compare').style.display='block';
+  document.getElementById('l-single').style.display='none';
+  window.dispatchEvent(new Event('resize'));
+}
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+function showSection(id,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('visible'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('section-'+id).classList.add('visible');
+  if(btn)btn.classList.add('active');
+  // Lazy build charts
+  if(id==='overview'&&!window._ovBuilt){buildOverviewCharts();window._ovBuilt=true;}
+  if(id==='debriefing'&&!window._dbBuilt){buildDebriefingCharts();window._dbBuilt=true;}
+  if(id==='historico'&&!window._histBuilt){buildHistoricoCharts();window._histBuilt=true;}
+  if(id==='jornada'&&!window._jornBuilt){buildJourneyStages();buildIshikawa();buildHeatmap('jorn-heatmap-table');window._jornBuilt=true;}
+  if(id==='lancamentos'&&!window._lBuilt){buildPills();window._lBuilt=true;}
+  window.dispatchEvent(new Event('resize'));
+}
+
+function switchTab(group,id,btn){
+  document.querySelectorAll(`#${group}-tabs .tab`).forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll(`[id^="${group}-"]`).forEach(p=>p.classList.remove('visible'));
+  if(btn)btn.classList.add('active');
+  const panel=document.getElementById(`${group}-${id}`);
+  if(panel)panel.classList.add('visible');
+  window.dispatchEvent(new Event('resize'));
+}
+
+
+// ============================================================
+// PERIOD SELECTOR — Comparação dinâmica de KPIs
+// ============================================================
+const TICKET = 3297;
+const LAST_IDX = 14; // Abr/26
+
+// Índice de comparação por período (para o último lançamento)
+const PERIOD_IDX = {
+  'anterior':  13,  // Fev/26
+  'trimestre': 12,  // Dez/25 (~4 meses)
+  'semestre':  11,  // Out/25 (~6 meses)
+  'ano':        8,  // Mar/25 (~12 meses)
+  'media':     null // usa média histórica
+};
+
+const PERIOD_LABEL = {
+  'anterior': 'Fev/26', 'trimestre': 'Dez/25',
+  'semestre': 'Out/25', 'ano': 'Mar/25', 'media': 'Média'
+};
+
+let currentPeriod = 'anterior';
+
+function pctDelta(a, b){ return ((a-b)/b*100); }
+function fmtDelta(v, invert=false){
+  const up = invert ? v<0 : v>0;
+  const cls = up ? 'green' : 'red';
+  const arrow = v>0 ? '▲' : '▼';
+  return {cls, text: arrow+' vs '+PERIOD_LABEL[currentPeriod]+': '+(v>0?'+':'')+v.toFixed(1)+'%'};
+}
+function fmtSub(cmp, avg, metricFn, fmtFn){
+  const cmpVal = cmp!==null ? fmtFn(metricFn(cmp)) : null;
+  const avgVal = fmtFn(avg);
+  if(cmp===null) return 'Média hist.: '+avgVal;
+  return PERIOD_LABEL[currentPeriod]+': '+cmpVal+' &nbsp;|&nbsp; Média: '+avgVal;
+}
+
+function refreshKPIComparisons(){
+  const last = L[LAST_IDX];
+  const cmpIdx = PERIOD_IDX[currentPeriod];
+  const cmp = cmpIdx !== null ? L[cmpIdx] : null;
+
+  // Helpers
+  const avFat   = L.reduce((s,d)=>s+d.fat,0)/L.length;
+  const avROAS  = L.reduce((s,d)=>s+d.roas,0)/L.length;
+  const avCAC   = L.reduce((s,d)=>s+d.cac,0)/L.length;
+  const avCPL   = L.reduce((s,d)=>s+d.cpl,0)/L.length;
+  const avTraf  = L.reduce((s,d)=>s+d.traf,0)/L.length;
+  const avNovos = L.reduce((s,d)=>s+d.novos,0)/L.length;
+  const avPitch = L.reduce((s,d)=>s+(d.v1/d.cpl3),0)/L.length;
+  const avgRevAluno = L.reduce((s,d)=>s+(d.fat/d.novos),0)/L.length;
+
+  const K = (v)=>'R$'+(v/1000).toFixed(0)+'k';
+  const R = (v)=>v.toFixed(2)+'x';
+  const C = (v)=>'R$'+v.toLocaleString('pt-BR',{maximumFractionDigits:0});
+  const Cf = (v)=>'R$'+v.toFixed(2);
+  const P = (v)=>(v*100).toFixed(2)+'%';
+
+  const metrics = [
+    {
+      ids:['fat'], sub:'db-fat-sub', delta:'db-fat-delta',
+      val:last.fat, cmpVal:cmp?.fat, avg:avFat,
+      fmt:K, invert:false,
+      ovSub:'kh-fat-sub', ovDelta:'kh-fat-delta'
+    },
+    {
+      ids:['roas'], sub:'db-roas-sub', delta:'db-roas-delta',
+      val:last.roas, cmpVal:cmp?.roas, avg:avROAS,
+      fmt:R, invert:false,
+      ovSub:'kh-roas-sub', ovDelta:'kh-roas-delta'
+    },
+    {
+      ids:['cac'], sub:'db-cac-sub', delta:'db-cac-delta',
+      val:last.cac, cmpVal:cmp?.cac, avg:avCAC,
+      fmt:C, invert:true, // lower is better
+      ovSub:'kh-cac-sub', ovDelta:'kh-cac-delta'
+    },
+    {
+      ids:['cpl'], sub:'db-cpl-sub', delta:'db-cpl-delta',
+      val:last.cpl, cmpVal:cmp?.cpl, avg:avCPL,
+      fmt:Cf, invert:true,
+    },
+    {
+      ids:['traf'], sub:'db-traf-sub', delta:'db-traf-delta',
+      val:last.traf, cmpVal:cmp?.traf, avg:avTraf,
+      fmt:K, invert:true,
+    },
+    {
+      ids:['novos'], sub:'db-novos-sub', delta:'db-novos-delta',
+      val:last.novos, cmpVal:cmp?.novos, avg:avNovos,
+      fmt:v=>v.toFixed(0), invert:false,
+    },
+  ];
+
+  metrics.forEach(m=>{
+    // Compute sub text
+    const cmpLabel = cmp ? PERIOD_LABEL[currentPeriod]+': '+ m.fmt(m.cmpVal) : null;
+    const avgLabel = 'Média: '+m.fmt(m.avg);
+    const subText  = currentPeriod==='media'
+      ? avgLabel
+      : (cmpLabel+' &nbsp;|&nbsp; '+avgLabel);
+
+    // Compute delta
+    let deltaEl = null, deltaClass = '', deltaText = '';
+    if(cmp && currentPeriod!=='media'){
+      const pct = pctDelta(m.val, m.cmpVal);
+      const good = m.invert ? (pct<0) : (pct>0);
+      deltaClass = good?'green':'red';
+      const arrow = pct>0?'▲':'▼';
+      deltaText = arrow+' vs '+PERIOD_LABEL[currentPeriod]+': '+(pct>0?'+':'')+pct.toFixed(1)+'%';
+    } else {
+      // vs media
+      const pct = pctDelta(m.val, m.avg);
+      const good = m.invert ? (pct<0) : (pct>0);
+      deltaClass = good?'green':'red';
+      const arrow = pct>0?'▲':'▼';
+      deltaText = arrow+' vs média: '+(pct>0?'+':'')+pct.toFixed(1)+'%';
+    }
+
+    // Update DB section
+    const subEl = document.getElementById(m.sub);
+    const dltEl = document.getElementById(m.delta);
+    if(subEl) subEl.innerHTML = subText;
+    if(dltEl){ dltEl.className='kpi-delta '+deltaClass; dltEl.textContent=deltaText; }
+
+    // Update Overview section
+    if(m.ovSub){ const e=document.getElementById(m.ovSub); if(e) e.innerHTML=subText; }
+    if(m.ovDelta){ const e=document.getElementById(m.ovDelta); if(e){ e.className='kpi-delta '+deltaClass; e.textContent=deltaText; }}
+  });
+
+  // Rev/Aluno
+  const revAluno = (last.fat/last.novos);
+  document.getElementById('ov-rev-aluno').textContent = 'R$'+Math.round(revAluno).toLocaleString('pt-BR');
+  const gapPct = ((revAluno-TICKET)/TICKET*100).toFixed(1);
+  document.getElementById('ov-rev-gap').innerHTML = 'Ticket R$3.297 <span style="color:'+(gapPct<0?'var(--rose)':'var(--green)')+'">'+
+    (gapPct>0?'▲ +':' ▼')+Math.abs(gapPct)+'%</span>';
+}
+
+function setPeriod(period, btn){
+  currentPeriod = period;
+  // Update active button — find all period-bars and update buttons
+  document.querySelectorAll('.period-btn').forEach(b=>{
+    const txt = {anterior:'vs Anterior',trimestre:'Trimestre',semestre:'Semestre',ano:'Ano Anterior',media:'Média Histórica'};
+    if(b.textContent.trim()===txt[period]) b.classList.add('active');
+    else b.classList.remove('active');
+  });
+  refreshKPIComparisons();
+}
+
+// ============================================================
+// THEME TOGGLE (NNG: User Control, Visibility of System Status)
+// ============================================================
+function getPreferredTheme(){
+  const saved=localStorage.getItem('pl-theme');
+  if(saved)return saved;
+  return window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
+}
+function applyTheme(theme){
+  document.documentElement.setAttribute('data-theme',theme);
+  const btn=document.getElementById('theme-btn');
+  if(btn){
+    btn.textContent=theme==='dark'?'🌙':'☀️';
+    btn.title='Modo '+(theme==='dark'?'escuro — clique para claro':'claro — clique para escuro');
+  }
+  const isDark=theme==='dark';
+  Chart.defaults.color=isDark?'#7a9470':'#5a6e52';
+  Chart.defaults.borderColor=isDark?'rgba(255,255,255,0.05)':'rgba(45,90,53,0.08)';
+  try{
+    Object.values(Chart.instances).forEach(c=>{
+      try{
+        c.options.scales&&Object.values(c.options.scales).forEach(s=>{
+          if(s.grid)s.grid.color=isDark?'rgba(255,255,255,0.05)':'rgba(45,90,53,0.08)';
+          if(s.ticks)s.ticks.color=isDark?'#7a9470':'#5a6e52';
+        });
+        c.update('none');
+      }catch(e){}
+    });
+  }catch(e){}
+}
+function toggleTheme(){
+  const cur=document.documentElement.getAttribute('data-theme')||'dark';
+  const next=cur==='dark'?'light':'dark';
+  localStorage.setItem('pl-theme',next);
+  applyTheme(next);
+}
+// Atalho teclado T (NNG: flexibilidade e eficiência de uso)
+document.addEventListener('keydown',e=>{
+  if(e.key==='t'&&!e.ctrlKey&&!e.metaKey&&e.target.tagName!=='INPUT')toggleTheme();
+});
+
+// ============================================================
+// INIT
+// ============================================================
+window.addEventListener('DOMContentLoaded',()=>{
+  applyTheme(getPreferredTheme());
+  refreshKPIComparisons();
+  buildOverviewCharts();
+  window._ovBuilt=true;
+});
+
+// ===== VERSION PANEL =====
+function toggleVerDrawer(){
+  const d=document.getElementById('ver-drawer');
+  if(!d)return;
+  const isOpen=d.classList.contains('open');
+  d.style.display='flex';
+  requestAnimationFrame(()=>d.classList.toggle('open',!isOpen));
+  if(!isOpen) d.querySelector('.ver-close').focus();
+}
+// Close on outside click
+document.addEventListener('click',e=>{
+  const drawer=document.getElementById('ver-drawer');
+  const badge=document.querySelector('.ver-dot');
+  if(drawer&&drawer.classList.contains('open')&&!drawer.contains(e.target)&&!badge.contains(e.target))
+    drawer.classList.remove('open');
+});
+// Keyboard: Escape to close
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){const d=document.getElementById('ver-drawer');if(d)d.classList.remove('open');}
+});
+
+</script>
+
+<!-- VERSION BADGE -->
+<div class="ver-badge">
+  <div class="ver-dot" onclick="toggleVerDrawer()" title="Changelog · v3.1" role="button" tabindex="0" aria-label="Ver changelog v3.1">v3.1</div>
+</div>
+<div class="ver-drawer" id="ver-drawer" role="dialog" aria-label="Changelog">
+  <div class="ver-drawer-hdr">
+    <div class="ver-drawer-title">Changelog <span>v3.1 · atual</span></div>
+    <button class="ver-close" onclick="toggleVerDrawer()" aria-label="Fechar">✕</button>
+  </div>
+  <div class="ver-drawer-body">
+    <div class="ver-entry">
+  <div class="ver-entry-hdr">
+    <span class="ver-tag">v3.1 · atual</span>
+    <span class="ver-date">Mai/26</span>
+  </div>
+  <div class="ver-item">Responsivo mobile (768px / 480px / 1024px)</div><div class="ver-item">Seletor de período nos KPIs: vs Anterior, Trimestre, Semestre, Ano, Média</div><div class="ver-item">Padrão uniforme: Ref: X | Média: Y / ▼ delta%</div><div class="ver-item">Ticket médio R$3.297 + Rev/Aluno no Overview</div><div class="ver-item">Futuros corrigido: PSL, boleto e Eduzz (não só boleto)</div><div class="ver-item">Gráfico ROAS renomeado: 'Histórico'</div>
+</div><div class="ver-sep"></div><div class="ver-entry">
+  <div class="ver-entry-hdr">
+    <span class="ver-tag old">v3.0</span>
+    <span class="ver-date">Mai/26</span>
+  </div>
+  <div class="ver-item">Split em 2 sites: Dashboard (análise) + Plano (TOC)</div><div class="ver-item">Identidade visual Agro Ibex: verde floresta + dourado</div><div class="ver-item">Light / Dark mode com preferência salva</div><div class="ver-item">Dados atualizados da planilha v2 (Abr/26 revisado)</div><div class="ver-item">Seção Debriefing dedicada ao último lançamento</div><div class="ver-item">Jornada do Cliente E1-E8 + Diagrama de Ishikawa</div><div class="ver-item">Por Lançamento: individual e comparação</div>
+</div><div class="ver-sep"></div><div class="ver-entry">
+  <div class="ver-entry-hdr">
+    <span class="ver-tag old">v2.0</span>
+    <span class="ver-date">Abr/26</span>
+  </div>
+  <div class="ver-item">Reescrita completa com 20 alterações</div><div class="ver-item">KPI deltas Abr/26 vs Fev/26 (todos os 7 KPIs)</div><div class="ver-item">Pitch D1 = v1dia/CPL3 (métrica correta)</div><div class="ver-item">9 gráficos em 3 grupos: receita, funil, 4 frentes</div><div class="ver-item">5 teses TOC com veredictos</div><div class="ver-item">3 visões do funil: jornada, heatmap, restrição</div><div class="ver-item">V4: Aquisição, Engajamento, Monetização, Retenção</div>
+</div><div class="ver-sep"></div><div class="ver-entry">
+  <div class="ver-entry-hdr">
+    <span class="ver-tag old">v1.0</span>
+    <span class="ver-date">Abr/26</span>
+  </div>
+  <div class="ver-item">Dashboard único com TOC + todos os gráficos</div><div class="ver-item">15 lançamentos Ago/23 → Abr/26</div><div class="ver-item">Análise ROAS, CAC, CPL, funil completo</div>
+</div>
+  </div>
+</div>
+
+</body>
+</html>
