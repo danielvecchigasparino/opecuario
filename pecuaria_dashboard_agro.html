@@ -320,6 +320,9 @@ main{padding-top:var(--nav-h);position:relative;z-index:1;}
 .glow-red{animation:pulse-red 3s ease-in-out infinite;}
 @keyframes pulse-v{0%,100%{box-shadow:0 0 0 0 rgba(201,146,42,0);} 50%{box-shadow:0 0 12px 3px rgba(201,146,42,.25);}}
 .glow-v{animation:pulse-v 3s ease-in-out infinite;}
+/* Fix: stat-v usa text-shadow em vez de box-shadow pra evitar retângulo branco */
+@keyframes pulse-red-text{0%,100%{text-shadow:0 0 0 rgba(244,63,94,0);} 50%{text-shadow:0 0 12px rgba(244,63,94,.6);}}
+.stat-v.glow-red{animation:pulse-red-text 3s ease-in-out infinite;box-shadow:none!important;}
 
 /* ===== SMOOTH THEME TRANSITION (NNG: visibility of state) ===== */
 *, *::before, *::after {
