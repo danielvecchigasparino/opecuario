@@ -618,6 +618,9 @@ button:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
     <button class="nav-btn" onclick="showSection('historico',this)">📈 Histórico</button>
     <button class="nav-btn" onclick="showSection('jornada',this)">🗺️ Jornada do Cliente</button>
     <button class="nav-btn" onclick="showSection('lancamentos',this)">🔬 Por Lançamento</button>
+    <button class="nav-btn" onclick="showSection('funil',this)">🔽 Funil CPL</button>
+    <button class="nav-btn" onclick="showSection('receita',this)">💰 Receita+</button>
+    <button class="nav-btn" onclick="showSection('volume',this)">👥 Leads & Volume</button>
   </div>
   <div class="nav-right">
     <a href="pecuaria_plano_v3.html" class="plano-link">📋 Plano de Ação →</a>
@@ -1103,6 +1106,154 @@ button:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
 </div>
 </section>
 
+
+<!-- ════════════════════════════════════════════════════════
+     SEÇÃO: FUNIL CPL
+════════════════════════════════════════════════════════ -->
+<section id="section-funil" class="section">
+<div style="padding:24px 20px;max-width:1400px;margin:0 auto;">
+  <h2 style="font-size:20px;font-weight:800;color:var(--text);margin-bottom:4px;">🔽 Funil de Conversão CPL</h2>
+  <p style="color:var(--text-muted);font-size:13px;margin-bottom:20px;">Participantes por etapa, taxas de conversão e devolução — 15 lançamentos</p>
+
+  <!-- KPI Cards Funil -->
+  <div class="g4" style="margin-bottom:24px;">
+    <div class="kpi-hero"><div class="kpi-label">Total Leads Geral</div><div class="kpi-value" style="color:var(--gold)">177.2k</div><div class="kpi-sub">somados os 15 lançamentos</div></div>
+    <div class="kpi-hero"><div class="kpi-label">Total CPL 3</div><div class="kpi-value" style="color:var(--forest-light)">25.913</div><div class="kpi-sub">participantes finais</div></div>
+    <div class="kpi-hero"><div class="kpi-label">Vendas 1º Dia</div><div class="kpi-value" style="color:var(--gold)">1.712</div><div class="kpi-sub">CPL3 → pitch de vendas</div></div>
+    <div class="kpi-hero"><div class="kpi-label">Taxa Leads → Alunos</div><div class="kpi-value" style="color:var(--rose)">1,84%</div><div class="kpi-sub">média histórica</div></div>
+  </div>
+
+  <!-- Funil visual -->
+  <div class="card" style="margin-bottom:20px;padding:24px;">
+    <div style="font-weight:700;font-size:14px;color:var(--text);margin-bottom:16px;">Funil Médio Histórico (% do topo)</div>
+    <div id="funil-bars"></div>
+  </div>
+
+  <!-- Charts Row 1 -->
+  <div class="g2" style="margin-bottom:20px;">
+    <div class="card" style="padding:20px;">
+      <div style="font-weight:700;font-size:13px;color:var(--text);margin-bottom:12px;">Participantes CPL 1 / 2 / 3 por Lançamento</div>
+      <canvas id="f-cpl-stages" height="220"></canvas>
+    </div>
+    <div class="card" style="padding:20px;">
+      <div style="font-weight:700;font-size:13px;color:var(--text);margin-bottom:12px;">Evolução das Taxas de Conversão</div>
+      <canvas id="f-conv-rates" height="220"></canvas>
+    </div>
+  </div>
+
+  <!-- Charts Row 2 -->
+  <div class="g2" style="margin-bottom:20px;">
+    <div class="card" style="padding:20px;">
+      <div style="font-weight:700;font-size:13px;color:var(--text);margin-bottom:12px;">Vendas 1º Dia vs Novos Alunos</div>
+      <canvas id="f-v1-alunos" height="220"></canvas>
+    </div>
+    <div class="card" style="padding:20px;">
+      <div style="font-weight:700;font-size:13px;color:var(--text);margin-bottom:12px;">% Pedidos de Devolução por Lançamento</div>
+      <canvas id="f-devol-pct" height="220"></canvas>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     SEÇÃO: RECEITA DETALHADA
+════════════════════════════════════════════════════════ -->
+<section id="section-receita" class="section">
+<div style="padding:24px 20px;max-width:1400px;margin:0 auto;">
+  <h2 style="font-size:20px;font-weight:800;color:var(--text);margin-bottom:4px;">💰 Receita Detalhada</h2>
+  <p style="color:var(--text-muted);font-size:13px;margin-bottom:20px;">Breakdown por origem de pagamento, lucro imediato e add-ons — 15 lançamentos</p>
+
+  <!-- KPI Cards Receita -->
+  <div class="g4" style="margin-bottom:24px;">
+    <div class="kpi-hero"><div class="kpi-label">Total PIX Direto</div><div class="kpi-value" style="color:var(--gold)">R$477k</div><div class="kpi-sub">faturamento fora plataforma</div></div>
+    <div class="kpi-hero"><div class="kpi-label">Total Eduzz</div><div class="kpi-value" style="color:var(--forest-light)">R$6,05M</div><div class="kpi-sub">faturamento imediato</div></div>
+    <div class="kpi-hero"><div class="kpi-label">Lucro Total (Imediato)</div><div class="kpi-value" style="color:var(--gold)">R$4,31M</div><div class="kpi-sub">faturamento − tráfego</div></div>
+    <div class="kpi-hero"><div class="kpi-label">Total Add-ons</div><div class="kpi-value" style="color:var(--forest-light)">R$178k</div><div class="kpi-sub">OB + Upsell + DS + Renovação</div></div>
+  </div>
+
+  <!-- Chart: PIX vs Eduzz -->
+  <div class="card" style="margin-bottom:20px;padding:20px;">
+    <div style="font-weight:700;font-size:13px;color:var(--text);margin-bottom:12px;">Faturamento PIX Direto vs Eduzz por Lançamento</div>
+    <canvas id="r-pix-eduzz" height="200"></canvas>
+  </div>
+
+  <!-- Charts Row -->
+  <div class="g2" style="margin-bottom:20px;">
+    <div class="card" style="padding:20px;">
+      <div style="font-weight:700;font-size:13px;color:var(--text);margin-bottom:12px;">Lucro Imediato por Lançamento (Fat. − Tráfego)</div>
+      <canvas id="r-lucro" height="220"></canvas>
+    </div>
+    <div class="card" style="padding:20px;">
+      <div style="font-weight:700;font-size:13px;color:var(--text);margin-bottom:12px;">Add-ons: Order Bump / Upsell / Downsell / Renovação</div>
+      <canvas id="r-addons-detail" height="220"></canvas>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     SEÇÃO: LEADS & VOLUME
+════════════════════════════════════════════════════════ -->
+<section id="section-volume" class="section">
+<div style="padding:24px 20px;max-width:1400px;margin:0 auto;">
+  <h2 style="font-size:20px;font-weight:800;color:var(--text);margin-bottom:4px;">👥 Leads & Volume</h2>
+  <p style="color:var(--text-muted);font-size:13px;margin-bottom:20px;">Captação total vs WhatsApp, renovações, devoluções e canais — 15 lançamentos</p>
+
+  <!-- KPI Cards Volume -->
+  <div class="g4" style="margin-bottom:24px;">
+    <div class="kpi-hero"><div class="kpi-label">Total Leads Geral</div><div class="kpi-value" style="color:var(--gold)">177.2k</div><div class="kpi-sub">todos os canais</div></div>
+    <div class="kpi-hero"><div class="kpi-label">Leads WhatsApp</div><div class="kpi-value" style="color:var(--forest-light)">166.7k</div><div class="kpi-sub">94,1% dos leads totais</div></div>
+    <div class="kpi-hero"><div class="kpi-label">Total Renovações</div><div class="kpi-value" style="color:var(--gold)">182</div><div class="kpi-sub">alunos que renovaram</div></div>
+    <div class="kpi-hero"><div class="kpi-label">Total Devoluções</div><div class="kpi-value" style="color:var(--rose)">98</div><div class="kpi-sub">pedidos reembolso</div></div>
+  </div>
+
+  <!-- Chart: Leads Total vs WhatsApp -->
+  <div class="card" style="margin-bottom:20px;padding:20px;">
+    <div style="font-weight:700;font-size:13px;color:var(--text);margin-bottom:12px;">Leads Geral vs Leads WhatsApp por Lançamento</div>
+    <canvas id="v-leads-wa" height="200"></canvas>
+  </div>
+
+  <!-- Charts Row -->
+  <div class="g2" style="margin-bottom:20px;">
+    <div class="card" style="padding:20px;">
+      <div style="font-weight:700;font-size:13px;color:var(--text);margin-bottom:12px;">Renovações por Lançamento</div>
+      <canvas id="v-renovacoes" height="220"></canvas>
+    </div>
+    <div class="card" style="padding:20px;">
+      <div style="font-weight:700;font-size:13px;color:var(--text);margin-bottom:12px;">Devoluções por Lançamento</div>
+      <canvas id="v-devolucoes" height="220"></canvas>
+    </div>
+  </div>
+
+  <!-- Canais note -->
+  <div class="card" style="padding:20px;">
+    <div style="font-weight:700;font-size:13px;color:var(--text);margin-bottom:8px;">📡 Canais de Tráfego (Abr/26 — único lançamento com dados por canal)</div>
+    <div class="g2" style="gap:12px;">
+      <div style="background:var(--card);border:1px solid var(--card-border);border-radius:8px;padding:14px;">
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">PAGE VIEW META ADS</div>
+        <div style="font-size:22px;font-weight:800;color:var(--forest-light)">75.882</div>
+        <div style="font-size:11px;color:var(--text-muted)">45,7% do page view total</div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--card-border);border-radius:8px;padding:14px;">
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">PAGE VIEW GOOGLE ADS</div>
+        <div style="font-size:22px;font-weight:800;color:var(--gold)">88.647</div>
+        <div style="font-size:11px;color:var(--text-muted)">53,3% do page view total</div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--card-border);border-radius:8px;padding:14px;">
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">PAGE VIEW TIKTOK ADS</div>
+        <div style="font-size:22px;font-weight:800;color:var(--text-muted)">1.641</div>
+        <div style="font-size:11px;color:var(--text-muted)">1,0% do page view total</div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--card-border);border-radius:8px;padding:14px;">
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">PAGE VIEW TOTAL (ABR/26)</div>
+        <div style="font-size:22px;font-weight:800;color:var(--text)">166.170</div>
+        <div style="font-size:11px;color:var(--text-muted)">Total captado no período</div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--text-muted);margin-top:12px;">⚠️ Dados de canais disponíveis apenas para Abr/26. Preencha a aba CANAIS na planilha para habilitar análise histórica por canal.</p>
+  </div>
+</div>
+</section>
 </main>
 
 <div class="tooltip-card" id="tt"></div>
@@ -1112,35 +1263,35 @@ button:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
 // DATA
 // ============================================================
 const L=[
-  {l:"Ago/23", traf:5407,   cap:3857,   fat:49896,  fatImm:49896,  fatFut:0,      addons:0,     ob:0,    ds:0,     up:0,   roas:9.23, cpl:4.41,  cac:108,  leads:875,   cpl1:250,  cpl2:220,  cpl3:190,  v1:7,   novos:50,  renov:0,  devol:0,  phase:1,
+  {l:"Ago/23", pix:0, eduzz:0, lucro:-5407, leadsWA:875, traf:5407,   cap:3857,   fat:49896,  fatImm:49896,  fatFut:0,      addons:0,     ob:0,    ds:0,     up:0,   roas:9.23, cpl:4.41,  cac:108,  leads:875,   cpl1:250,  cpl2:220,  cpl3:190,  v1:7,   novos:50,  renov:0,  devol:0,  phase:1,
     eff:{lc1:.286,c1c2:.880,c2c3:.864,c3n:.263,pitch:.037}},
-  {l:"Dez/23", traf:32466,  cap:21221,  fat:95822,  fatImm:86240,  fatFut:9582,   addons:4367,  ob:0,    ds:11000, up:0,   roas:2.95, cpl:6.30,  cac:485,  leads:3432,  cpl1:441,  cpl2:451,  cpl3:388,  v1:33,  novos:67,  renov:15, devol:4,  phase:1,
+  {l:"Dez/23", pix:7985, eduzz:78255, lucro:58141, leadsWA:3371, traf:32466,  cap:21221,  fat:95822,  fatImm:86240,  fatFut:9582,   addons:4367,  ob:0,    ds:11000, up:0,   roas:2.95, cpl:6.30,  cac:485,  leads:3432,  cpl1:441,  cpl2:451,  cpl3:388,  v1:33,  novos:67,  renov:15, devol:4,  phase:1,
     eff:{lc1:.131,c1c2:1.02,c2c3:.860,c3n:.173,pitch:.085}},
-  {l:"Fev/24", traf:52701,  cap:35522,  fat:346581, fatImm:312435, fatFut:34146,  addons:5955,  ob:0,    ds:15000, up:0,   roas:6.58, cpl:5.36,  cac:260,  leads:6633,  cpl1:2048, cpl2:1434, cpl3:1398, v1:117, novos:203, renov:0,  devol:6,  phase:1,
+  {l:"Fev/24", pix:13279, eduzz:299156, lucro:265689, leadsWA:6633, traf:52701,  cap:35522,  fat:346581, fatImm:312435, fatFut:34146,  addons:5955,  ob:0,    ds:15000, up:0,   roas:6.58, cpl:5.36,  cac:260,  leads:6633,  cpl1:2048, cpl2:1434, cpl3:1398, v1:117, novos:203, renov:0,  devol:6,  phase:1,
     eff:{lc1:.309,c1c2:.700,c2c3:.975,c3n:.145,pitch:.084}},
-  {l:"Abr/24", traf:86220,  cap:63532,  fat:427019, fatImm:405939, fatFut:21080,  addons:794,   ob:7128, ds:794,   up:0,   roas:4.95, cpl:4.61,  cac:419,  leads:14999, cpl1:2983, cpl2:2149, cpl3:1793, v1:117, novos:206, renov:0,  devol:7,  phase:2,
+  {l:"Abr/24", pix:8788, eduzz:397151, lucro:320513, leadsWA:13796, traf:86220,  cap:63532,  fat:427019, fatImm:405939, fatFut:21080,  addons:794,   ob:7128, ds:794,   up:0,   roas:4.95, cpl:4.61,  cac:419,  leads:14999, cpl1:2983, cpl2:2149, cpl3:1793, v1:117, novos:206, renov:0,  devol:7,  phase:2,
     eff:{lc1:.216,c1c2:.720,c2c3:.835,c3n:.115,pitch:.065}},
-  {l:"Jun/24", traf:136654, cap:90848,  fat:373133, fatImm:317798, fatFut:55335,  addons:17318, ob:5940, ds:9330,  up:7988,roas:2.73, cpl:9.02,  cac:804,  leads:13495, cpl1:1907, cpl2:1615, cpl3:1291, v1:92,  novos:170, renov:8,  devol:5,  phase:2,
+  {l:"Jun/24", pix:15379, eduzz:302419, lucro:198462, leadsWA:10071, traf:136654, cap:90848,  fat:373133, fatImm:317798, fatFut:55335,  addons:17318, ob:5940, ds:9330,  up:7988,roas:2.73, cpl:9.02,  cac:804,  leads:13495, cpl1:1907, cpl2:1615, cpl3:1291, v1:92,  novos:170, renov:8,  devol:5,  phase:2,
     eff:{lc1:.189,c1c2:.847,c2c3:.799,c3n:.132,pitch:.071}},
-  {l:"Ago/24", traf:129781, cap:87420,  fat:504500, fatImm:475736, fatFut:28764,  addons:22684, ob:7425, ds:8705,  up:13979,roas:3.89,cpl:7.89, cac:579,  leads:12656, cpl1:2699, cpl2:2086, cpl3:2026, v1:132, novos:224, renov:0,  devol:4,  phase:2,
+  {l:"Ago/24", pix:20670, eduzz:455066, lucro:368639, leadsWA:11075, traf:129781, cap:87420,  fat:504500, fatImm:475736, fatFut:28764,  addons:22684, ob:7425, ds:8705,  up:13979,roas:3.89,cpl:7.89, cac:579,  leads:12656, cpl1:2699, cpl2:2086, cpl3:2026, v1:132, novos:224, renov:0,  devol:4,  phase:2,
     eff:{lc1:.244,c1c2:.773,c2c3:.971,c3n:.111,pitch:.065}},
-  {l:"Out/24", traf:179620, cap:114514, fat:527622, fatImm:485173, fatFut:42449,  addons:2000,  ob:5468, ds:0,     up:2000,roas:2.94, cpl:7.76,  cac:813,  leads:13252, cpl1:3251, cpl2:2231, cpl3:2102, v1:116, novos:221, renov:4,  devol:11, phase:2,
+  {l:"Out/24", pix:37702, eduzz:447471, lucro:307553, leadsWA:14756, traf:179620, cap:114514, fat:527622, fatImm:485173, fatFut:42449,  addons:2000,  ob:5468, ds:0,     up:2000,roas:2.94, cpl:7.76,  cac:813,  leads:13252, cpl1:3251, cpl2:2231, cpl3:2102, v1:116, novos:221, renov:4,  devol:11, phase:2,
     eff:{lc1:.220,c1c2:.686,c2c3:.942,c3n:.105,pitch:.055}},
-  {l:"Jan/25", traf:206238, cap:149194, fat:534783, fatImm:491883, fatFut:42900,  addons:16905, ob:6635, ds:9758,  up:7147,roas:2.59, cpl:10.78, cac:946,  leads:15376, cpl1:3524, cpl2:2353, cpl3:2114, v1:136, novos:218, renov:2,  devol:0,  phase:3,
+  {l:"Jan/25", pix:22880, eduzz:469003, lucro:302550, leadsWA:13842, traf:206238, cap:149194, fat:534783, fatImm:491883, fatFut:42900,  addons:16905, ob:6635, ds:9758,  up:7147,roas:2.59, cpl:10.78, cac:946,  leads:15376, cpl1:3524, cpl2:2353, cpl3:2114, v1:136, novos:218, renov:2,  devol:0,  phase:3,
     eff:{lc1:.255,c1c2:.668,c2c3:.898,c3n:.103,pitch:.064}},
-  {l:"Mar/25", traf:165164, cap:116500, fat:500983, fatImm:482804, fatFut:18179,  addons:34358, ob:8503, ds:20213, up:14145,roas:3.03,cpl:11.90, cac:765,  leads:12383, cpl1:2923, cpl2:2600, cpl3:2277, v1:125, novos:216, renov:25, devol:7,  phase:3,
+  {l:"Mar/25", pix:25970, eduzz:456834, lucro:351998, leadsWA:9790, traf:165164, cap:116500, fat:500983, fatImm:482804, fatFut:18179,  addons:34358, ob:8503, ds:20213, up:14145,roas:3.03,cpl:11.90, cac:765,  leads:12383, cpl1:2923, cpl2:2600, cpl3:2277, v1:125, novos:216, renov:25, devol:7,  phase:3,
     eff:{lc1:.299,c1c2:.889,c2c3:.876,c3n:.095,pitch:.055}},
-  {l:"Jun/25", traf:199848, cap:134728, fat:690634, fatImm:652925, fatFut:37709,  addons:17425, ob:9801, ds:17425, up:0,   roas:3.46, cpl:10.67, cac:689,  leads:15636, cpl1:3116, cpl2:2554, cpl3:2105, v1:159, novos:290, renov:36, devol:7,  phase:3,
+  {l:"Jun/25", pix:76071, eduzz:576854, lucro:470502, leadsWA:12621, traf:199848, cap:134728, fat:690634, fatImm:652925, fatFut:37709,  addons:17425, ob:9801, ds:17425, up:0,   roas:3.46, cpl:10.67, cac:689,  leads:15636, cpl1:3116, cpl2:2554, cpl3:2105, v1:159, novos:290, renov:36, devol:7,  phase:3,
     eff:{lc1:.247,c1c2:.820,c2c3:.824,c3n:.138,pitch:.076}},
-  {l:"Ago/25", traf:213160, cap:153803, fat:604917, fatImm:569975, fatFut:34942,  addons:9758,  ob:5346, ds:9758,  up:0,   roas:2.84, cpl:12.96, cac:888,  leads:12679, cpl1:2579, cpl2:2143, cpl3:1713, v1:126, novos:240, renov:49, devol:6,  phase:3,
+  {l:"Ago/25", pix:44506, eduzz:525469, lucro:366573, leadsWA:11864, traf:213160, cap:153803, fat:604917, fatImm:569975, fatFut:34942,  addons:9758,  ob:5346, ds:9758,  up:0,   roas:2.84, cpl:12.96, cac:888,  leads:12679, cpl1:2579, cpl2:2143, cpl3:1713, v1:126, novos:240, renov:49, devol:6,  phase:3,
     eff:{lc1:.217,c1c2:.831,c2c3:.799,c3n:.140,pitch:.074}},
-  {l:"Out/25", traf:200422, cap:147749, fat:715333, fatImm:624908, fatFut:90425,  addons:6273,  ob:9207, ds:6273,  up:0,   roas:3.57, cpl:12.59, cac:706,  leads:12591, cpl1:2444, cpl2:1937, cpl3:1643, v1:173, novos:284, renov:9,  devol:18, phase:3,
+  {l:"Out/25", pix:68019, eduzz:556889, lucro:430759, leadsWA:11734, traf:200422, cap:147749, fat:715333, fatImm:624908, fatFut:90425,  addons:6273,  ob:9207, ds:6273,  up:0,   roas:3.57, cpl:12.59, cac:706,  leads:12591, cpl1:2444, cpl2:1937, cpl3:1643, v1:173, novos:284, renov:9,  devol:18, phase:3,
     eff:{lc1:.208,c1c2:.793,c2c3:.848,c3n:.173,pitch:.105}},
-  {l:"Dez/25", traf:150522, cap:112953, fat:233619, fatImm:198078, fatFut:35541,  addons:4880,  ob:2079, ds:4880,  up:0,   roas:1.55, cpl:14.31, cac:1552, leads:10291, cpl1:1693, cpl2:1176, cpl3:1026, v1:53,  novos:97,  renov:1,  devol:0,  phase:3,
+  {l:"Dez/25", pix:3160, eduzz:194918, lucro:52436, leadsWA:7893, traf:150522, cap:112953, fat:233619, fatImm:198078, fatFut:35541,  addons:4880,  ob:2079, ds:4880,  up:0,   roas:1.55, cpl:14.31, cac:1552, leads:10291, cpl1:1693, cpl2:1176, cpl3:1026, v1:53,  novos:97,  renov:1,  devol:0,  phase:3,
     eff:{lc1:.214,c1c2:.695,c2c3:.872,c3n:.095,pitch:.052}},
-  {l:"Fev/26", traf:299922, cap:233937, fat:888179, fatImm:834059, fatFut:54120,  addons:4182,  ob:4455, ds:6,     up:0,   roas:2.96, cpl:12.25, cac:964,  leads:22580, cpl1:4715, cpl2:3885, cpl3:3192, v1:189, novos:311, renov:17, devol:8,  phase:3,
+  {l:"Fev/26", pix:83913, eduzz:750146, lucro:538318, leadsWA:19100, traf:299922, cap:233937, fat:888179, fatImm:834059, fatFut:54120,  addons:4182,  ob:4455, ds:6,     up:0,   roas:2.96, cpl:12.25, cac:964,  leads:22580, cpl1:4715, cpl2:3885, cpl3:3192, v1:189, novos:311, renov:17, devol:8,  phase:3,
     eff:{lc1:.247,c1c2:.824,c2c3:.822,c3n:.097,pitch:.059}},
-  {l:"Abr/26", traf:339357, cap:261132, fat:691685, fatImm:588329, fatFut:103356, addons:31185, ob:1474, ds:31185, up:0,   roas:2.04, cpl:13.56, cac:1234, leads:22270, cpl1:3777, cpl2:3048, cpl3:2655, v1:137, novos:275, renov:16, devol:5,  phase:3,
+  {l:"Abr/26", pix:49026, eduzz:539303, lucro:280157, leadsWA:19258, traf:339357, cap:261132, fat:691685, fatImm:588329, fatFut:103356, addons:31185, ob:1474, ds:31185, up:0,   roas:2.04, cpl:13.56, cac:1234, leads:22270, cpl1:3777, cpl2:3048, cpl3:2655, v1:137, novos:275, renov:16, devol:5,  phase:3,
     eff:{lc1:.196,c1c2:.807,c2c3:.871,c3n:.104,pitch:.052}},
 ];
 
@@ -1692,6 +1843,104 @@ function renderCompare(iA,iB){
   window.dispatchEvent(new Event('resize'));
 }
 
+
+
+// ============================================================
+// FUNIL CPL CHARTS
+// ============================================================
+function buildFunilCharts(){
+  // Funil visual bars
+  const stages = [
+    {label:'Leads Geral',     val:177200, pct:100,   color:'var(--gold)'},
+    {label:'CPL 1',           val:38350,  pct:21.6,  color:'var(--forest-light)'},
+    {label:'CPL 2',           val:29882,  pct:16.9,  color:'var(--forest-light)'},
+    {label:'CPL 3',           val:25913,  pct:14.6,  color:'var(--forest-light)'},
+    {label:'Alunos',          val:3072,   pct:1.73,  color:'var(--rose)'},
+  ];
+  const wrap = document.getElementById('funil-bars');
+  if(wrap) wrap.innerHTML = stages.map(s=>`
+    <div style="margin-bottom:10px;">
+      <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+        <span style="font-size:12px;font-weight:600;color:var(--text)">${s.label}</span>
+        <span style="font-size:12px;color:var(--text-muted)">${s.val.toLocaleString('pt-BR')} &nbsp;|&nbsp; ${s.pct}%</span>
+      </div>
+      <div style="height:28px;background:var(--card);border-radius:6px;overflow:hidden;border:1px solid var(--border);">
+        <div style="height:100%;width:${s.pct}%;background:${s.color};border-radius:6px;transition:width .6s ease;opacity:0.85;"></div>
+      </div>
+    </div>`).join('');
+
+  // CPL Stages per launch (grouped bar)
+  mkChart('f-cpl-stages',{type:'bar',data:{labels:LABELS,datasets:[
+    {label:'CPL 1',data:L.map(d=>d.cpl1),backgroundColor:'rgba(45,90,53,0.7)',borderRadius:3},
+    {label:'CPL 2',data:L.map(d=>d.cpl2),backgroundColor:'rgba(74,154,90,0.7)',borderRadius:3},
+    {label:'CPL 3',data:L.map(d=>d.cpl3),backgroundColor:'rgba(201,146,42,0.7)',borderRadius:3},
+  ]},options:{responsive:true,plugins:{legend:{labels:{color:'var(--text-muted)',boxWidth:12}}},scales:{x:{ticks:{color:tc},grid:{color:gc}},y:{ticks:{color:tc},grid:{color:gc}}}}});
+
+  // Conversion rates over time (line)
+  mkChart('f-conv-rates',{type:'line',data:{labels:LABELS,datasets:[
+    {label:'Leads→CPL1 %',data:L.map(d=>+(d.eff.lc1*100).toFixed(1)),borderColor:'#c9922a',backgroundColor:'rgba(201,146,42,0.08)',tension:0.3,fill:false,pointRadius:3,borderWidth:2},
+    {label:'CPL1→CPL2 %',data:L.map(d=>+(d.eff.c1c2*100).toFixed(1)),borderColor:'#4a9a5a',backgroundColor:'rgba(74,154,90,0.08)',tension:0.3,fill:false,pointRadius:3,borderWidth:2},
+    {label:'CPL2→CPL3 %',data:L.map(d=>+(d.eff.c2c3*100).toFixed(1)),borderColor:'#2d5a35',backgroundColor:'rgba(45,90,53,0.08)',tension:0.3,fill:false,pointRadius:3,borderWidth:2},
+    {label:'CPL3→Alunos %',data:L.map(d=>+(d.eff.c3n*100).toFixed(1)),borderColor:'#d95f35',backgroundColor:'rgba(217,95,53,0.08)',tension:0.3,fill:false,pointRadius:3,borderWidth:2},
+  ]},options:{responsive:true,plugins:{legend:{labels:{color:'var(--text-muted)',boxWidth:12}}},scales:{x:{ticks:{color:tc},grid:{color:gc}},y:{ticks:{color:tc,callback:v=>v+'%'},grid:{color:gc}}}}});
+
+  // Vendas 1º dia vs Novos Alunos
+  mkChart('f-v1-alunos',{type:'bar',data:{labels:LABELS,datasets:[
+    {label:'Novos Alunos',data:L.map(d=>d.novos),backgroundColor:'rgba(45,90,53,0.7)',borderRadius:3},
+    {label:'Vendas 1º Dia',data:L.map(d=>d.v1),backgroundColor:'rgba(201,146,42,0.8)',borderRadius:3},
+  ]},options:{responsive:true,plugins:{legend:{labels:{color:'var(--text-muted)',boxWidth:12}}},scales:{x:{ticks:{color:tc},grid:{color:gc}},y:{ticks:{color:tc},grid:{color:gc}}}}});
+
+  // % Devolução
+  mkChart('f-devol-pct',{type:'bar',data:{labels:LABELS,datasets:[
+    {label:'% Devolução',data:L.map(d=>d.novos>0?+((d.devol/d.novos)*100).toFixed(2):0),backgroundColor:L.map(d=>{const p=d.novos>0?(d.devol/d.novos)*100:0;return p>5?'rgba(244,63,94,0.8)':p>3?'rgba(245,158,11,0.8)':'rgba(74,154,90,0.7)';}),borderRadius:4},
+  ]},options:{responsive:true,plugins:{legend:{display:false}},scales:{x:{ticks:{color:tc},grid:{color:gc}},y:{ticks:{color:tc,callback:v=>v+'%'},grid:{color:gc}}}}});
+}
+
+// ============================================================
+// RECEITA DETALHADA CHARTS
+// ============================================================
+function buildReceitaCharts(){
+  // PIX vs Eduzz
+  mkChart('r-pix-eduzz',{type:'bar',data:{labels:LABELS,datasets:[
+    {label:'PIX Direto',data:L.map(d=>Math.round(d.pix/1000)),backgroundColor:'rgba(201,146,42,0.8)',borderRadius:3},
+    {label:'Eduzz',data:L.map(d=>Math.round(d.eduzz/1000)),backgroundColor:'rgba(45,90,53,0.7)',borderRadius:3},
+  ]},options:{responsive:true,plugins:{legend:{labels:{color:'var(--text-muted)',boxWidth:12}}},scales:{x:{stacked:false,ticks:{color:tc},grid:{color:gc}},y:{ticks:{color:tc,callback:v=>'R$'+v+'k'},grid:{color:gc}}}}});
+
+  // Lucro imediato
+  mkChart('r-lucro',{type:'bar',data:{labels:LABELS,datasets:[
+    {label:'Lucro Imediato',data:L.map(d=>Math.round(d.lucro/1000)),backgroundColor:L.map(d=>d.lucro>=0?'rgba(74,154,90,0.8)':'rgba(244,63,94,0.8)'),borderRadius:4},
+  ]},options:{responsive:true,plugins:{legend:{display:false}},scales:{x:{ticks:{color:tc},grid:{color:gc}},y:{ticks:{color:tc,callback:v=>'R$'+v+'k'},grid:{color:gc}}}}});
+
+  // Add-ons detail (stacked)
+  mkChart('r-addons-detail',{type:'bar',data:{labels:LABELS,datasets:[
+    {label:'Order Bump',data:L.map(d=>Math.round(d.ob)),backgroundColor:'rgba(45,90,53,0.8)',borderRadius:2},
+    {label:'Upsell',data:L.map(d=>Math.round(d.up)),backgroundColor:'rgba(74,154,90,0.8)',borderRadius:2},
+    {label:'Downsell',data:L.map(d=>Math.round(d.ds)),backgroundColor:'rgba(201,146,42,0.8)',borderRadius:2},
+    {label:'Renovação',data:L.map(d=>Math.round(d.renov)),backgroundColor:'rgba(90,158,104,0.7)',borderRadius:2},
+  ]},options:{responsive:true,plugins:{legend:{labels:{color:'var(--text-muted)',boxWidth:12}}},scales:{x:{stacked:true,ticks:{color:tc},grid:{color:gc}},y:{stacked:true,ticks:{color:tc,callback:v=>'R$'+v.toLocaleString('pt-BR')},grid:{color:gc}}}}});
+}
+
+// ============================================================
+// LEADS & VOLUME CHARTS
+// ============================================================
+function buildVolumeCharts(){
+  // Leads Total vs WhatsApp
+  mkChart('v-leads-wa',{type:'bar',data:{labels:LABELS,datasets:[
+    {label:'Leads Geral',data:L.map(d=>d.leads),backgroundColor:'rgba(45,90,53,0.6)',borderRadius:3},
+    {label:'Leads WhatsApp',data:L.map(d=>d.leadsWA),backgroundColor:'rgba(201,146,42,0.8)',borderRadius:3},
+  ]},options:{responsive:true,plugins:{legend:{labels:{color:'var(--text-muted)',boxWidth:12}}},scales:{x:{ticks:{color:tc},grid:{color:gc}},y:{ticks:{color:tc},grid:{color:gc}}}}});
+
+  // Renovações
+  mkChart('v-renovacoes',{type:'bar',data:{labels:LABELS,datasets:[
+    {label:'Renovações',data:L.map(d=>d.renov),backgroundColor:'rgba(74,154,90,0.8)',borderRadius:4},
+  ]},options:{responsive:true,plugins:{legend:{display:false}},scales:{x:{ticks:{color:tc},grid:{color:gc}},y:{ticks:{color:tc},grid:{color:gc}}}}});
+
+  // Devoluções
+  mkChart('v-devolucoes',{type:'bar',data:{labels:LABELS,datasets:[
+    {label:'Devoluções',data:L.map(d=>d.devol),backgroundColor:L.map(d=>d.devol>10?'rgba(244,63,94,0.85)':d.devol>5?'rgba(245,158,11,0.8)':'rgba(74,154,90,0.7)'),borderRadius:4},
+  ]},options:{responsive:true,plugins:{legend:{display:false}},scales:{x:{ticks:{color:tc},grid:{color:gc}},y:{ticks:{color:tc},grid:{color:gc}}}}});
+}
+
 // ============================================================
 // NAVIGATION
 // ============================================================
@@ -1706,6 +1955,9 @@ function showSection(id,btn){
   if(id==='historico'&&!window._histBuilt){buildHistoricoCharts();window._histBuilt=true;}
   if(id==='jornada'&&!window._jornBuilt){buildJourneyStages();buildIshikawa();buildHeatmap('jorn-heatmap-table');window._jornBuilt=true;}
   if(id==='lancamentos'&&!window._lBuilt){buildPills();window._lBuilt=true;}
+  if(id==='funil'&&!window._funilBuilt){buildFunilCharts();window._funilBuilt=true;}
+  if(id==='receita'&&!window._receitaBuilt){buildReceitaCharts();window._receitaBuilt=true;}
+  if(id==='volume'&&!window._volBuilt){buildVolumeCharts();window._volBuilt=true;}
   window.dispatchEvent(new Event('resize'));
 }
 
@@ -1971,13 +2223,4 @@ document.addEventListener('keydown',e=>{
   <div class="ver-item">Reescrita completa com 20 alterações</div><div class="ver-item">KPI deltas Abr/26 vs Fev/26 (todos os 7 KPIs)</div><div class="ver-item">Pitch D1 = v1dia/CPL3 (métrica correta)</div><div class="ver-item">9 gráficos em 3 grupos: receita, funil, 4 frentes</div><div class="ver-item">5 teses TOC com veredictos</div><div class="ver-item">3 visões do funil: jornada, heatmap, restrição</div><div class="ver-item">V4: Aquisição, Engajamento, Monetização, Retenção</div>
 </div><div class="ver-sep"></div><div class="ver-entry">
   <div class="ver-entry-hdr">
-    <span class="ver-tag old">v1.0</span>
-    <span class="ver-date">Abr/26</span>
-  </div>
-  <div class="ver-item">Dashboard único com TOC + todos os gráficos</div><div class="ver-item">15 lançamentos Ago/23 → Abr/26</div><div class="ver-item">Análise ROAS, CAC, CPL, funil completo</div>
-</div>
-  </div>
-</div>
-
-</body>
-</html>
+    <span class="ver-tag old">v1.0</sp
