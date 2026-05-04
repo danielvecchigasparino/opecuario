@@ -935,7 +935,7 @@ button:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
     </div>
     <div class="g2" style="margin-bottom:16px;">
       <div class="card">
-        <div class="card-title">Pitch D1 (v1/CPL3) por Lançamento</div>
+        <div class="card-title">Conv. D1% — Vendas 1º Dia / CPL3 por Lançamento</div>
         <div class="chart-wrap"><canvas id="h-pitch"></canvas></div>
       </div>
       <div class="card">
@@ -1046,7 +1046,8 @@ button:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
 
   <div class="mode-bar">
     <button class="mode-btn active" id="mb-single" onclick="setLMode('single')">👁 Individual</button>
-    <button class="mode-btn" id="mb-compare" onclick="setLMode('compare')">⚖️ Comparar</button>
+    <button class="mode-btn" id="mb-compare" onclick="setLMode('compare')">⚖️ Comparar 2</button>
+    <button class="mode-btn" id="mb-compare3" onclick="setLMode('compare3')">🔺 Comparar 3</button>
   </div>
 
   <div class="pill-wrap" id="l-pills"></div>
@@ -1094,6 +1095,14 @@ button:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
         <div id="lc-b-funnel"></div>
         <div style="display:flex;justify-content:center;margin-top:12px;">
           <canvas id="lc-b-donut" style="max-height:160px;max-width:160px;"></canvas>
+        </div>
+      </div>
+      <div class="cmp-side cmp-c" id="lc-c-panel" style="display:none;">
+        <div class="cmp-label" style="background:rgba(74,154,90,0.15);color:var(--forest-light);">Lançamento C</div>
+        <div id="lc-c-kpis" class="mkpi-grid"></div>
+        <div id="lc-c-funnel"></div>
+        <div style="display:flex;justify-content:center;margin-top:12px;">
+          <canvas id="lc-c-donut" style="max-height:160px;max-width:160px;"></canvas>
         </div>
       </div>
     </div>
@@ -1455,7 +1464,7 @@ function buildDebriefingCharts(){
     labels:LABELS,
     datasets:[{label:'Pitch D1 %',data:pitchData,backgroundColor:pitchData.map((v,i)=>i===11?'rgba(16,185,129,0.8)':barDataByPhase(L,0.6)[i]),borderRadius:4}]
   },options:{responsive:true,maintainAspectRatio:false,
-    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'Pitch D1: '+c.parsed.y.toFixed(2)+'%'}}},
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'Conv. D1: '+c.parsed.y.toFixed(2)+'%'}}},
     scales:{x:{grid:{color:gc},ticks:{color:tc,maxRotation:45}},y:{grid:{color:gc},ticks:{color:tc,callback:v=>v.toFixed(1)+'%'}}}}});
 }
 
@@ -1496,12 +1505,12 @@ function buildHistoricoCharts(){
   options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:gc},ticks:{color:tc,maxRotation:45}},y:{grid:{color:gc},ticks:{color:tc}}}}});
 
   // Pitch D1
-  mkChart('h-pitch',{type:'bar',data:{labels:LABELS,datasets:[{label:'Pitch D1%',data:L.map(d=>+((d.v1/d.cpl3)*100).toFixed(2)),backgroundColor:barDataByPhase(L,0.7),borderRadius:4}]},
+  mkChart('h-pitch',{type:'bar',data:{labels:LABELS,datasets:[{label:'Conv. D1 (v1/CPL3) %',data:L.map(d=>+((d.v1/d.cpl3)*100).toFixed(2)),backgroundColor:barDataByPhase(L,0.7),borderRadius:4}]},
   options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:gc},ticks:{color:tc,maxRotation:45}},y:{grid:{color:gc},ticks:{color:tc,callback:v=>v.toFixed(1)+'%'}}}}});
 
   // Conv CPL3→novos
-  mkChart('h-conv',{type:'bar',data:{labels:LABELS,datasets:[{label:'CPL3→Novos%',data:L.map(d=>+((d.novos/d.cpl3)*100).toFixed(1)),backgroundColor:barDataByPhase(L,0.7),borderRadius:4}]},
-  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:gc},ticks:{color:tc,maxRotation:45}},y:{grid:{color:gc},ticks:{color:tc,callback:v=>v.toFixed(0)+'%'}}}}});
+  mkChart('h-conv',{type:'bar',data:{labels:LABELS,datasets:[{label:'Conv. CPL3→Alunos %',data:L.map(d=>+((d.novos/d.cpl3)*100).toFixed(1)),backgroundColor:barDataByPhase(L,0.7),borderRadius:4}]},
+  options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.parsed.y.toFixed(1)+'%'}}},scales:{x:{grid:{color:gc},ticks:{color:tc,maxRotation:45}},y:{grid:{color:gc},ticks:{color:tc,callback:v=>v.toFixed(0)+'%'}}}}});
 
   // Add-ons
   mkChart('h-addons',{type:'bar',data:{labels:LABELS,datasets:[
@@ -1537,7 +1546,7 @@ function buildHeatmap(containerId){
     {k:'cpl3',   label:'E6 CPL3',    fmt:v=>v.toLocaleString('pt-BR')},
     {k:'v1',     label:'E7 Venda D1',fmt:v=>v},
     {k:'novos',  label:'E8 Alunos',  fmt:v=>v},
-    {k:'pitch',  label:'Pitch D1%',  fmt:v=>(v*100).toFixed(1)+'%',derived:d=>(d.v1/d.cpl3)},
+    {k:'pitch',  label:'Conv. D1 (v1/CPL3) %',  fmt:v=>(v*100).toFixed(1)+'%',derived:d=>(d.v1/d.cpl3)},
     {k:'roas',   label:'ROAS',       fmt:v=>v.toFixed(2)+'x'},
     {k:'cpl',    label:'CPL R$',     fmt:v=>'R$'+v.toFixed(2),invert:true},
     {k:'cac',    label:'CAC R$',     fmt:v=>'R$'+v.toLocaleString('pt-BR'),invert:true},
@@ -1571,23 +1580,31 @@ function buildHeatmap(containerId){
 function buildFunnelEl(containerId,d,color){
   const color2=color||'#c9922a';
   const steps=[
-    {label:'E3 — Leads capturados',val:d.leads,fmt:v=>v.toLocaleString('pt-BR')},
-    {label:'E4 — CPL1 participantes',val:d.cpl1,fmt:v=>v.toLocaleString('pt-BR')},
-    {label:'E5 — CPL2 participantes',val:d.cpl2,fmt:v=>v.toLocaleString('pt-BR')},
-    {label:'E6 — CPL3 participantes',val:d.cpl3,fmt:v=>v.toLocaleString('pt-BR')},
-    {label:'E7 — Vendas Dia 1',      val:d.v1,  fmt:v=>v.toString()},
-    {label:'E8 — Novos Alunos',      val:d.novos,fmt:v=>v.toString()},
+    {label:'E3 — Leads capturados',   val:d.leads, fmt:v=>v.toLocaleString('pt-BR'), group:'VOLUME'},
+    {label:'E4 — CPL1 participantes', val:d.cpl1,  fmt:v=>v.toLocaleString('pt-BR'), group:'EFICIÊNCIA'},
+    {label:'E5 — CPL2 participantes', val:d.cpl2,  fmt:v=>v.toLocaleString('pt-BR'), group:'EFICIÊNCIA'},
+    {label:'E6 — CPL3 participantes', val:d.cpl3,  fmt:v=>v.toLocaleString('pt-BR'), group:'EFICIÊNCIA'},
+    {label:'E7 — Vendas 1º Dia',      val:d.v1,    fmt:v=>v.toString(),               group:'EFICIÊNCIA'},
+    {label:'E8 — Novos Alunos',       val:d.novos, fmt:v=>v.toString(),               group:'VOLUME'},
   ];
   const max=steps[0].val||1;
-  let html='';
+  // ref: E7 compara com E6 (CPL3); E8 compara com E6 (CPL3) — ambos saem do mesmo universo
+  const refFor=[null,0,1,2,3,3,3]; // índice do step de referência para cada etapa
+  let html='';let lastGroup='';
   steps.forEach((s,i)=>{
     const w=Math.max(4,(s.val/max)*100);
-    const prev=i>0?steps[i-1].val:s.val;
-    const rate=prev>0?(s.val/prev*100).toFixed(1):'—';
+    const refIdx=refFor[i];
+    const refVal=refIdx!==null?steps[refIdx].val:s.val;
+    const rate=i>0&&refVal>0?(s.val/refVal*100).toFixed(1)+'%':'';
+    const rateLabel=i===4?'do CPL3 (conv. D1)':i===5?'do CPL3 (conv. total)':i>0?'do anterior':'';
+    if(s.group!==lastGroup){
+      html+=`<div style="font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--text-muted);text-transform:uppercase;margin:${lastGroup?'14px':'4px'} 0 6px;">${s.group}</div>`;
+      lastGroup=s.group;
+    }
     html+=`<div class="funnel-stage">
       <div class="funnel-label">
         <span>${s.label} — <strong style="color:#e2e8f0">${s.fmt(s.val)}</strong></span>
-        <span style="color:#94a3b8">${i>0?rate+'% do anterior':''}</span>
+        <span style="color:#94a3b8">${rate?rate+' '+rateLabel:''}</span>
       </div>
       <div class="funnel-track">
         <div class="funnel-fill" style="width:${w}%;background:${color2};opacity:${0.4+i*0.1};"></div>
@@ -1693,8 +1710,8 @@ function buildIshikawa(){
 // ============================================================
 // POR LANÇAMENTO
 // ============================================================
-let lMode='single',selA=-1,selB=-1;
-let lsDonutChart=null,lsRadarChart=null,lcADonut=null,lcBDonut=null,lcBarChart=null;
+let lMode='single',selA=-1,selB=-1,selC=-1;
+let lsDonutChart=null,lsRadarChart=null,lcADonut=null,lcBDonut=null,lcCDonut=null,lcBarChart=null;
 
 function buildPills(){
   const wrap=document.getElementById('l-pills');
@@ -1706,19 +1723,38 @@ function handlePill(idx){
     document.querySelectorAll('.l-pill').forEach(p=>p.classList.remove('sel'));
     document.getElementById('lp-'+idx).classList.add('sel');
     renderSingle(idx);
-  } else {
+  } else if(lMode==='compare'){
     if(selA===-1){
       selA=idx;
       document.getElementById('lp-'+idx).classList.add('sel');
       document.getElementById('l-hint').style.display='block';
-      document.getElementById('l-hint').textContent='✓ Lançamento A selecionado: '+L[idx].l+' — agora escolha o Lançamento B';
+      document.getElementById('l-hint').textContent='✓ A: '+L[idx].l+' — agora escolha o Lançamento B';
     } else if(selB===-1&&idx!==selA){
       selB=idx;
       document.getElementById('lp-'+idx).classList.add('sel');
       document.getElementById('l-hint').style.display='none';
-      renderCompare(selA,selB);
+      renderCompare(selA,selB,-1);
     } else {
       selA=-1;selB=-1;
+      document.querySelectorAll('.l-pill').forEach(p=>p.classList.remove('sel'));
+      document.getElementById('l-hint').style.display='none';
+      document.getElementById('l-single').style.display='none';
+      document.getElementById('l-compare').style.display='none';
+    }
+  } else { // compare3
+    if(selA===-1){
+      selA=idx;document.getElementById('lp-'+idx).classList.add('sel');
+      document.getElementById('l-hint').style.display='block';
+      document.getElementById('l-hint').textContent='✓ A: '+L[idx].l+' — escolha B';
+    } else if(selB===-1&&idx!==selA){
+      selB=idx;document.getElementById('lp-'+idx).classList.add('sel');
+      document.getElementById('l-hint').textContent='✓ A: '+L[selA].l+' ✓ B: '+L[idx].l+' — escolha C';
+    } else if(selC===-1&&idx!==selA&&idx!==selB){
+      selC=idx;document.getElementById('lp-'+idx).classList.add('sel');
+      document.getElementById('l-hint').style.display='none';
+      renderCompare(selA,selB,selC);
+    } else {
+      selA=-1;selB=-1;selC=-1;
       document.querySelectorAll('.l-pill').forEach(p=>p.classList.remove('sel'));
       document.getElementById('l-hint').style.display='none';
       document.getElementById('l-single').style.display='none';
@@ -1728,14 +1764,16 @@ function handlePill(idx){
 }
 
 function setLMode(m){
-  lMode=m;selA=-1;selB=-1;
+  lMode=m;selA=-1;selB=-1;selC=-1;
   document.querySelectorAll('.l-pill').forEach(p=>p.classList.remove('sel'));
   document.getElementById('mb-single').classList.toggle('active',m==='single');
   document.getElementById('mb-compare').classList.toggle('active',m==='compare');
+  document.getElementById('mb-compare3').classList.toggle('active',m==='compare3');
   document.getElementById('l-single').style.display='none';
   document.getElementById('l-compare').style.display='none';
-  document.getElementById('l-hint').style.display=m==='compare'?'block':'none';
-  document.getElementById('l-hint').textContent=m==='compare'?'Selecione o Lançamento A':'';
+  const isCompare=m==='compare'||m==='compare3';
+  document.getElementById('l-hint').style.display=isCompare?'block':'none';
+  document.getElementById('l-hint').textContent=isCompare?'Selecione o Lançamento A':'';
 }
 
 function mkpi(label,val,delta,dClass){
@@ -1751,15 +1789,23 @@ function renderSingle(i){
     const cls=(inv?(r<0):(r>0))?'green':'red';
     return `<span class="mkpi-d ${cls}">${r>0?'▲':'▼'} ${Math.abs(r).toFixed(1)}% vs média</span>`;
   };
+  const lucroD=d.fat-d.traf;
   document.getElementById('ls-kpis').innerHTML=`
-    ${mkpi('Faturamento',fmtK(d.fat),'','')}
+    <div style="grid-column:1/-1;font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--text-muted);text-transform:uppercase;padding-bottom:2px;">💰 CUSTOS</div>
+    ${mkpi('Faturamento Total',fmtK(d.fat),'','')}
+    ${mkpi('Invest. Tráfego',fmtK(d.traf),'','')}
+    ${mkpi('Captação Leads',fmtK(d.cap),'','')}
+    ${mkpi('Lucro (Fat−Tráf)',fmtK(lucroD),'',(lucroD>0?'green':'red'))}
+    <div style="grid-column:1/-1;font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--text-muted);text-transform:uppercase;padding:8px 0 2px;">📊 VOLUME</div>
+    ${mkpi('Leads Captados',d.leads.toLocaleString('pt-BR'),'','')}
+    ${mkpi('Novos Alunos',d.novos,'',(d.novos>avgNovos?'green':'red'))}
+    ${mkpi('Renovações',d.renov,'','')}
+    ${mkpi('Devoluções',d.devol,'','')}
+    <div style="grid-column:1/-1;font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--text-muted);text-transform:uppercase;padding:8px 0 2px;">⚡ EFICIÊNCIA</div>
     ${mkpi('ROAS',d.roas.toFixed(2)+'x','',(d.roas>avgROAS?'green':'red'))}
     ${mkpi('CAC','R$'+d.cac.toLocaleString('pt-BR'),'',(d.cac<avgCAC?'green':'red'))}
     ${mkpi('CPL','R$'+d.cpl.toFixed(2),'',(d.cpl<avgCPL?'green':'red'))}
-    ${mkpi('Pitch D1',pitch+'%','',(+pitch>avgPitch*100?'green':'red'))}
-    ${mkpi('Novos Alunos',d.novos,'',(d.novos>avgNovos?'green':'red'))}
-    ${mkpi('Leads',d.leads.toLocaleString('pt-BR'),'','')}
-    ${mkpi('Fase','Fase '+d.phase,'','')}
+    ${mkpi('Conv. D1 (v1/CPL3)',pitch+'%','',(+pitch>avgPitch*100?'green':'red'))}
   `;
   document.getElementById('ls-funnel-title').textContent='Funil — '+d.l;
   buildFunnelEl('ls-funnel',d,phSolid[d.phase]);
@@ -1811,33 +1857,43 @@ function renderSingle(i){
   window.dispatchEvent(new Event('resize'));
 }
 
-function renderCompare(iA,iB){
-  const dA=L[iA],dB=L[iB];
-  ['a','b'].forEach((s,idx)=>{
-    const d=idx===0?dA:dB;
+function renderCompare(iA,iB,iC){
+  const dA=L[iA],dB=L[iB],dC=(iC>=0)?L[iC]:null;
+  const panels=dC?['a','b','c']:['a','b'];
+  const datas=[dA,dB,dC];
+  const colors=['#c9922a','#5aba6a','#60a5fa'];
+  document.getElementById('lc-c-panel').style.display=dC?'':'none';
+  document.getElementById('lc-grid').style.gridTemplateColumns=dC?'1fr 1fr 1fr':'1fr 1fr';
+  panels.forEach((s,idx)=>{
+    const d=datas[idx];
     document.getElementById('lc-'+s+'-kpis').innerHTML=`
       ${mkpi('Faturamento',fmtK(d.fat),'','')}
+      ${mkpi('Invest. Tráfego',fmtK(d.traf),'','')}
+      ${mkpi('Lucro',fmtK(d.fat-d.traf),'','')}
       ${mkpi('ROAS',d.roas.toFixed(2)+'x','','')}
       ${mkpi('CAC','R$'+d.cac.toLocaleString('pt-BR'),'','')}
       ${mkpi('CPL','R$'+d.cpl.toFixed(2),'','')}
-      ${mkpi('Pitch D1',((d.v1/d.cpl3)*100).toFixed(2)+'%','','')}
-      ${mkpi('Novos',d.novos,'','')}
+      ${mkpi('Conv. D1',((d.v1/d.cpl3)*100).toFixed(2)+'%','','')}
+      ${mkpi('Novos Alunos',d.novos,'','')}
     `;
-    buildFunnelEl('lc-'+s+'-funnel',d,s==='a'?'#c9922a':'#5aba6a');
+    buildFunnelEl('lc-'+s+'-funnel',d,colors[idx]);
   });
   if(lcADonut){lcADonut.destroy();}
   if(lcBDonut){lcBDonut.destroy();}
-  const donutCfg=(d)=>({type:'doughnut',data:{labels:['Imediato','Futuros (PSL/boleto/Eduzz)','Add-ons'],datasets:[{data:[d.fatImm,d.fatFut,d.ob+d.ds+d.up],backgroundColor:['#c9922a','#5a9e68','#f59e0b'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,cutout:'68%',plugins:{legend:{display:false}}}});
+  if(lcCDonut){lcCDonut.destroy();}
+  const donutCfg=(d)=>({type:'doughnut',data:{labels:['Imediato','Futuros','Add-ons'],datasets:[{data:[d.fatImm,d.fatFut,d.ob+d.ds+d.up],backgroundColor:['#c9922a','#5a9e68','#f59e0b'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,cutout:'68%',plugins:{legend:{display:false}}}});
   lcADonut=mkChart('lc-a-donut',donutCfg(dA));
   lcBDonut=mkChart('lc-b-donut',donutCfg(dB));
-  // Bar comparison
+  if(dC)lcCDonut=mkChart('lc-c-donut',donutCfg(dC));
   if(lcBarChart){lcBarChart.destroy();}
-  const barLabels=['Fat (R$k)','ROAS','CAC (R$)','CPL (R$)','Pitch D1%','Novos'];
-  const pD1A=(dA.v1/dA.cpl3*100);const pD1B=(dB.v1/dB.cpl3*100);
-  lcBarChart=mkChart('lc-bar',{type:'bar',data:{labels:barLabels,datasets:[
-    {label:dA.l,data:[+(dA.fat/1000).toFixed(0),dA.roas,dA.cac,dA.cpl,+pD1A.toFixed(2),dA.novos],backgroundColor:'rgba(201,146,42,0.7)',borderRadius:4},
-    {label:dB.l,data:[+(dB.fat/1000).toFixed(0),dB.roas,dB.cac,dB.cpl,+pD1B.toFixed(2),dB.novos],backgroundColor:'rgba(192,132,252,0.7)',borderRadius:4},
-  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#94a3b8',boxWidth:10}}},scales:{x:{grid:{color:gc},ticks:{color:tc}},y:{grid:{color:gc},ticks:{color:tc}}}}});
+  const barLabels=['Fat (R$k)','ROAS','CAC (R$)','CPL (R$)','Conv.D1%','Novos','Lucro (R$k)'];
+  const mkDS=(d)=>[+(d.fat/1000).toFixed(0),d.roas,d.cac,d.cpl,+(d.v1/d.cpl3*100).toFixed(2),d.novos,+((d.fat-d.traf)/1000).toFixed(0)];
+  const datasets=[
+    {label:dA.l,data:mkDS(dA),backgroundColor:'rgba(201,146,42,0.7)',borderRadius:4},
+    {label:dB.l,data:mkDS(dB),backgroundColor:'rgba(90,186,106,0.7)',borderRadius:4},
+  ];
+  if(dC)datasets.push({label:dC.l,data:mkDS(dC),backgroundColor:'rgba(96,165,250,0.7)',borderRadius:4});
+  lcBarChart=mkChart('lc-bar',{type:'bar',data:{labels:barLabels,datasets},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#94a3b8',boxWidth:10}}},scales:{x:{grid:{color:gc},ticks:{color:tc}},y:{grid:{color:gc},ticks:{color:tc}}}}});
   document.getElementById('l-compare').style.display='block';
   document.getElementById('l-single').style.display='none';
   window.dispatchEvent(new Event('resize'));
