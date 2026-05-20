@@ -1388,6 +1388,165 @@ button:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
     </div>
   </div>
 
+
+  <!-- ── CAMPANHAS ABR/26 — 5 campanhas detalhadas ── -->
+  <div class="card" style="margin-bottom:20px;padding:20px;border-left:3px solid #10b981;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+      <div style="font-weight:700;font-size:13px;color:var(--text);">📊 Campanhas Abr/26 — Breakdown por Campanha (103 compras rastreadas)</div>
+      <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);border-radius:12px;padding:3px 10px;">
+        <span style="width:6px;height:6px;border-radius:50%;background:#10b981;display:inline-block;"></span>
+        <span style="font-size:11px;font-weight:700;color:#10b981;">REAL</span>
+      </div>
+    </div>
+    <!-- Tabela de campanhas -->
+    <div style="overflow-x:auto;margin-bottom:16px;">
+      <table style="width:100%;border-collapse:collapse;font-size:12px;">
+        <thead>
+          <tr style="border-bottom:1px solid var(--card-border);">
+            <th style="text-align:left;padding:8px 10px;color:var(--text-muted);font-weight:600;">Campanha</th>
+            <th style="text-align:left;padding:8px 10px;color:var(--text-muted);font-weight:600;">Tipo</th>
+            <th style="text-align:right;padding:8px 10px;color:var(--text-muted);font-weight:600;">Investido</th>
+            <th style="text-align:right;padding:8px 10px;color:var(--text-muted);font-weight:600;">Impressões</th>
+            <th style="text-align:right;padding:8px 10px;color:var(--text-muted);font-weight:600;">Cliques</th>
+            <th style="text-align:right;padding:8px 10px;color:var(--text-muted);font-weight:600;">PV</th>
+            <th style="text-align:right;padding:8px 10px;color:var(--text-muted);font-weight:600;">Compras</th>
+            <th style="text-align:right;padding:8px 10px;color:var(--text-muted);font-weight:600;">CPV (R$)</th>
+          </tr>
+        </thead>
+        <tbody id="pp-camp-tbody">
+          <!-- preenchido por JS -->
+        </tbody>
+        <tfoot>
+          <tr style="border-top:2px solid var(--card-border);font-weight:700;">
+            <td style="padding:8px 10px;color:var(--text);">TOTAL</td>
+            <td style="padding:8px 10px;color:var(--text-muted);">5 campanhas</td>
+            <td style="text-align:right;padding:8px 10px;color:var(--gold);">R$ 10.317</td>
+            <td style="text-align:right;padding:8px 10px;color:var(--text);">557.842</td>
+            <td style="text-align:right;padding:8px 10px;color:var(--text);">6.211</td>
+            <td style="text-align:right;padding:8px 10px;color:var(--text);">4.614</td>
+            <td style="text-align:right;padding:8px 10px;color:#10b981;font-size:14px;">103</td>
+            <td style="text-align:right;padding:8px 10px;color:var(--gold);">R$ 100,17</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <!-- Chart campanhas -->
+    <div class="g2" style="gap:16px;">
+      <div>
+        <div style="font-size:11px;font-weight:600;color:var(--text-muted);margin-bottom:8px;">Compras por Campanha</div>
+        <canvas id="pp-camp-compras" height="200"></canvas>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;color:var(--text-muted);margin-bottom:8px;">Custo por Venda (R$) por Campanha</div>
+        <canvas id="pp-camp-cpv" height="200"></canvas>
+      </div>
+    </div>
+    <div style="background:rgba(16,185,129,.06);border-radius:8px;padding:12px;margin-top:14px;font-size:12px;color:var(--text-muted);">
+      <strong style="color:var(--text);">Obs:</strong> 51 vendas adicionais (154 total − 103 mídia paga) vieram de canais orgânicos não rastreados — base de alunos, WhatsApp orgânico e indicações. CPV médio geral considerando todas as 154 vendas: <strong style="color:#10b981;">R$ 66,99</strong>.
+    </div>
+  </div>
+
+  <!-- ── ANÁLISE TICKET × VOLUME — ponto de equilíbrio ── -->
+  <div class="card" style="margin-bottom:20px;padding:20px;">
+    <div style="font-weight:700;font-size:13px;color:var(--text);margin-bottom:4px;">⚖️ Ticket × Volume — Vale a Pena Baixar o Preço?</div>
+    <p style="font-size:12px;color:var(--text-muted);margin-bottom:16px;">Quantas vendas a R$297 são necessárias para igualar ou superar a receita de N vendas a R$697?</p>
+    <div class="g2" style="gap:16px;margin-bottom:16px;">
+      <div>
+        <div style="font-size:11px;font-weight:600;color:var(--text-muted);margin-bottom:8px;">Receita Acumulada: R$297 vs R$697 (por volume de vendas)</div>
+        <canvas id="pp-breakeven" height="220"></canvas>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;color:var(--text-muted);margin-bottom:8px;">Fat. DS Real por Era — Ticket vs Volume</div>
+        <canvas id="pp-era-scatter" height="220"></canvas>
+      </div>
+    </div>
+    <!-- Insight cards -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px;">
+      <div style="background:rgba(96,165,250,.08);border:1px solid rgba(96,165,250,.2);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;font-weight:600;">PONTO DE EQUILÍBRIO</div>
+        <div style="font-size:22px;font-weight:800;color:#60a5fa;">2,35x</div>
+        <div style="font-size:11px;color:var(--text-muted);">vendas a mais no R$297<br>para empatar com R$697</div>
+      </div>
+      <div style="background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;font-weight:600;">ABR/26 ENTREGOU</div>
+        <div style="font-size:22px;font-weight:800;color:#10b981;">10,3x</div>
+        <div style="font-size:11px;color:var(--text-muted);">vs média era R$697<br>(154 vs 15 vd médias)</div>
+      </div>
+      <div style="background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.2);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;font-weight:600;">RECEITA DS ABR/26</div>
+        <div style="font-size:22px;font-weight:800;color:var(--gold);">R$ 43.441</div>
+        <div style="font-size:11px;color:var(--text-muted);">vs R$10.465 média R$697<br>+315% acima da média</div>
+      </div>
+    </div>
+    <!-- Debriefing texto -->
+    <div style="background:var(--bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;">
+      <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:10px;border-bottom:1px solid var(--card-border);padding-bottom:8px;">📝 Conclusão — A Conta Fecha com R$297?</div>
+      <div style="font-size:12px;color:var(--text-muted);line-height:1.7;">
+        <p style="margin:0 0 8px;">
+          <strong style="color:var(--text);">Sim, e com folga.</strong> Para que R$297 empate financeiramente com R$697, seria necessário vender <strong style="color:var(--gold);">2,35x mais unidades</strong> (ex: se você vendia 15 a R$697 → precisaria vender 36 a R$297 para o mesmo resultado bruto). Em Abr/26 o volume foi <strong style="color:#10b981;">154 vendas — 10,3x a média histórica</strong> da era R$697.
+        </p>
+        <p style="margin:0 0 8px;">
+          <strong style="color:var(--text);">O que explica esse salto?</strong> O ticket mais baixo reduz a barreira de decisão do comprador, especialmente no contexto de downsell (aluno que não comprou o principal). A R$297 o produto entra na faixa de compra por impulso com percepção de "oportunidade", enquanto R$697 exige mais deliberação.
+        </p>
+        <p style="margin:0;">
+          <strong style="color:var(--text);">Risco a monitorar:</strong> o volume de 154 vendas pode ter efeito de novidade do novo preço. É preciso acompanhar os próximos lançamentos para confirmar se o volume se sustenta ou regride à média. Se manter acima de 36 vendas/lançamento, R$297 é financeiramente superior à era R$697.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DEBRIEFING ABR/26 vs HISTÓRICO ── -->
+  <div class="card" style="margin-bottom:20px;padding:20px;border-left:3px solid var(--gold);">
+    <div style="font-weight:700;font-size:13px;color:var(--text);margin-bottom:4px;">🔎 Debriefing Abr/26 — Perpétuo vs Histórico Total</div>
+    <p style="font-size:12px;color:var(--text-muted);margin-bottom:16px;">Comparativo direto entre o lançamento Abr/26 e as médias históricas do sistema downsell</p>
+    <canvas id="pp-hist-compare" height="200"></canvas>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px;">
+      <div style="background:var(--bg);border-radius:8px;padding:12px;text-align:center;border:1px solid var(--card-border);">
+        <div style="font-size:10px;color:var(--text-muted);margin-bottom:2px;">VENDAS DS</div>
+        <div style="font-size:18px;font-weight:800;color:#10b981;">154</div>
+        <div style="font-size:10px;color:var(--text-muted);">vs média 10,7/lç</div>
+        <div style="font-size:11px;font-weight:700;color:#10b981;">+1.339%</div>
+      </div>
+      <div style="background:var(--bg);border-radius:8px;padding:12px;text-align:center;border:1px solid var(--card-border);">
+        <div style="font-size:10px;color:var(--text-muted);margin-bottom:2px;">FAT. DOWNSELL</div>
+        <div style="font-size:18px;font-weight:800;color:var(--gold);">R$43.441</div>
+        <div style="font-size:11px;color:var(--text-muted);">vs média R$9.678/lç</div>
+        <div style="font-size:11px;font-weight:700;color:#10b981;">+349%</div>
+      </div>
+      <div style="background:var(--bg);border-radius:8px;padding:12px;text-align:center;border:1px solid var(--card-border);">
+        <div style="font-size:10px;color:var(--text-muted);margin-bottom:2px;">% DS / FAT. TOTAL</div>
+        <div style="font-size:18px;font-weight:800;color:var(--gold);">4,99%</div>
+        <div style="font-size:11px;color:var(--text-muted);">vs média 2,1%</div>
+        <div style="font-size:11px;font-weight:700;color:#10b981;">+138%</div>
+      </div>
+      <div style="background:var(--bg);border-radius:8px;padding:12px;text-align:center;border:1px solid var(--card-border);">
+        <div style="font-size:10px;color:var(--text-muted);margin-bottom:2px;">ROAS DS</div>
+        <div style="font-size:18px;font-weight:800;color:var(--forest-light);">4,21x</div>
+        <div style="font-size:11px;color:var(--text-muted);">primeiro lç com dado</div>
+        <div style="font-size:11px;font-weight:700;color:#10b981;">referência base</div>
+      </div>
+    </div>
+    <!-- Texto debriefing -->
+    <div style="background:var(--bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin-top:16px;">
+      <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:10px;border-bottom:1px solid var(--card-border);padding-bottom:8px;">📋 Análise — O que Abr/26 nos diz sobre o sistema perpétuo</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:12px;color:var(--text-muted);line-height:1.7;">
+        <div>
+          <div style="font-weight:700;color:var(--forest-light);margin-bottom:6px;">✅ O que funcionou</div>
+          <p style="margin:0 0 6px;">Redução de ticket a R$297 gerou volume de vendas 10x acima da média histórica — confirmando que o produto tem demanda reprimida sensível ao preço.</p>
+          <p style="margin:0 0 6px;">Das 103 compras rastreadas por mídia paga, a campanha QUENTE (público já engajado) entregou 23 compras com R$2.560 investidos — CPV de R$111. As 4 campanhas FRIAS somadas: 80 compras com R$7.757 — CPV de R$97.</p>
+          <p style="margin:0;">ROAS de 4,21x indica que o produto perpétuo já paga o tráfego com margem positiva como canal autônomo, sem depender do lançamento principal.</p>
+        </div>
+        <div>
+          <div style="font-weight:700;color:var(--gold);margin-bottom:6px;">⚠️ Pontos de atenção</div>
+          <p style="margin:0 0 6px;">É o primeiro lançamento nesse formato e preço — os 154 vendas podem conter efeito de novidade ou base de leads acumulada. Próximos lançamentos vão calibrar o padrão real.</p>
+          <p style="margin:0 0 6px;">51 vendas (33%) vieram de canais não rastreados — importante estruturar atribuição no próximo ciclo para entender qual canal orgânico converte mais.</p>
+          <p style="margin:0;">A campanha ADV com menor investimento (R$162) entregou apenas 1 compra — avaliar pausar ou reformular esse criativo no próximo ciclo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <!-- ── PROJECTED FUNNELS — CLEARLY LABELED ── -->
   <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;padding:12px 16px;background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.25);border-radius:10px;">
     <span style="font-size:18px;">⚠️</span>
@@ -2306,6 +2465,116 @@ function buildPerpetuoCharts(){
       scales:{y:{ticks:{callback:v=>v>=1000?(v/1000).toFixed(0)+'k':v}, grid:{color:'rgba(255,255,255,0.04)'}}}}
   });
 
+
+  // ── Campanhas Abr/26 ──
+  const camps = [
+    {nome:'ADV F. (menor)', tipo:'❄️ Frio', inv:162.27,  imp:6877,   clk:84,   pv:58,   comp:1},
+    {nome:'QUENTE',         tipo:'🔥 Quente',inv:2560.01,imp:150078, clk:1788, pv:1264, comp:23},
+    {nome:'ADV FA (pausa)', tipo:'❄️ Frio', inv:301.61,  imp:16341,  clk:187,  pv:139,  comp:1},
+    {nome:'ADV FA (maior)', tipo:'❄️ Frio', inv:6661.43, imp:355856, clk:3776, pv:2847, comp:76},
+    {nome:'ADV FA (med)',   tipo:'❄️ Frio', inv:632.05,  imp:28690,  clk:376,  pv:306,  comp:2},
+  ];
+  const campColors = ['rgba(148,163,184,0.7)','rgba(251,191,36,0.85)','rgba(148,163,184,0.7)','rgba(96,165,250,0.85)','rgba(148,163,184,0.7)'];
+
+  // Preenche tabela
+  const tbody = document.getElementById('pp-camp-tbody');
+  if(tbody){
+    camps.forEach((c,i)=>{
+      const cpv = c.comp>0?(c.inv/c.comp).toFixed(0):'—';
+      tbody.innerHTML += `<tr style="border-bottom:1px solid var(--card-border);">
+        <td style="padding:7px 10px;color:var(--text);">${c.nome}</td>
+        <td style="padding:7px 10px;">${c.tipo}</td>
+        <td style="text-align:right;padding:7px 10px;color:var(--gold);">R$ ${c.inv.toLocaleString('pt-BR',{minimumFractionDigits:2})}</td>
+        <td style="text-align:right;padding:7px 10px;">${c.imp.toLocaleString('pt-BR')}</td>
+        <td style="text-align:right;padding:7px 10px;">${c.clk.toLocaleString('pt-BR')}</td>
+        <td style="text-align:right;padding:7px 10px;">${c.pv.toLocaleString('pt-BR')}</td>
+        <td style="text-align:right;padding:7px 10px;font-weight:700;color:#10b981;">${c.comp}</td>
+        <td style="text-align:right;padding:7px 10px;color:var(--gold);">${cpv!=='—'?'R$ '+parseInt(cpv).toLocaleString('pt-BR'):'—'}</td>
+      </tr>`;
+    });
+  }
+
+  mkChart('pp-camp-compras',{
+    type:'bar',
+    data:{labels:camps.map(c=>c.nome), datasets:[{label:'Compras',data:camps.map(c=>c.comp),backgroundColor:campColors,borderRadius:5}]},
+    options:{responsive:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>ctx.raw+' compras'}}},
+      scales:{y:{ticks:{stepSize:10},grid:{color:'rgba(255,255,255,0.04)'}}}}
+  });
+
+  mkChart('pp-camp-cpv',{
+    type:'bar',
+    data:{labels:camps.map(c=>c.nome), datasets:[{label:'CPV (R$)',data:camps.map(c=>c.comp>0?parseFloat((c.inv/c.comp).toFixed(0)):0),backgroundColor:campColors,borderRadius:5}]},
+    options:{responsive:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>'R$ '+ctx.raw}}},
+      scales:{y:{ticks:{callback:v=>'R$'+v},grid:{color:'rgba(255,255,255,0.04)'}}}}
+  });
+
+  // ── Breakeven R$297 vs R$697 ──
+  const vols = Array.from({length:51},(_,i)=>i+5);
+  const fat697 = vols.map(v=>v*697);
+  const fat297 = vols.map(v=>v*297);
+  // breakeven: v*297 = ref*697 → ref vendas a 697 = 15 (média era)
+  mkChart('pp-breakeven',{
+    type:'line',
+    data:{labels:vols,datasets:[
+      {label:'R$ 697',data:fat697,borderColor:'rgba(251,191,36,0.8)',backgroundColor:'rgba(251,191,36,0.05)',tension:.2,fill:false,pointRadius:0},
+      {label:'R$ 297',data:fat297,borderColor:'rgba(16,185,129,0.8)',backgroundColor:'rgba(16,185,129,0.05)',tension:.2,fill:false,pointRadius:0},
+    ]},
+    options:{responsive:true,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{display:true},tooltip:{callbacks:{label:ctx=>'R$ '+ctx.raw.toLocaleString('pt-BR')}}},
+      scales:{
+        x:{title:{display:true,text:'Nº de vendas',font:{size:10}},ticks:{maxTicksLimit:10}},
+        y:{ticks:{callback:v=>'R$'+(v/1000).toFixed(0)+'k'},grid:{color:'rgba(255,255,255,0.04)'}}
+      },
+      annotation:{annotations:{
+        line1:{type:'line',xMin:35,xMax:35,borderColor:'rgba(255,255,255,0.3)',borderWidth:1,borderDash:[4,4],
+          label:{display:true,content:'Break-even ~35vd',position:'start',color:'#94a3b8',font:{size:10}}},
+        point1:{type:'point',xValue:154,yValue:154*297,radius:6,backgroundColor:'#10b981',
+          label:{display:true,content:'Abr/26: 154vd',position:'top',color:'#10b981',font:{size:10}}}
+      }}
+    }
+  });
+
+  // ── Era scatter (ticket vs fat DS) ──
+  const eraData = [
+    {x:397,y:4367,label:'Dez/23',r:6},{x:397,y:5955,label:'Fev/24',r:6},{x:397,y:794,label:'Abr/24',r:4},
+    {x:697,y:9758,label:'Jan/25',r:6},{x:697,y:20213,label:'Mar/25',r:7},{x:697,y:17425,label:'Jun/25',r:7},
+    {x:697,y:9758,label:'Ago/25',r:6},{x:697,y:6273,label:'Out/25',r:5},{x:697,y:4182,label:'Fev/26',r:5},
+    {x:297,y:43441,label:'Abr/26',r:12},
+  ];
+  mkChart('pp-era-scatter',{
+    type:'bubble',
+    data:{datasets:[
+      {label:'R$397',data:eraData.filter(d=>d.x===397).map(d=>({x:d.x,y:d.y,r:d.r})),backgroundColor:'rgba(96,165,250,0.6)'},
+      {label:'R$697',data:eraData.filter(d=>d.x===697).map(d=>({x:d.x,y:d.y,r:d.r})),backgroundColor:'rgba(251,191,36,0.6)'},
+      {label:'R$297 Abr/26',data:eraData.filter(d=>d.x===297).map(d=>({x:d.x,y:d.y,r:d.r})),backgroundColor:'rgba(16,185,129,0.8)'},
+    ]},
+    options:{responsive:true,plugins:{legend:{display:true},tooltip:{callbacks:{label:ctx=>'Fat DS: R$ '+ctx.raw.y.toLocaleString('pt-BR')}}},
+      scales:{
+        x:{title:{display:true,text:'Ticket (R$)',font:{size:10}},min:200,max:800,
+          ticks:{callback:v=>'R$'+v},grid:{color:'rgba(255,255,255,0.04)'}},
+        y:{title:{display:true,text:'Fat. DS (R$)',font:{size:10}},
+          ticks:{callback:v=>'R$'+(v/1000).toFixed(0)+'k'},grid:{color:'rgba(255,255,255,0.04)'}}
+      }
+    }
+  });
+
+  // ── Histórico comparativo bar (abr/26 destacado) ──
+  const ppLabels=['Ago/23','Dez/23','Fev/24','Abr/24','Jun/24','Ago/24','Out/24','Jan/25','Mar/25','Jun/25','Ago/25','Out/25','Dez/25','Fev/26','Abr/26'];
+  const ppFat=[0,4367,5955,794,9330,8705,0,9758,20213,17425,9758,6273,4880,4182,43441];
+  const ppColors=ppFat.map((_,i)=>i===14?'rgba(16,185,129,0.9)':'rgba(251,191,36,0.45)');
+  mkChart('pp-hist-compare',{
+    type:'bar',
+    data:{labels:ppLabels,datasets:[
+      {label:'Fat. Downsell (R$)',data:ppFat,backgroundColor:ppColors,borderRadius:4},
+      {label:'Média histórica',data:ppFat.map(()=>9678),type:'line',
+        borderColor:'rgba(148,163,184,0.5)',borderDash:[4,4],pointRadius:0,fill:false}
+    ]},
+    options:{responsive:true,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{display:true},tooltip:{callbacks:{label:ctx=>'R$ '+ctx.raw.toLocaleString('pt-BR')}}},
+      scales:{y:{ticks:{callback:v=>'R$'+(v/1000).toFixed(0)+'k'},grid:{color:'rgba(255,255,255,0.04)'}}}}
+  });
+
+
   // ── Funil Tráfego (projection) ──
   mkChart('pp-funil-traf',{
     type:'bar',
@@ -2578,17 +2847,23 @@ document.addEventListener('keydown',e=>{
 
 <!-- VERSION BADGE -->
 <div class="ver-badge">
-  <div class="ver-dot" onclick="toggleVerDrawer()" title="Changelog · v3.5" role="button" tabindex="0" aria-label="Ver changelog v3.5">v3.5</div>
+  <div class="ver-dot" onclick="toggleVerDrawer()" title="Changelog · v3.6" role="button" tabindex="0" aria-label="Ver changelog v3.6">v3.6</div>
 </div>
 <div class="ver-drawer" id="ver-drawer" role="dialog" aria-label="Changelog">
   <div class="ver-drawer-hdr">
-    <div class="ver-drawer-title">Changelog <span>v3.5 · atual</span></div>
+    <div class="ver-drawer-title">Changelog <span>v3.6 · atual</span></div>
     <button class="ver-close" onclick="toggleVerDrawer()" aria-label="Fechar">✕</button>
   </div>
   <div class="ver-drawer-body">
     <div class="ver-entry">
   <div class="ver-entry-hdr">
-    <span class="ver-tag">v3.5 · atual</span>
+    <span class="ver-tag">v3.6 · atual</span>
+    <span class="ver-date">Mai/26</span>
+  </div>
+  <div class="ver-item">Perpétuo: breakdown das 5 campanhas Abr/26 (frio vs quente, CPV por campanha)</div><div class="ver-item">Análise ticket x volume: ponto de equilíbrio R$297 vs R$697 (break-even ~35 vendas)</div><div class="ver-item">Debriefing em texto: o que funcionou e pontos de atenção no sistema perpétuo</div><div class="ver-item">Comparativo Abr/26 vs média histórica (+349% fat. DS, +1.339% volume)</div>
+</div><div class="ver-sep"></div><div class="ver-entry">
+  <div class="ver-entry-hdr">
+    <span class="ver-tag old">v3.5</span>
     <span class="ver-date">Mai/26</span>
   </div>
   <div class="ver-item">Nova seção 🔁 Perpétuo: análise completa do Protocolo Pasto Produtivo (R$297)</div><div class="ver-item">Dados reais: fat. downsell e vendas por lançamento (15 lançamentos)</div><div class="ver-item">Funil Abr/26 com dados reais de mídia: Impressões → Cliques → PV → Compras</div><div class="ver-item">Análise por era de preço (R$397 / R$697 / R$297) com médias comparativas</div><div class="ver-item">Projeções (Funil WPP + Tráfego) claramente sinalizadas como estimativas</div>
