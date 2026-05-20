@@ -621,6 +621,7 @@ button:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
     <button class="nav-btn" onclick="showSection('funil',this)">🔽 Funil CPL</button>
     <button class="nav-btn" onclick="showSection('receita',this)">💰 Receita+</button>
     <button class="nav-btn" onclick="showSection('volume',this)">👥 Leads & Volume</button>
+    <button class="nav-btn" onclick="showSection('perpetuo',this)">🔁 Perpétuo</button>
   </div>
   <div class="nav-right">
     <a href="pecuaria_plano_v3.html" class="plano-link">📋 Plano de Ação →</a>
@@ -1263,6 +1264,181 @@ button:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
   </div>
 </div>
 </section>
+
+<!-- ════════════════════════════════════════════════════════
+     SEÇÃO: PERPÉTUO / DOWNSELL
+════════════════════════════════════════════════════════ -->
+<section id="section-perpetuo" class="section">
+<div style="padding:24px 20px;max-width:1400px;margin:0 auto;">
+
+  <h2 style="font-size:20px;font-weight:800;color:var(--text);margin-bottom:4px;">🔁 Sistema Perpétuo — Protocolo Pasto Produtivo</h2>
+  <p style="color:var(--text-muted);font-size:13px;margin-bottom:20px;">Downsell R$297 · Análise histórica por lançamento · Abr/26 com dados de mídia</p>
+
+  <!-- ── REAL DATA BADGE ── -->
+  <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);border-radius:20px;padding:6px 14px;margin-bottom:20px;">
+    <span style="width:8px;height:8px;border-radius:50%;background:#10b981;display:inline-block;"></span>
+    <span style="font-size:12px;font-weight:700;color:#10b981;letter-spacing:.04em;">DADOS REAIS — ABA 1 — 15 lançamentos</span>
+  </div>
+
+  <!-- ── KPI HERO CARDS ── -->
+  <div class="g4" style="margin-bottom:24px;">
+    <div class="kpi-hero">
+      <div class="kpi-label">Fat. Total Downsell</div>
+      <div class="kpi-value" style="color:var(--gold)" id="pp-fat-total">—</div>
+      <div class="kpi-sub">15 lançamentos</div>
+    </div>
+    <div class="kpi-hero">
+      <div class="kpi-label">Total de Vendas DS</div>
+      <div class="kpi-value" style="color:var(--forest-light)" id="pp-vendas-total">—</div>
+      <div class="kpi-sub">todos os lançamentos</div>
+    </div>
+    <div class="kpi-hero">
+      <div class="kpi-label">ROAS Abr/26 (DS)</div>
+      <div class="kpi-value" style="color:var(--gold)" id="pp-roas-abr">—</div>
+      <div class="kpi-sub">43.441 ÷ 10.317</div>
+    </div>
+    <div class="kpi-hero">
+      <div class="kpi-label">Era Atual (R$297)</div>
+      <div class="kpi-value" style="color:var(--forest-light)">154</div>
+      <div class="kpi-sub">vendas Abr/26 — recorde</div>
+    </div>
+  </div>
+
+  <!-- ── PRICE ERA INSIGHT ── -->
+  <div class="card" style="margin-bottom:20px;padding:18px 20px;border-left:3px solid var(--gold);">
+    <div style="font-weight:700;font-size:13px;color:var(--text);margin-bottom:10px;">💡 Inflexão de Preço — Impacto nas Vendas</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+      <div style="background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;font-weight:600;">ERA R$397</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:8px;">Dez/23 – Ago/24 · 4 lançamentos</div>
+        <div style="font-size:24px;font-weight:800;color:#60a5fa;">9,3</div>
+        <div style="font-size:11px;color:var(--text-muted);">vendas médias/lançamento</div>
+        <div style="font-size:12px;color:#60a5fa;margin-top:6px;font-weight:700;">R$ 28.451 total</div>
+      </div>
+      <div style="background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;font-weight:600;">ERA R$697</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:8px;">Jan/25 – Fev/26 · 6 lançamentos</div>
+        <div style="font-size:24px;font-weight:800;color:var(--gold);">15,0</div>
+        <div style="font-size:11px;color:var(--text-muted);">vendas médias/lançamento</div>
+        <div style="font-size:12px;color:var(--gold);margin-top:6px;font-weight:700;">R$ 72.489 total</div>
+      </div>
+      <div style="background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.25);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;font-weight:600;">ERA R$297</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:8px;">Abr/26 · 1 lançamento</div>
+        <div style="font-size:24px;font-weight:800;color:#10b981;">154</div>
+        <div style="font-size:11px;color:var(--text-muted);">vendas (10x a média anterior)</div>
+        <div style="font-size:12px;color:#10b981;margin-top:6px;font-weight:700;">R$ 43.441 só em Abr/26</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CHART: Fat DS + Vendas por lançamento ── -->
+  <div class="card" style="margin-bottom:20px;padding:20px;">
+    <div style="font-weight:700;font-size:13px;color:var(--text);margin-bottom:4px;">Faturamento Downsell e Vendas por Lançamento</div>
+    <div style="font-size:11px;color:var(--text-muted);margin-bottom:12px;">Cores por era de preço: <span style="color:#60a5fa">■ R$397</span> · <span style="color:var(--gold)">■ R$697</span> · <span style="color:#10b981">■ R$297</span></div>
+    <canvas id="pp-fat-chart" height="200"></canvas>
+  </div>
+
+  <!-- ── CHART: Ticket Médio Evol ── -->
+  <div class="g2" style="margin-bottom:20px;">
+    <div class="card" style="padding:20px;">
+      <div style="font-weight:700;font-size:13px;color:var(--text);margin-bottom:12px;">Ticket Downsell por Lançamento</div>
+      <canvas id="pp-ticket-chart" height="220"></canvas>
+    </div>
+    <div class="card" style="padding:20px;">
+      <div style="font-weight:700;font-size:13px;color:var(--text);margin-bottom:12px;">% Fat. Downsell / Fat. Total do Lançamento</div>
+      <canvas id="pp-pct-chart" height="220"></canvas>
+    </div>
+  </div>
+
+  <!-- ── ABR/26 FUNNEL — REAL DATA ── -->
+  <div class="card" style="margin-bottom:20px;padding:20px;border-left:3px solid #10b981;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+      <div style="font-weight:700;font-size:13px;color:var(--text);">🔬 Funil Abr/26 — Dados Reais de Mídia (Downsell)</div>
+      <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);border-radius:12px;padding:3px 10px;">
+        <span style="width:6px;height:6px;border-radius:50%;background:#10b981;display:inline-block;"></span>
+        <span style="font-size:11px;font-weight:700;color:#10b981;">REAL</span>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--text-muted);margin-bottom:16px;">Único lançamento com dados completos de mídia para o produto perpétuo</p>
+    <canvas id="pp-funil-abr" height="180"></canvas>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px;">
+      <div style="text-align:center;padding:10px;background:var(--bg);border-radius:8px;border:1px solid var(--card-border);">
+        <div style="font-size:10px;color:var(--text-muted);margin-bottom:2px;">IMPRESSÕES</div>
+        <div style="font-size:20px;font-weight:800;color:var(--text)">557.842</div>
+      </div>
+      <div style="text-align:center;padding:10px;background:var(--bg);border-radius:8px;border:1px solid var(--card-border);">
+        <div style="font-size:10px;color:var(--text-muted);margin-bottom:2px;">CLIQUES</div>
+        <div style="font-size:20px;font-weight:800;color:var(--gold)">6.211</div>
+        <div style="font-size:10px;color:var(--text-muted)">CTR 1,11%</div>
+      </div>
+      <div style="text-align:center;padding:10px;background:var(--bg);border-radius:8px;border:1px solid var(--card-border);">
+        <div style="font-size:10px;color:var(--text-muted);margin-bottom:2px;">PAGE VIEWS</div>
+        <div style="font-size:20px;font-weight:800;color:var(--forest-light)">4.614</div>
+        <div style="font-size:10px;color:var(--text-muted)">Conv. clique→PV 74,3%</div>
+      </div>
+      <div style="text-align:center;padding:10px;background:var(--bg);border-radius:8px;border:1px solid var(--card-border);">
+        <div style="font-size:10px;color:var(--text-muted);margin-bottom:2px;">COMPRAS</div>
+        <div style="font-size:20px;font-weight:800;color:#10b981">103</div>
+        <div style="font-size:10px;color:var(--text-muted)">Conv. PV→Compra 2,23%</div>
+      </div>
+    </div>
+    <div style="background:rgba(16,185,129,.06);border-radius:8px;padding:12px;margin-top:12px;font-size:12px;color:var(--text-muted);">
+      ⚠️ <strong style="color:var(--text)">Nota:</strong> As 154 vendas totais do DS incluem conversões de outros canais orgânicos além das 103 compras rastreadas pela mídia paga. ROAS calculado sobre investimento em tráfego DS: R$10.317 → R$43.441 = <strong style="color:#10b981">4,21x</strong>
+    </div>
+  </div>
+
+  <!-- ── PROJECTED FUNNELS — CLEARLY LABELED ── -->
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;padding:12px 16px;background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.25);border-radius:10px;">
+    <span style="font-size:18px;">⚠️</span>
+    <div>
+      <div style="font-size:13px;font-weight:700;color:var(--gold);">Seção abaixo: ESTIMATIVAS / PROJEÇÕES</div>
+      <div style="font-size:12px;color:var(--text-muted);">Os dados a seguir são cenários planejados — não refletem resultados realizados. Use como referência de meta, não como histórico.</div>
+    </div>
+  </div>
+
+  <div class="g2" style="margin-bottom:20px;">
+
+    <!-- Funil WPP -->
+    <div class="card" style="padding:20px;border:1px dashed rgba(245,158,11,.4);position:relative;">
+      <div style="position:absolute;top:12px;right:12px;background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.35);border-radius:10px;padding:2px 10px;font-size:10px;font-weight:700;color:var(--gold);letter-spacing:.05em;">ESTIMATIVA</div>
+      <div style="font-weight:700;font-size:13px;color:var(--text);margin-bottom:4px;">📱 Funil 1 — WhatsApp Mensagens</div>
+      <p style="font-size:11px;color:var(--text-muted);margin-bottom:14px;">Projeção: R$39.407 · Ticket R$297 · ~133 vendas estimadas</p>
+      <canvas id="pp-funil-wpp" height="200"></canvas>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;">
+        <div style="background:var(--bg);border-radius:8px;padding:10px;text-align:center;border:1px solid var(--card-border);">
+          <div style="font-size:10px;color:var(--text-muted);">LEADS PROJETADOS</div>
+          <div style="font-size:18px;font-weight:800;color:var(--gold)">11.794</div>
+        </div>
+        <div style="background:var(--bg);border-radius:8px;padding:10px;text-align:center;border:1px solid var(--card-border);">
+          <div style="font-size:10px;color:var(--text-muted);">RECEITA ESTIMADA</div>
+          <div style="font-size:18px;font-weight:800;color:var(--gold)">R$ 39.407</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Funil Tráfego -->
+    <div class="card" style="padding:20px;border:1px dashed rgba(245,158,11,.4);position:relative;">
+      <div style="position:absolute;top:12px;right:12px;background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.35);border-radius:10px;padding:2px 10px;font-size:10px;font-weight:700;color:var(--gold);letter-spacing:.05em;">ESTIMATIVA</div>
+      <div style="font-weight:700;font-size:13px;color:var(--text);margin-bottom:4px;">📡 Funil 2 — Tráfego Direto</div>
+      <p style="font-size:11px;color:var(--text-muted);margin-bottom:14px;">Projeção: R$56.801 · Invest R$100k · Leads 20.000 → 6.800 (WPP)</p>
+      <canvas id="pp-funil-traf" height="200"></canvas>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;">
+        <div style="background:var(--bg);border-radius:8px;padding:10px;text-align:center;border:1px solid var(--card-border);">
+          <div style="font-size:10px;color:var(--text-muted);">INVESTIMENTO ESTIMADO</div>
+          <div style="font-size:18px;font-weight:800;color:var(--gold)">R$ 100.000</div>
+        </div>
+        <div style="background:var(--bg);border-radius:8px;padding:10px;text-align:center;border:1px solid var(--card-border);">
+          <div style="font-size:10px;color:var(--text-muted);">RECEITA ESTIMADA</div>
+          <div style="font-size:18px;font-weight:800;color:var(--gold)">R$ 56.801</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
 </main>
 
 <div class="tooltip-card" id="tt"></div>
@@ -1997,6 +2173,156 @@ function buildVolumeCharts(){
   ]},options:{responsive:true,plugins:{legend:{display:false}},scales:{x:{ticks:{color:tc},grid:{color:gc}},y:{ticks:{color:tc},grid:{color:gc}}}}});
 }
 
+
+// ============================================================
+// PERPÉTUO — DOWNSELL CHARTS
+// ============================================================
+function buildPerpetuoCharts(){
+  // Data — ABA 1 real
+  const labels = ['Ago/23','Dez/23','Fev/24','Abr/24','Jun/24','Ago/24','Out/24','Jan/25','Mar/25','Jun/25','Ago/25','Out/25','Dez/25','Fev/26','Abr/26'];
+  const fatDS  = [0, 4367, 5955, 794, 9330, 8705, 0, 9758, 20213, 17425, 9758, 6273, 4880, 4182, 43441];
+  const vendas = [0, 11,   15,   2,   9,    13,   0,  14,   29,   25,    14,   9,    8,    6,   154];
+  const ticket = [null,397,397,397,null,null,null,697,697,697,697,697,null,697,297];
+  const fatBruto=[49896,109771,379094,487669,412370,587343,587527,622191,616559,810479,679686,810116,301195,945387,869893];
+
+  // Color by price era
+  // Ago/23=none, Dez/23-Ago/24=397(indices 1-5), Out/24=none, Jan/25-Fev/26=697(7-13), Abr/26=297(14)
+  const eraColors = [
+    'rgba(148,163,184,0.6)',  // Ago/23 - no data
+    'rgba(96,165,250,0.85)',   // Dez/23 R$397
+    'rgba(96,165,250,0.85)',   // Fev/24 R$397
+    'rgba(96,165,250,0.85)',   // Abr/24 R$397
+    'rgba(96,165,250,0.85)',   // Jun/24 (sem ticket claro, era 397)
+    'rgba(96,165,250,0.85)',   // Ago/24
+    'rgba(148,163,184,0.6)',  // Out/24 - sem DS
+    'rgba(251,191,36,0.85)',   // Jan/25 R$697
+    'rgba(251,191,36,0.85)',   // Mar/25
+    'rgba(251,191,36,0.85)',   // Jun/25
+    'rgba(251,191,36,0.85)',   // Ago/25
+    'rgba(251,191,36,0.85)',   // Out/25
+    'rgba(251,191,36,0.85)',   // Dez/25
+    'rgba(251,191,36,0.85)',   // Fev/26
+    'rgba(16,185,129,0.9)',    // Abr/26 R$297
+  ];
+
+  // KPI fill
+  const totalFat = fatDS.reduce((a,b)=>a+b,0);
+  const totalVendas = vendas.reduce((a,b)=>a+b,0);
+  document.getElementById('pp-fat-total').textContent = 'R$ '+totalFat.toLocaleString('pt-BR');
+  document.getElementById('pp-vendas-total').textContent = totalVendas;
+  document.getElementById('pp-roas-abr').textContent = '4,21x';
+
+  const mkChart = (id, cfg) => {
+    const el = document.getElementById(id);
+    if(!el) return;
+    return new Chart(el, cfg);
+  };
+
+  // ── Fat DS + Vendas (dual axis) ──
+  mkChart('pp-fat-chart',{
+    type:'bar',
+    data:{
+      labels,
+      datasets:[
+        {label:'Fat. Downsell (R$)', data:fatDS, backgroundColor:eraColors, yAxisID:'y', order:2},
+        {label:'Vendas DS', data:vendas, type:'line', borderColor:'#f472b6', backgroundColor:'rgba(244,114,182,0.1)',
+         tension:.35, pointRadius:4, pointBackgroundColor:'#f472b6', yAxisID:'y1', order:1}
+      ]
+    },
+    options:{
+      responsive:true, interaction:{mode:'index',intersect:false},
+      plugins:{legend:{display:true}, tooltip:{callbacks:{
+        label: ctx => ctx.datasetIndex===0
+          ? ' R$ '+ctx.raw.toLocaleString('pt-BR')
+          : ' '+ctx.raw+' vendas'
+      }}},
+      scales:{
+        y:{position:'left', ticks:{callback:v=>v>=1000?'R$'+(v/1000).toFixed(0)+'k':'R$'+v}, grid:{color:'rgba(255,255,255,0.04)'}},
+        y1:{position:'right', grid:{drawOnChartArea:false}, ticks:{callback:v=>v+' vd'}}
+      }
+    }
+  });
+
+  // ── Ticket por lançamento (bar, null = skip) ──
+  const ticketNonNull = ticket.map(v => v||0);
+  mkChart('pp-ticket-chart',{
+    type:'bar',
+    data:{labels, datasets:[{
+      label:'Ticket DS (R$)', data:ticketNonNull,
+      backgroundColor: ticketNonNull.map(v=>v===397?'rgba(96,165,250,0.75)':v===697?'rgba(251,191,36,0.75)':v===297?'rgba(16,185,129,0.75)':'rgba(100,116,139,0.3)'),
+      borderRadius:4
+    }]},
+    options:{responsive:true, plugins:{legend:{display:false}, tooltip:{callbacks:{label:ctx=>ctx.raw?' R$ '+ctx.raw:'Sem dados'}}},
+      scales:{y:{ticks:{callback:v=>'R$'+v}, grid:{color:'rgba(255,255,255,0.04)'}}}}
+  });
+
+  // ── % Fat DS / Fat Bruto ──
+  const pctDS = fatDS.map((v,i)=>fatBruto[i]>0?parseFloat((v/fatBruto[i]*100).toFixed(2)):0);
+  mkChart('pp-pct-chart',{
+    type:'line',
+    data:{labels, datasets:[{
+      label:'% DS do Fat. Total', data:pctDS,
+      borderColor:'var(--gold)', backgroundColor:'rgba(251,191,36,0.08)',
+      tension:.35, fill:true, pointRadius:3, pointBackgroundColor:'var(--gold)'
+    }]},
+    options:{responsive:true, plugins:{legend:{display:false}, tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'%'}}},
+      scales:{y:{ticks:{callback:v=>v+'%'}, grid:{color:'rgba(255,255,255,0.04)'}}}}
+  });
+
+  // ── Funil Abr/26 real ──
+  mkChart('pp-funil-abr',{
+    type:'bar',
+    data:{
+      labels:['Impressões','Cliques','Page Views','Compras (mídia)'],
+      datasets:[{
+        label:'Abr/26 — Real', data:[557842,6211,4614,103],
+        backgroundColor:['rgba(96,165,250,0.7)','rgba(251,191,36,0.7)','rgba(52,211,153,0.7)','rgba(16,185,129,0.9)'],
+        borderRadius:6
+      }]
+    },
+    options:{indexAxis:'y', responsive:true,
+      plugins:{legend:{display:false}, tooltip:{callbacks:{label:ctx=>ctx.raw.toLocaleString('pt-BR')}}},
+      scales:{x:{ticks:{callback:v=>v>=1000?(v/1000).toFixed(0)+'k':v}, grid:{color:'rgba(255,255,255,0.04)'}}}}
+  });
+
+  // ── Funil WPP (projection) ──
+  mkChart('pp-funil-wpp',{
+    type:'bar',
+    data:{
+      labels:['Leads','Acessaram oferta','Compraram'],
+      datasets:[{
+        label:'WPP — Estimativa', data:[11794, Math.round(11794*0.35), 133],
+        backgroundColor:['rgba(251,191,36,0.5)','rgba(251,191,36,0.65)','rgba(251,191,36,0.85)'],
+        borderRadius:5
+      }]
+    },
+    options:{responsive:true,
+      plugins:{
+        legend:{display:false},
+        tooltip:{callbacks:{label:ctx=>ctx.raw.toLocaleString('pt-BR')}},
+        annotation:{annotations:{box1:{type:'box', yScaleID:'y', yMin:-1, yMax:20000,
+          backgroundColor:'rgba(245,158,11,0.03)', borderColor:'rgba(245,158,11,0.15)', borderWidth:1}}}
+      },
+      scales:{y:{ticks:{callback:v=>v>=1000?(v/1000).toFixed(0)+'k':v}, grid:{color:'rgba(255,255,255,0.04)'}}}}
+  });
+
+  // ── Funil Tráfego (projection) ──
+  mkChart('pp-funil-traf',{
+    type:'bar',
+    data:{
+      labels:['Leads (tráf.)','Leads WPP (34%)','Compraram'],
+      datasets:[{
+        label:'Tráfego — Estimativa', data:[20000, 6800, 191],
+        backgroundColor:['rgba(251,191,36,0.5)','rgba(251,191,36,0.65)','rgba(251,191,36,0.85)'],
+        borderRadius:5
+      }]
+    },
+    options:{responsive:true,
+      plugins:{legend:{display:false}, tooltip:{callbacks:{label:ctx=>ctx.raw.toLocaleString('pt-BR')}}},
+      scales:{y:{ticks:{callback:v=>v>=1000?(v/1000).toFixed(0)+'k':v}, grid:{color:'rgba(255,255,255,0.04)'}}}}
+  });
+}
+
 // ============================================================
 // NAVIGATION
 // ============================================================
@@ -2014,6 +2340,7 @@ function showSection(id,btn){
   if(id==='funil'&&!window._funilBuilt){buildFunilCharts();window._funilBuilt=true;}
   if(id==='receita'&&!window._receitaBuilt){buildReceitaCharts();window._receitaBuilt=true;}
   if(id==='volume'&&!window._volBuilt){buildVolumeCharts();window._volBuilt=true;}
+  if(id==='perpetuo'&&!window._ppBuilt){buildPerpetuoCharts();window._ppBuilt=true;}
   window.dispatchEvent(new Event('resize'));
 }
 
@@ -2251,17 +2578,23 @@ document.addEventListener('keydown',e=>{
 
 <!-- VERSION BADGE -->
 <div class="ver-badge">
-  <div class="ver-dot" onclick="toggleVerDrawer()" title="Changelog · v3.4" role="button" tabindex="0" aria-label="Ver changelog v3.4">v3.4</div>
+  <div class="ver-dot" onclick="toggleVerDrawer()" title="Changelog · v3.5" role="button" tabindex="0" aria-label="Ver changelog v3.5">v3.5</div>
 </div>
 <div class="ver-drawer" id="ver-drawer" role="dialog" aria-label="Changelog">
   <div class="ver-drawer-hdr">
-    <div class="ver-drawer-title">Changelog <span>v3.4 · atual</span></div>
+    <div class="ver-drawer-title">Changelog <span>v3.5 · atual</span></div>
     <button class="ver-close" onclick="toggleVerDrawer()" aria-label="Fechar">✕</button>
   </div>
   <div class="ver-drawer-body">
     <div class="ver-entry">
   <div class="ver-entry-hdr">
-    <span class="ver-tag">v3.4 · atual</span>
+    <span class="ver-tag">v3.5 · atual</span>
+    <span class="ver-date">Mai/26</span>
+  </div>
+  <div class="ver-item">Nova seção 🔁 Perpétuo: análise completa do Protocolo Pasto Produtivo (R$297)</div><div class="ver-item">Dados reais: fat. downsell e vendas por lançamento (15 lançamentos)</div><div class="ver-item">Funil Abr/26 com dados reais de mídia: Impressões → Cliques → PV → Compras</div><div class="ver-item">Análise por era de preço (R$397 / R$697 / R$297) com médias comparativas</div><div class="ver-item">Projeções (Funil WPP + Tráfego) claramente sinalizadas como estimativas</div>
+</div><div class="ver-sep"></div><div class="ver-entry">
+  <div class="ver-entry-hdr">
+    <span class="ver-tag old">v3.4</span>
     <span class="ver-date">Mai/26</span>
   </div>
   <div class="ver-item">Funil: E8 Novos Alunos compara com CPL3, não E7 (correção lógica)</div><div class="ver-item">KPIs por lançamento organizados em CUSTOS / VOLUME / EFICIÊNCIA</div><div class="ver-item">Faturamento, Investimento Tráfego, Captação e Lucro adicionados ao individual</div><div class="ver-item">"Pitch D1" renomeado para "Conv. D1 (v1/CPL3)" em todo o dashboard</div><div class="ver-item">Tooltip corrigido no gráfico CPL3→Novos Alunos (Histórico)</div><div class="ver-item">Comparação de 3 lançamentos simultâneos (botão Comparar 3)</div>
