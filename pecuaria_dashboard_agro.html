@@ -1277,7 +1277,7 @@ button:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
   <!-- ── REAL DATA BADGE ── -->
   <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);border-radius:20px;padding:6px 14px;margin-bottom:20px;">
     <span style="width:8px;height:8px;border-radius:50%;background:#10b981;display:inline-block;"></span>
-    <span style="font-size:12px;font-weight:700;color:#10b981;letter-spacing:.04em;">DADOS REAIS — ABA 1 — 15 lançamentos</span>
+    <span style="font-size:12px;font-weight:700;color:#10b981;letter-spacing:.04em;">DADOS REAIS — ABA 1 — 16 lançamentos</span>
   </div>
 
   <!-- ── KPI HERO CARDS ── -->
@@ -1285,7 +1285,7 @@ button:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
     <div class="kpi-hero">
       <div class="kpi-label">Fat. Total Downsell</div>
       <div class="kpi-value" style="color:var(--gold)" id="pp-fat-total">—</div>
-      <div class="kpi-sub">15 lançamentos</div>
+      <div class="kpi-sub">16 lançamentos</div>
     </div>
     <div class="kpi-hero">
       <div class="kpi-label">Total de Vendas DS</div>
@@ -1293,14 +1293,14 @@ button:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
       <div class="kpi-sub">todos os lançamentos</div>
     </div>
     <div class="kpi-hero">
-      <div class="kpi-label">ROAS Abr/26 (DS)</div>
+      <div class="kpi-label">ROAS Jun/26 (DS)</div>
       <div class="kpi-value" style="color:var(--gold)" id="pp-roas-abr">—</div>
-      <div class="kpi-sub">57.024 ÷ 6.577 (total)</div>
+      <div class="kpi-sub">72.468 ÷ 16.358 (total) · 1,49x só tráfego</div>
     </div>
     <div class="kpi-hero">
       <div class="kpi-label">Era Atual (R$297)</div>
-      <div class="kpi-value" style="color:var(--forest-light)">192</div>
-      <div class="kpi-sub">vendas Abr/26 — recorde</div>
+      <div class="kpi-value" style="color:var(--forest-light)">244</div>
+      <div class="kpi-sub">vendas Jun/26 — novo recorde (+27% vs Abr/26)</div>
     </div>
   </div>
 
@@ -1324,10 +1324,10 @@ button:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
       </div>
       <div style="background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.25);border-radius:10px;padding:14px;text-align:center;">
         <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;font-weight:600;">ERA R$297</div>
-        <div style="font-size:11px;color:var(--text-muted);margin-bottom:8px;">Abr/26 · 1 lançamento</div>
-        <div style="font-size:24px;font-weight:800;color:#10b981;">192</div>
-        <div style="font-size:11px;color:var(--text-muted);">vendas (12,8x a média anterior)</div>
-        <div style="font-size:12px;color:#10b981;margin-top:6px;font-weight:700;">R$ 57.024 em Abr/26</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:8px;">Abr/26 + Jun/26 · 2 lançamentos</div>
+        <div style="font-size:24px;font-weight:800;color:#10b981;">218</div>
+        <div style="font-size:11px;color:var(--text-muted);">vendas médias/lançamento</div>
+        <div style="font-size:12px;color:#10b981;margin-top:6px;font-weight:700;">R$ 129.492 total (192+244 vd)</div>
       </div>
     </div>
   </div>
@@ -1542,52 +1542,52 @@ button:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
     </div>
   </div>
 
-  <!-- ── DEBRIEFING ABR/26 vs HISTÓRICO ── -->
+  <!-- ── DEBRIEFING JUN/26 vs HISTÓRICO ── -->
   <div class="card" style="margin-bottom:20px;padding:20px;border-left:3px solid var(--gold);">
-    <div style="font-weight:700;font-size:13px;color:var(--text);margin-bottom:4px;">🔎 Debriefing Abr/26 — Perpétuo vs Histórico Total</div>
-    <p style="font-size:12px;color:var(--text-muted);margin-bottom:16px;">Comparativo direto entre o lançamento Abr/26 e as médias históricas do sistema downsell</p>
+    <div style="font-weight:700;font-size:13px;color:var(--text);margin-bottom:4px;">🔎 Debriefing Jun/26 — Perpétuo vs Histórico Total</div>
+    <p style="font-size:12px;color:var(--text-muted);margin-bottom:16px;">Comparativo direto entre o lançamento de fechamento (08/06–08/07) e as médias dos 15 lançamentos anteriores</p>
     <canvas id="pp-hist-compare" height="200"></canvas>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px;">
       <div style="background:var(--bg);border-radius:8px;padding:12px;text-align:center;border:1px solid var(--card-border);">
         <div style="font-size:10px;color:var(--text-muted);margin-bottom:2px;">VENDAS DS</div>
-        <div style="font-size:18px;font-weight:800;color:#10b981;">192</div>
-        <div style="font-size:10px;color:var(--text-muted);">vs média 10,7/lç</div>
-        <div style="font-size:11px;font-weight:700;color:#10b981;">+1.694%</div>
+        <div style="font-size:18px;font-weight:800;color:#10b981;">244</div>
+        <div style="font-size:10px;color:var(--text-muted);">vs média 23,1/lç</div>
+        <div style="font-size:11px;font-weight:700;color:#10b981;">+955%</div>
       </div>
       <div style="background:var(--bg);border-radius:8px;padding:12px;text-align:center;border:1px solid var(--card-border);">
         <div style="font-size:10px;color:var(--text-muted);margin-bottom:2px;">FAT. DOWNSELL</div>
-        <div style="font-size:18px;font-weight:800;color:var(--gold);">R$57.024</div>
-        <div style="font-size:11px;color:var(--text-muted);">vs média R$9.678/lç</div>
-        <div style="font-size:11px;font-weight:700;color:#10b981;">+489%</div>
+        <div style="font-size:18px;font-weight:800;color:var(--gold);">R$72.468</div>
+        <div style="font-size:11px;color:var(--text-muted);">vs média R$10.578/lç</div>
+        <div style="font-size:11px;font-weight:700;color:#10b981;">+585%</div>
       </div>
       <div style="background:var(--bg);border-radius:8px;padding:12px;text-align:center;border:1px solid var(--card-border);">
         <div style="font-size:10px;color:var(--text-muted);margin-bottom:2px;">% DS / FAT. TOTAL</div>
-        <div style="font-size:18px;font-weight:800;color:var(--gold);">8,24%</div>
-        <div style="font-size:11px;color:var(--text-muted);">vs média 2,1%</div>
-        <div style="font-size:11px;font-weight:700;color:#10b981;">+292%</div>
+        <div style="font-size:18px;font-weight:800;color:var(--gold);">7,85%</div>
+        <div style="font-size:11px;color:var(--text-muted);">vs média 1,82%</div>
+        <div style="font-size:11px;font-weight:700;color:#10b981;">+332%</div>
       </div>
       <div style="background:var(--bg);border-radius:8px;padding:12px;text-align:center;border:1px solid var(--card-border);">
         <div style="font-size:10px;color:var(--text-muted);margin-bottom:2px;">ROAS DS</div>
-        <div style="font-size:18px;font-weight:800;color:var(--forest-light);">8,67x</div>
-        <div style="font-size:11px;color:var(--text-muted);">total · 2,91x só mídia paga</div>
-        <div style="font-size:11px;font-weight:700;color:#10b981;">referência base</div>
+        <div style="font-size:18px;font-weight:800;color:var(--forest-light);">4,43x</div>
+        <div style="font-size:11px;color:var(--text-muted);">total · 1,49x só tráfego pago</div>
+        <div style="font-size:11px;font-weight:700;color:#f59e0b;">abaixo do 8,67x de Abr/26</div>
       </div>
     </div>
     <!-- Texto debriefing -->
     <div style="background:var(--bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin-top:16px;">
-      <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:10px;border-bottom:1px solid var(--card-border);padding-bottom:8px;">📋 Análise — O que Abr/26 nos diz sobre o sistema perpétuo</div>
+      <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:10px;border-bottom:1px solid var(--card-border);padding-bottom:8px;">📋 Análise — O que Jun/26 nos diz sobre o sistema perpétuo</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:12px;color:var(--text-muted);line-height:1.7;">
         <div>
           <div style="font-weight:700;color:var(--forest-light);margin-bottom:6px;">✅ O que funcionou</div>
-          <p style="margin:0 0 6px;">Redução de ticket a R$297 gerou 192 vendas — 12,8x acima da média histórica da era R$697 — confirmando demanda reprimida sensível ao preço.</p>
-          <p style="margin:0 0 6px;">Canal Meta: 64 compras com R$6.577 investidos, CPA R$102,76, lucro líquido R$12.431. Canal WhatsApp: 128 vendas sem custo incremental de mídia (grupos de leads do lançamento). Total: <strong style="color:#10b981;">R$57.024 de faturamento DS</strong>.</p>
-          <p style="margin:0;">ROAS total de 8,67x indica que o produto perpétuo já opera como canal autônomo com ampla margem positiva — sem depender do lançamento principal para se justificar.</p>
+          <p style="margin:0 0 6px;">Novo recorde histórico: 244 alunos (+27% vs. os 192 de Abr/26), confirmando que o downsell a R$297 segue com demanda muito acima de qualquer era anterior (+955% vs. média histórica de 23,1 vendas/lançamento).</p>
+          <p style="margin:0 0 6px;">Canal WhatsApp/Orgânico superou a própria meta em 62% (162 vs. 100) com ROAS de aquisição muito superior ao pago — candidato natural a virar processo padrão (SDCA).</p>
+          <p style="margin:0;">Mesmo com a falha no tráfego pago (ver ao lado), o projeto como um todo permaneceu lucrativo: R$72.468 faturados sobre R$16.358 investidos.</p>
         </div>
         <div>
           <div style="font-weight:700;color:var(--gold);margin-bottom:6px;">⚠️ Pontos de atenção</div>
-          <p style="margin:0 0 6px;">É o primeiro lançamento nesse formato e preço — os 154 vendas podem conter efeito de novidade ou base de leads acumulada. Próximos lançamentos vão calibrar o padrão real.</p>
-          <p style="margin:0 0 6px;">128 vendas vieram do WhatsApp (grupos de leads) sem rastreamento granular — importante estruturar UTMs ou formulário de atribuição no próximo ciclo para medir taxa de conversão real por grupo.</p>
-          <p style="margin:0;">A campanha FASE2 FRIA com menor investimento (R$162) entregou apenas 1 compra — avaliar pausar ou reformular esse conjunto no próximo ciclo.</p>
+          <p style="margin:0 0 6px;"><strong style="color:var(--rose);">Causa raiz confirmada:</strong> 0 dos 6 criativos dedicados (VSL + variações) foram entregues — a campanha rodou inteira com anúncios reciclados do produto core, o que explica o ROAS de tráfego (1,49x) ficar abaixo do mínimo aceitável (1,65x) e bem abaixo do 2,91x de Abr/26.</p>
+          <p style="margin:0 0 6px;">Investimento em tráfego atingiu só 30% do planejado (R$16.358 de R$54.000) — corte reativo ao CPA ruim na semana 1, que não recuperou a eficiência (CPA piorou ainda mais depois do corte).</p>
+          <p style="margin:0;">Plano de ação já definido: gate de aprovação obrigatório para criativo dedicado antes do início de campanhas futuras — ver dossiê de fechamento do projeto.</p>
         </div>
       </div>
     </div>
@@ -1649,6 +1649,69 @@ button:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
           <div style="font-size:18px;font-weight:800;color:#10b981">R$ 19.008</div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- ── ESTRATIFICAÇÃO DIÁRIA — JUN/JUL 2026 (FECHAMENTO) ── -->
+  <div style="display:flex;align-items:center;gap:10px;margin:32px 0 12px;padding:12px 16px;background:rgba(201,146,42,.08);border:1px solid rgba(201,146,42,.3);border-radius:10px;">
+    <span style="font-size:18px;">📅</span>
+    <div>
+      <div style="font-size:13px;font-weight:700;color:var(--gold);">Estratificação Diária — Lançamento Jun/Jul 2026 (Fechamento do Protocolo)</div>
+      <div style="font-size:12px;color:var(--text-muted);">08/06 a 08/07 · 31 dias · Análise Estrutural (tempo) — Falconi, Análise do Fenômeno</div>
+    </div>
+  </div>
+
+  <div class="g4" style="margin-bottom:20px;">
+    <div class="kpi-hero">
+      <div class="kpi-label">Investido no período</div>
+      <div class="kpi-value" style="color:var(--gold)">R$ 16.775,66</div>
+      <div class="kpi-sub">R$16.357,70 downsell + R$417,96 anúncios genéricos</div>
+    </div>
+    <div class="kpi-hero">
+      <div class="kpi-label">Alunos — Tráfego</div>
+      <div class="kpi-value" style="color:var(--forest-light)">82</div>
+      <div class="kpi-sub">CPA R$199,48</div>
+    </div>
+    <div class="kpi-hero">
+      <div class="kpi-label">Alunos — WhatsApp</div>
+      <div class="kpi-value" style="color:#22c55e">128</div>
+      <div class="kpi-sub">picos no dia 1 e nos dias 29-31</div>
+    </div>
+    <div class="kpi-hero">
+      <div class="kpi-label">Alunos — Orgânico (outros)</div>
+      <div class="kpi-value" style="color:#60a5fa">35</div>
+      <div class="kpi-sub">comercial+social+email+edduz+chatbot</div>
+    </div>
+  </div>
+
+  <!-- Chart: Investimento diário x Alunos Tráfego (mostra o corte reativo) -->
+  <div class="card" style="margin-bottom:20px;padding:20px;border-left:3px solid var(--gold);">
+    <div style="font-weight:700;font-size:13px;color:var(--text);margin-bottom:4px;">💸 Investimento Diário vs. Alunos via Tráfego Pago</div>
+    <p style="font-size:12px;color:var(--text-muted);margin-bottom:12px;">Evidencia o corte reativo de ~60% no investimento a partir do dia 8 (15/06) — que não recuperou a eficiência.</p>
+    <canvas id="pp-daily-invest-chart" height="220"></canvas>
+  </div>
+
+  <!-- Chart: Alunos por canal principal, dia a dia (stacked) -->
+  <div class="card" style="margin-bottom:20px;padding:20px;">
+    <div style="font-weight:700;font-size:13px;color:var(--text);margin-bottom:4px;">👥 Alunos por Canal — Dia a Dia (Tráfego · WhatsApp · Orgânico)</div>
+    <p style="font-size:12px;color:var(--text-muted);margin-bottom:12px;">Barras empilhadas · Orgânico agrega Comercial, Social Media, Email, Recuperação Eduzz e Chatbot IA.</p>
+    <canvas id="pp-daily-canais-chart" height="220"></canvas>
+  </div>
+
+  <!-- Chart: Detalhamento orgânico por fonte, dia a dia -->
+  <div class="card" style="margin-bottom:20px;padding:20px;">
+    <div style="font-weight:700;font-size:13px;color:var(--text);margin-bottom:4px;">🔍 Detalhamento Orgânico por Fonte — Dia a Dia</div>
+    <p style="font-size:12px;color:var(--text-muted);margin-bottom:12px;">Comercial, Social Media, Email Marketing (Brevo), Recuperação Eduzz, Chatbot IA.</p>
+    <canvas id="pp-daily-organico-chart" height="220"></canvas>
+  </div>
+
+  <!-- Insight box -->
+  <div class="card" style="margin-bottom:20px;padding:18px 20px;border-left:3px solid var(--gold);">
+    <div style="font-weight:700;font-size:13px;color:var(--text);margin-bottom:10px;">📋 Leitura — Análise Estrutural (Tempo)</div>
+    <div style="font-size:12px;color:var(--text-muted);line-height:1.7;">
+      <p style="margin:0 0 8px;"><strong style="color:var(--text);">Semana 1 concentra o maior investimento e a maior parte das vendas de tráfego</strong> — mas o CPA já piora dia a dia dentro dela (de R$79 no dia 1 a mais de R$500 no dia 6), antes de qualquer corte de budget.</p>
+      <p style="margin:0 0 8px;"><strong style="color:var(--text);">O corte de investimento a partir do dia 8 (15/06) é visível no gráfico</strong> — investimento cai de ~R$1.000/dia para ~R$400/dia e se mantém baixo pelo resto do período, sem recuperar eficiência.</p>
+      <p style="margin:0;"><strong style="color:var(--text);">WhatsApp tem dois picos claros</strong>: abertura do carrinho (dias 1-2, com 61 dos 128 alunos) e reta final (dias 29-31, com 36 alunos) — padrão de urgência/prazo, típico de recuperação de carrinho perto do fechamento.</p>
     </div>
   </div>
 
@@ -2395,14 +2458,14 @@ function buildVolumeCharts(){
 // ============================================================
 function buildPerpetuoCharts(){
   // Data — ABA 1 real
-  const labels = ['Ago/23','Dez/23','Fev/24','Abr/24','Jun/24','Ago/24','Out/24','Jan/25','Mar/25','Jun/25','Ago/25','Out/25','Dez/25','Fev/26','Abr/26'];
-  const fatDS  = [0, 4367, 5955, 794, 9330, 8705, 0, 9758, 20213, 17425, 9758, 6273, 4880, 4182, 57024];
-  const vendas = [0, 11,   15,   2,   9,    13,   0,  14,   29,   25,    14,   9,    8,    6,   192];
-  const ticket = [null,397,397,397,null,null,null,697,697,697,697,697,null,697,297];
-  const fatBruto=[49896,109771,379094,487669,412370,587343,587527,622191,616559,810479,679686,810116,301195,945387,869893];
+  const labels = ['Ago/23','Dez/23','Fev/24','Abr/24','Jun/24','Ago/24','Out/24','Jan/25','Mar/25','Jun/25','Ago/25','Out/25','Dez/25','Fev/26','Abr/26','Jun/26'];
+  const fatDS  = [0, 4367, 5955, 794, 9330, 8705, 0, 9758, 20213, 17425, 9758, 6273, 4880, 4182, 57024, 72468];
+  const vendas = [0, 11,   15,   2,   9,    13,   0,  14,   29,   25,    14,   9,    8,    6,   192,   244];
+  const ticket = [null,397,397,397,null,null,null,697,697,697,697,697,null,697,297,297];
+  const fatBruto=[49896,109771,379094,487669,412370,587343,587527,622191,616559,810479,679686,810116,301195,945387,869893,923326];
 
   // Color by price era
-  // Ago/23=none, Dez/23-Ago/24=397(indices 1-5), Out/24=none, Jan/25-Fev/26=697(7-13), Abr/26=297(14)
+  // Ago/23=none, Dez/23-Ago/24=397(indices 1-5), Out/24=none, Jan/25-Fev/26=697(7-13), Abr/26+Jun/26=297(14-15)
   const eraColors = [
     'rgba(148,163,184,0.6)',  // Ago/23 - no data
     'rgba(96,165,250,0.85)',   // Dez/23 R$397
@@ -2419,6 +2482,7 @@ function buildPerpetuoCharts(){
     'rgba(251,191,36,0.85)',   // Dez/25
     'rgba(251,191,36,0.85)',   // Fev/26
     'rgba(16,185,129,0.9)',    // Abr/26 R$297
+    'rgba(16,185,129,0.9)',    // Jun/26 R$297 (fechamento 08/06-08/07)
   ];
 
   // KPI fill
@@ -2426,7 +2490,7 @@ function buildPerpetuoCharts(){
   const totalVendas = vendas.reduce((a,b)=>a+b,0);
   document.getElementById('pp-fat-total').textContent = 'R$ '+totalFat.toLocaleString('pt-BR');
   document.getElementById('pp-vendas-total').textContent = totalVendas;
-  document.getElementById('pp-roas-abr').textContent = '8,67x';
+  document.getElementById('pp-roas-abr').textContent = '4,43x';
 
   const mkChart = (id, cfg) => {
     const el = document.getElementById(id);
@@ -2649,15 +2713,15 @@ function buildPerpetuoCharts(){
     }
   });
 
-  // ── Histórico comparativo bar (abr/26 destacado) ──
-  const ppLabels=['Ago/23','Dez/23','Fev/24','Abr/24','Jun/24','Ago/24','Out/24','Jan/25','Mar/25','Jun/25','Ago/25','Out/25','Dez/25','Fev/26','Abr/26'];
-  const ppFat=[0,4367,5955,794,9330,8705,0,9758,20213,17425,9758,6273,4880,4182,43441];
-  const ppColors=ppFat.map((_,i)=>i===14?'rgba(16,185,129,0.9)':'rgba(251,191,36,0.45)');
+  // ── Histórico comparativo bar (Jun/26 destacado) ──
+  const ppLabels=['Ago/23','Dez/23','Fev/24','Abr/24','Jun/24','Ago/24','Out/24','Jan/25','Mar/25','Jun/25','Ago/25','Out/25','Dez/25','Fev/26','Abr/26','Jun/26'];
+  const ppFat=[0,4367,5955,794,9330,8705,0,9758,20213,17425,9758,6273,4880,4182,43441,72468];
+  const ppColors=ppFat.map((_,i)=>i===15?'rgba(16,185,129,0.9)':'rgba(251,191,36,0.45)');
   mkChart('pp-hist-compare',{
     type:'bar',
     data:{labels:ppLabels,datasets:[
       {label:'Fat. Downsell (R$)',data:ppFat,backgroundColor:ppColors,borderRadius:4},
-      {label:'Média histórica',data:ppFat.map(()=>9678),type:'line',
+      {label:'Média histórica',data:ppFat.map(()=>9672),type:'line',
         borderColor:'rgba(148,163,184,0.5)',borderDash:[4,4],pointRadius:0,fill:false}
     ]},
     options:{responsive:true,interaction:{mode:'index',intersect:false},
@@ -2680,6 +2744,96 @@ function buildPerpetuoCharts(){
     options:{responsive:true,
       plugins:{legend:{display:false}, tooltip:{callbacks:{label:ctx=>ctx.raw.toLocaleString('pt-BR')}}},
       scales:{y:{ticks:{callback:v=>v>=1000?(v/1000).toFixed(0)+'k':v}, grid:{color:'rgba(255,255,255,0.04)'}}}}
+  });
+
+  // ============================================================
+  // ESTRATIFICAÇÃO DIÁRIA — JUN/JUL 2026 (dados reais, 08/06–08/07)
+  // ============================================================
+  const ppDailyLabels = ['08/06','09/06','10/06','11/06','12/06','13/06','14/06','15/06','16/06','17/06','18/06','19/06','20/06','21/06','22/06','23/06','24/06','25/06','26/06','27/06','28/06','29/06','30/06','01/07','02/07','03/07','04/07','05/07','06/07','07/07','08/07'];
+
+  const ppDailyInvest = [714.25,944.75,988.29,1200.54,1068.93,1071.74,1065.37,761.87,885.81,722.60,760.64,515.29,381.24,366.11,287.13,294.04,335.72,454.04,312.34,344.72,393.73,287.05,298.67,336.33,391.41,285.61,300.88,303.42,305.48,313.80,83.86];
+
+  const ppDailyTrafego  = [4,7,7,5,4,4,5,5,3,3,3,2,0,1,0,1,2,3,2,2,3,0,1,0,2,1,3,3,4,1,1];
+  const ppDailyWpp      = [45,16,5,5,3,1,1,3,8,3,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,3,9,24];
+  const ppDailySocial   = [0,0,1,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0];
+  const ppDailyEmail    = [0,1,1,0,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0];
+  const ppDailyComercial= [3,3,0,1,0,0,0,2,0,1,1,0,0,0,0,0,1,0,0,0,0,0,3,1,0,0,0,1,0,2,0];
+  const ppDailyEdduz    = [0,1,2,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+  const ppDailyChatbot  = [0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
+  const ppDailyOrganicoTotal = ppDailyLabels.map((_,i)=>
+    ppDailySocial[i]+ppDailyEmail[i]+ppDailyComercial[i]+ppDailyEdduz[i]+ppDailyChatbot[i]
+  );
+
+  // Nota: Social Media, Email, Comercial, Edduz e Chatbot têm menos de 31 termos na fórmula
+  // original (dias finais sem venda foram omitidos) — preenchidos com 0 para alinhar ao calendário.
+
+  // ── Investimento diário x Alunos Tráfego (evidencia o corte reativo) ──
+  mkChart('pp-daily-invest-chart',{
+    type:'bar',
+    data:{
+      labels: ppDailyLabels,
+      datasets:[
+        {label:'Investimento (R$)', data:ppDailyInvest, backgroundColor:'rgba(201,146,42,0.55)', yAxisID:'y', order:2, borderRadius:3},
+        {label:'Alunos Tráfego', data:ppDailyTrafego, type:'line', borderColor:'#22c55e', backgroundColor:'rgba(34,197,94,0.1)',
+         tension:.3, pointRadius:3, pointBackgroundColor:'#22c55e', yAxisID:'y1', order:1}
+      ]
+    },
+    options:{
+      responsive:true, interaction:{mode:'index',intersect:false},
+      plugins:{legend:{display:true}, tooltip:{callbacks:{
+        label: ctx => ctx.datasetIndex===0 ? ' R$ '+ctx.raw.toLocaleString('pt-BR') : ' '+ctx.raw+' alunos'
+      }}},
+      scales:{
+        y:{position:'left', ticks:{callback:v=>'R$'+v}, grid:{color:'rgba(255,255,255,0.04)'}},
+        y1:{position:'right', grid:{drawOnChartArea:false}, ticks:{callback:v=>v+' al.'}},
+        x:{ticks:{maxRotation:90,minRotation:60}}
+      }
+    }
+  });
+
+  // ── Alunos por canal principal, dia a dia (empilhado) ──
+  mkChart('pp-daily-canais-chart',{
+    type:'bar',
+    data:{
+      labels: ppDailyLabels,
+      datasets:[
+        {label:'Tráfego Pago', data:ppDailyTrafego, backgroundColor:'rgba(16,185,129,0.85)', stack:'s'},
+        {label:'WhatsApp', data:ppDailyWpp, backgroundColor:'rgba(34,197,94,0.85)', stack:'s'},
+        {label:'Orgânico (outros)', data:ppDailyOrganicoTotal, backgroundColor:'rgba(96,165,250,0.85)', stack:'s'}
+      ]
+    },
+    options:{
+      responsive:true, interaction:{mode:'index',intersect:false},
+      plugins:{legend:{display:true}},
+      scales:{
+        x:{stacked:true, ticks:{maxRotation:90,minRotation:60}},
+        y:{stacked:true, grid:{color:'rgba(255,255,255,0.04)'}}
+      }
+    }
+  });
+
+  // ── Detalhamento orgânico por fonte, dia a dia (empilhado) ──
+  mkChart('pp-daily-organico-chart',{
+    type:'bar',
+    data:{
+      labels: ppDailyLabels,
+      datasets:[
+        {label:'Comercial', data:ppDailyComercial, backgroundColor:'rgba(96,165,250,0.9)', stack:'o'},
+        {label:'Social Media', data:ppDailySocial, backgroundColor:'rgba(244,114,182,0.9)', stack:'o'},
+        {label:'Email (Brevo)', data:ppDailyEmail, backgroundColor:'rgba(251,191,36,0.9)', stack:'o'},
+        {label:'Recuperação Eduzz', data:ppDailyEdduz, backgroundColor:'rgba(167,139,250,0.9)', stack:'o'},
+        {label:'Chatbot IA', data:ppDailyChatbot, backgroundColor:'rgba(148,163,184,0.9)', stack:'o'}
+      ]
+    },
+    options:{
+      responsive:true, interaction:{mode:'index',intersect:false},
+      plugins:{legend:{display:true}},
+      scales:{
+        x:{stacked:true, ticks:{maxRotation:90,minRotation:60}},
+        y:{stacked:true, ticks:{stepSize:1}, grid:{color:'rgba(255,255,255,0.04)'}}
+      }
+    }
   });
 }
 
