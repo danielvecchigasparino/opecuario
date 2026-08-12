@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Pecuária Lucrativa — Dashboard Estratégico v4.0 [Agro]</title>
+<title>Pecuária Lucrativa — Dashboard Estratégico v4.1 [Agro]</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KICA8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjE2IiBmaWxsPSIjMGQxYTBlIi8+CiAgPCEtLSBBIGxlZnQgbGVnIChmb3Jlc3QgZ3JlZW4pIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iNiw4OCAzMCwxMCA0MCwxMCAyMiw4OCIgZmlsbD0iIzJkNWEzNSIvPgogIDwhLS0gQSByaWdodCBsZWcgLyBYIGxlZnQgYmFyIG1lcmdlIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iMjIsODggNDAsMTAgNTAsMTAgMzQsODgiIGZpbGw9IiMyNTUwMzAiLz4KICA8IS0tIFggYmFyOiB0b3AtbGVmdCB0byBib3R0b20tcmlnaHQgKGdvbGQpIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iNDIsMTAgNTYsMTAgNzYsODggNjIsODgiIGZpbGw9IiNjOTkyMmEiLz4KICA8IS0tIFggYmFyOiB0b3AtcmlnaHQgdG8gYm90dG9tLWxlZnQgKGdvbGQsIG92ZXJsYXBzKSAtLT4KICA8cG9seWdvbiBwb2ludHM9IjU2LDEwIDcwLDEwIDUwLDg4IDM2LDg4IiBmaWxsPSIjYjA3ODIwIi8+CiAgPCEtLSBGaWVsZCBsaW5lcyBpbnNpZGUgQSBib3R0b20gLS0+CiAgPHBhdGggZD0iTTksNzUgUTIwLDcxIDMxLDc1IiBzdHJva2U9IiM0YTlhNWEiIHN0cm9rZS13aWR0aD0iMi41IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8cGF0aCBkPSJNNyw4MyBRMjAsNzkgMzMsODMiIHN0cm9rZT0iIzRhOWE1YSIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNjUiLz4KPC9zdmc+">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
@@ -789,7 +789,7 @@ button:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
 <body>
 
 <nav>
-  <div class="nav-brand">🐂 PECUÁRIA LUCRATIVA <span>v4.0</span></div>
+  <div class="nav-brand">🐂 PECUÁRIA LUCRATIVA <span>v4.1</span></div>
   <div class="nav-links">
     <button class="nav-btn active" onclick="showSection('home',this)">🏠 Home</button>
     <button class="nav-btn" onclick="showSection('debriefing',this)">🎯 Debriefing <span class="nav-badge">Jul/26</span></button>
@@ -1123,7 +1123,7 @@ button:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
     <div class="card">
       <div class="card-title">💳 Formas de pagamento — confiabilidade e caixa</div>
       <div class="tbl-wrap"><table class="tbl" id="mon-pgto"></table></div>
-      <div class="insight" style="margin-top:10px;">Percentuais de realização são <b>premissas de trabalho</b>, não medição. Só viram número real depois de reprocessar um lançamento encerrado com a curva de pagamento por parcela.</div>
+      <div class="insight" style="margin-top:10px;"><b>Uma fatura gerada não é uma venda.</b> Foram 375 faturas para 194 alunos: 170 nunca foram pagas. O cartão fecha 78,8%; o PIX, 62,8% — quem gera PIX e não paga em minutos raramente volta. O boleto é outra história: <b>8,8%</b> à vista e <b>20,3%</b> no carnê. Ainda há 55 carnês em aberto que podem virar venda, mas os 38 boletos "em recuperação" e os 23 expirados, na prática, já se perderam.</div>
     </div>
     <div class="card">
       <div class="card-title">📦 Composição da receita por lançamento</div>
@@ -1163,12 +1163,12 @@ button:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
 
 <script>
 // ============================================================
-// PECUÁRIA LUCRATIVA — DASHBOARD v4.0
+// PECUÁRIA LUCRATIVA — DASHBOARD v4.1
 // Fontes: PROGRAMA STRATEGY (JUL/26) · DOSSIE_PAA_JUL26_Falconi_v4 ·
-//         série histórica do dashboard v3.9
+//         série histórica do v3.9 · export Eduzz "minhas vendas" de 12/08/2026
 // ============================================================
 
-const BUILD = { versao:'4.0', data:'2026-08-03' };
+const BUILD = { versao:'4.1', data:'2026-08-12' };
 
 // ── LANÇAMENTOS PAA ─────────────────────────────────────────
 // fat = receita CONTRATADA (imediata + futura), preço-base, sem juros.
@@ -1274,35 +1274,42 @@ const LAUNCHES = [
   faltando:['split imediato/futuro','pix × eduzz','renovações','devoluções','order bump e upsell',
             'EG e SG são derivados das taxas do dossiê (95,5% e 86,9%), não medidos direto']},
 
- // ── JUL/26 · lançamento em apuração ──
+  // ── JUL/26 · FECHADO ─────────────────────────────────────
+ // Apuração final: dossiê v5 (Google Docs) + export Eduzz "minhas vendas" de 12/08/2026.
+ // 194 alunos = e-mails DISTINTOS com fatura paga no export, conferido linha a linha.
+ // fat = receita contratada = 194 × R$ 2.705,90 (ticket contratado médio do dossiê).
  {id:'2026-07',label:'Jul/26',nome:'Engenharia da Pecuária Lucrativa',
-  periodo:'captação 09–27/07 · CPLs 27–29/07 · pitch 29/07 · carrinho 30/07–07/08',
-  prod:'PAA',phase:3,status:'aberto',parcial:true,
-  traf:232137.03,leads:21981,leadsPago:20458,leadsOrg:1503,leadsWA:16876,
-  novos:164,fat:459147.52,fatLiq:347979.73,fatImm:null,fatFut:null,pix:69992,eduzz:389155,
-  lucro:115842.70,addons:null,ob:null,ds:null,up:null,
-  roas:1.9779,roasLiq:1.4990,cpl:10.5608,cac:1415.47,ticketReal:2799.68,
-  cpl1:3020,cpl2:2557,cpl3:2164,pitch:109,carrinho:55,renov:null,devol:null,
+  periodo:'captação 09–27/07 · CPLs 27–29/07 · pitch 29/07 · carrinho 30/07–06/08',
+  prod:'PAA',phase:3,status:'fechado',
+  traf:232137.03,leads:21910,leadsPago:20455,leadsOrg:1455,leadsWA:16876,
+  novos:194,fat:524944.60,fatImm:null,fatFut:null,
+  eduzzFat:452948.69,eduzzLiq:369140.60,foraPlataforma:71995.91,
+  pix:71995.91,eduzz:452948.69,
+  lucro:292807.57,addons:null,ob:null,ds:null,up:null,
+  roas:2.2614,cpl:10.5950,cac:1196.58,ticketReal:2705.90,
+  cpl1:3020,cpl2:2557,cpl3:2164,pitch:105,carrinho:89,
+  renov:null,devol:8,reembFat:9,reembValor:25977.40,
   eg:16876,sg:5972,pg:10904,entrada:0.770,perm:0.646,
   // impressões, cliques, CPM, CPC e CTR são de Facebook APENAS — Google e TikTok não lançaram
   impressoes:10097256,cliques:136817,pv:180192,pvFB:95791,cpm:22.99,cpc:1.70,ctr:0.0135,
-  pesquisa:13687,
+  pesquisa:14578,
   meta:{novos:323,fat:965770,roas:4.06,traf:237608,cac:735,leads:21779,cpl:8.80,eg:18512,
         leadsFB:15469,leadsGG:5824,leadsTT:1406,leadsOrg:1500},
-  faltando:['split imediato/futuro','renovações','devoluções','add-ons do ciclo']},
+  faltando:['split imediato/futuro','renovações','add-ons do ciclo',
+            'curva de pagamento parcela a parcela do PSL e do carnê']},
 ];
 
 // ── CANAIS · JUL/26 ─────────────────────────────────────────
 const CANAIS_JUL = [
- {n:'Facebook',   cor:'#60a5fa', inv:158409.38, leads:15692, cpl:10.09, alunos:70, cac:2263, pv:95791,
+ {n:'Facebook',   cor:'#60a5fa', inv:158409.38, leads:15689, cpl:10.10, alunos:81, cac:1956, pv:95791,
   resp:9932, mql:2414, pctMql:0.243, convMql:0.0124, convNao:0.0039, cpmql:42, metaLeads:15469},
- {n:'Google/YT',  cor:'#fbbf24', inv:68414.95,  leads:4253,  cpl:16.09, alunos:35, cac:1955, pv:80402,
+ {n:'Google/YT',  cor:'#fbbf24', inv:68414.95,  leads:4253,  cpl:16.09, alunos:38, cac:1800, pv:80402,
   resp:2321, mql:500,  pctMql:0.215, convMql:0.0340, convNao:0.0071, cpmql:75, metaLeads:5824},
- {n:'TikTok',     cor:'#f472b6', inv:5312.70,   leads:513,   cpl:10.36, alunos:0,  cac:null, pv:3999,
-  resp:200,  mql:48,   pctMql:0.240, convMql:0.0000, convNao:0.0000, cpmql:43, metaLeads:1406},
- {n:'Orgânico',   cor:'#4ade80', inv:0,         leads:1503,  cpl:0,     alunos:20, cac:0,    pv:null,
+ {n:'TikTok',     cor:'#f472b6', inv:5312.70,   leads:513,   cpl:10.36, alunos:1,  cac:5313, pv:3999,
+  resp:200,  mql:48,   pctMql:0.240, convMql:0.0020, convNao:0.0000, cpmql:43, metaLeads:1406},
+ {n:'Orgânico',   cor:'#4ade80', inv:0,         leads:1455,  cpl:0,     alunos:23, cac:0,    pv:null,
   resp:779,  mql:270,  pctMql:0.347, convMql:0.0444, convNao:0.0098, cpmql:null, metaLeads:1500},
- {n:'ManyChat WA',cor:'#a78bfa', inv:0,         leads:622,   cpl:0,     alunos:7,  cac:0,    pv:null,
+ {n:'ManyChat WA',cor:'#a78bfa', inv:0,         leads:622,   cpl:0,     alunos:9,  cac:0,    pv:null,
   resp:484,  mql:138,  pctMql:0.285, convMql:0.0435, convNao:0.0058, cpmql:null, metaLeads:null},
 ];
 
@@ -1321,25 +1328,53 @@ const DAILY_JUL = {
 };
 
 // ── VENDAS POR ORIGEM E DIA · JUL/26 ────────────────────────
+// Apurado no export Eduzz de 12/08 — faturas PAGAS, por data de criação e UTM de origem.
+// Somam 195 faturas para 194 alunos: um cliente pagou em duas faturas (entrada + saldo).
 const VENDAS_JUL = {
- dias:['29/07 (pitch)','30/07','31/07','01/08','02/08'],
+ dias:['29/07 pitch','30/07','31/07','01/08','02/08','03/08','04/08','05/08','06/08'],
  origens:[
-  {n:'Comercial (vendedor)', cor:'#c9922a', d:[33,31,11,2,1], t:78},
-  {n:'Link da live (YouTube)',cor:'#60a5fa', d:[41,0,0,0,0],  t:41},
-  {n:'Grupo WhatsApp',       cor:'#4ade80', d:[20,3,0,0,0],   t:23},
-  {n:'Sem UTM',              cor:'#94a3b8', d:[5,0,0,1,0],    t:6},
-  {n:'Recuperação Eduzz',    cor:'#f472b6', d:[4,1,0,0,0],    t:5},
-  {n:'Página de vendas',     cor:'#a78bfa', d:[0,3,0,0,1],    t:4},
-  {n:'ManyChat API',         cor:'#22d3ee', d:[3,1,0,0,0],    t:4},
-  {n:'Lista quentes',        cor:'#fb923c', d:[3,0,0,0,0],    t:3},
+  {n:'Comercial (vendedor)',  cor:'#c9922a', d:[33,31,13,2,1,7,3,9,10], t:109},
+  {n:'Link da live (YouTube)',cor:'#60a5fa', d:[40,0,0,0,0,0,0,0,0],    t:40},
+  {n:'Grupo WhatsApp',        cor:'#4ade80', d:[18,3,0,0,0,0,0,0,0],    t:21},
+  {n:'Página de vendas',      cor:'#a78bfa', d:[0,3,0,0,1,0,2,0,1],     t:7},
+  {n:'Sem UTM',               cor:'#94a3b8', d:[5,0,0,1,0,0,0,0,0],     t:6},
+  {n:'Recuperação Eduzz',     cor:'#f472b6', d:[3,1,0,0,0,0,0,0,0],     t:4},
+  {n:'ManyChat API',          cor:'#22d3ee', d:[3,1,0,0,0,0,0,0,0],     t:4},
+  {n:'Lista quentes',         cor:'#fb923c', d:[3,0,0,0,0,0,0,0,0],     t:3},
+  {n:'Outros',                cor:'#64748b', d:[0,0,0,0,0,0,0,0,1],     t:1},
  ]
 };
 
 const VENDEDORES_JUL = [
- {n:'Patrícia', pitch:14, carrinho:15, t:29},
- {n:'Vitor',    pitch:6,  carrinho:14, t:20},
- {n:'Guima',    pitch:11, carrinho:9,  t:20},
- {n:'Juliana',  pitch:2,  carrinho:7,  t:9},
+ {n:'Vitor',    pitch:6,  carrinho:29, t:35},
+ {n:'Patrícia', pitch:14, carrinho:18, t:32},
+ {n:'Guima',    pitch:11, carrinho:12, t:23},
+ {n:'Juliana',  pitch:2,  carrinho:17, t:19},
+];
+// ── ENTRADA E SAÍDA DO GRUPO, POR DIA · JUL/26 ──────────────
+// Este é o TESTE que estava pendente desde a v4.0.
+// A série soma exatamente EG 16.876, SG 5.972 e PG 10.904. 14/07 não tem registro.
+const GRUPO_JUL = {
+ dias:['09/07','10/07','11/07','12/07','13/07','14/07','15/07','16/07','17/07','18/07',
+       '19/07','20/07','21/07','22/07','23/07','24/07','25/07','26/07','27/07'],
+ entrou:[610,519,643,839,1061,null,867,851,887,946,828,1234,1763,1115,904,746,994,824,1245],
+ saiu:  [75,868,54,109,1966,null,95,163,152,111,58,153,295,169,345,231,266,285,577],
+ regimes:[
+  {n:'Base estável', dias:'09, 11, 12 e 15–22/07', ent:10583, sai:1434, taxa:0.1355, tipo:'ok',
+   leitura:'Saem 13,6% do que entrou no dia. É o comportamento normal do grupo — a linha de base.'},
+  {n:'Dois eventos de saída em massa', dias:'10/07 e 13/07', ent:1580, sai:2834, taxa:1.7937, tipo:'bad',
+   leitura:'Saíram 179% do que entrou: gente que já estava dentro foi embora em bloco. Degrau, não declínio — assinatura de causa especial.'},
+  {n:'Fadiga crescente', dias:'23–27/07', ent:4713, sai:1704, taxa:0.3616, tipo:'warn',
+   leitura:'Sobe de 26,8% para 46,3% na véspera do CPL1. Curva, não degrau — assinatura de cadência e volume de disparo.'},
+ ]
+};
+// ── REALIZAÇÃO POR FORMA DE PAGAMENTO · AGORA MEDIDA ────────
+// Export Eduzz de 12/08/2026: fatura gerada → fatura paga. Deixou de ser premissa.
+const REALIZACAO_JUL = [
+ {n:'Crédito',              ger:160, pg:126, rec:18, ab:3,  exp:5,  reemb:8, fat:377345.50, liq:297793.83},
+ {n:'PIX',                  ger:78,  pg:49,  rec:17, ab:3,  exp:8,  reemb:1, fat:51081.81,  liq:48869.95},
+ {n:'Boleto parcelado TMB', ger:69,  pg:14,  rec:0,  ab:55, exp:0,  reemb:0, fat:5021.38,   liq:3808.84},
+ {n:'Boleto à vista',       ger:68,  pg:6,   rec:38, ab:0,  exp:23, reemb:0, fat:19500.00,  liq:18667.98},
 ];
 
 // ── SEGMENTOS DA PESQUISA · JUL/26 ──────────────────────────
@@ -1366,68 +1401,88 @@ const WATERFALL_JUL = {
   {n:'① Entrada no grupo de WhatsApp',   ref:'95,5%',  real:'77,0%',  acum:298, efeito:-71, time:'Marketing'},
   {n:'② Permanência no grupo',           ref:'86,9%',  real:'64,6%',  acum:221, efeito:-76, time:'Marketing'},
   {n:'③ Comparecimento no CPL3',         ref:'17,4%',  real:'19,8%',  acum:253, efeito:+31, time:'João'},
-  {n:'④ Conversão de quem assistiu',     ref:'11,68%', real:'7,58%',  acum:164, efeito:-89, time:'Comercial'},
+  {n:'④ Conversão de quem assistiu',     ref:'11,68%', real:'8,96%',  acum:194, efeito:-59, time:'Pitch + Comercial'},
  ],
- realizado:164, total:-205
+ realizado:194, total:-175
 };
 
 // ── ATRIBUIÇÃO POR TIME · JUL/26 ────────────────────────────
 const TIMES_JUL = [
  {time:'Marketing', esc:'Levar o lead ao grupo e mantê-lo até as aulas',
-  real:'Entrada 77,0% vs 95,5% · Permanência 64,6% vs 86,9% · MQL 24,6% da base',
-  impacto:-147, veredito:'ABAIXO na entrega ao grupo, no padrão na qualidade do lead', st:'bad'},
+  real:'Entrada 77,0% vs 95,5% · Permanência 64,6% vs 86,9% · 2.834 saídas concentradas em 2 dias',
+  impacto:-147, veredito:'ABAIXO — responde por 84% da lacuna do lançamento', st:'bad'},
  {time:'João / O Pecuário', esc:'Comparecimento nos CPLs e conversão no dia do pitch',
-  real:'Comparecimento 19,8% vs 17,4% · Conversão no pitch 5,04% vs 5,45%',
-  impacto:+22, veredito:'ACIMA no comparecimento, no padrão no pitch', st:'ok'},
+  real:'Comparecimento 19,8% vs 17,4% — melhor da série · Conversão no pitch 4,85% vs 5,45%',
+  impacto:18, veredito:'ACIMA no comparecimento (+31), pouco abaixo no pitch (−13)', st:'ok'},
  {time:'Comercial', esc:'Converter no carrinho quem assistiu e não comprou',
-  real:'Carrinho 2,54% vs 6,23%',
-  impacto:-80, veredito:'ABAIXO — maior perda isolada do lançamento', st:'bad'},
+  real:'Carrinho 4,11% vs 6,23% · 109 das 194 vendas (56,2%) passaram por vendedor',
+  impacto:-46, veredito:'ABAIXO na taxa, mas sustentou sozinho os 8 dias finais', st:'bad'},
 ];
 
 // ── PROBLEMAS, CAUSAS E AÇÕES · JUL/26 ──────────────────────
 const PROBLEMAS_JUL = [
- {i:1,p:'Conversão no carrinho 2,54% vs 6,23%',imp:'−80 alunos',time:'Comercial',st:'confirmado',
-  tipo:'Causa especial — de capacidade',
-  causa:'4 vendedores não cobrem 2.164 participantes em 9 dias; as fontes passivas esgotam em 24h e nada sustenta os 8 dias seguintes',
-  teste:'Cruzar a lista de participantes do CPL3 com os leads efetivamente abordados e medir a cobertura',
+ {i:1,p:'Permanência no grupo 64,6% vs 86,9%',imp:'−76 alunos',time:'Marketing',st:'confirmado',
+  tipo:'DUAS causas distintas, separadas pelo teste',
+  causa:'(a) Causa especial: dois eventos de saída em massa, em 10/07 e 13/07, com 2.834 saídas — 47,5% de todas as saídas do lançamento em 2 dias, sendo 179% do que entrou nesses dias. (b) Causa comum: fadiga crescente de 23 a 27/07, com a taxa subindo de 26,8% para 46,3% na véspera do CPL1.',
+  teste:'EXECUTADO: curva diária de entrada e saída, conferida contra EG/SG/PG',
+  conf:'SIM ✓ — teste executado em 12/08'},
+ {i:2,p:'Entrada no grupo 77,0% vs 95,5%',imp:'−71 alunos',time:'Marketing',st:'causa a testar',
+  tipo:'Causa especial — técnica ou de fluxo',
+  causa:'A pesquisa passou a ficar ENTRE o cadastro e o grupo. Só 14.578 dos 21.910 leads responderam (66,5%), e entraram 16.876 — ou seja, o gargalo pode ser a própria etapa nova, não uma falha técnica',
+  teste:'Entrada por dia sobre inscrições do mesmo dia; e taxa de entrada de quem respondeu a pesquisa contra quem não respondeu',
+  conf:'NÃO TESTADA — mas agora há hipótese nova e específica'},
+ {i:3,p:'Conversão no carrinho 4,11% vs 6,23%',imp:'−46 alunos',time:'Comercial',st:'causa a testar',
+  tipo:'Causa especial — de capacidade e cadência',
+  causa:'4 vendedores para 2.164 participantes em 9 dias; as fontes passivas esgotam em 24h e a ação comercial só se intensifica na véspera do fechamento',
+  teste:'Cruzar a lista de participantes do CPL3 com os leads efetivamente abordados, por dia',
   conf:'NÃO TESTADA — teste barato, dados existem'},
- {i:2,p:'Permanência no grupo 64,6% vs 86,9%',imp:'−76 alunos',time:'Marketing',st:'causa a testar',
-  tipo:'Causa comum — conteúdo e cadência',
-  causa:'Volume de mensagens acima do tolerado, ou conteúdo sem entrega percebida antes do pitch',
-  teste:'Curva de saída por dia contra o calendário de disparos',
-  conf:'NÃO TESTADA'},
- {i:3,p:'Entrada no grupo 77,0% vs 95,5%',imp:'−71 alunos',time:'Marketing',st:'causa a testar',
-  tipo:'Causa especial — técnica',
-  causa:'Falha ou saturação no redirecionamento lead→grupo em parte do período',
-  teste:'Entrada por dia sobre inscrições do dia; procurar degrau, não declínio',
-  conf:'NÃO TESTADA'},
- {i:4,p:'1/3 da verba em público sem terra ou não-pecuarista',imp:'~R$ 30,5 mil em 2 alunos',time:'Marketing/Mídia',st:'confirmado',
-  tipo:'Causa especial — de processo',
-  causa:'Otimização por CPL, não por CAC',
-  teste:'Já demonstrado: Google tem CPL 59% maior e CAC 14% menor',
+ {i:4,p:'137 boletos gerados, apenas 20 pagos (14,6%)',imp:'R$ 157.777 contratados não realizados',time:'Comercial/Produto',st:'confirmado',
+  tipo:'Causa especial — de meio de pagamento',
+  causa:'Boleto à vista fecha 8,8% das faturas e o carnê 20,3%, contra 78,8% do cartão. 49 pessoas geraram fatura e nunca pagaram nenhuma — não são indecisos, são vendas anunciadas que evaporaram',
+  teste:'Medido direto no export Eduzz de 12/08',
+  conf:'SIM ✓ — achado novo, não estava no dossiê'},
+ {i:5,p:'1/3 da verba em público sem terra ou não-pecuarista',imp:'~R$ 30,5 mil em 2 alunos',time:'Marketing/Mídia',st:'confirmado',
+  tipo:'Causa especial — de segmentação',
+  causa:'Campanhas sem exclusão por perfil, e otimização por CPL em vez de CAC',
+  teste:'Já demonstrado: Google tem CPL 59% maior e CAC 8% menor',
   conf:'SIM ✓'},
- {i:5,p:'Conversão no dia do pitch 5,04% vs 5,45%',imp:'−9 alunos',time:'João',st:'dentro da variação normal',
-  tipo:'Dentro da faixa histórica',
-  causa:'Não constitui problema — a faixa dos três lançamentos anteriores é 5,16%–5,92%',
-  teste:'—', conf:'DESCARTADO'},
- {i:6,p:'Cobertura comercial dos leads não é medida',imp:'impede dimensionar o item 1',time:'Comercial',st:'confirmado',
-  tipo:'Lacuna de instrumentação', causa:'Não existe registro de quem foi abordado',
-  teste:'—', conf:'SIM ✓'},
+ {i:6,p:'TikTok: R$ 5.313 para 1 aluno',imp:'~R$ 5,3 mil',time:'Marketing/Mídia',st:'confirmado',
+  tipo:'Causa especial — de processo',
+  causa:'Não existe regra de corte por ausência de conversão, apenas por CPL — e o CPL do TikTok esteve dentro da meta o tempo todo',
+  teste:'Demonstrado na série diária',
+  conf:'SIM ✓'},
+ {i:7,p:'Conversão no dia do pitch 4,85% vs 5,45%',imp:'−13 alunos',time:'João',st:'dentro da variação normal',
+  tipo:'Limítrofe à faixa histórica',
+  causa:'A faixa dos três lançamentos anteriores é 5,16%–5,92%. O desvio existe, mas é uma ordem de grandeza menor que os demais',
+  teste:'—', conf:'BAIXA PRIORIDADE'},
+ {i:8,p:'31,3% dos leads não respondem à pesquisa',imp:'6.633 leads não classificáveis',time:'Marketing',st:'confirmado',
+  tipo:'Lacuna de instrumentação, por escolha de processo',
+  causa:'A pesquisa não é gate para o grupo: 2.298 pessoas entraram sem responder',
+  teste:'Medido: 14.578 respostas contra 16.876 entradas',
+  conf:'SIM ✓'},
 ];
 
 const ACOES_JUL = [
- {a:'Abrir entrada e saída do grupo por dia e cruzar com o calendário de disparos — CONFIRMAR a causa raiz antes de agir',
-  c:'Problemas 1 e 2 (não testados)',pz:'Até 08/08',v:'Diagnóstico fechado',d:'Daniel'},
- {a:'Instrumentar comparecimento nos 3 CPLs e atribuição de aluno por aula',
-  c:'Problema 3 — ponto cego',pz:'Antes do próximo lançamento',v:'Elimina a lacuna de diagnóstico',d:'Leibniz'},
+ {a:'Identificar o que aconteceu em 10/07 e 13/07 — disparo, mudança de link, falha de automação ou ação de moderação. São 2.834 saídas em 2 dias',
+  c:'Problema 1a (confirmado)',pz:'Imediato',v:'~47% das saídas do grupo',d:'Leibniz / Daniel'},
+ {a:'Reduzir a cadência de disparos na semana anterior ao CPL1, onde a saída sobe de 26,8% para 46,3%',
+  c:'Problema 1b (confirmado)',pz:'Próximo lançamento',v:'~1.070 pessoas a mais no grupo',d:'Marketing'},
+ {a:'Migrar boleto para PIX no checkout: oferecer PIX como padrão e manter boleto só como exceção assistida pelo comercial',
+  c:'Problema 4 (confirmado)',pz:'Próximo lançamento',v:'R$ 157 mil contratados que hoje evaporam',d:'Daniel / Comercial'},
+ {a:'Régua de cobrança ativa para boleto emitido e não pago em 48h — hoje 38 boletos ficaram "em recuperação" sem ação',
+  c:'Problema 4 (confirmado)',pz:'Próximo lançamento',v:'Recupera parte dos 117 boletos não pagos',d:'Comercial'},
+ {a:'Medir cobertura comercial: cruzar participantes do CPL3 com leads abordados, por dia e por vendedor',
+  c:'Problema 3 (não testado)',pz:'Antes do próximo lançamento',v:'Fecha o diagnóstico da maior perda restante',d:'Daniel'},
+ {a:'Medir a taxa de entrada no grupo de quem respondeu a pesquisa contra quem não respondeu',
+  c:'Problema 2 (não testado)',pz:'Até o próximo ciclo',v:'Decide se a pesquisa fica antes ou depois do grupo',d:'Leibniz'},
  {a:'Trocar o critério de otimização de CPL para CAC por canal, com apuração semanal',
-  c:'Problema 4 (confirmado)',pz:'Próximo lançamento',v:'+8 a 12 alunos com a mesma verba',d:'Lucas / Daniel'},
+  c:'Problemas 5 e 6 (confirmados)',pz:'Próximo lançamento',v:'+8 a 12 alunos com a mesma verba',d:'Lucas / Daniel'},
  {a:'Regra de corte: canal sem venda atribuída em 5 dias é pausado, independentemente do CPL',
-  c:'Problema 5 (confirmado)',pz:'Próximo lançamento',v:'Economia de R$ 5–8 mil',d:'Lucas'},
+  c:'Problema 6 (confirmado)',pz:'Próximo lançamento',v:'Economia de R$ 5–8 mil',d:'Lucas'},
+ {a:'Monitorar entrada e saída do grupo em tempo real, com alarme de saída acima de 20% no dia',
+  c:'Problemas 1 e 2',pz:'Próximo lançamento',v:'Detecta o evento no dia, não 30 dias depois',d:'Leibniz'},
  {a:'Meta e indicador próprios para o time comercial e para o orgânico',
-  c:'Problema 6',pz:'Próximo ciclo',v:'Torna visível 47,6% da conversão',d:'Direção'},
- {a:'Monitorar taxa de entrada no grupo em tempo real, com alarme abaixo de 90%',
-  c:'Problema 1',pz:'Próximo lançamento',v:'Impede repetição da perda de ~4.000 leads',d:'Leibniz'},
+  c:'Lacuna estrutural',pz:'Próximo ciclo',v:'Torna visível 56,2% da conversão',d:'Direção'},
 ];
 
 // ── PPP · PROTOCOLO PASTO PRODUTIVO (perpétuo/downsell) ──────
@@ -1673,7 +1728,7 @@ function renderHeroWF(){
     <div class="wf-bar"><div class="wf-seg" style="left:0;width:${w.realizado/max*100}%;background:var(--gold)"></div></div>
     <span class="wf-n">${w.realizado}</span><span class="wf-e down">${w.total}</span></div>`;
   el('hero-wf').innerHTML = html;
-  el('hero-wf-note').innerHTML = `<b>A captação não é o problema.</b> Leads entregaram 100,6% da meta com 97,7% da verba. O desvio inteiro se formou depois que o lead entrou: <b>−147 alunos</b> entre a entrada e a permanência no grupo (Marketing) e <b>−80</b> na conversão do carrinho (Comercial). O comparecimento nas aulas foi o único indicador acima da referência: <b>+31</b>.`;
+  el('hero-wf-note').innerHTML = `<b>A captação não é o problema.</b> Leads entregaram 100,6% da meta com 97,7% da verba. O desvio inteiro se formou depois que o lead entrou: <b>−147 alunos</b> entre a entrada e a permanência no grupo e <b>−59</b> na conversão de quem assistiu ao CPL3. O comparecimento nas aulas foi o único indicador acima da referência: <b>+31</b>.`;
 }
 
 // ============================================================
@@ -1686,9 +1741,13 @@ function homeFilter(b){
 }
 function toggleDetail(l){ l.classList.toggle('on'); HOME_DETAIL=l.classList.contains('on'); renderHomeCards(); }
 
+// Cada ciclo do perpétuo é atrelado a um lançamento do PAA. O id continua 'ppp-N'
+// (gotoLaunch depende disso), mas o sortKey é a data real, para ordenar junto com o PAA.
+const PPP_SORT = ['2023-08','2023-12','2024-02','2024-04','2024-06','2024-08','2024-10','2025-01',
+                  '2025-03','2025-06','2025-08','2025-10','2025-12','2026-02','2026-04','2026-06'];
 function pppAsCards(){
   return PPP.ciclos.map((c,i)=>({
-    id:'ppp-'+i, label:c, nome:'Downsell PPP', prod:'PPP', periodo:'ciclo '+c,
+    id:'ppp-'+i, sortKey:PPP_SORT[i], label:c, nome:'Downsell PPP', prod:'PPP', periodo:'ciclo '+c,
     traf:i===15?PPP.ultimo.real.inv:null, fat:PPP.fat[i], novos:PPP.vendas[i],
     roas:i===15?PPP.ultimo.real.roas:null, ticket:PPP.ticket[i],
     cac:i===15?PPP.ultimo.real.cpa:null, cpl:null, leads:null, convLA:null, phase:3, status:'fechado',
@@ -1698,9 +1757,10 @@ function renderHomeCards(){
   let list = HOME_F.prod==='PPP' ? pppAsCards()
            : HOME_F.prod==='PAA' ? PAA.slice()
            : PAA.concat(pppAsCards());
+  const K = d => d.sortKey || d.id;
   const s = el('home-sort').value;
   const cmp = {
-    'date-desc':(a,b)=>b.id.localeCompare(a.id),'date-asc':(a,b)=>a.id.localeCompare(b.id),
+    'date-desc':(a,b)=>K(b).localeCompare(K(a)),'date-asc':(a,b)=>K(a).localeCompare(K(b)),
     'roas-desc':(a,b)=>(b.roas||0)-(a.roas||0),'roas-asc':(a,b)=>(a.roas||99)-(b.roas||99),
     'fat-desc':(a,b)=>(b.fat||0)-(a.fat||0),'novos-desc':(a,b)=>(b.novos||0)-(a.novos||0),
     'cac-asc':(a,b)=>(a.cac||1e9)-(b.cac||1e9),
@@ -1896,14 +1956,14 @@ function renderPaaLaunch(){
   if(d.id==='2026-07'){
     html += `<div class="card gap-top"><div class="card-title">📆 Vendas por origem e por dia</div>
       <div class="chart-wrap" style="height:280px;"><canvas id="lanc-vendas"></canvas></div>
-      <div class="insight" style="margin-top:10px;"><b>109 das 164 vendas (66%) aconteceram no dia do pitch.</b> As fontes passivas — link da live, grupo de WhatsApp, recuperação — esgotam em 24h. Do 2º dia em diante quem vende é o comercial: 45 das 55 vendas de carrinho. Com 4 vendedores para 2.164 participantes, o carrinho de 9 dias fica praticamente descoberto.</div></div>`;
+      <div class="insight" style="margin-top:10px;"><b>105 das 194 vendas (54%) aconteceram no dia do pitch.</b> As fontes passivas — link da live, grupo de WhatsApp, recuperação — esgotam em 24h e somam 78 vendas, quase todas em 29 e 30/07. Do 3º dia em diante quem vende é praticamente só o comercial: dos 50 negócios fechados de 31/07 a 06/08, <b>45 têm vendedor nomeado</b>. A série conta faturas: são 195 para 194 alunos, porque um cliente pagou em duas. Note o repique de 05 e 06/08 (21 vendas) — é a véspera do fechamento, e mostra que existe demanda no fim do carrinho quando alguém a trabalha.</div></div>`;
   }
   html += `</div></div>`;
   el('paa-lanc-body').innerHTML = html;
 
   // funil
   // Cadeia sequencial. Pitch e carrinho são PARCELAS do total, não etapas em série —
-  // encadeá-los produziria percentuais sem sentido (164 sobre 55 = 298%).
+  // encadeá-los produziria percentuais sem sentido (194 sobre 89 = 218%).
   const st = [
     {n:'Leads captados',v:d.leads},{n:'Entraram no grupo',v:d.eg||d.leadsWA},
     {n:'Permaneceram (PG)',v:d.pg},{n:'CPL 1',v:d.cpl1},{n:'CPL 2',v:d.cpl2},{n:'CPL 3',v:d.cpl3},
@@ -1953,23 +2013,21 @@ function renderPaaCanais(){
       <td class="num">${fmtR2(tp.inv/tp.leads)}</td><td class="num">${fmtN(180192)}</td>
       <td class="num">${tp.alunos}</td><td class="num">${pct(tp.alunos/tp.leads,3)}</td>
       <td class="num">${fmtR(tp.inv/tp.alunos)}</td><td class="num">100%</td></tr>
-
      <tr><td><span class="strong" style="color:#4ade80">■</span> Orgânico <span style="font-size:10px;color:var(--text-muted)">(Instagram, grupos, comercial)</span></td>
       <td class="num">R$ 0</td><td class="num">1.455</td><td class="num">—</td><td class="num">—</td>
-      <td class="num strong">20</td><td class="num" style="color:var(--green)">1,375%</td><td class="num">R$ 0</td><td class="num">—</td></tr>
+      <td class="num strong">23</td><td class="num" style="color:var(--green)">1,581%</td><td class="num">R$ 0</td><td class="num">—</td></tr>
      <tr><td><span class="strong" style="color:#a78bfa">■</span> ManyChat WhatsApp API</td>
       <td class="num">R$ 0</td><td class="num">622</td><td class="num">—</td><td class="num">—</td>
-      <td class="num strong">7</td><td class="num" style="color:var(--green)">1,125%</td><td class="num">R$ 0</td><td class="num">—</td></tr>
+      <td class="num strong">9</td><td class="num" style="color:var(--green)">1,447%</td><td class="num">R$ 0</td><td class="num">—</td></tr>
      <tr><td style="color:var(--text-muted)">Sem origem identificável</td>
       <td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td>
-      <td class="num strong">32</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
-
-     <tr class="tot"><td>TOTAL DO LANÇAMENTO</td><td class="num">${fmtR(tp.inv)}</td><td class="num">21.981</td>
-      <td class="num">R$ 10,56</td><td class="num">${fmtN(180192)}</td>
-      <td class="num">164</td><td class="num">0,746%</td>
-      <td class="num">${fmtR(tp.inv/164)}</td><td class="num">100%</td></tr>
+      <td class="num strong">42</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+     <tr class="tot"><td>TOTAL DO LANÇAMENTO</td><td class="num">${fmtR(tp.inv)}</td><td class="num">21.910</td>
+      <td class="num">R$ 10,60</td><td class="num">${fmtN(180192)}</td>
+      <td class="num">194</td><td class="num">0,885%</td>
+      <td class="num">${fmtR(tp.inv/194)}</td><td class="num">100%</td></tr>
     </tbody></table></div>
-   <div class="insight" style="margin-top:10px;"><b>Por que as linhas não somam.</b> Os 21.981 leads do total incluem 20.458 pagos, 1.503 orgânicos e 20 sem UTM. Os 1.503 orgânicos da planilha <b>já contêm</b> os 622 do ManyChat; a linha de orgânico acima usa os 1.455 do dossiê, que os exclui. As duas fontes não fecham — a divergência está registrada na aba Dados. Já os <b>alunos</b> são disjuntos: orgânico e ManyChat somam <b>27 alunos a custo de mídia zero</b>, e nenhum dos dois tem meta, dono ou instrumentação.</div>
+   <div class="insight" style="margin-top:10px;"><b>Por que as linhas não somam.</b> Os 21.910 leads incluem 20.455 pagos e 1.455 orgânicos. Os 622 do ManyChat estão contados à parte do orgânico. Já os <b>alunos</b> são disjuntos: orgânico e ManyChat somam <b>32 alunos a custo de mídia zero</b> — mais que o Google inteiro — e nenhum dos dois tem meta, dono ou instrumentação. Os <b>42 sem origem identificável</b> são 21,6% de todas as vendas: um quinto do resultado não pode ser atribuído a canal nenhum.</div>
   </div>
 
   <div class="g2 gap-top">
@@ -2034,18 +2092,18 @@ function renderPaaCanais(){
 function renderPaaCom(){
   const tv = VENDEDORES_JUL.reduce((s,v)=>s+v.t,0);
   el('paa-com-body').innerHTML = `
-  <div class="note n-warn"><b>47,6% da conversão passa por um vendedor e não aparece em nenhum indicador de mídia.</b> São 78 das 164 vendas. O time comercial não tem meta própria, não tem indicador e a cobertura dos leads não é medida — o que impede dimensionar a maior perda isolada do lançamento.</div>
-
-  <div class="g3">
-   <div class="card"><div class="kpi-label">Vendas com vendedor nomeado</div><div class="kpi-value">78</div><div class="kpi-sub">47,6% do total de 164</div></div>
-   <div class="card"><div class="kpi-label">Conversão no carrinho</div><div class="kpi-value" style="color:var(--rose)">2,54%</div><div class="kpi-sub">referência MAI/26: 6,23% · −80 alunos</div></div>
+  <div class="note n-warn"><b>56,2% da conversão passa por um vendedor e não aparece em nenhum indicador de mídia.</b> São 109 das 194 vendas. O time comercial não tem meta própria, não tem indicador e a cobertura dos leads não é medida — o que impede dimensionar a maior perda ainda não testada do lançamento.</div>
+  <div class="g4">
+   <div class="card"><div class="kpi-label">Vendas com vendedor nomeado</div><div class="kpi-value">109</div><div class="kpi-sub">56,2% do total de 194</div></div>
+   <div class="card"><div class="kpi-label">Conversão no carrinho</div><div class="kpi-value" style="color:var(--rose)">4,11%</div><div class="kpi-sub">referência MAI/26: 6,23% · −46 alunos</div></div>
    <div class="card"><div class="kpi-label">Participantes por vendedor</div><div class="kpi-value">541</div><div class="kpi-sub">2.164 participantes ÷ 4 vendedores, em 9 dias</div></div>
+   <div class="card"><div class="kpi-label">Vendas do 3º dia em diante</div><div class="kpi-value">50</div><div class="kpi-sub">45 delas com vendedor — o comercial sustenta o fim do carrinho</div></div>
   </div>
 
   <div class="g2 gap-top">
    <div class="card"><div class="card-title">👤 Vendas por vendedor</div>
     <div class="chart-wrap"><canvas id="cm-vend"></canvas></div>
-    <div class="insight" style="margin-top:10px;">Patrícia sozinha responde por ${pct(29/tv)} das vendas do comercial. A dispersão entre o primeiro e o último (29 contra 9) sugere que há prática replicável a documentar — mas sem registro de cobertura não dá para saber se é conversão melhor ou simplesmente mais leads abordados.</div></div>
+    <div class="insight" style="margin-top:10px;">Vitor lidera no total (35), mas o perfil é oposto ao da Patrícia: <b>29 das 35 vendas dele saíram durante o carrinho</b>, contra 18 das 32 dela, que converte mais no dia do pitch. Juliana tem o padrão mais extremo — 17 de 19 no carrinho. Sem registro de cobertura não dá para saber se é conversão melhor ou simplesmente mais leads abordados, mas a diferença de padrão entre pitch e carrinho é grande o bastante para valer um POP.</div></div>
    <div class="card"><div class="card-title">⚖️ Onde cada time entregou</div><div id="cm-times"></div></div>
   </div>
 
@@ -2328,13 +2386,13 @@ const STAGE_DEF = [
   impacto:'É a etapa que define o CPL. Cada ponto ganho aqui reduz o custo de todo o funil sem gastar um real a mais em mídia.',
   fix:['Reduzir campos do formulário ao mínimo que ainda permita segmentar','Manter a pesquisa — 62% respondem e é ela que gera o MQL','Testar prova social acima da dobra']},
  {c:'E4',n:'Inscrição → grupo',   get:d=>d.entrada, tipo:'pct',
-  desc:'O lead cadastrado efetivamente entra no grupo de WhatsApp.',
-  impacto:'CRÍTICO. O lançamento converte dentro do grupo. Quem não entra está pago e perdido — em JUL/26 foram ~4.000 pessoas, equivalentes a −71 alunos.',
-  fix:['Instrumentar entrada por dia sobre inscrições do dia e procurar degrau, não declínio','Alarme em tempo real abaixo de 90% de entrada','Investigar saturação ou falha no redirecionamento — a queda de 95,5% para 77,0% é grande demais para ser comportamento']},
+  desc:'O lead cadastrado efetivamente entra no grupo de WhatsApp. Neste lançamento a pesquisa passou a ficar no meio do caminho: cadastro → pesquisa → grupo.',
+  impacto:'CRÍTICO. O lançamento converte dentro do grupo. Quem não entra está pago e perdido — em JUL/26 foram ~5.000 pessoas, equivalentes a −71 alunos.',
+  fix:['Comparar a taxa de entrada de quem respondeu a pesquisa com a de quem não respondeu — a etapa nova é a principal suspeita','Entrada por dia sobre inscrições do mesmo dia, procurando degrau','Alarme em tempo real abaixo de 90% de entrada']},
  {c:'E5',n:'Grupo → permanência', get:d=>d.perm, tipo:'pct',
-  desc:'Quem entrou continua no grupo até as aulas começarem.',
-  impacto:'Define a base viva do lançamento. Em JUL/26 a permanência caiu para 64,6% contra 86,9% da referência — sozinha, −76 alunos.',
-  fix:['Cruzar a curva de saída por dia com o calendário de disparos','Testar redução de frequência antes de mudar conteúdo','Entregar valor percebido antes do pitch, não só convocação']},
+  desc:'Quem entrou continua no grupo até as aulas começarem. Etapa com teste JÁ EXECUTADO na v4.1.',
+  impacto:'Define a base viva do lançamento. Caiu para 64,6% contra 86,9% da referência — sozinha, −76 alunos. A curva diária mostra que não é uma coisa só: 2.834 saídas se concentram em 10 e 13/07, e outro tanto vem da fadiga de 23 a 27/07.',
+  fix:['Investigar 10/07 e 13/07 como incidente — 47,5% de todas as saídas caíram em 2 dias','Reduzir cadência na semana do CPL1, onde a saída sobe para 46,3%','Alarme de saída diária acima de 20%']},
  {c:'E6',n:'Permanência → CPL3',  get:d=>N(d.pg)||N(d.cpl3)?null:d.cpl3/d.pg, tipo:'pct',
   desc:'Quem ficou no grupo comparece à terceira aula, que é a que antecede o pitch.',
   impacto:'É o funil de convocação. Em JUL/26 esta foi a única etapa acima da referência: 19,8% contra 17,4%, valendo +31 alunos.',
@@ -2344,9 +2402,9 @@ const STAGE_DEF = [
   impacto:'Mede a oferta e a apresentação. Em JUL/26 ficou em 5,04% contra faixa histórica de 5,16%–5,92% — dentro da variação normal, −9 alunos.',
   fix:['Nada a corrigir — está dentro da faixa de controle','Não confundir ruído com sinal: agir aqui é otimizar o que não está quebrado']},
  {c:'E8',n:'Pitch → carrinho',    get:d=>d.convCarr, tipo:'pct',
-  desc:'Quem assistiu e não comprou no dia converte durante os 9 dias de carrinho.',
-  impacto:'MAIOR PERDA ISOLADA. 2,54% contra 6,23% da referência — −80 alunos. As fontes passivas esgotam em 24h e nada sustenta os 8 dias seguintes.',
-  fix:['Medir cobertura comercial: cruzar participantes do CPL3 com leads efetivamente abordados','Dimensionar o time — 4 vendedores para 2.164 participantes são 541 cada em 9 dias','Criar meta e indicador próprios para o comercial','Construir cadência ativa para os dias 2 a 9, hoje descobertos']},
+  desc:'Quem assistiu e não comprou no dia converte durante os 8 dias de carrinho.',
+  impacto:'MAIOR PERDA AINDA NÃO TESTADA. 4,11% contra 6,23% da referência — −46 alunos. As fontes passivas esgotam em 24h e o comercial sustenta sozinho o resto.',
+  fix:['Medir cobertura comercial: cruzar participantes do CPL3 com leads efetivamente abordados','Dimensionar o time — 4 vendedores para 2.164 participantes são 541 cada em 9 dias','Criar meta e indicador próprios para o comercial','Atacar o boleto: 137 gerados, 20 pagos — é venda anunciada que evapora no fim do funil']},
 ];
 
 function refLaunch(cur){
@@ -2440,17 +2498,16 @@ function drillStage(i,keep){
 
 function renderIshikawa(d){
   const grupos = [
-    {t:'Mídia e criativo',cor:'#60a5fa',itens:['Otimização por CPL em vez de CAC — 68% da verba no canal de pior retorno','Zero criativos novos entregues contra 6 previstos','Sem regra de corte por ausência de venda: TikTok gastou R$ 5,3 mil sem converter','1/3 da verba em público sem terra ou não-pecuarista']},
-    {t:'Grupo de WhatsApp',cor:'#fbbf24',itens:['Entrada despencou de 95,5% para 77,0% — ~4.000 leads pagos nunca chegaram','Permanência caiu de 86,9% para 64,6%','Sem alarme em tempo real sobre a taxa de entrada','Causa técnica × comportamental ainda não separada']},
-    {t:'Comercial',cor:'#fb7185',itens:['4 vendedores para 2.164 participantes — 541 cada, em 9 dias','Cobertura de leads abordados não é medida','Sem meta e sem indicador próprios','Dias 2 a 9 do carrinho sem cadência ativa']},
-    {t:'Instrumentação',cor:'#a78bfa',itens:['Atribuição por aula não existe','32 alunos sem origem identificável por UTM','Divergência de leads entre banco, G Digital e gerenciadores','Impressões e cliques de Google e TikTok não lançados']},
+    {t:'Mídia e criativo',cor:'#60a5fa',itens:['Otimização por CPL em vez de CAC — 68% da verba no canal de pior retorno','Sem regra de corte por ausência de venda: TikTok gastou R$ 5,3 mil para 1 aluno','1/3 da verba em público sem terra ou não-pecuarista','Campanhas sem exclusão por perfil']},
+    {t:'Grupo de WhatsApp',cor:'#fbbf24',itens:['CONFIRMADO: 2.834 saídas em 10 e 13/07 — 47,5% do total, em 2 dias','CONFIRMADO: fadiga crescente de 23 a 27/07, saída sobe a 46,3%','Entrada despencou de 95,5% para 77,0% — a pesquisa passou a ficar no meio do caminho','Sem alarme em tempo real sobre entrada e saída']},
+    {t:'Comercial e pagamento',cor:'#fb7185',itens:['CONFIRMADO: 137 boletos gerados, 20 pagos — R$ 157,8 mil evaporados','4 vendedores para 2.164 participantes — 541 cada, em 9 dias','Cobertura de leads abordados não é medida','38 boletos em "recuperação" sem régua de cobrança']},
   ];
   el('jor-ishi').innerHTML = `<div class="g2">${grupos.map(g=>`
     <div style="border-left:3px solid ${g.cor};padding-left:12px;margin-bottom:10px">
       <div style="font-size:12px;font-weight:800;color:${g.cor};margin-bottom:6px">${g.t}</div>
       <ul style="padding-left:16px;margin:0">${g.itens.map(i=>`<li style="font-size:11.5px;color:var(--text-dim);line-height:1.55;margin-bottom:4px">${esc(i)}</li>`).join('')}</ul>
     </div>`).join('')}</div>
-    <div class="note n-info" style="margin-top:14px;"><b>Regra de leitura.</b> Só duas causas estão confirmadas — otimização por CPL e ausência de regra de corte. As três maiores perdas em alunos (carrinho, permanência e entrada no grupo) têm hipótese formulada e <b>teste ainda não executado</b>. Agir sobre elas antes de testar é adivinhar; os dados para o teste já existem.</div>`;
+    <div class="note n-info" style="margin-top:14px;"><b>Regra de leitura.</b> Na v4.1, cinco causas estão <b>confirmadas por teste</b> — os dois regimes de saída do grupo, o vazamento do boleto, a otimização por CPL e a ausência de regra de corte. Seguem com hipótese formulada e <b>teste não executado</b> apenas duas: a entrada no grupo (−71 alunos) e a conversão no carrinho (−46). Os dados para ambos já existem.</div>`;
 }
 
 // ============================================================
@@ -2458,15 +2515,15 @@ function renderIshikawa(d){
 // ============================================================
 function buildMonetizacao(){
   const d = LAST;
-  el('mon-alert').innerHTML = `<b>Duas camadas de receita convivem na base sem rótulo.</b> A série de faturamento do ciclo é de 6% a 29% maior que a série de receita contratada dos lançamentos, e a diferença <b>não é add-on</b> — não fecha em nenhum lançamento. A hipótese mais provável é valor cheio da Eduzz com juros de parcelamento, ou cobranças de PSL contadas como vendas separadas. Enquanto isso não for reprocessado, comparar ROAS entre lançamentos exige usar sempre a mesma série.`;
+  el('mon-alert').innerHTML = `<b>Pela primeira vez a realização é medida, não estimada.</b> O export da Eduzz de 12/08 fecha o ciclo de JUL/26 e permite trocar as premissas desta tela por números apurados. O resultado desmonta a premissa mais otimista do modelo: <b>o boleto fecha 8,8% das faturas e o carnê 20,3%</b>, contra 78,8% do cartão. Foram 137 boletos gerados e 20 pagos.`;
 
   const cam = [
     {n:'1 · Receita contratada (bruta)',v:d.fat,cor:'var(--gold)',
-     d:'Valor cheio fechado no ato, pelo preço-base, sem juros de parcelamento. É a única camada válida para comparar canais, criativos e lançamentos entre si. É a que vai para a PPP.'},
-    {n:'2 · Receita líquida esperada',v:d.fatLiq,cor:'var(--green)',
-     d:'Contratada menos taxa de plataforma, comissão, reembolso, chargeback e o haircut de realização por forma de pagamento. É a camada de decisão econômica — a que diz se o lançamento pagou a conta.'},
-    {n:'3 · Caixa',v:null,cor:'#60a5fa',
-     d:'Quando o dinheiro efetivamente entra. PIX em D+0; boleto e PSL pulverizados ao longo de meses. Serve para projeção financeira e nunca para comparar canal.'},
+     d:'194 alunos × R$ 2.705,90 de ticket contratado médio. Valor cheio fechado no ato, pelo preço-base, sem juros de parcelamento. É a única camada válida para comparar canais, criativos e lançamentos entre si.'},
+    {n:'2 · Faturado dentro da Eduzz',v:d.eduzzFat,cor:'#60a5fa',
+     d:'O que efetivamente aparece no export da plataforma, já com juros de parcelamento embutidos. A diferença para a camada 1 — R$ 71.996 — é o PIX e as entradas recebidos fora da Eduzz, que não constam de relatório nenhum.'},
+    {n:'3 · Ganho líquido apurado',v:d.eduzzLiq,cor:'var(--green)',
+     d:'Faturado menos taxa de plataforma, comissão e reembolso, conforme o próprio export. Cobre só a parcela que passou pela Eduzz — o PIX externo entra integral na conta da empresa e precisa ser somado à parte.'},
   ];
   el('mon-camadas').innerHTML = cam.map(c=>`
     <div style="padding:12px 0;border-bottom:1px solid var(--border)">
@@ -2475,16 +2532,24 @@ function buildMonetizacao(){
         <span style="font-size:19px;font-weight:800;color:var(--text)">${N(c.v)?'não apurado':fmtR(c.v)}</span></div>
       <div style="font-size:11.5px;color:var(--text-dim);line-height:1.6;margin-top:5px">${c.d}</div>
     </div>`).join('') +
-    `<div class="note n-warn" style="margin-top:14px;"><b>Armadilha do PIX fora da plataforma.</b> 25 dos 164 alunos de JUL/26 aparecem no Eduzz com fatura de R$ 1,00 e ganho líquido zero — o dinheiro entrou direto na conta da empresa. Somar só o export da Eduzz subestima a receita em cerca de <b>R$ 70 mil</b>. Identifique esses alunos pela fatura de R$ 1,00 e peça sempre a planilha de PIX recebidos junto com o export.</div>`;
+    `<div class="note n-warn" style="margin-top:14px;"><b>Armadilha do PIX fora da plataforma — agora quantificada.</b> 36 dos 194 alunos de JUL/26 aparecem no Eduzz com fatura de R$ 1,00 e ganho líquido zero: o dinheiro entrou direto na conta da empresa. Outros 42 pagaram só uma entrada de ~R$ 300 na plataforma, com o restante fora dela. Somar apenas o export subestima a receita contratada em <b>R$ 71.996</b> — 13,7% do total. Identifique esses alunos pela fatura de R$ 1,00 e peça sempre a planilha de PIX recebidos junto com o export.</div>`;
 
   el('mon-pgto').innerHTML = `
-    <thead><tr><th>Forma de pagamento</th><th class="num">Caixa</th><th class="num">Taxa</th>
-    <th class="num">Realização<br><span style="font-weight:400;text-transform:none">premissa</span></th><th>Confiabilidade</th></tr></thead>
-    <tbody>${PAGAMENTOS.map(p=>`<tr>
-      <td><span class="strong">${p.n}</span><br><span style="font-size:10.5px;color:var(--text-muted);font-weight:400">${esc(p.obs)}</span></td>
-      <td class="num">${p.caixa}</td><td class="num">${p.taxa}</td>
-      <td class="num strong">${pct(p.realizacao,0)}</td>
-      <td><span class="bdg ${p.conf==='alta'?'b-ok':p.conf==='média'?'b-warn':'b-bad'}">${p.conf}</span></td></tr>`).join('')}
+    <thead><tr><th>Forma de pagamento</th><th class="num">Faturas<br>geradas</th><th class="num">Pagas</th>
+    <th class="num">Taxa de<br>fechamento</th><th class="num">Não pagas</th><th class="num">Faturado</th></tr></thead>
+    <tbody>${REALIZACAO_JUL.map(p=>{
+      const tx=p.pg/p.ger, np=p.ger-p.pg-p.reemb;
+      const cor = tx>=0.7?'var(--green)':tx>=0.4?'#d4a434':'var(--rose)';
+      return `<tr>
+      <td><span class="strong">${p.n}</span><br><span style="font-size:10.5px;color:var(--text-muted);font-weight:400">${
+        [p.rec?p.rec+' em recuperação':'',p.ab?p.ab+' abertas':'',p.exp?p.exp+' expiradas':'',
+         p.reemb?p.reemb+(p.reemb>1?' reembolsadas':' reembolsada'):''].filter(Boolean).join(' · ')}</span></td>
+      <td class="num">${p.ger}</td><td class="num strong">${p.pg}</td>
+      <td class="num strong" style="color:${cor}">${pct(tx)}</td>
+      <td class="num" style="color:var(--rose)">${np}</td>
+      <td class="num">${fmtR(p.fat)}</td></tr>`}).join('')}
+      <tr class="tot"><td>TOTAL</td><td class="num">375</td><td class="num">195</td>
+      <td class="num">52,0%</td><td class="num">170</td><td class="num">${fmtR(452948.69)}</td></tr>
     </tbody>`;
 
   const withSplit = PAA.filter(x=>!N(x.fatImm));
@@ -2509,24 +2574,24 @@ function buildMonetizacao(){
       tooltip:{callbacks:{label:c=>' '+fmtR(c.raw)+' · '+pct(c.raw/(totPAA+totPPP))}}}}});
 
   const diag = [
-   {t:'Separar contrato fechado do valor recebido',p:'alta',
-    o:'Hoje a base mistura as três camadas. Sem isso, ROAS por canal é incomparável entre lançamentos.',
-    c:['Uma linha por venda com: valor_base · forma_pagamento · nº_parcelas · data_compra · data_pagamento · status · utm_source','Atribuição de canal sempre pela data da compra, nunca pela do pagamento','Status é dimensão, não filtro — manter cancelada e reembolsada na base, marcadas']},
-   {t:'Deduplicar PSL antes de somar',p:'alta',
-    o:'Se o export lista cada cobrança mensal como uma linha, somar a coluna de valor multiplica a receita e cria churn falso na quitação.',
-    c:['Deduplicar por ID de assinatura ou contrato','Contar só a primeira cobrança como venda, com o valor total do contrato','Confirmar no export se existe data de pagamento por parcela']},
+   {t:'Atacar o boleto no checkout',p:'alta',
+    o:'MEDIDO: boleto à vista fecha 8,8% das faturas e o carnê 20,3%, contra 78,8% do cartão. São 137 boletos para 20 pagamentos.',
+    c:['Oferecer PIX como padrão e boleto só como exceção assistida pelo comercial','Régua de cobrança ativa para boleto não pago em 48h — hoje 38 ficaram "em recuperação" sem ação','Acompanhar os 55 carnês em aberto, que ainda podem virar venda','Medir de novo no próximo lançamento: é a contramedida mais barata do funil']},
    {t:'Consolidar o PIX que não passa pela plataforma',p:'alta',
-    o:'Cerca de R$ 70 mil por lançamento ficam invisíveis, e o viés não é aleatório — PIX costuma ser o comprador mais quente, normalmente via comercial.',
-    c:['Base consolidada: export Eduzz ∪ planilha de PIX','Casar por e-mail ou CPF com o banco de leads para recuperar o utm_source','Identificar pela fatura de R$ 1,00 com ganho líquido zero']},
-   {t:'Medir realização em vez de estimar',p:'média',
-    o:'Os percentuais desta tela são premissas de trabalho. Nenhum foi medido.',
-    c:['Reprocessar um lançamento já encerrado com a curva de pagamento parcela a parcela','Calcular a taxa de realização por método e por faixa de parcelas','Definir a política de corte de acesso na inadimplência — ela determina o tamanho da perda']},
+    o:'MEDIDO: R$ 71.996 em JUL/26 — 13,7% da receita contratada — ficam invisíveis no export. São 36 alunos com fatura de R$ 1,00 e 42 que pagaram só a entrada na plataforma.',
+    c:['Base consolidada: export Eduzz ∪ planilha de PIX recebidos','Casar por e-mail ou CPF com o banco de leads para recuperar o utm_source','Identificar pela fatura de R$ 1,00 com ganho líquido zero','O viés não é aleatório: PIX costuma ser o comprador mais quente, normalmente via comercial']},
+   {t:'Separar contrato fechado do valor recebido',p:'alta',
+    o:'A base ainda mistura contratada, faturada e caixa. Sem isso, ROAS por canal é incomparável entre lançamentos.',
+    c:['Uma linha por venda com: valor_base · forma_pagamento · nº_parcelas · data_compra · data_pagamento · status · utm_source','Atribuição de canal sempre pela data da compra, nunca pela do pagamento','Status é dimensão, não filtro — manter cancelada e reembolsada na base, marcadas']},
+   {t:'Medir a realização das parcelas',p:'média',
+    o:'A taxa de FECHAMENTO de fatura já está medida. Falta a de REALIZAÇÃO: de um PSL de 12x aprovado, quantas parcelas chegam ao caixa.',
+    c:['Reprocessar um lançamento encerrado com a curva de pagamento parcela a parcela','Calcular a taxa por método e por faixa de parcelas','Definir a política de corte de acesso na inadimplência — ela determina o tamanho da perda']},
+   {t:'Deduplicar PSL antes de somar',p:'média',
+    o:'Se o export listar cada cobrança mensal como linha, somar a coluna de valor multiplica a receita e cria churn falso na quitação.',
+    c:['Deduplicar por ID de assinatura ou contrato','Contar só a primeira cobrança como venda, com o valor total do contrato','No export de JUL/26 isso não ocorreu — cada contrato aparece uma vez']},
    {t:'Tratar mix de pagamento como KPI',p:'média',
-    o:'Alta de boleto parcelado no mix significa público com menos crédito — é sinal precoce de queda na qualidade do lead por canal, meses antes de aparecer no ROAS.',
+    o:'Alta de boleto no mix significa público com menos crédito — sinal precoce de queda na qualidade do lead por canal, meses antes de aparecer no ROAS. Em JUL/26 o boleto foi 36,5% das faturas emitidas e só 10,3% das pagas.',
     c:['Cruzar forma de pagamento com utm_source em todo lançamento','Acompanhar a série do mix, não só o valor total','Comparar canais pelo líquido, nunca pelo bruto — o bruto pune quem traz PIX']},
-   {t:'Separar ROAS confirmado de ROAS potencial',p:'média',
-    o:'Decidir corte de verba com boleto emitido é decidir com receita que pode não existir.',
-    c:['Confirmado = PIX recebido + 1ª cobrança PSL aprovada + 1ª parcela de boleto paga','Boleto emitido nunca conta como confirmado','Ao lado, ROAS potencial como teto — e reprocessar em D+7 após o fechamento']},
   ];
   el('mon-diag').innerHTML = diag.map(x=>`
     <div style="padding:13px 0;border-bottom:1px solid var(--border)">
@@ -2543,42 +2608,57 @@ function buildMonetizacao(){
 // ============================================================
 function renderDados(){
   const div = [
+   {t:'Reembolso: 0,5% no dossiê, 4,4% no export',s:'crítico',
+    d:'O dossiê registra taxa de reembolso de 0,5%, contra 1,8%–4,25% dos três lançamentos anteriores, e usa isso como evidência de que a oferta não é o problema. O export de 12/08 lista 9 faturas reembolsadas (R$ 25.977), o que dá 4,4% sobre as 204 faturas fechadas, ou 4,1% sobre os 194 alunos. As duas medidas não usam o mesmo denominador e a conclusão qualitativa muda conforme a escolha.',
+    a:'Fixar o denominador (faturas fechadas ou alunos) e reprocessar os três lançamentos anteriores pelo mesmo critério antes de citar a comparação.'},
    {t:'Faturamento: duas séries incompatíveis',s:'crítico',
-    d:'A série de faturamento do ciclo (usada no perpétuo) é 6% a 29% maior que a receita contratada dos lançamentos. A diferença não corresponde a add-ons em nenhum lançamento. Provável valor cheio da Eduzz com juros, ou PSL contado parcela a parcela.',
-    a:'Reprocessar um lançamento encerrado deduplicando por ID de contrato e comparar as duas séries.'},
+    d:'A série de faturamento do ciclo (usada no perpétuo) é 6% a 29% maior que a receita contratada dos lançamentos. Em JUL/26 a diferença ficou explicada: R$ 524.945 contratados contra R$ 452.949 faturados na Eduzz — a diferença de R$ 71.996 é PIX e entradas recebidos fora da plataforma. Nos lançamentos anteriores essa conciliação não foi feita.',
+    a:'Aplicar a mesma conciliação (contratada × export × PIX externo) aos lançamentos anteriores.'},
+   {t:'JUL/26 fechado com o export da Eduzz',s:'resolvido',
+    d:'Os 194 alunos foram apurados como e-mails distintos com fatura paga no export de 12/08 — bate exatamente com o dossiê v5. Comercial (109), recuperação Eduzz (4) e a divisão por vendedor também fecham. O comparecimento no pitch (105) e no carrinho (89) confere pela data de criação da fatura.',
+    a:'Concluído. Faltam: split imediato/futuro, renovações e add-ons do ciclo.'},
+   {t:'Curva diária do grupo — teste executado',s:'resolvido',
+    d:'A série de entrada e saída por dia soma exatamente EG 16.876, SG 5.972 e PG 10.904. Permitiu separar duas causas distintas na permanência: dois eventos de saída em massa (10 e 13/07) e fadiga crescente (23–27/07). 14/07 não tem registro.',
+    a:'Concluído. Recuperar o registro de 14/07 e identificar o que ocorreu em 10 e 13/07.'},
    {t:'MAI/26 estava ausente da série',s:'resolvido',
-    d:'O lançamento MAI/26 (Engenharia · R$ 313.006 de tráfego, 311 alunos, ROAS 2,72) não existia no dashboard v3.9. Foi reinserido a partir do dossiê v4. O rótulo "Jun/26" na série do perpétuo se refere à campanha de downsell de 08/06–08/07, atrelada ao ciclo MAI/26 — não a um lançamento de junho.',
-    a:'Concluído. Faltam: split imediato/futuro, PIX × Eduzz, renovações, devoluções, order bump e upsell de MAI/26.'},
-   {t:'Contagem de leads diverge entre três fontes',s:'aberto',
-    d:'JUL/26: 21.981 na planilha DAILY · 21.910 no G Digital · 20.263 no banco de leads. O banco tem cerca de 1.650 leads a menos que os gerenciadores. O dashboard usa 21.981 (planilha).',
+    d:'Reinserido na v4.0 a partir do dossiê. O rótulo "Jun/26" na série do perpétuo se refere à campanha de downsell de 08/06–08/07, atrelada ao ciclo MAI/26 — não a um lançamento de junho.',
+    a:'Concluído. Faltam split imediato/futuro, PIX × Eduzz, renovações e devoluções de MAI/26.'},
+   {t:'Vendas por dia: dossiê e export divergem',s:'aberto',
+    d:'A curva diária do dossiê soma 197 vendas e traz 12 em 31/07 e 12 em 05/08. O export traz 195 faturas (194 alunos), com 13 em 31/07 e 9 em 05/08. O dashboard usa o export, por ser a fonte primária.',
+    a:'Reconciliar a planilha de acompanhamento com o export ao fechar o próximo lançamento.'},
+   {t:'Leads do TikTok trocados no dossiê',s:'aberto',
+    d:'A tabela de captação do dossiê repete 4.253 na linha do TikTok (valor do Google) e calcula 36,5% sobre a meta de 1.406. O número correto, usado aqui, é 513 leads.',
+    a:'Corrigir no documento de origem.'},
+   {t:'Contagem de leads diverge entre fontes',s:'aberto',
+    d:'JUL/26: 21.981 na planilha DAILY · 21.910 no G Digital · 20.263 no banco de leads. A v4.1 passou a usar 21.910, que é o número do dossiê e o denominador de todas as taxas do debriefing.',
     a:'Definir a fonte oficial e documentar a regra de corte por data.'},
+   {t:'42 alunos sem origem identificável',s:'aberto',
+    d:'Dos 194 alunos de JUL/26, 42 (21,6%) não têm UTM ou não foram encontrados no banco de leads. Um quinto do resultado não entra na atribuição por canal — o que torna qualquer CAC por canal um limite superior, não uma medida.',
+    a:'Corrigir a captura de UTM na origem e investigar a rota de compra desses alunos.'},
    {t:'Definição de MQL não é única',s:'aberto',
-    d:'A planilha traz 4.780 MQLs (3.463 Facebook · 733 Google · 69 TikTok · 515 orgânico). O dossiê v4 traz 3.580, com recorte por respondente da pesquisa. O painel LEADSCORE traz ainda um terceiro número, sob o rótulo "captado quente". O dashboard usa o critério do dossiê, porque é o único que permite comparar conversão de MQL contra não-MQL.',
+    d:'A planilha traz 4.780 MQLs; o dossiê traz 3.580, com recorte por respondente da pesquisa; o painel LEADSCORE traz um terceiro número. O dashboard usa o critério do dossiê.',
     a:'Fixar uma definição única de MQL e aplicá-la retroativamente.'},
    {t:'R$ 80.869 de tráfego sem dono',s:'aberto',
-    d:'O dossiê usa R$ 329.363,73 como budget total de tráfego do período. Captação do PAA (R$ 232.137,03) mais downsell (R$ 16.357,73) somam R$ 248.494,76. Sobram R$ 80.868,97 que não aparecem em nenhuma das duas planilhas.',
+    d:'O dossiê do PPP usa R$ 329.363,73 como budget total de tráfego do período. Captação do PAA (R$ 232.137,03) mais downsell (R$ 16.357,73) somam R$ 248.494,76. Sobram R$ 80.868,97 que não aparecem em nenhuma das duas planilhas.',
     a:'Identificar a que campanha ou produto pertence esse investimento.'},
-   {t:'32 alunos sem origem identificável',s:'aberto',
-    d:'Dos 164 alunos de JUL/26, 26 não foram encontrados no banco de leads nem por e-mail, nem por telefone, nem por nome. Outros 6 apareceram sem UTM. Nenhum deles entra na atribuição por canal.',
-    a:'Corrigir a captura de UTM na origem e investigar a rota de compra desses alunos.'},
-   {t:'Leads orgânicos não fecham',s:'aberto',
-    d:'A aba DAILY registra 1.503 leads orgânicos. A quebra por fonte na aba ORGÂNICO soma 1.544 (Instagram 145 · WhatsApp grupos 695 · ManyChat 622 · sem UTM 82). Diferença de 41.',
-    a:'Reconciliar as duas abas.'},
+   {t:'31,3% dos leads não respondem à pesquisa',s:'aberto',
+    d:'14.578 responderam, mas 16.876 entraram no grupo: 2.298 pessoas entraram sem passar pela pesquisa. Somadas a quem não respondeu, são 6.633 leads que não dá para classificar como MQL. A pesquisa não é gate — é uma escolha de processo que vale tornar explícita.',
+    a:'Medir a taxa de entrada de quem respondeu contra quem não respondeu antes de decidir se vira gate.'},
    {t:'Sem dado de CS em nenhum lançamento',s:'lacuna',
     d:'Não existe medição de ativação, engajamento no produto, NPS ou motivo de cancelamento. Só há renovação e devolução — dois indicadores de saída, nenhum de processo. É o que impede calcular LTV com qualquer confiança.',
     a:'Instrumentar o pós-venda antes de tentar justificar CAC mais alto.'},
    {t:'Impressões e cliques de Google e TikTok não lançados',s:'lacuna',
-    d:'As métricas de topo por canal existem apenas de forma agregada. Só o Facebook tem impressões, CPM, cliques e CTR próprios.',
+    d:'As métricas de topo por canal existem apenas de forma agregada. Só o Facebook tem impressões, CPM, cliques e CTR próprios — por isso as etapas E1 a E3 da Jornada cobrem só ele.',
     a:'Lançar os dados dos gerenciadores por canal.'},
    {t:'Atribuição por aula não existe',s:'lacuna',
     d:'Não é possível dizer quantos alunos vieram de cada CPL. O comparecimento é medido, a conversão por aula não.',
     a:'Instrumentar antes do próximo lançamento — responsável já definido (Leibniz).'},
    {t:'Cobertura comercial não é medida',s:'lacuna',
-    d:'Não há registro de quais leads foram efetivamente abordados por vendedor. Isso impede dimensionar a maior perda do lançamento (−80 alunos no carrinho) e testar a hipótese de capacidade.',
-    a:'Cruzar a lista de participantes do CPL3 com os leads abordados. Teste barato, dados existem.'},
-   {t:'Taxa de realização por forma de pagamento é premissa',s:'lacuna',
-    d:'Os percentuais na aba Monetização são premissas de trabalho, não medição. Nenhum lançamento foi reprocessado com a curva de pagamento parcela a parcela.',
-    a:'Reprocessar um lançamento encerrado e calibrar por método.'},
+    d:'Não há registro de quais leads foram efetivamente abordados por vendedor. É a última grande perda (−46 alunos no carrinho) que segue sem teste possível.',
+    a:'Cruzar a lista de participantes do CPL3 com os leads abordados, por dia e por vendedor.'},
+   {t:'Curva de pagamento parcela a parcela',s:'lacuna',
+    d:'A taxa de FECHAMENTO de fatura já está medida. O que ainda não está é a taxa de REALIZAÇÃO das parcelas: de um PSL de 12x aprovado, quantas parcelas chegam de fato ao caixa.',
+    a:'Reprocessar um lançamento antigo com a curva de pagamento por parcela.'},
   ];
   const cor = {'crítico':'n-bad','aberto':'n-warn','lacuna':'n-info','resolvido':'n-ok'};
   const bdg = {'crítico':'b-bad','aberto':'b-warn','lacuna':'b-neu','resolvido':'b-ok'};
@@ -2597,10 +2677,11 @@ function renderDados(){
     <div class="klist">
      <div class="kitem"><span class="k">Série histórica ago/23 → abr/26</span><span class="v">dashboard v3.9</span></div>
      <div class="kitem"><span class="k">MAI/26</span><span class="v">DOSSIE_PAA_JUL26_Falconi_v4.docx</span></div>
-     <div class="kitem"><span class="k">JUL/26 — captação, receita, canais, diário</span><span class="v">PROGRAMA STRATEGY.xlsx (5 abas)</span></div>
-     <div class="kitem"><span class="k">JUL/26 — funil, MQL, segmentos, comercial, causa raiz</span><span class="v">DOSSIE_PAA_JUL26_Falconi_v4.docx</span></div>
-     <div class="kitem"><span class="k">PPP · ciclo Jun/26</span><span class="v">Dossiê PPP (Google Docs) + série do v3.9</span></div>
-     <div class="kitem"><span class="k">Formas de pagamento</span><span class="v">modelo de receita definido em 03/08/2026</span></div>
+     <div class="kitem"><span class="k">JUL/26 — indicadores finais, funil e causas</span><span class="v">Dossiê completo PAA JUL/26 (Google Docs)</span></div>
+     <div class="kitem"><span class="k">JUL/26 — vendas, receita, formas de pagamento, atribuição</span><span class="v">export Eduzz "minhas vendas" de 12/08/2026 (375 faturas)</span></div>
+     <div class="kitem"><span class="k">JUL/26 — captação diária e canais</span><span class="v">PROGRAMA STRATEGY.xlsx</span></div>
+     <div class="kitem"><span class="k">JUL/26 — entrada e saída do grupo por dia</span><span class="v">Dossiê completo PAA JUL/26, seção 4.B</span></div>
+     <div class="kitem"><span class="k">PPP · ciclo Jun/26</span><span class="v">Dossiê PPP + série do v3.9</span></div>
     </div></div>
 
    <div class="card gap-top"><div class="card-title">📋 Plano de ação registrado — JUL/26</div>
@@ -2619,7 +2700,7 @@ const HISTORICO_DEB = [
  {l:'FEV/26 · O Novo Manejo', traf:299922, leads:22580, entrada:.963, novos:311, conv:.0138, cac:964,  roas:3.06},
  {l:'ABR/26 · O Sistema',     traf:339357, leads:22270, entrada:.865, novos:275, conv:.0124, cac:1234, roas:2.38},
  {l:'MAI/26 · Engenharia',    traf:313006, leads:18462, entrada:.955, novos:311, conv:.0168, cac:1006, roas:2.72},
- {l:'JUL/26 (parcial)',       traf:232137, leads:21910, entrada:.770, novos:164, conv:.0075, cac:1415, roas:1.98},
+ {l:'JUL/26 · final',         traf:232137, leads:21910, entrada:.770, novos:194, conv:.0089, cac:1197, roas:2.26},
 ];
 
 function tbl(cols, rows, foot){
@@ -2643,17 +2724,17 @@ function renderDebriefing(){
     ['Responsável','Rafael Zilocchi'],['Estrategista / gestor','Daniel Gasparino'],
     ['Ciclo','Captação 09–27/07 · CPLs 27–29/07 · Pitch 29/07 · Carrinho 30/07–07/08'],
     ['Meta','323 novos alunos'],
-    ['Realizado (03/08, carrinho aberto)','<b style="color:var(--rose)">164 novos alunos</b> — 50,8% da meta'],
-    ['Status desta análise','<span class="bdg b-warn">PARCIAL</span> O carrinho fecha ~07/08; receita e alunos ainda se movem.'],
+    ['Realizado (final, 12/08)','<b style="color:var(--rose)">194 novos alunos</b> — 60,1% da meta'],
+    ['Status desta análise','<span class="bdg b-ok">FECHADO</span> Carrinho encerrado em 06/08; apurado no export Eduzz de 12/08.'],
   ];
 
   // ---- 2. níveis ----
   const estrategico = [
-    {c:['Novos alunos','323','<b>164</b>','−159 (−49,2%)',situacao(164,323)]},
-    {c:['Receita contratada','R$ 965.770','<b>R$ 459.148</b>','−R$ 506.622',situacao(459148,965770)]},
-    {c:['ROAS bruto','4,06','<b>1,98</b>','−2,08',situacao(1.98,4.06)]},
+    {c:['Novos alunos','323','<b>194</b>','−129 (−39,9%)',situacao(194,323)]},
+    {c:['Receita contratada','R$ 965.770','<b>R$ 524.945</b>','−R$ 440.825',situacao(524945,965770)]},
+    {c:['ROAS bruto','4,06','<b>2,26</b>','−1,80',situacao(2.26,4.06)]},
     {c:['Investimento em captação','R$ 237.608','<b>R$ 232.137</b>','−2,3% — dentro do plano',situacao(232137,237608,true)]},
-    {c:['CAC','R$ 735','<b>R$ 1.415</b>','+92%',situacao(1415,735,true)]},
+    {c:['CAC','R$ 735','<b>R$ 1.197</b>','+63%',situacao(1197,735,true)]},
   ];
   const tatCapt = [
     {c:['Leads totais','21.779','<b>21.910</b>',situacao(21910,21779)]},
@@ -2661,24 +2742,27 @@ function renderDebriefing(){
     {c:['Leads Google / YouTube','5.824','4.253',situacao(4253,5824)]},
     {c:['Leads TikTok','1.406','513',situacao(513,1406)]},
     {c:['Leads orgânico','1.500','1.455',situacao(1455,1500)]},
-    {c:['CPL médio','R$ 8,80','R$ 10,56',situacao(10.56,8.80,true)]},
+    {c:['CPL médio','R$ 8,80','R$ 10,60',situacao(10.60,8.80,true)]},
+    {c:['Respostas da pesquisa','—','14.578 (66,5%)','<span class="bdg b-neu">novo</span>']},
     {c:['Entradas no grupo de WhatsApp','18.512','16.876',situacao(16876,18512)]},
   ];
   const tatPago = CANAIS_JUL.filter(c=>c.inv>0).map(c=>({c:[
     `<span style="color:${c.cor}">■</span> ${c.n}`, fmtR(c.inv), fmtN(c.leads), fmtR2(c.cpl),
     `<b>${c.alunos}</b>`, pct(c.alunos/c.leads,3), N(c.cac)?'—':fmtR(c.cac)]}));
-  tatPago.push({_tot:1,c:['TOTAL PAGO','R$ 232.137','20.455','R$ 11,35','<b>105</b>','0,513%','R$ 2.211']});
+  tatPago.push({_tot:1,c:['TOTAL PAGO','R$ 232.137','20.455','R$ 11,35','<b>120</b>','0,587%','R$ 1.934']});
 
   const tatOrg = [
-    {c:['Orgânico (Instagram, grupos, comercial)','1.455','<b>20</b>','<span style="color:var(--green)">1,375%</span>','R$ 0']},
-    {c:['ManyChat WhatsApp API','622','<b>7</b>','<span style="color:var(--green)">1,125%</span>','R$ 0']},
-    {c:['Sem origem identificável','—','<b>32</b>','—','—']},
+    {c:['Orgânico (Instagram, grupos, comercial)','1.455','<b>23</b>','<span style="color:var(--green)">1,581%</span>','R$ 0']},
+    {c:['ManyChat WhatsApp API','622','<b>9</b>','<span style="color:var(--green)">1,447%</span>','R$ 0']},
+    {c:['Sem origem identificável','—','<b>42</b>','—','—']},
   ];
   const operacional = [
     {c:['Taxa de entrada no grupo','95,5% (MAI/26)','<b>77,0%</b>','<span class="bdg b-bad">−18,5 p.p.</span>']},
-    {c:['Permanência no grupo','87% (medido em 19/07)','<b>64,6%</b>','<span class="bdg b-bad">−22,4 p.p.</span>']},
-    {c:['Participantes efetivos (PG)','~18.100','<b>10.904</b>','<span class="bdg b-bad">−40%</span>']},
+    {c:['Permanência no grupo','86,9% (MAI/26)','<b>64,6%</b>','<span class="bdg b-bad">−22,4 p.p.</span>']},
+    {c:['Participantes efetivos (PG)','~15.300','<b>10.904</b>','<span class="bdg b-bad">−29%</span>']},
     {c:['Comparecimento CPL 1/2/3','plano 2.958 / 2.523 / 2.000','<b>3.020 / 2.557 / 2.164</b>','<span class="bdg b-ok">102% · 101% · 108%</span>']},
+    {c:['Fechamento de fatura — cartão','—','<b>78,8%</b>','<span class="bdg b-ok">medido</span>']},
+    {c:['Fechamento de fatura — boleto','—','<b>8,8%</b>','<span class="bdg b-bad">medido</span>']},
     {c:['Cobertura comercial dos participantes','—','não medida','<span class="bdg b-neu">LACUNA</span>']},
     {c:['Impressões e cliques Google e TikTok','—','não lançados','<span class="bdg b-neu">LACUNA</span>']},
   ];
@@ -2687,7 +2771,7 @@ function renderDebriefing(){
   <div class="card">
     <div class="card-title">📋 Identificação do projeto</div>
     <div class="klist">${cab.map(r=>`<div class="kitem"><span class="k">${r[0]}</span><span class="v" style="text-align:right;max-width:62%">${r[1]}</span></div>`).join('')}</div>
-    <div class="note n-bad" style="margin:14px 0 0;"><b>Principais lacunas.</b> (1) O funil pós-lead colapsou; (2) o TikTok gastou sem vender; (3) a verba se concentrou no canal de pior CAC; (4) a cobertura comercial não é medida.</div>
+    <div class="note n-bad" style="margin:14px 0 0;"><b>Principais lacunas.</b> (1) O funil pós-lead colapsou — e a curva diária do grupo, agora disponível, mostra que foram <b>duas causas distintas</b>, não uma; (2) 137 boletos gerados renderam 20 pagamentos; (3) a verba se concentrou no canal de pior CAC; (4) a cobertura comercial segue sem medição.</div>
   </div>
 
   <div class="sec-hdr gap-top" style="margin-bottom:12px;">
@@ -2707,7 +2791,7 @@ function renderDebriefing(){
     </div>
     <div class="card"><div class="card-title">🌱 Nível tático — orgânico, ManyChat e comercial</div>
       ${tbl([{h:'Origem'},{h:'Leads',a:'num'},{h:'Alunos',a:'num'},{h:'Lead→aluno',a:'num'},{h:'Custo de mídia',a:'num'}],tatOrg)}
-      <div class="insight" style="margin-top:10px;">O orgânico converte <b>3,1× melhor que o Facebook</b> e 1,7× melhor que o Google, a custo de mídia zero. São 27 alunos que não consomem verba — e nenhum dos dois canais tem meta, dono ou instrumentação. O ManyChat sequer registra base impactada, disparos ou CTR. Além disso, <b>78 das 164 vendas (47,6%)</b> passaram por um vendedor nomeado.</div>
+      <div class="insight" style="margin-top:10px;">O orgânico converte <b>3,1× melhor que o Facebook</b> e 1,8× melhor que o Google, a custo de mídia zero. São 32 alunos entre orgânico e ManyChat que não consomem verba — mais que o Google inteiro — e nenhum dos dois tem meta, dono ou instrumentação. Além disso, <b>109 das 194 vendas (56,2%)</b> passaram por um vendedor nomeado, e os <b>42 sem origem identificável</b> são 21,6% do resultado.</div>
     </div>
   </div>
 
@@ -2723,16 +2807,17 @@ function renderDebriefing(){
   <div class="card gap-top" style="border-left:3px solid var(--rose)">
     <div class="card-title">🧾 Declaração do problema</div>
     <div style="font-size:14px;line-height:1.75;color:var(--text-dim);font-style:italic;padding:6px 0">
-      “A aquisição de leads está no padrão — volume, custo e verba dentro do planejado. A lacuna de <b style="color:var(--text)">159 alunos</b> se formou integralmente entre o cadastro do lead e a venda: a taxa de entrada no grupo de WhatsApp caiu de ~95% para <b style="color:var(--text)">77%</b> e a permanência de 87% para <b style="color:var(--text)">64,6%</b>, deixando apenas <b style="color:var(--text)">10.904</b> pessoas efetivamente no grupo — 49,8% dos leads, contra ~83% históricos. Cerca de <b style="color:var(--text)">7.300 pessoas</b> pelas quais a empresa já havia pago nunca chegaram ao ambiente onde o lançamento converte.”
+      “A aquisição de leads está no padrão — volume, custo e verba dentro do planejado. A lacuna de <b style="color:var(--text)">129 alunos</b> se formou integralmente entre o cadastro do lead e a venda: a taxa de entrada no grupo de WhatsApp caiu de ~95% para <b style="color:var(--text)">77%</b> e a permanência de 87% para <b style="color:var(--text)">64,6%</b>, deixando apenas <b style="color:var(--text)">10.904</b> pessoas efetivamente no grupo — 49,8% dos leads, contra ~83% históricos. Cerca de <b style="color:var(--text)">11.000 pessoas</b> pelas quais a empresa já havia pago nunca chegaram ao ambiente onde o lançamento converte.”
     </div>
   </div>
 
   <div class="card gap-top"><div class="card-title">📊 Histórico — a lacuna contra a própria série é maior que a lacuna contra a meta</div>
     ${tbl([{h:'Lançamento'},{h:'Tráfego',a:'num'},{h:'Leads',a:'num'},{h:'Entrada no grupo',a:'num'},{h:'Novos alunos',a:'num'},{h:'Conv. lead→aluno',a:'num'},{h:'CAC',a:'num'},{h:'ROAS bruto',a:'num'}],
       HISTORICO_DEB.map((h,i)=>({_tot:i===3,c:[h.l,fmtR(h.traf),fmtN(h.leads),pct(h.entrada),`<b>${h.novos}</b>`,pct(h.conv,2),fmtR(h.cac),fmtX(h.roas)]})))}
-    <div class="insight" style="margin-top:10px;"><b>Com praticamente o mesmo volume de leads de FEV/26</b> (21.910 contra 22.580), JUL/26 produziu 164 alunos contra 311 — 47% a menos. A conversão de lead em aluno caiu para 0,75%, contra uma faixa histórica estável de 1,24%–1,68%. É o pior número da série.</div>
-    <div class="note n-warn" style="margin-top:12px;"><b>Variabilidade (Wheeler): não é flutuação normal de processo.</b> A conversão histórica oscilou entre 1,24% e 1,68% em quatro lançamentos — faixa estreita. O valor de 0,75% está fora dela por larga margem, na mesma direção da queda da entrada no grupo (77,0% contra 86,5%–96,3%). Duas métricas independentes rompendo o padrão ao mesmo tempo, no mesmo sentido, indicam mudança real de processo — não sorte.</div>
-    <div class="note n-bad" style="margin-top:10px;"><b>Custo de oportunidade.</b> O projeto é positivo no agregado: R$ 459.148 contratados sobre R$ 232.137 de captação. Mas mantida a conversão de MAI/26 (1,68%), os mesmos 21.910 leads teriam gerado <b>~368 alunos e ~R$ 1,03 milhão</b>. Ficaram na mesa cerca de <b>R$ 570 mil</b> de receita já paga em mídia.</div>
+    <div class="insight" style="margin-top:10px;"><b>Com praticamente o mesmo volume de leads de FEV/26</b> (21.910 contra 22.580), JUL/26 produziu 194 alunos contra 311 — 38% a menos. A conversão de lead em aluno caiu para 0,89%, contra uma faixa histórica estável de 1,24%–1,68%. É o pior número da série.</div>
+    <div class="note n-warn" style="margin-top:12px;"><b>Variabilidade (Wheeler): não é flutuação normal de processo.</b> A conversão histórica oscilou entre 1,24% e 1,68% em quatro lançamentos — faixa estreita. O valor de 0,89% está fora dela por larga margem, na mesma direção da queda da entrada no grupo (77,0% contra 86,5%–96,3%) e da permanência (64,6% contra 75,7%–86,9%). Três métricas independentes rompendo o padrão ao mesmo tempo, no mesmo sentido, indicam mudança real de processo — não sorte.</div>
+    <div class="note n-ok" style="margin-top:10px;"><b>Contraponto que vale registrar.</b> A taxa de reembolso ficou em 0,5% pelo critério do dossiê, contra 1,8%–4,25% nos três lançamentos anteriores. Vendeu-se menos, mas vendeu-se melhor — evidência de que o problema não está na oferta, no preço nem na promessa. <i>Ressalva:</i> o export de 12/08 já registra 9 faturas reembolsadas (R$ 25.977), o que dá 4,4% das faturas fechadas. As duas medidas não usam o mesmo denominador; a divergência está aberta na aba Dados.</div>
+    <div class="note n-bad" style="margin-top:10px;"><b>Custo de oportunidade.</b> O projeto é positivo no agregado: R$ 524.945 contratados sobre R$ 232.137 de captação. Mas mantida a conversão de MAI/26 (1,68%), os mesmos 21.910 leads teriam gerado <b>~368 alunos e ~R$ 1,00 milhão</b>. Ficaram na mesa cerca de <b>R$ 470 mil</b> de receita já paga em mídia.</div>
   </div>
 
   <div class="sec-hdr gap-top" style="margin-bottom:12px;">
@@ -2745,8 +2830,33 @@ function renderDebriefing(){
     <div class="card"><div class="card-title">🎬 Comparecimento e retenção nas aulas</div>
       ${tbl([{h:'Aula'},{h:'Data',a:'num'},{h:'Presença',a:'num'},{h:'Espectadores únicos',a:'num'},{h:'Tempo médio',a:'num'}],
         AULAS_JUL.map(a=>({c:[a.n,a.data,`<b>${fmtN(a.presenca)}</b>`,fmtN(a.unicos),a.medio]})))}
-      <div class="insight" style="margin-top:10px;">Contra o próprio plano do lançamento, as aulas entregaram <b>102%, 101% e 108%</b>. Sobre quem permaneceu no grupo, JUL/26 tem a maior taxa de comparecimento da série nas três aulas e a melhor retenção entre a primeira e a terceira (71,7%). As aulas não são a causa do desvio.</div>
+      <div class="insight" style="margin-top:10px;">Contra o próprio plano do lançamento, as aulas entregaram <b>102%, 101% e 108%</b>. Sobre quem permaneceu no grupo, JUL/26 tem a maior taxa de comparecimento da série nas três aulas (27,7% no CPL1 e 19,8% no CPL3) e a melhor retenção entre a primeira e a terceira (71,7%). As aulas não são a causa do desvio.</div>
     </div>
+  </div>
+
+  <div class="card gap-top" style="border-left:3px solid var(--rose)">
+    <div class="card-title">🔬 O teste que faltava — entrada e saída do grupo, dia a dia</div>
+    <div style="font-size:11.5px;color:var(--text-muted);line-height:1.6;margin-bottom:12px">
+      A v4.0 registrou a permanência como <b>hipótese não testada</b>. A série diária chegou e fecha exatamente com os totais do lançamento: 16.876 entradas, 5.972 saídas, 10.904 participantes. O teste está executado — e o resultado é que <b>não existe uma causa, existem duas</b>.
+    </div>
+    <div class="chart-wrap" style="height:300px;"><canvas id="deb-grupo"></canvas></div>
+    <div id="deb-regimes" style="margin-top:14px;"></div>
+    <div class="note n-bad" style="margin-top:12px;"><b>10/07 e 13/07 não são declínio, são degrau.</b> Nesses dois dias saíram 2.834 pessoas — <b>47,5% de todas as saídas do lançamento</b> — contra 1.580 que entraram. Sair mais gente do que entrou significa que quem já estava dentro foi embora em bloco. Pelo critério de Falconi isso é <b>causa especial</b>: um evento datado, não um problema crônico de conteúdo. Achar o que aconteceu nesses dois dias é a ação de maior retorno do lançamento inteiro.</div>
+    <div class="note n-warn" style="margin-top:10px;"><b>De 23 a 27/07 o padrão é outro.</b> A saída sobe de forma contínua — 26,8%, 31,0%, 34,6%, 46,3% — chegando ao pico na véspera do CPL1. Isso é curva, não degrau: assinatura de <b>causa comum</b>, ligada à cadência e ao volume de disparos conforme o lançamento esquenta. Exige contramedida diferente da anterior.</div>
+    <div class="insight" style="margin-top:10px;"><b>Quanto vale corrigir.</b> Se os dois eventos e a semana de fadiga tivessem rodado na taxa de base de 13,6%, teriam ficado no grupo cerca de <b>3.700 pessoas a mais</b> — um PG de ~14.600 em vez de 10.904. Aplicando o comparecimento e a conversão realizados no próprio JUL/26, são cerca de <b>65 alunos</b>, ou R$ 176 mil de receita contratada.</div>
+  </div>
+  <div class="card gap-top" style="border-left:3px solid #d4a434">
+    <div class="card-title">🧾 Achado novo — 137 boletos gerados, 20 pagos</div>
+    <div style="font-size:11.5px;color:var(--text-muted);line-height:1.6;margin-bottom:12px">
+      Não estava no dossiê. Aparece ao cruzar o export da Eduzz: das 375 faturas emitidas no lançamento, <b>170 nunca foram pagas</b>, e a diferença entre formas de pagamento é brutal.
+    </div>
+    <div class="g2">
+      <div><div class="chart-wrap"><canvas id="deb-realiz"></canvas></div></div>
+      <div>
+        <div class="klist" id="deb-boleto"></div>
+      </div>
+    </div>
+    <div class="note n-bad" style="margin-top:12px;"><b>49 pessoas geraram fatura e nunca pagaram nenhuma.</b> Somam <b>R$ 157.777</b> de valor contratado que evaporou depois do "sim". Dessas, 32 só tinham boleto. Não são indecisos que abandonaram o carrinho: são pessoas que escolheram produto, escolheram forma de pagamento e emitiram a cobrança. É a etapa mais barata do funil para recuperar, e hoje ninguém a trabalha — 38 boletos ficaram em "recuperação" sem ação registrada.</div>
   </div>
 
   <div class="card gap-top"><div class="card-title">🎯 Problemas menores, priorizados por impacto</div>
@@ -2765,7 +2875,7 @@ function renderDebriefing(){
     ${tbl([{h:'Problema menor'},{h:'Tipo de causa'},{h:'Causa provável'},{h:'Como testar'},{h:'Confirmada?'}],
       PROBLEMAS_JUL.map(p=>({c:[`<span class="strong">${esc(p.p)}</span>`,esc(p.tipo),esc(p.causa),esc(p.teste),
         `<span class="bdg ${p.conf.startsWith('SIM')?'b-ok':p.conf==='DESCARTADO'?'b-neu':'b-warn'}">${esc(p.conf)}</span>`]})))}
-    <div class="note n-warn" style="margin-top:12px;"><b>Conclusão.</b> Só duas causas estão confirmadas: otimização por CPL em vez de CAC, e ausência de regra de corte por falta de venda. <b>As três maiores perdas em alunos — carrinho (−80), permanência (−76) e entrada no grupo (−71) — têm hipótese formulada e teste ainda não executado.</b> Agir sobre elas antes de testar é adivinhar, e os dados para os três testes já existem.</div>
+    <div class="note n-ok" style="margin-top:12px;"><b>Conclusão — mudou desde a v4.0.</b> A curva diária de entrada e saída do grupo chegou, e o teste da permanência <b>foi executado</b>: a maior perda isolada do lançamento (−76 alunos) deixou de ser hipótese. Somam-se a ela o achado novo do boleto e as três causas de mídia já confirmadas. <b>Seguem sem teste apenas duas</b>: a entrada no grupo (−71) e a conversão no carrinho (−46) — e as duas são testáveis com dados que a operação já tem.</div>
   </div>
 
   <div class="sec-hdr gap-top" style="margin-bottom:12px;">
@@ -2777,12 +2887,12 @@ function renderDebriefing(){
     <div class="card" style="border-left:3px solid var(--green)">
       <div class="card-title">✅ WhatsApp e orgânico → SDCA (padronizar)</div>
       <div style="font-size:11.5px;color:var(--text-dim);line-height:1.65">
-        Meta superada em 62% no ciclo do PPP (162 contra 100), com eficiência de aquisição muito superior à do tráfego pago. No PAA, o orgânico converteu 1,375% contra 0,446% do Facebook.
+        Meta superada em 62% no ciclo do PPP (162 contra 100), com eficiência de aquisição muito superior à do tráfego pago. No PAA, o orgânico converteu 1,581% contra 0,516% do Facebook — 3,1× melhor, a custo de mídia zero.
       </div>
       <div class="dblk" style="margin-top:12px;"><div class="dblk-t" style="color:var(--green)">Procedimento operacional padrão</div>
         <ul><li>Documentar cadência, copy e segmentação de disparo deste lançamento como padrão para os próximos</li>
         <li>Formalizar o mix de recuperação (comercial, e-mail, chatbot, recuperação Eduzz) como parte do playbook, não como iniciativa pontual</li>
-        <li>Criar meta e indicador próprios para orgânico e comercial — hoje 47,6% da conversão é invisível</li></ul></div>
+        <li>Criar meta e indicador próprios para orgânico e comercial — hoje 56,2% da conversão é invisível</li></ul></div>
     </div>
     <div class="card" style="border-left:3px solid var(--rose)">
       <div class="card-title">🔄 Tráfego pago e funil pós-lead → PDCA (novo ciclo)</div>
@@ -2800,7 +2910,7 @@ function renderDebriefing(){
     ${tbl([{h:'Ação'},{h:'Causa que ataca'},{h:'Prazo'},{h:'Valor esperado'},{h:'Dono'}],
       ACOES_JUL.map(a=>({c:[`<span class="strong">${esc(a.a)}</span>`,esc(a.c),esc(a.pz),esc(a.v),
         `<span class="bdg b-neu">${esc(a.d)}</span>`]})))}
-    <div class="note n-info" style="margin-top:12px;"><b>Próxima meta sugerida.</b> Confirmar as três causas não testadas até 08/08 e, no próximo lançamento, retomar a conversão de lead em aluno para a faixa de 1,24%–1,68%. Com os mesmos 21.910 leads, isso vale entre 270 e 368 alunos.</div>
+    <div class="note n-info" style="margin-top:12px;"><b>Próxima meta sugerida.</b> Fechar os dois testes que faltam antes do próximo lançamento e retomar a conversão de lead em aluno para a faixa de 1,24%–1,68%. Com os mesmos 21.910 leads, isso vale entre 270 e 368 alunos. Só a correção do boleto e das duas causas já confirmadas do grupo — sem tocar no carrinho — vale de 60 a 90 alunos.</div>
   </div>`;
 
   el('deb-times').innerHTML = TIMES_JUL.map(t=>`
@@ -2812,6 +2922,49 @@ function renderDebriefing(){
       <div style="font-size:11px;color:var(--text-dim);margin-bottom:6px">${esc(t.real)}</div>
       <span class="bdg ${t.st==='ok'?'b-ok':'b-bad'}">${esc(t.veredito)}</span>
     </div>`).join('');
+
+  // ---- curva diária do grupo (o teste executado) ----
+  const G = GRUPO_JUL;
+  mk('deb-grupo',{data:{labels:G.dias,datasets:[
+    {type:'bar',label:'Entraram no grupo',data:G.entrou,backgroundColor:'rgba(74,154,90,.8)',borderRadius:3,yAxisID:'y'},
+    {type:'bar',label:'Saíram do grupo',data:G.saiu,backgroundColor:'rgba(217,95,53,.85)',borderRadius:3,yAxisID:'y'},
+    {type:'line',label:'Saída ÷ entrada do dia',data:G.entrou.map((e,i)=>N(e)?null:G.saiu[i]/e*100),
+     borderColor:'#c9922a',borderWidth:2,tension:.25,pointRadius:3,yAxisID:'y1',spanGaps:false},
+  ]},options:{interaction:{mode:'index',intersect:false},
+    plugins:{legend:{labels:{boxWidth:12}},
+      tooltip:{callbacks:{label:c=>c.raw===null?' sem registro':
+        ' '+c.dataset.label+': '+(c.dataset.yAxisID==='y1'?c.raw.toFixed(1).replace('.',',')+'%':fmtN(c.raw))}}},
+    scales:{x:axis(),y:axis({title:{display:true,text:'pessoas',color:TC()}}),
+      y1:{position:'right',grid:{drawOnChartArea:false},ticks:{color:TC(),callback:v=>v+'%'},
+          title:{display:true,text:'saída / entrada',color:TC()}}}}});
+  el('deb-regimes').innerHTML = G.regimes.map(r=>`
+    <div style="display:grid;grid-template-columns:200px 1fr 92px;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--border)">
+      <div><div style="font-size:12px;font-weight:800;color:var(--text)">${r.n}</div>
+           <div style="font-size:10px;color:var(--text-muted)">${r.dias}</div></div>
+      <div style="font-size:11px;color:var(--text-dim);line-height:1.5">${r.leitura}</div>
+      <div style="text-align:right"><div style="font-size:17px;font-weight:800;color:${r.tipo==='ok'?'var(--green)':r.tipo==='warn'?'#d4a434':'var(--rose)'}">${pct(r.taxa)}</div>
+           <div style="font-size:10px;color:var(--text-muted)">${fmtN(r.sai)} saídas</div></div>
+    </div>`).join('');
+  // ---- realização medida por forma de pagamento ----
+  mk('deb-realiz',{type:'bar',indexAxis:'y',data:{labels:REALIZACAO_JUL.map(p=>p.n),datasets:[
+    {label:'Pagas',data:REALIZACAO_JUL.map(p=>p.pg),backgroundColor:'rgba(74,154,90,.85)',stack:'f',borderRadius:3},
+    {label:'Nunca pagas',data:REALIZACAO_JUL.map(p=>p.ger-p.pg-p.reemb),backgroundColor:'rgba(217,95,53,.8)',stack:'f',borderRadius:3},
+    {label:'Reembolsadas',data:REALIZACAO_JUL.map(p=>p.reemb),backgroundColor:'rgba(148,163,184,.7)',stack:'f',borderRadius:3},
+  ]},options:{indexAxis:'y',plugins:{legend:{labels:{boxWidth:12,font:{size:10}}}},
+    scales:{x:axis({stacked:true,title:{display:true,text:'faturas emitidas',color:TC()}}),y:axis({stacked:true})}}});
+  el('deb-boleto').innerHTML = [
+    ['Faturas emitidas no lançamento','375'],
+    ['Faturas pagas','195'],
+    ['Faturas nunca pagas','<b style="color:var(--rose)">170</b>'],
+    ['Fechamento — cartão','<b style="color:var(--green)">78,8%</b>'],
+    ['Fechamento — PIX','62,8%'],
+    ['Fechamento — carnê (TMB)','<b style="color:#d4a434">20,3%</b>'],
+    ['Fechamento — boleto à vista','<b style="color:var(--rose)">8,8%</b>'],
+    ['Pessoas que nunca pagaram nada','49'],
+    ['Contratado não realizado','<b style="color:var(--rose)">R$ 157.777</b>'],
+    ['Carnês ainda em aberto (podem virar venda)','55'],
+  ].map(r=>`<div class="kitem"><span class="k">${r[0]}</span><span class="v">${r[1]}</span></div>`).join('');
+
 }
 // ============================================================
 // INIT
