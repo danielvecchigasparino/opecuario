@@ -995,7 +995,7 @@ button:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
     <div class="phdr">
       <div>
         <div class="pname">🌱 Protocolo Pasto Produtivo</div>
-        <div class="pdesc">Downsell perpétuo. Ofertado após o lançamento ao público exposto à oferta do PAA e, em paralelo, a público frio via tráfego. Ticket atual R$ 297 — passou por três eras de preço (397 → 697 → 297).</div>
+        <div class="pdesc">Downsell perpétuo. Ofertado após o lançamento ao público exposto à oferta do PAA e, em paralelo, a público frio via tráfego. Ticket atual R$ 349 — passou por quatro eras de preço (397 → 697 → 297 → 349).</div>
       </div>
     </div>
     <div id="ppp-body"></div>
@@ -1488,47 +1488,51 @@ const ACOES_JUL = [
 // ── PPP · PROTOCOLO PASTO PRODUTIVO (perpétuo/downsell) ──────
 const PPP = {
  ciclos:['Ago/23','Dez/23','Fev/24','Abr/24','Jun/24','Ago/24','Out/24','Jan/25','Mar/25','Jun/25',
-         'Ago/25','Out/25','Dez/25','Fev/26','Abr/26','Jun/26'],
- fat:   [0,4367,5955,794,9330,8705,0,9758,20213,17425,9758,6273,4880,4182,57024,72468],
- vendas:[0,11,15,2,9,13,0,14,29,25,14,9,8,6,192,244],
- ticket:[null,397,397,397,397,397,null,697,697,697,697,697,null,697,297,297],
+         'Ago/25','Out/25','Dez/25','Fev/26','Abr/26','Jun/26','Ago/26'],
+ fat:   [0,4367,5955,794,9330,8705,0,9758,20213,17425,9758,6273,4880,4182,57024,72468,44672],
+ vendas:[0,11,15,2,9,13,0,14,29,25,14,9,8,6,192,244,128],
+ ticket:[null,397,397,397,397,397,null,697,697,697,697,697,null,697,297,297,349],
  // faturamento do lançamento PAA ao qual cada ciclo de downsell está atrelado
  fatCiclo:[49896,109771,379094,487669,412370,587343,587527,622191,616559,810479,
            679686,810116,301195,945387,869893,923326],
  ultimo:{
-  ciclo:'Jun/26', periodo:'08/06 – 08/07/2026', ticket:297,
-  meta:{novos:400, trafego:300, wpp:100, inv:54000, cpa:180, cpaEf:148.50, roas:2.2, roasMin:1.65,
-        fatMin:89000, fatDes:119000, pctDownsell:0.1188, alocacao:0.1525, criativos:6},
-  real:{novos:244, trafego:82, wpp:128, organico:34, inv:16357.73, cpa:199.48, roas:1.49,
-        fat:72468, fatTrafego:24354, fatWpp:48114, fatOrganico:10395, pctDownsell:0.0785,
-        alocacao:0.0497, criativos:0, budgetTotal:329363.73},
+  ciclo:'Ago/26', periodo:'10/08 – 13/09/2026', ticket:349,
+  // meta/real fonte: aba "#03 PPP (AGO-26)" da PPP STRATEGY.xlsx, bloco de totais (linhas 4-37).
+  // Sem dado de origem para pctDownsell/alocacao/criativos neste ciclo — campos omitidos (não inventados).
+  meta:{novos:290, trafego:100, wpp:150, inv:19000, cpa:190, cpaEf:174.50, roas:5.33, fatMin:34900},
+  real:{novos:128, trafego:54, wpp:44, organico:30, inv:18498.07, cpa:342.56, roas:1.02,
+        fat:44672, fatTrafego:18846, fatWpp:15356, fatOrganico:10470},
   organico:[
-   {n:'Time comercial',    alunos:19, fat:5643},
-   {n:'Social media',      alunos:5,  fat:1485},
-   {n:'E-mail marketing',  alunos:6,  fat:1782},
-   {n:'Recuperação Eduzz', alunos:4,  fat:1188},
-   {n:'Chatbot IA',        alunos:1,  fat:297},
+   {n:'Time comercial',    alunos:18, fat:6282},
+   {n:'Social media',      alunos:2,  fat:698},
+   {n:'E-mail marketing',  alunos:2,  fat:698},
+   {n:'Recuperação Eduzz', alunos:2,  fat:698},
+   {n:'Chatbot IA',        alunos:0,  fat:0},
+   {n:'Sem UTM',           alunos:6,  fat:2094},
   ],
-  dias:['08/06','09/06','10/06','11/06','12/06','13/06','14/06','15/06','16/06','17/06','18/06','19/06',
-        '20/06','21/06','22/06','23/06','24/06','25/06','26/06','27/06','28/06','29/06','30/06','01/07',
-        '02/07','03/07','04/07','05/07','06/07','07/07','08/07'],
-  inv:[714.25,944.75,988.29,1200.54,1068.93,1071.74,1065.37,761.87,885.81,722.60,760.64,515.29,381.24,
-       366.11,287.13,294.04,335.72,454.04,312.34,344.72,393.73,287.05,298.67,336.33,391.41,285.61,
-       300.88,303.42,305.48,313.80,83.86],
+  dias:['10/08','11/08','12/08','13/08','14/08','15/08','16/08','17/08','18/08','19/08','20/08','21/08',
+        '22/08','23/08','24/08','25/08','26/08','27/08','28/08','29/08','30/08','31/08','01/09','02/09',
+        '03/09','04/09','05/09','06/09','07/09','08/09','09/09','10/09','11/09','12/09','13/09'],
+  inv:[278.39,785.79,1309.77,1003.18,984.06,913.92,730.97,458.41,590.11,631.24,706.53,662.43,643.51,
+       302.53,270.52,228.01,429.06,517.64,706.73,1127.87,1279.60,912.45,516.58,283.07,391.09,250.51,
+       164.26,225.80,179.20,197.36,222.33,237.45,133.54,97.12,123.68],
   canais:{
-   trafego:[4,7,7,5,4,4,5,5,3,3,3,2,0,1,0,1,2,3,2,2,3,0,1,0,2,1,3,3,4,1,1],
-   wpp:[45,16,5,5,3,1,1,3,8,3,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,3,9,24],
-   social:[0,0,1,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0],
-   email:[0,1,1,0,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0],
-   comercial:[3,3,0,1,0,0,0,2,0,1,1,0,0,0,0,0,1,0,0,0,0,0,3,1,0,0,0,1,0,2,0],
-   eduzz:[0,1,2,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-   chatbot:[0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+   trafego:[7,2,2,2,1,2,3,0,2,3,1,3,0,1,4,1,1,3,2,1,4,1,1,1,1,0,0,2,1,1,0,2,0,0,0],
+   wpp:[21,5,4,4,0,0,0,2,3,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,2,0,0,0],
+   social:[0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+   email:[0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+   comercial:[0,3,4,1,2,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,1,0,0,0],
+   eduzz:[0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+   chatbot:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+   semutm:[3,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   },
+  // Observações quantitativas verificadas na planilha. Nenhuma causa operacional (criativo,
+  // decisão de corte de verba etc.) foi assumida sem confirmação — ver ressalva no relatório.
   causaRaiz:[
-   'VSL e criativos dedicados ao downsell não foram entregues — a campanha rodou inteira com ganchos reciclados do produto core (meta: 6 novos ads; realizado: 0).',
-   'CPA piorou já na primeira semana, o que levou a um corte reativo de ~60% no investimento diário a partir do 8º dia.',
-   'O corte não corrigiu a eficiência: o CPA piorou ainda mais depois (R$ 243,04 contra R$ 180,87 antes).',
-   'Ninguém rebalanceou entre público frio e quente — 94% da verba seguiu no frio, que é justamente o mais penalizado por criativo genérico.',
+   'Faturamento caiu 39,3% e alunos caíram 47,5% frente a Jun/26 (R$ 44.672 e 128 alunos, contra R$ 73.656 e 244) — mesmo com o ticket subindo de R$ 297 para R$ 349 (+17,5%).',
+   'O tráfego pago entregou 54% da meta de vendas (54 de 100) com CAC de R$ 342,56 — 71,7% acima do R$ 199,48 do ciclo anterior e 96,3% acima do R$ 174,50 planejado para este ciclo.',
+   'O WhatsApp, canal líder no ciclo anterior com 128 vendas, caiu para 44 (-65,6%) e entregou 29,3% de uma meta de 150.',
+   'O investimento diário caiu de uma média de R$ 643 nos primeiros 17 dias para R$ 420 nos últimos 18, mas o CAC piorou no mesmo intervalo (R$ 312 → R$ 378) — a queda de eficiência não se explica por corte de verba.',
   ],
  }
 };
@@ -1744,13 +1748,13 @@ function toggleDetail(l){ l.classList.toggle('on'); HOME_DETAIL=l.classList.cont
 // Cada ciclo do perpétuo é atrelado a um lançamento do PAA. O id continua 'ppp-N'
 // (gotoLaunch depende disso), mas o sortKey é a data real, para ordenar junto com o PAA.
 const PPP_SORT = ['2023-08','2023-12','2024-02','2024-04','2024-06','2024-08','2024-10','2025-01',
-                  '2025-03','2025-06','2025-08','2025-10','2025-12','2026-02','2026-04','2026-06'];
+                  '2025-03','2025-06','2025-08','2025-10','2025-12','2026-02','2026-04','2026-06','2026-08'];
 function pppAsCards(){
   return PPP.ciclos.map((c,i)=>({
     id:'ppp-'+i, sortKey:PPP_SORT[i], label:c, nome:'Downsell PPP', prod:'PPP', periodo:'ciclo '+c,
-    traf:i===15?PPP.ultimo.real.inv:null, fat:PPP.fat[i], novos:PPP.vendas[i],
-    roas:i===15?PPP.ultimo.real.roas:null, ticket:PPP.ticket[i],
-    cac:i===15?PPP.ultimo.real.cpa:null, cpl:null, leads:null, convLA:null, phase:3, status:'fechado',
+    traf:i===16?PPP.ultimo.real.inv:null, fat:PPP.fat[i], novos:PPP.vendas[i],
+    roas:i===16?PPP.ultimo.real.roas:null, ticket:PPP.ticket[i],
+    cac:i===16?PPP.ultimo.real.cpa:null, cpl:null, leads:null, convLA:null, phase:3, status:'fechado',
   })).filter(x=>x.fat>0);
 }
 function renderHomeCards(){
@@ -2149,37 +2153,37 @@ function buildPPP(){
     el('ppp-body').innerHTML = `
     <div class="g5">
       <div class="card"><div class="kpi-label">Receita de vida</div><div class="kpi-value">${fmtK(totFat)}</div><div class="kpi-sub">${PPP.ciclos.filter((c,i)=>PPP.fat[i]>0).length} ciclos</div></div>
-      <div class="card"><div class="kpi-label">Vendas totais</div><div class="kpi-value">${fmtN(totV)}</div><div class="kpi-sub">ticket atual R$ 297</div></div>
-      <div class="card"><div class="kpi-label">Último ciclo · ${U.ciclo}</div><div class="kpi-value" style="color:var(--green)">${fmtN(r.novos)}</div><div class="kpi-sub">recorde da série · +25,8% vs anterior</div></div>
-      <div class="card"><div class="kpi-label">ROAS do ciclo</div><div class="kpi-value">${fmtX(4.43)}</div><div class="kpi-sub">tráfego isolado ${fmtX(r.roas)}</div></div>
-      <div class="card"><div class="kpi-label">% do faturamento</div><div class="kpi-value" style="color:var(--rose)">${pct(r.pctDownsell)}</div><div class="kpi-sub">meta ${pct(m.pctDownsell)} · mercado ~15%</div></div>
+      <div class="card"><div class="kpi-label">Vendas totais</div><div class="kpi-value">${fmtN(totV)}</div><div class="kpi-sub">ticket atual R$ 349</div></div>
+      <div class="card"><div class="kpi-label">Último ciclo · ${U.ciclo}</div><div class="kpi-value" style="color:var(--rose)">${fmtN(r.novos)}</div><div class="kpi-sub">▼ ${pct(Math.abs(r.novos/244-1))} vs Jun/26</div></div>
+      <div class="card"><div class="kpi-label">ROAS do ciclo</div><div class="kpi-value">${fmtX(r.fat/r.inv)}</div><div class="kpi-sub">tráfego isolado ${fmtX(r.roas)}</div></div>
+      <div class="card"><div class="kpi-label">% do faturamento</div><div class="kpi-value">${pct(r.pctDownsell)}</div><div class="kpi-sub">sem lançamento PAA associado neste ciclo</div></div>
     </div>
 
-    <div class="note n-bad gap-top"><b>Melhor resultado absoluto da história do produto e, ao mesmo tempo, o pior ROAS de tráfego.</b> 244 vendas contra 194 do ciclo anterior — mas o canal pago entregou 82 de uma meta de 300, com CPA de R$ 199,48 contra R$ 148,50 planejados. A causa está confirmada: <b>zero dos 6 criativos dedicados foi entregue</b> e a campanha rodou inteira com ganchos reciclados do produto core.</div>
+    <div class="note n-bad gap-top"><b>Pior ciclo da era de ticket baixo (desde Abr/26).</b> 128 vendas contra 244 em Jun/26, mesmo com o ticket subindo de R$ 297 para R$ 349 (+17,5%). O tráfego pago entregou 54 de uma meta de 100, com CAC de R$ 342,56 contra R$ 174,50 planejados. O WhatsApp, principal motor do ciclo anterior (128 vendas), também recuou — para 44.</div>
 
     <div class="g2 gap-top">
       <div class="card"><div class="card-title">🎯 Meta × realizado — ${U.ciclo}</div><div class="mbar" id="pp-meta"></div></div>
       <div class="card"><div class="card-title">🧭 Alunos por canal — meta e entrega</div>
         <div class="chart-wrap"><canvas id="pp-canal"></canvas></div>
-        <div class="insight" style="margin-top:10px;">O WhatsApp orgânico entregou <b>128%</b> da meta a custo de mídia zero; o tráfego pago entregou <b>27%</b> queimando R$ 16,4 mil. O orgânico não tinha meta e mesmo assim somou 34 alunos.</div></div>
+        <div class="insight" style="margin-top:10px;">O tráfego pago entregou <b>54%</b> da meta (54 de 100), consumindo os R$ 18,5 mil de verba. O WhatsApp entregou <b>29%</b> de uma meta de 150 — queda forte frente ao ciclo anterior, quando foi o canal líder. Os demais canais (comercial, e-mail, social, recuperação Eduzz, chatbot e sem UTM) somaram 30 alunos, 75% da meta de 40.</div></div>
     </div>
 
-    <div class="card gap-top"><div class="card-title">📈 Receita e vendas por ciclo — três eras de preço</div>
+    <div class="card gap-top"><div class="card-title">📈 Receita e vendas por ciclo — evolução de preço</div>
       <div class="chart-wrap" style="height:320px;"><canvas id="pp-hist"></canvas></div>
-      <div class="insight" style="margin-top:10px;"><b>O corte de preço funcionou.</b> A R$ 697 a média era de 23,1 vendas por ciclo; a R$ 297 foram 192 e depois 244 — cerca de 9,4× o volume. Como o ticket caiu 2,35×, o ponto de equilíbrio exigia 2,35× mais volume: o realizado está muito acima disso. O preço está validado; o gargalo é execução de mídia.</div></div>
+      <div class="insight" style="margin-top:10px;"><b>O corte de R$ 697 para R$ 297 multiplicou o volume por ~9×.</b> Em Ago/26 o ticket subiu para R$ 349 (+17,5%) e o volume recuou para 128 — abaixo dos 192 e 244 registrados a R$ 297. Ainda é cedo para separar efeito de preço de efeito de execução de mídia: tráfego e WhatsApp caíram juntos neste ciclo.</div></div>
 
     <div class="g2 gap-top">
       <div class="card"><div class="card-title">📅 Investimento diário e vendas por canal</div>
         <div class="chart-wrap" style="height:300px;"><canvas id="pp-daily"></canvas></div>
-        <div class="insight" style="margin-top:10px;"><b>O corte reativo não resolveu.</b> A partir do 8º dia o investimento diário caiu ~60% — e o CPA <i>piorou</i>: R$ 243,04 depois contra R$ 180,87 antes. Um sistema estável melhora a eficiência quando recebe menos volume. Piorar indica que o problema nunca foi de escala, e sim de criativo.</div></div>
-      <div class="card"><div class="card-title">🌱 Origem das vendas orgânicas</div>
+        <div class="insight" style="margin-top:10px;">O investimento diário caiu de uma média de R$ 643 nos primeiros 17 dias para R$ 420 nos últimos 18 (-35%) — mas o CAC do tráfego <i>piorou</i> no mesmo intervalo: R$ 378 contra R$ 312 antes. A queda de eficiência não se explica por corte de verba.</div></div>
+      <div class="card"><div class="card-title">🌱 Origem das vendas fora do tráfego e WhatsApp</div>
         <div class="chart-wrap"><canvas id="pp-org"></canvas></div>
-        <div class="insight" style="margin-top:10px;">Dois picos claros de WhatsApp, no primeiro e no último dia — disparos com gatilho de urgência e escassez. Esse é o padrão a documentar como POP.</div></div>
+        <div class="insight" style="margin-top:10px;">Comercial concentra <b>60%</b> dessas vendas (18 de 30 alunos) — os demais canais (social, e-mail, recuperação Eduzz, chatbot, sem UTM) são residuais e juntos não chegam à metade disso.</div></div>
     </div>
 
     <div class="card gap-top"><div class="card-title">🔍 Causa raiz do ciclo ${U.ciclo}</div>
       <ol style="padding-left:20px;margin:0">${U.causaRaiz.map(c=>`<li style="font-size:12px;color:var(--text-dim);line-height:1.65;margin-bottom:8px">${esc(c)}</li>`).join('')}</ol>
-      <div class="note n-ok" style="margin:14px 0 0;"><b>Encaminhamento (SDCA + PDCA).</b> O WhatsApp/orgânico vai para SDCA — documentar cadência, copy e segmentação de disparo como padrão. O tráfego pago vai para PDCA — gate de aprovação obrigatório de criativo dedicado antes do início da campanha, plano de contingência com banco de criativos validados, e regra de realocação entre público frio e quente em vez de corte linear.</div></div>`;
+      <div class="note n-ok" style="margin:14px 0 0;"><b>Encaminhamento sugerido (PDCA).</b> Tráfego pago: CAC 96% acima do planejado mesmo com investimento em queda ao longo do ciclo — antes de escalar verba, isolar se a causa é criativo, público ou lance. WhatsApp: caiu de 128 para 44 vendas e entregou 29% da meta — investigar o que mudou na cadência de disparos frente ao ciclo anterior antes de repetir o padrão no próximo ciclo.</div></div>`;
     PPP_BUILT = true;
   }
 
@@ -2193,7 +2197,7 @@ function buildPPP(){
     {l:'Faturamento do tráfego',r:r.fatTrafego,m:m.fatMin,f:fmtK},
     {l:'% downsell / faturamento',r:r.pctDownsell,m:m.pctDownsell,f:v=>pct(v)},
     {l:'Criativos dedicados',r:r.criativos,m:m.criativos,f:fmtN},
-  ];
+  ].filter(x=>!(N(x.r)&&N(x.m)));
   el('pp-meta').innerHTML = rows.map(x=>{
     const ra = x.m? x.r/x.m : 0, w = Math.min(ra,1.35)/1.35*100, gp = 1/1.35*100;
     const bom = x.inv ? ra<=1.02 : ra>=0.98;
@@ -2223,7 +2227,7 @@ function buildPPP(){
     {type:'bar',label:'Tráfego',data:cn.trafego,backgroundColor:'rgba(217,95,53,.85)',stack:'v',yAxisID:'y1'},
     {type:'bar',label:'WhatsApp',data:cn.wpp,backgroundColor:'rgba(74,154,90,.85)',stack:'v',yAxisID:'y1'},
     {type:'bar',label:'Comercial',data:cn.comercial,backgroundColor:'rgba(201,146,42,.85)',stack:'v',yAxisID:'y1'},
-    {type:'bar',label:'Outros',data:cn.social.map((v,i)=>v+cn.email[i]+cn.eduzz[i]+cn.chatbot[i]),backgroundColor:'rgba(148,163,184,.7)',stack:'v',yAxisID:'y1'},
+    {type:'bar',label:'Outros',data:cn.social.map((v,i)=>v+cn.email[i]+cn.eduzz[i]+cn.chatbot[i]+(cn.semutm?cn.semutm[i]:0)),backgroundColor:'rgba(148,163,184,.7)',stack:'v',yAxisID:'y1'},
     {type:'line',label:'Investimento/dia',data:U.inv,borderColor:'#c9922a',tension:.25,pointRadius:0,borderWidth:2,yAxisID:'y'},
   ]},options:{interaction:{mode:'index',intersect:false},plugins:{legend:{labels:{boxWidth:12,font:{size:10}}}},
     scales:{x:axis({stacked:true,ticks:{color:TC(),maxRotation:90,autoSkip:true,maxTicksLimit:12}}),
