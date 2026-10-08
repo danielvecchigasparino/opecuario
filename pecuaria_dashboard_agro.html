@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Pecuária Lucrativa — Dashboard Estratégico v4.1 [Agro]</title>
+<title>Pecuária Lucrativa — Dashboard Estratégico v4.2 [Agro]</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KICA8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjE2IiBmaWxsPSIjMGQxYTBlIi8+CiAgPCEtLSBBIGxlZnQgbGVnIChmb3Jlc3QgZ3JlZW4pIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iNiw4OCAzMCwxMCA0MCwxMCAyMiw4OCIgZmlsbD0iIzJkNWEzNSIvPgogIDwhLS0gQSByaWdodCBsZWcgLyBYIGxlZnQgYmFyIG1lcmdlIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iMjIsODggNDAsMTAgNTAsMTAgMzQsODgiIGZpbGw9IiMyNTUwMzAiLz4KICA8IS0tIFggYmFyOiB0b3AtbGVmdCB0byBib3R0b20tcmlnaHQgKGdvbGQpIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iNDIsMTAgNTYsMTAgNzYsODggNjIsODgiIGZpbGw9IiNjOTkyMmEiLz4KICA8IS0tIFggYmFyOiB0b3AtcmlnaHQgdG8gYm90dG9tLWxlZnQgKGdvbGQsIG92ZXJsYXBzKSAtLT4KICA8cG9seWdvbiBwb2ludHM9IjU2LDEwIDcwLDEwIDUwLDg4IDM2LDg4IiBmaWxsPSIjYjA3ODIwIi8+CiAgPCEtLSBGaWVsZCBsaW5lcyBpbnNpZGUgQSBib3R0b20gLS0+CiAgPHBhdGggZD0iTTksNzUgUTIwLDcxIDMxLDc1IiBzdHJva2U9IiM0YTlhNWEiIHN0cm9rZS13aWR0aD0iMi41IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8cGF0aCBkPSJNNyw4MyBRMjAsNzkgMzMsODMiIHN0cm9rZT0iIzRhOWE1YSIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNjUiLz4KPC9zdmc+">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
@@ -789,7 +789,7 @@ button:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
 <body>
 
 <nav>
-  <div class="nav-brand">🐂 PECUÁRIA LUCRATIVA <span>v4.1</span></div>
+  <div class="nav-brand">🐂 PECUÁRIA LUCRATIVA <span>v4.2</span></div>
   <div class="nav-links">
     <button class="nav-btn active" onclick="showSection('home',this)">🏠 Home</button>
     <button class="nav-btn" onclick="showSection('debriefing',this)">🎯 Debriefing <span class="nav-badge">Jul/26</span></button>
@@ -1163,12 +1163,14 @@ button:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
 
 <script>
 // ============================================================
-// PECUÁRIA LUCRATIVA — DASHBOARD v4.1
+// PECUÁRIA LUCRATIVA — DASHBOARD v4.2
 // Fontes: PROGRAMA STRATEGY (JUL/26) · DOSSIE_PAA_JUL26_Falconi_v4 ·
-//         série histórica do v3.9 · export Eduzz "minhas vendas" de 12/08/2026
+//         série histórica do v3.9 · export Eduzz "minhas vendas" de 12/08/2026 ·
+//         exports Eduzz "Simples" de 07/10/2026 (PPP 498 faturas · PAA 1.643 faturas):
+//         reconciliação do ciclo Ago/26 e apuração do período entre ciclos.
 // ============================================================
 
-const BUILD = { versao:'4.1', data:'2026-08-12' };
+const BUILD = { versao:'4.2', data:'2026-10-07' };
 
 // ── LANÇAMENTOS PAA ─────────────────────────────────────────
 // fat = receita CONTRATADA (imediata + futura), preço-base, sem juros.
@@ -1534,6 +1536,23 @@ const PPP = {
    'O WhatsApp, canal líder no ciclo anterior com 128 vendas, caiu para 44 (-65,6%) e entregou 29,3% de uma meta de 150.',
    'O investimento diário caiu de uma média de R$ 643 nos primeiros 17 dias para R$ 420 nos últimos 18, mas o CAC piorou no mesmo intervalo (R$ 312 → R$ 378) — a queda de eficiência não se explica por corte de verba.',
   ],
+  // Reconciliação com o export de 07/10: as 128 vendas são BRUTAS, como apuradas em 14/09.
+  // Três compras da janela foram reembolsadas (12/08, 31/08 e 14/09), então o líquido é 125.
+  // 128 fica como número oficial do ciclo por ser a convenção da série; o líquido vai declarado.
+  vendasLiq:125, reembolsosNaJanela:3,
+ },
+ // ── PERÍODO ENTRE CICLOS ────────────────────────────────────
+ // Fonte: export Eduzz "Simples" PPP de 07/10/2026. Alunos = CPF cuja PRIMEIRA fatura paga
+ // cai na janela. Faturamento = alunos × 349, mesma convenção da série (PPP.fat).
+ // NÃO é um ciclo: o Ago/26 fechou em 13/09 e o próximo começa em 13/10. É venda residual.
+ entreCiclos:{
+  periodo:'14/09 – 06/10/2026', alunos:12, fat:4188, dias:23,
+  canais:[
+   {n:'WhatsApp',   alunos:5},  // utm whatsapp (4) + Whatsapp_Org (1)
+   {n:'Comercial',  alunos:5},  // utm patricia (4) + guima (1)
+   {n:'Instagram',  alunos:2},  // utm ig (1) + Instagram_Org (1)
+  ],
+  // Sem investimento de tráfego atribuído a esta janela no export — campo omitido, não inventado.
  }
 };
 
@@ -1676,7 +1695,7 @@ function renderHero(){
       <span class="hero-status ${d.status==='aberto'?'st-open':'st-closed'}">${d.status==='aberto'?'carrinho aberto — números parciais':'fechado'}</span>
     </div>
     <div class="hero-period">${esc(d.periodo)}</div>
-    ${d.status==='aberto'?`<div class="note n-warn" style="margin:12px 0 0;">O carrinho fecha em <b>07/08</b>. Receita e alunos ainda se movem — tudo nesta tela é apuração parcial de ${BUILD.data.split('-').reverse().join('/')}.</div>`:''}
+    ${d.status==='aberto'?`<div class="note n-warn" style="margin:12px 0 0;">${d.fechaEm?`O carrinho fecha em <b>${esc(d.fechaEm)}</b>. `:''}Receita e alunos ainda se movem — tudo nesta tela é apuração parcial de ${BUILD.data.split('-').reverse().join('/')}.</div>`:''}
     <div class="hero-kpis">
       <div class="hk"><div class="hk-l">Investimento em tráfego</div><div class="hk-v">${fmtK(d.traf)}</div><div class="hk-s">${esc(d.periodo.split('·')[0].trim())}</div><div class="hk-d">${delta(d.traf,p.traf,true)}</div></div>
       <div class="hk"><div class="hk-l">Faturamento contratado</div><div class="hk-v">${fmtK(d.fat)}</div><div class="hk-s">imediato + futuro</div><div class="hk-d">${delta(d.fat,p.fat)}</div></div>
@@ -2159,7 +2178,9 @@ function buildPPP(){
       <div class="card"><div class="kpi-label">% do faturamento</div><div class="kpi-value">${pct(r.pctDownsell)}</div><div class="kpi-sub">sem lançamento PAA associado neste ciclo</div></div>
     </div>
 
-    <div class="note n-bad gap-top"><b>Pior ciclo da era de ticket baixo (desde Abr/26).</b> 128 vendas contra 244 em Jun/26, mesmo com o ticket subindo de R$ 297 para R$ 349 (+17,5%). O tráfego pago entregou 54 de uma meta de 100, com CAC de R$ 342,56 contra R$ 174,50 planejados. O WhatsApp, principal motor do ciclo anterior (128 vendas), também recuou — para 44.</div>
+    <div class="note n-bad gap-top"><b>Pior ciclo da era de ticket baixo (desde Abr/26).</b> 128 vendas contra 244 em Jun/26, mesmo com o ticket subindo de R$ 297 para R$ 349 (+17,5%). O tráfego pago entregou 54 de uma meta de 100, com CAC de R$ 342,56 contra R$ 174,50 planejados. O WhatsApp, principal motor do ciclo anterior (128 vendas), também recuou — para 44. <i>As ${fmtN(r.novos)} vendas são brutas, como apuradas em 14/09; líquidas dos ${U.reembolsosNaJanela} reembolsos da janela são ${fmtN(U.vendasLiq)} (export de 07/10).</i></div>
+
+    <div class="note n-warn gap-top"><b>Entre ciclos · ${esc(PPP.entreCiclos.periodo)}.</b> O Ago/26 fechou em 13/09 e o próximo ciclo começa em 13/10. Nesses ${PPP.entreCiclos.dias} dias de intervalo entraram <b>${fmtN(PPP.entreCiclos.alunos)} alunos</b> (${fmtR(PPP.entreCiclos.fat)}), cerca de 0,5 por dia — ${PPP.entreCiclos.canais.map(c=>`${c.n} ${c.alunos}`).join(' · ')}. Não há verba de tráfego atribuída à janela no export: é venda residual de canal próprio, não ciclo. Serve de piso para dimensionar o que o downsell entrega sem lançamento por trás.</div>
 
     <div class="g2 gap-top">
       <div class="card"><div class="card-title">🎯 Meta × realizado — ${U.ciclo}</div><div class="mbar" id="pp-meta"></div></div>
