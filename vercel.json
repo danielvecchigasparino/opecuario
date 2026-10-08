@@ -3,6 +3,7 @@
   "name": "pecuaria-lucrativa-dashboard",
   "rewrites": [
     { "source": "/", "destination": "/pecuaria_dashboard_agro.html" },
+    { "source": "/paa", "destination": "/paa_dashboard.html" },
     { "source": "/plano", "destination": "/pecuaria_plano_v3.html" }
   ],
   "headers": [
